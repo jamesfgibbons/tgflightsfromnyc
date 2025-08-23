@@ -1,0 +1,57 @@
+{
+  "pitch": {
+    "col": "rank_delta",
+    "range": [-10, 10],
+    "semitone": 1.2
+  },
+  "velocity": {
+    "col": "share_pct",
+    "range": [0, 1],
+    "midi": [40, 127]
+  },
+  "timbre": {
+    "col": "engine",
+    "map": {
+      "google_web": 0,
+      "google_ai": 48,
+      "openai": 81,
+      "perplexity": 13
+    }
+  },
+  "pan": {
+    "col": "segment",
+    "map": {
+      "West": -30,
+      "Central": 0,
+      "East": 30
+    }
+  },
+  "duration": {
+    "col": "rich_type",
+    "map": {
+      "shopping_pack": 0.25,
+      "video": 0.5,
+      "": 1.0
+    }
+  },
+  "bass_riff": {
+    "enabled": true,
+    "trigger_condition": "brand_rank <= 3",
+    "file": "assets/jump_riff.mid",
+    "root_note": "C",
+    "bpm": 112,
+    "bars": 8
+  },
+  "audio": {
+    "tempo": 112,
+    "time_signature": [4, 4],
+    "total_bars": 16,
+    "soundfont": "assets/nice_gm.sf2"
+  },
+  "tts": {
+    "enabled": false,
+    "provider": "openai",
+    "voice": "alloy",
+    "overlay_volume": 0.3
+  }
+} 

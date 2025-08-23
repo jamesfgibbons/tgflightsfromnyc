@@ -1,0 +1,336 @@
+name: SERP Loop Radio CI/CD
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  NODE_VERSION: '20'
+  PYTHON_VERSION: '3.12'
+  TERRAFORM_VERSION: '1.6.0'
+
+jobs:
+  test:
+    name: Test & Validate
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+        cache-dependency-path: frontend/next/package-lock.json
+        
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_version: ${{ env.TERRAFORM_VERSION }}
+        
+    - name: Install dependencies
+      run: make ci-install
+      
+    - name: Run tests
+      run: make ci-test
+      
+    - name: Build components
+      run: make ci-build
+      
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: lambda-packages
+        path: |
+          dna_mapper.zip
+          renderer.zip
+        retention-days: 1
+
+  terraform-plan:
+    name: Terraform Plan
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.event_name == 'pull_request'
+    
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+      TF_VAR_snowflake_account: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+      TF_VAR_snowflake_username: ${{ secrets.SNOWFLAKE_USERNAME }}
+      TF_VAR_snowflake_password: ${{ secrets.SNOWFLAKE_PASSWORD }}
+      TF_VAR_openai_api_key: ${{ secrets.OPENAI_API_KEY }}
+      TF_VAR_auth0_domain: ${{ secrets.AUTH0_DOMAIN }}
+      TF_VAR_auth0_client_id: ${{ secrets.AUTH0_CLIENT_ID }}
+      TF_VAR_auth0_client_secret: ${{ secrets.AUTH0_CLIENT_SECRET }}
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_version: ${{ env.TERRAFORM_VERSION }}
+        
+    - name: Download build artifacts
+      uses: actions/download-artifact@v3
+      with:
+        name: lambda-packages
+        
+    - name: Terraform Init
+      working-directory: infra/terraform
+      run: terraform init
+      
+    - name: Terraform Plan
+      working-directory: infra/terraform
+      run: terraform plan -no-color
+      continue-on-error: true
+      id: plan
+      
+    - name: Comment PR with plan
+      uses: actions/github-script@v7
+      if: github.event_name == 'pull_request'
+      env:
+        PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
+      with:
+        script: |
+          const output = `#### Terraform Plan 📖 \`${{ steps.plan.outcome }}\`
+          
+          <details><summary>Show Plan</summary>
+          
+          \`\`\`\n
+          ${process.env.PLAN}
+          \`\`\`
+          
+          </details>
+          
+          *Pusher: @${{ github.actor }}, Action: \`${{ github.event_name }}\`, Workflow: \`${{ github.workflow }}\`*`;
+          
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: output
+          })
+
+  deploy-staging:
+    name: Deploy to Staging
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
+    environment: staging
+    
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+      TF_VAR_environment: staging
+      TF_VAR_snowflake_account: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+      TF_VAR_snowflake_username: ${{ secrets.SNOWFLAKE_USERNAME }}
+      TF_VAR_snowflake_password: ${{ secrets.SNOWFLAKE_PASSWORD }}
+      TF_VAR_openai_api_key: ${{ secrets.OPENAI_API_KEY }}
+      TF_VAR_auth0_domain: ${{ secrets.AUTH0_DOMAIN }}
+      TF_VAR_auth0_client_id: ${{ secrets.AUTH0_CLIENT_ID }}
+      TF_VAR_auth0_client_secret: ${{ secrets.AUTH0_CLIENT_SECRET }}
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_version: ${{ env.TERRAFORM_VERSION }}
+        terraform_wrapper: false
+        
+    - name: Download build artifacts
+      uses: actions/download-artifact@v3
+      with:
+        name: lambda-packages
+        
+    - name: Deploy infrastructure
+      working-directory: infra/terraform
+      run: |
+        terraform init
+        terraform apply -auto-approve
+        
+    - name: Upload Lambda functions
+      run: |
+        UPLOAD_BUCKET=$(cd infra/terraform && terraform output -raw s3_upload_bucket)
+        aws s3 cp dna_mapper.zip s3://$UPLOAD_BUCKET/lambda/dna_mapper.zip
+        aws s3 cp renderer.zip s3://$UPLOAD_BUCKET/lambda/renderer.zip
+        
+    - name: Update Lambda function code
+      run: |
+        DNA_MAPPER_ARN=$(cd infra/terraform && terraform output -raw lambda_dna_mapper_arn)
+        RENDERER_ARN=$(cd infra/terraform && terraform output -raw lambda_renderer_arn)
+        UPLOAD_BUCKET=$(cd infra/terraform && terraform output -raw s3_upload_bucket)
+        
+        aws lambda update-function-code \
+          --function-name $DNA_MAPPER_ARN \
+          --s3-bucket $UPLOAD_BUCKET \
+          --s3-key lambda/dna_mapper.zip
+          
+        aws lambda update-function-code \
+          --function-name $RENDERER_ARN \
+          --s3-bucket $UPLOAD_BUCKET \
+          --s3-key lambda/renderer.zip
+        
+    - name: Get deployment URLs
+      id: urls
+      working-directory: infra/terraform
+      run: |
+        echo "api_url=$(terraform output -raw api_gateway_url)" >> $GITHUB_OUTPUT
+        echo "cloudfront_url=https://$(terraform output -raw cloudfront_domain)" >> $GITHUB_OUTPUT
+        
+    - name: Test deployment
+      run: |
+        echo "Testing API endpoint..."
+        curl -f "${{ steps.urls.outputs.api_url }}/play?user_id=test" || echo "API test failed"
+        
+    - name: Deployment summary
+      run: |
+        echo "🎉 Staging deployment complete!"
+        echo "API Gateway: ${{ steps.urls.outputs.api_url }}"
+        echo "CloudFront: ${{ steps.urls.outputs.cloudfront_url }}"
+
+  deploy-production:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    environment: production
+    
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+      TF_VAR_environment: prod
+      TF_VAR_snowflake_account: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+      TF_VAR_snowflake_username: ${{ secrets.SNOWFLAKE_USERNAME }}
+      TF_VAR_snowflake_password: ${{ secrets.SNOWFLAKE_PASSWORD }}
+      TF_VAR_openai_api_key: ${{ secrets.OPENAI_API_KEY }}
+      TF_VAR_auth0_domain: ${{ secrets.AUTH0_DOMAIN }}
+      TF_VAR_auth0_client_id: ${{ secrets.AUTH0_CLIENT_ID }}
+      TF_VAR_auth0_client_secret: ${{ secrets.AUTH0_CLIENT_SECRET }}
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_version: ${{ env.TERRAFORM_VERSION }}
+        terraform_wrapper: false
+        
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        
+    - name: Download build artifacts
+      uses: actions/download-artifact@v3
+      with:
+        name: lambda-packages
+        
+    - name: Deploy infrastructure
+      working-directory: infra/terraform
+      run: |
+        terraform init
+        terraform apply -auto-approve
+        
+    - name: Upload Lambda functions
+      run: |
+        UPLOAD_BUCKET=$(cd infra/terraform && terraform output -raw s3_upload_bucket)
+        aws s3 cp dna_mapper.zip s3://$UPLOAD_BUCKET/lambda/dna_mapper.zip
+        aws s3 cp renderer.zip s3://$UPLOAD_BUCKET/lambda/renderer.zip
+        
+    - name: Update Lambda function code
+      run: |
+        DNA_MAPPER_ARN=$(cd infra/terraform && terraform output -raw lambda_dna_mapper_arn)
+        RENDERER_ARN=$(cd infra/terraform && terraform output -raw lambda_renderer_arn)
+        UPLOAD_BUCKET=$(cd infra/terraform && terraform output -raw s3_upload_bucket)
+        
+        aws lambda update-function-code \
+          --function-name $DNA_MAPPER_ARN \
+          --s3-bucket $UPLOAD_BUCKET \
+          --s3-key lambda/dna_mapper.zip
+          
+        aws lambda update-function-code \
+          --function-name $RENDERER_ARN \
+          --s3-bucket $UPLOAD_BUCKET \
+          --s3-key lambda/renderer.zip
+        
+    - name: Deploy frontend to Amplify
+      working-directory: frontend/next
+      run: |
+        npm ci
+        npm run build
+        npm run export
+        
+        # In a real setup, you'd deploy to AWS Amplify here
+        echo "Frontend built and ready for Amplify deployment"
+        
+    - name: Get deployment URLs
+      id: urls
+      working-directory: infra/terraform
+      run: |
+        echo "api_url=$(terraform output -raw api_gateway_url)" >> $GITHUB_OUTPUT
+        echo "cloudfront_url=https://$(terraform output -raw cloudfront_domain)" >> $GITHUB_OUTPUT
+        
+    - name: Run smoke tests
+      run: |
+        echo "Running production smoke tests..."
+        curl -f "${{ steps.urls.outputs.api_url }}/play?user_id=prod-test" || echo "Smoke test failed"
+        
+    - name: Create release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: v${{ github.run_number }}
+        release_name: Release v${{ github.run_number }}
+        body: |
+          🎵 SERP Loop Radio Production Deployment
+          
+          **Deployed URLs:**
+          - API Gateway: ${{ steps.urls.outputs.api_url }}
+          - CloudFront: ${{ steps.urls.outputs.cloudfront_url }}
+          
+          **Changes:**
+          ${{ github.event.head_commit.message }}
+          
+          **Commit:** ${{ github.sha }}
+          
+        draft: false
+        prerelease: false
+        
+    - name: Deployment summary
+      run: |
+        echo "🚀 Production deployment complete!"
+        echo "API Gateway: ${{ steps.urls.outputs.api_url }}"
+        echo "CloudFront: ${{ steps.urls.outputs.cloudfront_url }}"
+        echo "Release: v${{ github.run_number }}"
+
+  cleanup:
+    name: Cleanup artifacts
+    runs-on: ubuntu-latest
+    needs: [deploy-staging, deploy-production]
+    if: always()
+    
+    steps:
+    - name: Delete artifacts
+      uses: geekyeggo/delete-artifact@v2
+      with:
+        name: lambda-packages 

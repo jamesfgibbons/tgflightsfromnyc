@@ -1,0 +1,100 @@
+channel: travel
+theme: flights_from_nyc
+sub_theme: red_eye_deals
+focus: "Late night departures NYC to West Coast - red-eye flights and overnight deals"
+sound_pack_default: "Synthwave"
+mood: "nocturnal, mysterious, deal-hunting, late-night energy"
+
+# Red-eye friendly airports
+origins: [JFK, EWR, LGA]
+
+# West Coast and cross-country red-eye destinations
+destinations:
+  - code: LAX
+    name: Los Angeles
+    red_eye_appeal: "cross-country classic, entertainment industry"
+    typical_departure: "11:30 PM - 1:00 AM"
+    arrival_time: "3:00 AM - 5:30 AM PST"
+  - code: SFO
+    name: San Francisco
+    red_eye_appeal: "tech commuter, Silicon Valley"
+    typical_departure: "11:00 PM - 12:30 AM"
+    arrival_time: "2:30 AM - 5:00 AM PST"
+  - code: LAS
+    name: Las Vegas
+    red_eye_appeal: "gambler special, Vegas club scene"
+    typical_departure: "12:00 AM - 2:00 AM"
+    arrival_time: "3:00 AM - 6:00 AM PST"
+  - code: SEA
+    name: Seattle
+    red_eye_appeal: "Pacific Northwest business"
+    typical_departure: "11:45 PM - 1:15 AM"
+    arrival_time: "3:00 AM - 5:30 AM PST"
+  - code: PDX
+    name: Portland
+    red_eye_appeal: "hipster city, craft culture"
+    typical_departure: "12:15 AM - 1:45 AM"
+    arrival_time: "3:30 AM - 6:00 AM PST"
+
+# Red-eye specific carriers and features
+red_eye_carriers:
+  - name: "JetBlue"
+    personality: "mint class lie-flat, red-eye friendly"
+    sound_pack: "Synthwave"
+    features: ["lie-flat seats", "WiFi", "snacks"]
+  - name: "Delta"
+    personality: "premium red-eye service, Delta One"
+    sound_pack: "Synthwave"
+    features: ["premium cabin", "amenity kits", "meals"]
+  - name: "American"
+    personality: "flagship transcontinental"
+    sound_pack: "Synthwave"
+    features: ["flagship first", "meal service"]
+
+templates:
+  - "Cheapest red-eye {origin} to {dest} departing after 11 PM any day next month"
+  - "Late night mistake fares {origin} -> {dest} under $150 with lie-flat seats"
+  - "Red-eye vs early morning price difference {origin} to {dest} is overnight worth the savings?"
+  - "JetBlue Mint red-eye {origin} to {dest} vs coach on daytime flight cost comparison"
+  - "Cross-country red-eye sleep quality {origin} -> {dest} which airline actually lets you rest?"
+  - "Red-eye frequent flyer earning {origin} to {dest} do overnight flights count as full miles?"
+  - "NYC night owl departure strategies {origin} -> {dest} transportation to airport after midnight"
+
+# Late night specific insights
+novelty_special:
+  - "What's the latest possible departure from NYC that still counts as a red-eye deal to the West Coast?"
+  - "JFK vs EWR red-eye lounges - where can night owls actually hang out after midnight?"
+  - "Red-eye upgrade strategies NYC to LAX - when do premium cabins open up for cheap?"
+  - "Sleep aids and red-eye survival from NYC - what do frequent cross-country flyers actually use?"
+  - "Late night food options at NYC airports before red-eye departures - what's actually open?"
+
+# Time windows for red-eye deals
+time_windows:
+  - departure: "11:00 PM - 2:00 AM"
+    arrival: "2:00 AM - 6:00 AM"
+    savings: "20-40% vs daytime"
+    description: "classic red-eye window"
+  - departure: "12:30 AM - 3:00 AM"
+    arrival: "4:00 AM - 8:00 AM"
+    savings: "30-50% vs daytime"
+    description: "deep night departures"
+
+# Red-eye survival tips
+survival_factors:
+  - factor: "seat selection"
+    importance: "critical for sleep"
+  - factor: "eye mask and earplugs"
+    importance: "essential gear"
+  - factor: "pre-flight meal"
+    importance: "avoid airline food timing"
+  - factor: "airport arrival timing"
+    importance: "late night transportation planning"
+
+# Seasonal red-eye patterns
+seasonal_patterns:
+  - season: "summer"
+    impact: "more red-eyes available, vacation demand"
+  - season: "winter"
+    impact: "weather delays affect timing"
+  - season: "holiday"
+    impact: "premium pricing even for red-eyes"

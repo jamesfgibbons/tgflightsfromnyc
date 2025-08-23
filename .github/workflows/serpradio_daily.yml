@@ -1,0 +1,52 @@
+name: SERP Radio Daily Refresh
+on:
+  schedule:
+    - cron: "0 9 * * *"     # 09:00 UTC: Caribbean (Kokomo)
+    - cron: "0 12 * * *"    # 12:00 UTC: budget carriers
+    - cron: "0 21 * * *"    # 21:00 UTC: red-eye
+  workflow_dispatch: {}
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+
+      - name: Install deps
+        run: |
+          python -m venv .venv
+          . .venv/bin/activate
+          pip install -r requirements.txt
+
+      - name: Create creds.env.txt
+        run: |
+          cat << 'EOF' > creds.env.txt
+          SUPABASE_URL=${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE=${{ secrets.SUPABASE_SERVICE_ROLE }}
+          OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
+          STORAGE_BUCKET=serpradio-artifacts-2025
+          AWS_REGION=us-east-1
+          S3_BUCKET=serpradio-artifacts-2025
+          S3_PUBLIC_BUCKET=serpradio-public-2025
+          PUBLIC_CDN_DOMAIN=serpradio-public-2025.s3.amazonaws.com
+          SOUNDFONT_PATH=/usr/share/sounds/sf2/FluidR3_GM.sf2
+          EOF
+
+      - name: Run Caribbean ETL
+        run: |
+          . .venv/bin/activate
+          ./scripts/run_caribbean_etl.sh
+
+      - name: Build OpenAI cache
+        run: |
+          . .venv/bin/activate
+          ./scripts/run_cache_builder.sh
+
+      - name: Render Travel Themes
+        run: |
+          . .venv/bin/activate
+          ./scripts/run_travel_pipeline_local.sh

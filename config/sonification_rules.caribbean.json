@@ -1,0 +1,16 @@
+{
+  "sound_pack": "Tropical Pop",
+  "bpm": 104,
+  "earcons": {
+    "jackpot_threshold_usd": 85,
+    "jackpot": "island_jackpot",
+    "vol_spike": "storm_warning",
+    "airline_beats_ota": "bell.chime",
+    "ota_beats_airline": "crystal.ping"
+  },
+  "mapping": {
+    "price_to_pitch": { "low": 200, "mid": 440, "high": 1000 },
+    "volatility_to_tremolo": { "calm": 0.1, "mid": 0.3, "wild": 0.6 },
+    "novelty_to_syncopation": { "low": 0.1, "mid": 0.4, "high": 0.8 }
+  }
+}

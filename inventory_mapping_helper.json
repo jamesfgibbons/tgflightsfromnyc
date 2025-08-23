@@ -1,0 +1,3 @@
+{
+  "how_to_map": "Insert inventory + flight rows, then join by origin/destination/route_label manually or via a follow-up SQL script."
+}

@@ -1,0 +1,70 @@
+channel: travel
+theme: flights_from_nyc
+sub_theme: budget_carriers
+focus: "Ultra-budget NYC to vacation destinations - Spirit, Frontier, JetBlue deals"
+sound_pack_default: "8-Bit"
+mood: "playful, frugal, adventurous"
+
+# NYC Metro Area Airports
+origins: [JFK, LGA, EWR, HPN, ISP, SWF]
+
+# Budget-friendly vacation destinations
+destinations:
+  - code: LAS
+    name: Las Vegas
+    peak_season: "year-round"
+    budget_appeal: "gambling, shows, bachelor parties"
+  - code: MIA
+    name: Miami
+    peak_season: "winter"
+    budget_appeal: "beaches, nightlife, cruise ports"
+  - code: MCO
+    name: Orlando
+    peak_season: "summer"
+    budget_appeal: "Disney, Universal, family trips"
+  - code: FLL
+    name: Fort Lauderdale
+    peak_season: "winter"
+    budget_appeal: "spring break, beaches"
+  - code: TPA
+    name: Tampa
+    peak_season: "winter"
+    budget_appeal: "beaches, lower cost than Miami"
+
+# Budget carrier specific prompts
+carriers:
+  - name: "Spirit"
+    personality: "ultra-budget, no-frills, yellow branding"
+    sound_pack: "8-Bit"
+  - name: "Frontier"
+    personality: "animal tails, family-friendly budget"
+    sound_pack: "8-Bit"
+  - name: "JetBlue"
+    personality: "budget with perks, mint green, hipster"
+    sound_pack: "Synthwave"
+
+templates:
+  - "Find absolute rock-bottom Spirit flight {origin} to {dest} next 30 days including all fees"
+  - "Frontier flash sales and animal-themed mistake fares {origin} -> {dest} under $75 total"
+  - "JetBlue Mint vs basic economy {origin} to {dest} price breakdown with free WiFi value"
+  - "Hidden city ticketing through {dest} departing {origin} budget carriers only"
+  - "Spirit bare fare vs Frontier bundle {origin} -> {dest} which is actually cheaper?"
+  - "Tuesday/Wednesday budget carrier departures {origin} to {dest} historically lowest"
+  - "Basic economy seat selection fees {origin} -> {dest} Spirit vs Frontier vs JetBlue"
+
+# NYC-specific budget travel insights
+novelty_special:
+  - "What's the most creative sub-$50 Spirit routing from any NYC airport to Vegas that actually works?"
+  - "JetBlue flash sales NYC to Florida - when do they typically drop and how to catch them?"
+  - "Frontier's Tuesday fare drops from NYC - which destinations see biggest discounts?"
+  - "Spirit's free spirit program from NYC - are the rewards actually worth it for budget travelers?"
+  - "Newark vs JFK vs LaGuardia for budget carriers - which airport saves the most money?"
+
+# Time-based budget opportunities
+time_patterns:
+  - window: "Tuesday 3PM EST"
+    description: "Traditional airline fare drop window"
+  - window: "Friday late night"
+    description: "Last-minute weekend deals"
+  - window: "Sunday evening"
+    description: "Return flight deals for next week"

@@ -1,0 +1,1 @@
+# Pipeline module for OpenAI → momentum → audio workflow

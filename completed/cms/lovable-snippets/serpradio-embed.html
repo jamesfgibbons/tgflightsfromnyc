@@ -1,0 +1,56 @@
+<!-- 
+SERP Radio CSV Upload Widget - Secure Iframe Embedding
+Copy this snippet to embed the CSV upload widget on any site
+-->
+
+<div class="serpradio-container" style="width: 100%; max-width: 760px; margin: 0 auto;">
+    <iframe
+        src="https://api.serpradio.com/widget/"
+        sandbox="allow-scripts allow-same-origin allow-forms allow-downloads"
+        referrerpolicy="strict-origin-when-cross-origin"
+        style="
+            border: none;
+            width: 100%;
+            height: 600px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        "
+        title="SERP Radio - CSV Data Sonification"
+        loading="lazy">
+        
+        <!-- Fallback content for browsers that don't support iframes -->
+        <p style="padding: 40px; text-align: center; color: #666;">
+            Your browser doesn't support embedded content. 
+            <a href="https://api.serpradio.com/widget/" target="_blank" style="color: #32ff7e;">
+                Open SERP Radio in a new window →
+            </a>
+        </p>
+    </iframe>
+</div>
+
+<!-- Optional: Responsive behavior for mobile -->
+<style>
+@media (max-width: 768px) {
+    .serpradio-container iframe {
+        height: 500px;
+        border-radius: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .serpradio-container iframe {
+        height: 450px;
+        border-radius: 6px;
+    }
+}
+</style>
+
+<!-- 
+Usage Instructions:
+1. Copy this entire block and paste it into your HTML page
+2. Adjust the max-width of .serpradio-container if needed
+3. The iframe will automatically resize responsively
+4. All communications use secure WSS and are sandboxed
+5. Downloads (MIDI files) will work correctly
+--> 

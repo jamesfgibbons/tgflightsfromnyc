@@ -1,0 +1,36 @@
+{
+  "vertical": "travel",
+  "theme": "flights_from_nyc",
+  "sub_themes": [
+    {
+      "id": "budget_carriers",
+      "label": "Budget Carriers",
+      "sound_pack": "8-Bit"
+    },
+    {
+      "id": "legacy_airlines",
+      "label": "Legacy Airlines",
+      "sound_pack": "Arena Rock"
+    },
+    {
+      "id": "red_eye_deals",
+      "label": "Red-Eye Deals",
+      "sound_pack": "Synthwave"
+    },
+    {
+      "id": "kokomo_caribbean",
+      "label": "Caribbean (Kokomo)",
+      "sound_pack": "Synthwave"
+    }
+  ],
+  "regions": [
+    "West",
+    "Florida",
+    "Caribbean"
+  ],
+  "branding": {
+    "kicker": "Hear the Search.",
+    "headline": "SERP Radio \u2013 Travel Visibility Index",
+    "cta": "Start Listening"
+  }
+}

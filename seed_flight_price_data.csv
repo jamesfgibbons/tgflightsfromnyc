@@ -1,0 +1,25 @@
+origin,origin_region,destination,destination_region,prompt,estimated_price_min,estimated_price_max,best_booking_window,routing_strategy,novelty_score
+JFK,NYC,LAS,West,Cheapest one-way flight from JFK to LAS in next 60 days; include budget carriers.,169,400,19,connecting,4
+JFK,NYC,LAX,West,Cheapest one-way flight from JFK to LAX in next 60 days; include budget carriers.,379,417,18,connecting,7
+JFK,NYC,MIA,Florida,Cheapest one-way flight from JFK to MIA in next 60 days; include budget carriers.,191,293,27,hidden-city,6
+JFK,NYC,MCO,Florida,Cheapest one-way flight from JFK to MCO in next 60 days; include budget carriers.,145,203,34,connecting,7
+JFK,NYC,SJU,Caribbean,Cheapest one-way flight from JFK to SJU in next 60 days; include budget carriers.,397,440,29,connecting,3
+JFK,NYC,NAS,Caribbean,Cheapest one-way flight from JFK to NAS in next 60 days; include budget carriers.,253,415,26,hidden-city,4
+JFK,NYC,MBJ,Caribbean,Cheapest one-way flight from JFK to MBJ in next 60 days; include budget carriers.,157,446,8,direct,6
+JFK,NYC,CUR,Caribbean,Cheapest one-way flight from JFK to CUR in next 60 days; include budget carriers.,387,417,35,connecting,8
+LGA,NYC,LAS,West,Cheapest one-way flight from LGA to LAS in next 60 days; include budget carriers.,332,377,25,direct,4
+LGA,NYC,LAX,West,Cheapest one-way flight from LGA to LAX in next 60 days; include budget carriers.,180,366,16,hidden-city,5
+LGA,NYC,MIA,Florida,Cheapest one-way flight from LGA to MIA in next 60 days; include budget carriers.,304,380,10,connecting,5
+LGA,NYC,MCO,Florida,Cheapest one-way flight from LGA to MCO in next 60 days; include budget carriers.,232,288,31,connecting,8
+LGA,NYC,SJU,Caribbean,Cheapest one-way flight from LGA to SJU in next 60 days; include budget carriers.,108,395,17,direct,5
+LGA,NYC,NAS,Caribbean,Cheapest one-way flight from LGA to NAS in next 60 days; include budget carriers.,136,200,23,direct,3
+LGA,NYC,MBJ,Caribbean,Cheapest one-way flight from LGA to MBJ in next 60 days; include budget carriers.,136,259,14,connecting,3
+LGA,NYC,CUR,Caribbean,Cheapest one-way flight from LGA to CUR in next 60 days; include budget carriers.,125,352,33,connecting,4
+EWR,NYC,LAS,West,Cheapest one-way flight from EWR to LAS in next 60 days; include budget carriers.,266,361,24,connecting,9
+EWR,NYC,LAX,West,Cheapest one-way flight from EWR to LAX in next 60 days; include budget carriers.,382,425,27,hidden-city,3
+EWR,NYC,MIA,Florida,Cheapest one-way flight from EWR to MIA in next 60 days; include budget carriers.,187,445,22,connecting,3
+EWR,NYC,MCO,Florida,Cheapest one-way flight from EWR to MCO in next 60 days; include budget carriers.,101,380,22,direct,9
+EWR,NYC,SJU,Caribbean,Cheapest one-way flight from EWR to SJU in next 60 days; include budget carriers.,189,297,32,hidden-city,9
+EWR,NYC,NAS,Caribbean,Cheapest one-way flight from EWR to NAS in next 60 days; include budget carriers.,193,402,7,direct,4
+EWR,NYC,MBJ,Caribbean,Cheapest one-way flight from EWR to MBJ in next 60 days; include budget carriers.,178,200,10,connecting,8
+EWR,NYC,CUR,Caribbean,Cheapest one-way flight from EWR to CUR in next 60 days; include budget carriers.,363,440,24,direct,3

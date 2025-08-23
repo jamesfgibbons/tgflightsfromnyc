@@ -1,0 +1,22 @@
+channel: travel
+focus: "NYC area to Las Vegas (LAS) and top domestic budget routes"
+origins: [JFK, LGA, EWR, HPN, ISP, SWF]
+destinations:
+  - code: LAS
+    name: Las Vegas
+  - code: MIA
+    name: Miami
+  - code: LAX
+    name: Los Angeles
+  - code: MCO
+    name: Orlando
+templates:
+  - "Find the absolute cheapest one-way flight from {origin} to {dest} any date in next 45 days"
+  - "Red-eye or early morning cheapest fares {origin} -> {dest}"
+  - "Basic economy only {origin} -> {dest} under $100 if possible"
+  - "Hidden city ticketing or creative routing {origin} to {dest} for rock-bottom price"
+  - "Tuesday/Wednesday departures {origin} to {dest} historically lowest fares"
+  - "Ultra budget carriers (Spirit/Frontier/Allegiant) {origin} -> {dest} lowest total"
+novelty_special:
+  - "What's the cleverest sub-$75 routing from any NYC airport to Las Vegas?"
+  - "NYC->LAS midweek graveyard shift flights for gamblers on a budget"

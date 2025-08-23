@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SERP Loop Radio - Van Halen Musical Edition</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/tone@14.8.49/build/Tone.js"></script>
+    <style>
+        /* Musical motif styles */
+        .motif-indicator {
+            background: rgba(50, 255, 126, 0.1);
+            border: 1px solid rgba(50, 255, 126, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .motif-status h4 {
+            margin: 0 0 10px 0;
+            color: #32ff7e;
+            font-size: 1.1em;
+        }
+        
+        .motif-params {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 0.9em;
+        }
+        
+        .motif-params span {
+            background: rgba(26, 26, 46, 0.5);
+            padding: 5px 10px;
+            border-radius: 15px;
+            border: 1px solid rgba(50, 255, 126, 0.2);
+        }
+        
+        .major-key { color: #32ff7e; }
+        .minor-key { color: #ff6b35; }
+        .fast-tempo { color: #ffd700; }
+        .slow-tempo { color: #87ceeb; }
+        .normal-tempo { color: #32ff7e; }
+        .bright-filter { color: #ff4757; animation: pulse 1s infinite; }
+        .normal-filter { color: #32ff7e; }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+        
+        .audio-controls {
+            margin: 15px 0;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .volume-control input {
+            width: 100px;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 10px;
+            color: white;
+            font-weight: 500;
+            z-index: 1000;
+            max-width: 300px;
+            animation: slideIn 0.3s ease;
+        }
+        
+        .notification.success { background: #2ed573; }
+        .notification.info { background: #3742fa; }
+        .notification.warning { background: #ffa502; }
+        .notification.danger { background: #ff4757; }
+        .notification.error { background: #ff3838; }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        /* Streamlined setup form */
+        .stream-setup {
+            background: rgba(26, 26, 46, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(50, 255, 126, 0.2);
+            margin-bottom: 20px;
+        }
+        .stream-setup h3 {
+            margin-top: 0;
+            font-size: 1.5em;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(50, 255, 126, 0.5);
+        }
+        .stream-setup .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .stream-setup .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        .stream-setup .input-group input,
+        .stream-setup .input-group select {
+            width: 100%;
+        }
+
+        .btn.large {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            width: 100%;
+            margin-top: 10px;
+        }
+        .btn.danger {
+            background: linear-gradient(135deg, #ff4757 0%, #ff3838 100%);
+        }
+
+        .musical-controls-live {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🎸 SERP Loop Radio</h1>
+            <p class="tagline">Van Halen Musical Edition</p>
+        </header>
+        
+        <!-- Tab Navigation -->
+        <div class="tab-nav">
+            <button id="tab-live" class="tab active" onclick="switchTab('live')">Live Stream</button>
+            <button id="tab-recap" class="tab" onclick="switchTab('recap')">Scorecard</button>
+        </div>
+
+        <!-- Live Stream Tab -->
+        <div id="live-content" class="tab-content active">
+            
+            <!-- Stream Setup Form -->
+            <div id="stream-setup" class="stream-setup">
+                <h3>Start a New Musical Stream</h3>
+                <div class="input-group">
+                    <label for="keywords">1. Enter Keywords (comma-separated):</label>
+                    <input type="text" id="keywords" placeholder="AI tools, machine learning, data science" />
+                </div>
+                
+                <div class="input-group">
+                    <label for="domain">2. Enter Your Domain (for tracking):</label>
+                    <input type="text" id="domain" placeholder="example.com" />
+                </div>
+                
+                <div class="input-group">
+                    <label for="skin">3. Select Musical Skin:</label>
+                    <select id="skin">
+                        <option value="arena_rock">🎸 Arena Rock (Van Halen Style)</option>
+                        <option value="synth_pop">🎹 Synth Pop</option>
+                        <option value="retro_8bit">🕹️ Retro 8-bit</option>
+                    </select>
+                </div>
+                
+                <button id="stream-btn" class="btn primary large">🎸 Start Musical Stream</button>
+                 <button id="test-audio" class="btn secondary" style="width:100%; margin-top:10px;">🔊 Test Audio</button>
+            </div>
+            
+            <!-- Player Section (hidden by default) -->
+            <div id="player" class="player hidden">
+                <div class="player-header">
+                    <h3>🎵 Musical Stream Active</h3>
+                    <div class="connection-status" id="connection-status">Connecting...</div>
+                </div>
+
+                <div class="motif-indicator">
+                    <div class="motif-status">
+                        <h4>🎸 Van Halen "Jump" Motif</h4>
+                        <div class="motif-params">
+                            <span id="motif-key">Key: C Major</span>
+                            <span id="motif-tempo">Tempo: 120 BPM</span>
+                            <span id="motif-brightness">Brightness: Normal</span>
+                            <span id="motif-client">Client: Not Set</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="visualizer" id="visualizer">
+                    <div class="note-display" id="note-display">Waiting for musical notes...</div>
+                </div>
+                
+                <div class="stream-info" id="stream-info">
+                    <div class="progress-bar">
+                        <div class="progress" id="progress"></div>
+                    </div>
+                    <div class="stream-stats" id="stream-stats">Ready to stream</div>
+                </div>
+
+                <div class="musical-controls-live">
+                    <div class="volume-control">
+                        <label>🔊 Master Volume: </label>
+                        <input type="range" id="master-volume" min="0" max="100" value="70">
+                        <span id="volume-display">70%</span>
+                    </div>
+                    <button id="stop-stream-btn" class="btn danger">⏹️ Stop Stream</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scorecard Tab -->
+        <div id="recap-content" class="tab-content">
+            <div class="scorecard-header">
+                <h2>🏆 Domain League Scorecard</h2>
+                <p>Musical performance analysis</p>
+            </div>
+            
+            <div class="scorecard-stats">
+                <div class="stat-card">
+                    <div class="stat-number" id="total-keywords">0</div>
+                    <div class="stat-label">Keywords Analyzed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="total-results">0</div>
+                    <div class="stat-label">Total Results</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="ai-overviews">0</div>
+                    <div class="stat-label">AI Overviews</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="video-results">0</div>
+                    <div class="stat-label">Video Results</div>
+                </div>
+            </div>
+            
+            <div class="insights-section">
+                <h3>🎯 Musical Insights</h3>
+                <div id="insights-list" class="insights-list">
+                    <p>Complete a musical stream to see insights</p>
+                </div>
+            </div>
+            
+            <div class="league-table-section">
+                <h3>🏆 Domain League Table</h3>
+                <div id="league-table" class="league-table">
+                    <p>Complete a musical stream to see the league table</p>
+                </div>
+            </div>
+            
+            <div class="scorecard-actions">
+                <button id="replay-overture" class="btn secondary" disabled>🎼 Replay Overture</button>
+                <button id="screenshot-btn" class="btn secondary">📸 Screenshot</button>
+                <button id="new-stream" class="btn primary">🎸 New Musical Stream</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include the musical player JavaScript -->
+    <script src="player_musical.js"></script>
+    <script>
+        // Enhanced musical widget functionality
+        let currentSession = null;
+        let musicalPlayer = null;
+        let recapData = null;
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🎸 Musical SERP Loop Radio initializing...');
+            musicalPlayer = new MusicalSerpPlayer();
+            bindUIEvents();
+        });
+        
+        function bindUIEvents() {
+            document.getElementById('stream-btn').addEventListener('click', startMusicalStream);
+            document.getElementById('test-audio').addEventListener('click', () => musicalPlayer.testAudio());
+            
+            const volumeSlider = document.getElementById('master-volume');
+            const volumeDisplay = document.getElementById('volume-display');
+            volumeSlider.addEventListener('input', function() {
+                const volume = parseInt(this.value);
+                volumeDisplay.textContent = volume + '%';
+                musicalPlayer.setVolume(volume);
+            });
+
+            document.getElementById('stop-stream-btn').addEventListener('click', () => musicalPlayer.disconnect());
+            document.getElementById('replay-overture').addEventListener('click', replayOverture);
+            document.getElementById('screenshot-btn').addEventListener('click', takeScreenshot);
+            document.getElementById('new-stream').addEventListener('click', newStream);
+        }
+        
+        async function startMusicalStream() {
+            const keywords = document.getElementById('keywords').value.trim();
+            const domain = document.getElementById('domain').value.trim();
+            const skin = document.getElementById('skin').value;
+            
+            if (!keywords) {
+                musicalPlayer.showNotification('Please enter some keywords', 'warning');
+                return;
+            }
+            
+            try {
+                musicalPlayer.showNotification('🎸 Fetching SERP data...', 'info');
+                
+                const keywordList = keywords.split(',').map(k => k.trim()).filter(k => k);
+                const response = await fetch('/fetch', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ keywords: keywordList, domain: domain || null })
+                });
+                
+                if (!response.ok) throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                
+                const data = await response.json();
+                currentSession = data.session_id;
+                
+                document.getElementById('stream-setup').classList.add('hidden');
+                document.getElementById('player').classList.remove('hidden');
+                
+                musicalPlayer.connect(currentSession, skin, domain);
+                
+            } catch (error) {
+                console.error('Stream start failed:', error);
+                musicalPlayer.showNotification('Failed to start stream: ' + error.message, 'error');
+            }
+        }
+        
+        function replayOverture() {
+            if (recapData && musicalPlayer) {
+                musicalPlayer.playOverture(recapData.league);
+            }
+        }
+        
+        function takeScreenshot() {
+            musicalPlayer.showNotification('📸 Screenshot feature coming soon!', 'info');
+        }
+        
+        function newStream() {
+            musicalPlayer.disconnect();
+            switchTab('live');
+        }
+        
+        function switchTab(tab) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.getElementById(tab + '-content').classList.add('active');
+            document.getElementById('tab-' + tab).classList.add('active');
+        }
+        
+        // --- UI Updates from Player ---
+        function updatePlayerUI(type, data) {
+            switch(type) {
+                case 'note':
+                    const noteEl = document.getElementById('note-display');
+                    noteEl.innerHTML = `🎵 ${data.note} <span class="badge">${data.badge || ''}</span> | ${data.domain}`;
+                    const progress = ((data.index + 1) / data.total) * 100;
+                    document.getElementById('progress').style.width = `${progress}%`;
+                    document.getElementById('stream-stats').textContent = `Note ${data.index + 1} of ${data.total}`;
+                    break;
+                case 'motif':
+                     const keyEl = document.getElementById('motif-key');
+                     const tempoEl = document.getElementById('motif-tempo');
+                     const brightEl = document.getElementById('motif-brightness');
+                     keyEl.textContent = `Key: ${data.key_name} ${data.minor ? 'Minor' : 'Major'}`;
+                     keyEl.className = data.minor ? 'minor-key' : 'major-key';
+                     tempoEl.textContent = `Tempo: ${data.tempo} BPM`;
+                     tempoEl.className = data.tempo > 130 ? 'fast-tempo' : data.tempo < 100 ? 'slow-tempo' : 'normal-tempo';
+                     brightEl.textContent = `Brightness: ${data.cutoff > 800 ? 'Bright' : 'Normal'}`;
+                     brightEl.className = data.cutoff > 800 ? 'bright-filter' : 'normal-filter';
+                    break;
+                case 'recap':
+                    recapData = data;
+                    document.getElementById('total-keywords').textContent = data.total_keywords || 0;
+                    document.getElementById('total-results').textContent = data.total_results || 0;
+                    
+                    const insightsList = document.getElementById('insights-list');
+                    insightsList.innerHTML = data.insights.map(i => `<div class="insight-item">${i}</div>`).join('');
+                    
+                    const leagueTable = document.getElementById('league-table');
+                    if (data.league && data.league.length > 0) {
+                        leagueTable.innerHTML = data.league.map((item, index) => 
+                            `<div class="league-item">
+                                <span class="rank">#${index + 1}</span>
+                                <span class="domain">${item.domain}</span>
+                                <span class="percentage">${item.percentage}%</span>
+                            </div>`
+                        ).join('');
+                    } else {
+                        leagueTable.innerHTML = '<p>No domain data for the league table.</p>';
+                    }
+                    break;
+                case 'complete':
+                     setTimeout(() => {
+                        switchTab('recap');
+                        document.getElementById('replay-overture').disabled = false;
+                    }, 2000);
+                    break;
+                 case 'disconnect':
+                    document.getElementById('player').classList.add('hidden');
+                    document.getElementById('stream-setup').classList.remove('hidden');
+                    break;
+                case 'client_domain':
+                    document.getElementById('motif-client').textContent = `Client: ${data || 'Not Set'}`;
+                    break;
+            }
+        }
+
+    </script>
+</body>
+</html> 

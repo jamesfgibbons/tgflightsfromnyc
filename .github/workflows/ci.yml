@@ -1,0 +1,319 @@
+# SERP Loop Radio CI Pipeline
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.11.9"
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install ruff
+        pip install -r requirements.txt
+    
+    - name: Lint with ruff
+      run: |
+        ruff check src/
+        ruff format src/ --check
+
+  test-backend:
+    runs-on: ubuntu-latest
+    
+    services:
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.11.9"
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    
+    - name: Run tests with coverage
+      env:
+        REDIS_URL: redis://localhost:6379
+        USE_SAMPLE_DATA: true
+        LIVE_MODE_TOKEN: test-token-123
+      run: |
+        python -m pytest tests/ -v --cov=src --cov-report=xml --cov-fail-under=75
+    
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./coverage.xml
+
+  test-audio-generation:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.11.9"
+    
+    - name: Install audio dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y fluidsynth ffmpeg
+    
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    
+    - name: Test MIDI generation
+      run: |
+        python -m src.cli sample
+        ls -la /tmp/sample.*
+        test -f /tmp/sample.mid || exit 1
+
+  test-live-streaming:
+    runs-on: ubuntu-latest
+    
+    services:
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.11.9"
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    
+    - name: Test WebSocket server
+      env:
+        REDIS_URL: redis://localhost:6379
+        USE_SAMPLE_DATA: true
+        LIVE_MODE_TOKEN: test-token-123
+      run: |
+        # Start WebSocket server in background
+        python -m src.live_server &
+        SERVER_PID=$!
+        
+        # Wait for server to start
+        sleep 5
+        
+        # Test health endpoint
+        curl -f http://localhost:8000/health || exit 1
+        
+        # Test stations endpoint
+        curl -f http://localhost:8000/stations || exit 1
+        
+        # Kill server
+        kill $SERVER_PID
+
+    - name: Test publisher with sample data
+      env:
+        REDIS_URL: redis://localhost:6379
+        USE_SAMPLE_DATA: true
+      run: |
+        # Test publisher runs without errors
+        python -m src.test_publisher --mode batch
+        
+        # Test stations mode
+        python -m src.test_publisher --mode stations
+
+  test-frontend:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: "18"
+        cache: 'npm'
+        cache-dependency-path: ui/package-lock.json
+    
+    - name: Install dependencies
+      working-directory: ui
+      run: npm ci
+    
+    - name: Lint TypeScript
+      working-directory: ui
+      run: npm run lint
+    
+    - name: Build frontend
+      working-directory: ui
+      run: npm run build
+    
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: frontend-build
+        path: ui/dist/
+
+  e2e-websocket:
+    runs-on: ubuntu-latest
+    needs: [test-backend, test-frontend]
+    
+    services:
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.11.9"
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: "18"
+    
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install websockets  # For WebSocket testing
+    
+    - name: Install frontend dependencies
+      working-directory: ui
+      run: npm ci
+    
+    - name: Start services
+      env:
+        REDIS_URL: redis://localhost:6379
+        USE_SAMPLE_DATA: true
+        LIVE_MODE_TOKEN: test-token-123
+      run: |
+        # Start WebSocket server
+        python -m src.live_server &
+        SERVER_PID=$!
+        echo $SERVER_PID > server.pid
+        
+        # Start test publisher
+        python -m src.test_publisher --mode stream --interval 1 &
+        PUBLISHER_PID=$!
+        echo $PUBLISHER_PID > publisher.pid
+        
+        # Wait for services to start
+        sleep 10
+    
+    - name: Test WebSocket connection
+      run: |
+        # Create WebSocket test script
+        cat > test_websocket.py << 'EOF'
+        import asyncio
+        import websockets
+        import json
+        import time
+        
+        async def test_websocket():
+            uri = 'ws://localhost:8000/ws/serp?api_key=test-token-123&station=daily'
+            
+            try:
+                async with websockets.connect(uri) as websocket:
+                    print('WebSocket connected successfully')
+                    
+                    # Send ping
+                    ping_msg = {'type': 'ping', 'data': {'timestamp': time.time()}}
+                    await websocket.send(json.dumps(ping_msg))
+                    
+                    # Wait for messages
+                    messages_received = 0
+                    timeout = 15  # seconds
+                    start_time = time.time()
+                    
+                    while time.time() - start_time < timeout and messages_received < 3:
+                        try:
+                            # Try to receive a message
+                            message = await asyncio.wait_for(websocket.recv(), timeout=3.0)
+                            print(f'Received message: {message[:100]}...')
+                            messages_received += 1
+                        except asyncio.TimeoutError:
+                            print('No message received in timeout period')
+                            continue
+                    
+                    if messages_received >= 3:
+                        print(f'SUCCESS: Received {messages_received} messages')
+                        exit(0)
+                    else:
+                        print(f'FAILURE: Only received {messages_received} messages')
+                        exit(1)
+                        
+            except Exception as e:
+                print(f'WebSocket test failed: {e}')
+                exit(1)
+        
+        asyncio.run(test_websocket())
+        EOF
+        
+        # Run the test
+        python test_websocket.py
+    
+    - name: Stop services
+      if: always()
+      run: |
+        # Kill background processes
+        if [ -f server.pid ]; then
+          kill $(cat server.pid) || true
+        fi
+        if [ -f publisher.pid ]; then
+          kill $(cat publisher.pid) || true
+        fi
+
+  docker-build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Build Docker image
+      run: |
+        docker build -f docker/Dockerfile -t serp-loop-radio .
+    
+    - name: Test Docker run
+      run: |
+        docker run --rm serp-loop-radio python -c "import src.cli; print('Import successful')" 

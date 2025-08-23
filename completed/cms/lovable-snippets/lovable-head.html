@@ -1,0 +1,291 @@
+<!-- SERP Loop Radio - Head Injection for Lovable CMS -->
+<!-- This should be added to the <head> section of your Lovable theme -->
+
+<!-- HLS.js for better audio streaming support -->
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1.4.12/dist/hls.min.js"></script>
+
+<!-- Preconnect to CloudFront for faster audio loading -->
+<link rel="preconnect" href="https://{{ cloudfront_domain }}">
+<link rel="dns-prefetch" href="https://{{ cloudfront_domain }}">
+
+<!-- Meta tags for SERP Loop Radio -->
+<meta name="serp-loop-radio" content="enabled">
+<meta name="audio-streaming" content="hls">
+
+<!-- Critical CSS for SERP Loop Radio widgets -->
+<style>
+  /* Preload critical styles for SERP widgets */
+  .serp-loop-widget {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    box-sizing: border-box;
+  }
+  
+  .serp-loop-widget * {
+    box-sizing: border-box;
+  }
+  
+  /* Optimized audio controls */
+  .serp-loop-widget audio {
+    width: 100%;
+    height: 40px;
+    outline: none;
+  }
+  
+  .serp-loop-widget audio::-webkit-media-controls-panel {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+  }
+  
+  .serp-loop-widget audio::-webkit-media-controls-play-button,
+  .serp-loop-widget audio::-webkit-media-controls-pause-button {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    margin: 0 8px;
+  }
+  
+  .serp-loop-widget audio::-webkit-media-controls-timeline {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    margin: 0 10px;
+  }
+  
+  .serp-loop-widget audio::-webkit-media-controls-current-time-display,
+  .serp-loop-widget audio::-webkit-media-controls-time-remaining-display {
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    font-size: 12px;
+  }
+  
+  /* Loading states */
+  .serp-loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: serp-spin 1s ease-in-out infinite;
+  }
+  
+  @keyframes serp-spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  /* Responsive design */
+  @media (max-width: 640px) {
+    .serp-loop-widget {
+      margin: 16px 0;
+      padding: 16px;
+    }
+    
+    .serp-loop-widget audio {
+      height: 36px;
+    }
+  }
+</style>
+
+<!-- JavaScript for enhanced functionality -->
+<script>
+(function() {
+  'use strict';
+  
+  // Global SERP Loop Radio utilities
+  window.SERPLoopRadio = {
+    // Configuration
+    config: {
+      apiBaseUrl: '{{ api_base_url }}',
+      cloudFrontDomain: '{{ cloudfront_domain }}',
+      hlsSupported: typeof Hls !== 'undefined' && Hls.isSupported(),
+      debug: {{ debug_mode | default: false }}
+    },
+    
+    // Utility functions
+    utils: {
+      log: function(message, data) {
+        if (window.SERPLoopRadio.config.debug) {
+          console.log('[SERP Loop Radio]', message, data || '');
+        }
+      },
+      
+      showNotification: function(message, type = 'info') {
+        // Simple notification system
+        const notification = document.createElement('div');
+        notification.style.cssText = `
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          background: ${type === 'error' ? '#ef4444' : type === 'success' ? '#10b981' : '#3b82f6'};
+          color: white;
+          padding: 12px 16px;
+          border-radius: 8px;
+          font-size: 14px;
+          font-weight: 500;
+          z-index: 10000;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+          transform: translateX(100%);
+          transition: transform 0.3s ease;
+        `;
+        notification.textContent = message;
+        
+        document.body.appendChild(notification);
+        
+        // Animate in
+        setTimeout(() => {
+          notification.style.transform = 'translateX(0)';
+        }, 100);
+        
+        // Auto remove
+        setTimeout(() => {
+          notification.style.transform = 'translateX(100%)';
+          setTimeout(() => {
+            document.body.removeChild(notification);
+          }, 300);
+        }, 3000);
+      }
+    },
+    
+    // Audio management
+    audio: {
+      instances: new Map(),
+      
+      initializePlayer: function(audioElement, hlsUrl) {
+        const playerId = audioElement.id || 'serp-audio-' + Date.now();
+        audioElement.id = playerId;
+        
+        if (window.SERPLoopRadio.config.hlsSupported && hlsUrl.includes('.m3u8')) {
+          const hls = new Hls({
+            enableWorker: false,
+            lowLatencyMode: true,
+            backBufferLength: 90
+          });
+          
+          hls.loadSource(hlsUrl);
+          hls.attachMedia(audioElement);
+          
+          hls.on(Hls.Events.MANIFEST_PARSED, function() {
+            window.SERPLoopRadio.utils.log('HLS manifest parsed for player:', playerId);
+          });
+          
+          hls.on(Hls.Events.ERROR, function(event, data) {
+            window.SERPLoopRadio.utils.log('HLS error:', data);
+            // Fallback to direct audio if HLS fails
+            if (data.fatal) {
+              audioElement.src = hlsUrl.replace('.m3u8', '.mp3');
+            }
+          });
+          
+          this.instances.set(playerId, { hls, element: audioElement });
+        } else {
+          // Direct audio playback
+          audioElement.src = hlsUrl;
+        }
+        
+        return playerId;
+      },
+      
+      cleanup: function(playerId) {
+        const instance = this.instances.get(playerId);
+        if (instance && instance.hls) {
+          instance.hls.destroy();
+          this.instances.delete(playerId);
+        }
+      }
+    },
+    
+    // API integration
+    api: {
+      call: function(endpoint, options = {}) {
+        const url = window.SERPLoopRadio.config.apiBaseUrl + endpoint;
+        const defaultOptions = {
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
+          }
+        };
+        
+        return fetch(url, { ...defaultOptions, ...options })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error(`API call failed: ${response.status}`);
+            }
+            return response.json();
+          });
+      }
+    }
+  };
+  
+  // Initialize on DOM ready
+  document.addEventListener('DOMContentLoaded', function() {
+    window.SERPLoopRadio.utils.log('SERP Loop Radio initialized');
+    
+    // Auto-initialize any existing audio players
+    document.querySelectorAll('.serp-loop-widget audio').forEach(function(audio) {
+      const hlsSource = audio.querySelector('source[type="application/vnd.apple.mpegurl"]');
+      if (hlsSource) {
+        window.SERPLoopRadio.audio.initializePlayer(audio, hlsSource.src);
+      }
+    });
+  });
+  
+  // Cleanup on page unload
+  window.addEventListener('beforeunload', function() {
+    window.SERPLoopRadio.audio.instances.forEach(function(instance, playerId) {
+      window.SERPLoopRadio.audio.cleanup(playerId);
+    });
+  });
+  
+})();
+</script>
+
+<!-- Structured data for SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "SERP Loop Radio",
+  "applicationCategory": "BusinessApplication",
+  "description": "Transform search ranking data into personalized audio experiences",
+  "url": "{{ site_url }}",
+  "operatingSystem": "Web",
+  "browserRequirements": "HTML5 Audio support",
+  "softwareRequirements": "Modern web browser",
+  "offers": {
+    "@type": "Offer",
+    "category": "SaaS",
+    "eligibleRegion": "Worldwide"
+  }
+}
+</script>
+
+<!-- Performance hints -->
+<link rel="prefetch" href="{{ api_base_url }}/play">
+<link rel="prefetch" href="{{ api_base_url }}/setup">
+
+<!-- Security headers for audio content -->
+<meta http-equiv="Cross-Origin-Embedder-Policy" content="credentialless">
+<meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
+
+<!-- Progressive Web App hints -->
+<meta name="theme-color" content="#0066cc">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="SERP Loop Radio">
+
+<!-- Optimization for mobile -->
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+
+<!-- Analytics tracking (optional) -->
+<!-- 
+<script>
+  // Track SERP Loop Radio usage
+  if (typeof gtag !== 'undefined') {
+    gtag('config', 'GA_MEASUREMENT_ID', {
+      custom_map: {
+        'custom_dimension_1': 'serp_loop_usage'
+      }
+    });
+  }
+</script>
+--> 

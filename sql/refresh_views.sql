@@ -1,0 +1,4 @@
+refresh materialized view concurrently v_daily_min_by_airport;
+refresh materialized view concurrently v_daily_min_by_metro;
+refresh materialized view concurrently v_volatility_7d;
+refresh materialized view concurrently v_brand_exposure;

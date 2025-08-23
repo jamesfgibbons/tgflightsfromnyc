@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SERP Loop Radio - Interactive Player</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🎵 SERP Loop Radio</h1>
+            <p class="tagline">Live SEO Beats</p>
+        </header>
+        
+        <!-- Tab Navigation -->
+        <div class="tab-nav">
+            <button id="tab-live" class="tab active" onclick="switchTab('live')">Live Stream</button>
+            <button id="tab-upload" class="tab" onclick="switchTab('upload')">Upload CSV</button>
+            <button id="tab-timeseries" class="tab" onclick="switchTab('timeseries')">Time Series 📈</button>
+            <button id="tab-recap" class="tab" onclick="switchTab('recap')">Scorecard</button>
+        </div>
+        
+        <!-- Live Stream Tab -->
+        <div id="live-container" class="tab-content active">
+            <div class="panel">
+                <div class="input-section">
+                    <div class="form-group">
+                        <label for="keywords">Keywords (up to 50, one per line):</label>
+                        <textarea 
+                            id="keywords" 
+                            placeholder="AI tools&#10;machine learning&#10;data science&#10;web development&#10;SEO optimization"
+                            rows="6"
+                        ></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="domain">Optional target domain:</label>
+                            <input 
+                                type="text" 
+                                id="domain" 
+                                placeholder="example.com"
+                            >
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="skin">Musical style:</label>
+                            <select id="skin">
+                                <option value="arena_rock">Arena Rock 🎸</option>
+                                <option value="synth_pop" selected>Synth-Pop 🎹</option>
+                                <option value="retro_8bit">Retro 8-Bit 🕹️</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="controls">
+                    <button id="streamBtn" class="stream-btn">
+                        <span class="btn-text">Stream 🔊</span>
+                        <span class="btn-loading" style="display: none;">Loading...</span>
+                    </button>
+                    <button id="stopBtn" class="stop-btn" disabled>Stop</button>
+                </div>
+                
+                <div id="status" class="status">
+                    <span class="status-indicator"></span>
+                    <span class="status-text">Disconnected</span>
+                </div>
+            </div>
+            
+            <div class="visualizer">
+                <canvas id="viz" width="400" height="60"></canvas>
+                <div class="now-playing" id="nowPlaying">
+                    <div class="track-info">
+                        <div class="track-title">Ready to stream</div>
+                        <div class="track-artist">Enter keywords above</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Upload CSV Tab -->
+        <div id="upload-container" class="tab-content" style="display: none;">
+            <div class="panel">
+                <h2>📊 Upload CSV Data</h2>
+                <p>Upload either GSC exports or rank tracker files for instant sonification</p>
+                
+                <div class="upload-type">
+                    <h3>Select CSV Type:</h3>
+                    <label class="radio-label">
+                        <input type="radio" name="csvtype" value="gsc" checked> 
+                        <strong>GSC (Google Search Console)</strong> - Export with date, clicks, impressions, position
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="csvtype" value="rank"> 
+                        <strong>Rank File</strong> - Rank tracker with keyword, url, position, search_volume
+                    </label>
+                </div>
+                
+                <div class="form-group">
+                    <label for="csvFile">Choose CSV file:</label>
+                    <input type="file" id="csvFile" accept=".csv,.xlsx" />
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="uploadSkin">Musical style:</label>
+                        <select id="uploadSkin">
+                            <option value="arena_rock">Arena Rock 🎸</option>
+                            <option value="synth_pop" selected>Synth-Pop 🎹</option>
+                            <option value="retro_8bit">Retro 8-Bit 🕹️</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="controls">
+                    <button id="uploadBtn" class="stream-btn">
+                        <span class="btn-text">Upload & Analyze 📊</span>
+                        <span class="btn-loading" style="display: none;">Uploading...</span>
+                    </button>
+                    <button id="playBtn" class="stream-btn" disabled>
+                        <span class="btn-text">Play Audio 🔊</span>
+                    </button>
+                </div>
+                
+                <div id="uploadStatus" class="status">
+                    <span class="status-indicator"></span>
+                    <span class="status-text">No file uploaded</span>
+                </div>
+            </div>
+            
+            <div class="visualizer">
+                <canvas id="uploadViz" width="400" height="60"></canvas>
+                <div class="now-playing" id="uploadNowPlaying">
+                    <div class="track-info">
+                        <div class="track-title">Ready to upload</div>
+                        <div class="track-artist">Select a CSV file above</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Time Series Tab -->
+        <div id="timeseries-container" class="tab-content" style="display: none;">
+            <div class="panel">
+                <h2>📈 Time Series Analysis</h2>
+                <p>Upload multiple CSV files representing different time periods to create a Van Halen-flavored musical story of your SEO campaign's evolution.</p>
+                
+                <div class="timeseries-explanation">
+                    <h3>🎸 How Time Series Works:</h3>
+                    <ul>
+                        <li><strong>Each period = 2 bars</strong> - One bar for the baseline "Jump" riff, one for overlays</li>
+                        <li><strong>Ranking changes tempo</strong> - Better rankings = higher tempo</li>
+                        <li><strong>Click deltas change key</strong> - More clicks = higher pitch</li>
+                        <li><strong>New top-3 keywords = Van Halen stabs</strong> - Brass hits for wins!</li>
+                    </ul>
+                </div>
+                
+                <div class="form-group">
+                    <label for="timeseriesFiles">Upload Period CSV Files (2-12 files):</label>
+                    <input type="file" id="timeseriesFiles" accept=".csv" multiple />
+                    <small>Files will be sorted alphabetically - name them like: "2024-01-period1.csv", "2024-02-period2.csv"</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="timeseriesSkin">Musical style:</label>
+                    <select id="timeseriesSkin">
+                        <option value="arena_rock" selected>Arena Rock (Van Halen) 🎸</option>
+                        <option value="synth_pop">Synth-Pop 🎹</option>
+                        <option value="retro_8bit">Retro 8-Bit 🕹️</option>
+                    </select>
+                </div>
+                
+                <div class="controls">
+                    <button id="timeseriesUploadBtn" class="stream-btn">
+                        <span class="btn-text">Upload & Analyze 📊</span>
+                        <span class="btn-loading" style="display: none;">Processing...</span>
+                    </button>
+                    <button id="timeseriesPlayBtn" class="stream-btn" disabled>
+                        <span class="btn-text">Play Time Series 🎵</span>
+                    </button>
+                </div>
+                
+                <div id="timeseriesStatus" class="status">
+                    <span class="status-indicator"></span>
+                    <span class="status-text">No files uploaded</span>
+                </div>
+                
+                <!-- Progress Bar -->
+                <div id="timeseriesProgress" class="progress-container" style="display: none;">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="timeseriesProgressFill"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span id="currentPeriod">0</span> / <span id="totalPeriods">0</span> periods
+                    </div>
+                </div>
+                
+                <!-- Period Summary -->
+                <div id="periodSummary" class="period-summary" style="display: none;">
+                    <h3>📊 Period Overview</h3>
+                    <div class="periods-grid" id="periodsGrid">
+                        <!-- Populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="visualizer">
+                <canvas id="timeseriesViz" width="400" height="60"></canvas>
+                <div class="now-playing" id="timeseriesNowPlaying">
+                    <div class="track-info">
+                        <div class="track-title">Ready for time series</div>
+                        <div class="track-artist">Upload multiple CSV files above</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scorecard Tab -->
+        <div id="recap-container" class="tab-content" style="display: none;">
+            <div class="panel">
+                <h2>🏆 Domain League Table</h2>
+                <div class="recap-controls">
+                    <button id="replayBtn" class="replay-btn" onclick="replayRecap()" disabled>
+                        🔁 Replay Recap
+                    </button>
+                    <button id="screenshotBtn" class="screenshot-btn" onclick="takeScreenshot()">
+                        📸 Screenshot
+                    </button>
+                </div>
+                
+                <div class="scorecard">
+                    <div class="league-table">
+                        <h3>Top Domains</h3>
+                        <ul id="recap-list" class="domain-list">
+                            <li class="placeholder">Complete a stream to see results</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="insights">
+                        <h3>Key Insights</h3>
+                        <ul id="insights-list" class="insights-list">
+                            <li class="placeholder">Stream data to generate insights</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="stats-summary" id="statsSummary">
+                    <div class="stat-item">
+                        <span class="stat-value" id="totalKeywords">-</span>
+                        <span class="stat-label">Keywords</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="totalResults">-</span>
+                        <span class="stat-label">Results</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="aiOverviewCount">-</span>
+                        <span class="stat-label">AI Overviews</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info">
+            <h3>How it works</h3>
+            <ul>
+                <li>🔍 Enter up to 50 keywords to analyze</li>
+                <li>🎼 SERP rankings are mapped to musical notes</li>
+                <li>🎵 Higher rankings = higher frequencies</li>
+                <li>🎧 Each domain gets a unique instrument sound</li>
+                <li>🎸 Musical styles change the overall vibe</li>
+                <li>🏆 Target domain hits get special emphasis</li>
+                <li>🎵 Recap overture plays domain league as chords</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script src="https://unpkg.com/tone@14.8.49/build/Tone.js"></script>
+    <script src="player.js"></script>
+</body>
+</html> 

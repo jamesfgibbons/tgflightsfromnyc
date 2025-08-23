@@ -1,0 +1,88 @@
+channel: travel
+theme: flights_from_nyc
+sub_theme: legacy_airlines
+focus: "Premium NYC departures - Delta, American, United business travel and upgrades"
+sound_pack_default: "Arena Rock"
+mood: "confident, established, premium"
+
+# NYC business travel hubs
+origins: [JFK, LGA, EWR]
+
+# Business and premium destinations
+destinations:
+  - code: LAX
+    name: Los Angeles
+    business_focus: "entertainment industry, tech"
+    premium_routes: "JFK-LAX flagship service"
+  - code: SFO
+    name: San Francisco
+    business_focus: "tech industry, venture capital"
+    premium_routes: "transcontinental premium"
+  - code: ORD
+    name: Chicago
+    business_focus: "finance, manufacturing"
+    premium_routes: "hub connections"
+  - code: ATL
+    name: Atlanta
+    business_focus: "Delta hub, Southeast business"
+    premium_routes: "flagship Delta connection"
+  - code: DFW
+    name: Dallas
+    business_focus: "American hub, oil industry"
+    premium_routes: "Flagship First service"
+  - code: LHR
+    name: London Heathrow
+    business_focus: "international business, finance"
+    premium_routes: "premium transatlantic"
+
+# Legacy carrier personalities
+carriers:
+  - name: "Delta"
+    personality: "premium, reliable, SkyClub access"
+    sound_pack: "Arena Rock"
+    hubs: ["ATL", "JFK"]
+  - name: "American"
+    personality: "traditional, flagship service, Admirals Club"
+    sound_pack: "Arena Rock" 
+    hubs: ["DFW", "JFK"]
+  - name: "United"
+    personality: "global reach, Polaris business, Star Alliance"
+    sound_pack: "Arena Rock"
+    hubs: ["EWR", "ORD"]
+
+templates:
+  - "Delta One vs American Flagship First {origin} to {dest} which premium cabin wins?"
+  - "United Polaris availability {origin} -> {dest} next 30 days using miles vs cash"
+  - "Same-day upgrade chances {origin} to {dest} Delta vs American vs United elite status"
+  - "JFK vs EWR for international business class {origin} -> {dest} lounge and service comparison"
+  - "Legacy carrier mistake fares {origin} to {dest} business class under $1000"
+  - "Corporate travel policies {origin} -> {dest} which legacy carrier expense departments prefer"
+  - "Weather delays and rebooking {origin} to {dest} which legacy airline handles disruptions best"
+
+# NYC business travel specific insights  
+novelty_special:
+  - "Which legacy airline dominates the Wall Street business traveler route from NYC to major financial centers?"
+  - "JFK Terminal 4 vs Terminal 8 vs EWR Terminal C - where do the real business travelers hang?"
+  - "Delta's JFK flagship lounge vs American's Admirals Club vs United's Polaris lounge NYC rankings"
+  - "NYC to London business class - which airline do investment bankers actually book?"
+  - "Last-minute business travel from NYC - same day booking which legacy carrier comes through?"
+
+# Premium service focus
+premium_features:
+  - feature: "lie-flat seats"
+    description: "transcontinental business class"
+  - feature: "premium lounges"
+    description: "JFK/EWR flagship access"
+  - feature: "same-day changes"
+    description: "elite status flexibility"
+  - feature: "upgrade instruments"
+    description: "cash, miles, certificates"
+
+# Business travel patterns
+business_patterns:
+  - pattern: "Monday morning departures"
+    description: "peak business travel, premium pricing"
+  - pattern: "Thursday evening returns"
+    description: "standard business trip pattern"
+  - pattern: "Friday afternoon"
+    description: "weekend premium leisure"

@@ -1,0 +1,6 @@
+{
+  "FRONTEND_API_URL": "https://serpradio-api-2025.onrender.com",
+  "MAX_CSV_MB": 10,
+  "MAX_CSV_ROWS": 50000,
+  "PUBLIC_CDN_DOMAIN": "serpradio-public-2025.s3.amazonaws.com"
+}

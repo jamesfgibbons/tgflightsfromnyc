@@ -1,0 +1,21 @@
+name: SERP Radio Cache + Render
+on:
+  schedule:
+    - cron: "0 9 * * *"    # 09:00 UTC daily (adjust)
+  workflow_dispatch: {}
+jobs:
+  build-cache:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: pip install -r requirements.txt
+      - run: |
+          echo "$CREDS_ENV" > creds.env.txt
+          chmod +x scripts/run_caribbean_etl.sh scripts/run_cache_builder.sh scripts/run_travel_pipeline_local.sh
+          ./scripts/run_caribbean_etl.sh
+          ./scripts/run_cache_builder.sh
+          ./scripts/run_travel_pipeline_local.sh
+        env:
+          CREDS_ENV: ${{ secrets.CREDS_ENV }}

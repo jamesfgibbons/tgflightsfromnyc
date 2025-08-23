@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+*.egg-info/
+
+# Environments
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+!.env.supabase.example
+
+# OS/Editors
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Build/Dist
+build/
+dist/
+coverage.*
+site/
+
+# Logs
+*.log
+

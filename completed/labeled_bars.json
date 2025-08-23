@@ -1,0 +1,62 @@
+{
+  "error": false,
+  "tenant_id": "training",
+  "file_id": "2025-08-03T174139Z",
+  "total_bars": 1,
+  "bars": [
+    {
+      "bar_index": 0,
+      "time_signature": "4/4",
+      "start_sec": 0.0,
+      "end_sec": 2.0,
+      "bpm": 120.0,
+      "notes": [
+        {
+          "pitch": 57,
+          "velocity": 57,
+          "start": 0.0,
+          "duration": 0.09114583333333333
+        },
+        {
+          "pitch": 57,
+          "velocity": 57,
+          "start": 0.21614583333333331,
+          "duration": 0.0859375
+        },
+        {
+          "pitch": 57,
+          "velocity": 59,
+          "start": 0.7942708333333333,
+          "duration": 0.37239583333333326
+        },
+        {
+          "pitch": 57,
+          "velocity": 59,
+          "start": 1.4270833333333333,
+          "duration": 0.09895833333333326
+        },
+        {
+          "pitch": 57,
+          "velocity": 53,
+          "start": 1.6848958333333333,
+          "duration": 0.07291666666666674
+        },
+        {
+          "pitch": 57,
+          "velocity": 60,
+          "start": 1.8854166666666665,
+          "duration": 0.09375
+        }
+      ],
+      "hash": "22a1c7d17986cf2d",
+      "label": "MOMENTUM_POS",
+      "label_description": "Rising energy with sustained notes",
+      "is_labeled": true
+    }
+  ],
+  "label_stats": {
+    "labeled": 1,
+    "total": 1
+  },
+  "training_ready": true
+}

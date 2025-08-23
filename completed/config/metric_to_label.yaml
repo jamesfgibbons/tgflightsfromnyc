@@ -1,0 +1,79 @@
+# Declarative rules for mapping SERP metrics to motif labels
+# Rules are evaluated in order, first match wins
+
+rules:
+  # High momentum: strong performance across metrics
+  - when:
+      ctr: ">=0.7"                    # High click-through rate
+      impressions: ">=0.6"            # Good visibility
+      position: ">=0.8"               # Top positions (remember: inverted, so 0.8 = positions 1-3)
+      clicks: ">=0.7"                 # High engagement
+    choose_label: MOMENTUM_POS
+    description: "Strong positive momentum - high engagement and visibility"
+
+  # Positive momentum: good performance in key areas
+  - when:
+      ctr: ">=0.5"
+      position: ">=0.6"               # Decent positions
+      clicks: ">=0.5"
+    choose_label: MOMENTUM_POS
+    description: "Positive momentum - solid performance metrics"
+
+  # Volatile spike: high volatility indicators
+  - when:
+      volatility_index: ">=0.6"      # High volatility (if available)
+    choose_label: VOLATILE_SPIKE
+    description: "High volatility detected"
+
+  # Negative momentum: poor performance
+  - when:
+      ctr: "<0.3"                     # Low engagement
+      position: "<0.4"                # Poor positions
+      clicks: "<0.3"
+    choose_label: MOMENTUM_NEG
+    description: "Negative momentum - declining performance"
+
+  # GSC-specific rules for Search Console data
+  - when:
+      mode: "gsc"
+      impressions: ">=0.8"            # High impression share
+      ctr: "<0.2"                     # But low CTR
+    choose_label: VOLATILE_SPIKE
+    description: "High impressions but low engagement - opportunity"
+
+  # SERP-specific rules for position tracking
+  - when:
+      mode: "serp"
+      avg_position: ">=0.9"           # Top 3 positions
+      visibility_score: ">=0.7"
+    choose_label: MOMENTUM_POS
+    description: "Excellent SERP positioning"
+
+  # Default fallback
+  - when: {}                          # Empty condition matches anything
+    choose_label: NEUTRAL
+    description: "Neutral momentum - balanced metrics"
+
+# Feature weights for ML model training (if using Option B)
+feature_weights:
+  ctr: 0.3
+  impressions: 0.2
+  position: 0.25
+  clicks: 0.2
+  volatility_index: 0.05
+
+# Valid labels that can be assigned
+valid_labels:
+  - MOMENTUM_POS
+  - MOMENTUM_NEG
+  - VOLATILE_SPIKE
+  - NEUTRAL
+  - UNLABELED
+
+# Mapping for backward compatibility with existing categories
+legacy_category_mapping:
+  high_energy: MOMENTUM_POS
+  ambient: MOMENTUM_NEG
+  bright: VOLATILE_SPIKE
+  dark: MOMENTUM_NEG
+  balanced: NEUTRAL

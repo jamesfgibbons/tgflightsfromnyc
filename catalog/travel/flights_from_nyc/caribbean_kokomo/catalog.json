@@ -1,0 +1,307 @@
+{
+  "theme": "caribbean_kokomo",
+  "vertical": "travel",
+  "parent_theme": "flights_from_nyc",
+  "sound_pack": "Tropical Pop",
+  "description": "Beach Boys meets Caribbean steel drums - NYC to island paradise",
+  "mood": "relaxed, tropical, nostalgic",
+  "tempo_bpm": 104,
+  "key_signature": "C_major",
+  "influences": ["Beach Boys", "Caribbean steel drum", "Reggae"],
+  
+  "destinations": [
+    {
+      "code": "SJU",
+      "name": "Puerto Rico",
+      "search_volume": 5490,
+      "avg_price_usd": 289.50,
+      "volatility": 0.15,
+      "island_character": "warm, accessible, familiar",
+      "steel_drum_tuning": "C5"
+    },
+    {
+      "code": "AUA", 
+      "name": "Aruba",
+      "search_volume": 3610,
+      "avg_price_usd": 485.90,
+      "volatility": 0.22,
+      "island_character": "bright, premium, romantic",
+      "steel_drum_tuning": "G4"
+    },
+    {
+      "code": "SDQ",
+      "name": "Dominican Republic", 
+      "search_volume": 3580,
+      "avg_price_usd": 325.80,
+      "volatility": 0.28,
+      "island_character": "rich, cultural, budget-friendly",
+      "steel_drum_tuning": "F4"
+    },
+    {
+      "code": "MBJ",
+      "name": "Jamaica",
+      "search_volume": 3560,
+      "avg_price_usd": 415.60,
+      "volatility": 0.20,
+      "island_character": "deep, reggae, laid-back",
+      "steel_drum_tuning": "D4"
+    },
+    {
+      "code": "CUN",
+      "name": "Cancún",
+      "search_volume": 3040,
+      "avg_price_usd": 345.75,
+      "volatility": 0.19,
+      "island_character": "lively, party, Mexican Caribbean",
+      "steel_drum_tuning": "A4"
+    },
+    {
+      "code": "CUR",
+      "name": "Curaçao",
+      "search_volume": 860,
+      "avg_price_usd": 625.40,
+      "volatility": 0.35,
+      "island_character": "exotic, Dutch, boutique",
+      "steel_drum_tuning": "E5"
+    },
+    {
+      "code": "NAS",
+      "name": "Nassau",
+      "search_volume": 1240,
+      "avg_price_usd": 285.90,
+      "volatility": 0.21,
+      "island_character": "gentle, close, Bahamian",
+      "steel_drum_tuning": "Bb4"
+    }
+  ],
+  
+  "instruments": {
+    "lead": {
+      "name": "Steel Drums",
+      "midi_program": 114,
+      "role": "melody",
+      "pan": 0.6,
+      "reverb": 0.3,
+      "character": "bright, metallic, tropical"
+    },
+    "harmony": {
+      "name": "Marimba",
+      "midi_program": 12,
+      "role": "chord_accompaniment",
+      "pan": 0.4,
+      "reverb": 0.4,
+      "character": "warm, wooden, mellow"
+    },
+    "bass": {
+      "name": "Acoustic Bass",
+      "midi_program": 32,
+      "role": "foundation",
+      "pan": 0.5,
+      "reverb": 0.1,
+      "character": "walking, reggae-influenced"
+    },
+    "percussion": {
+      "shaker": {
+        "name": "Shaker",
+        "role": "rhythmic_texture",
+        "pan": 0.7,
+        "pattern": "continuous_16th"
+      },
+      "bongos": {
+        "name": "Bongos",
+        "role": "accent_percussion",
+        "pan": 0.3,
+        "pattern": "tropical_fills"
+      },
+      "chimes": {
+        "name": "Wind Chimes",
+        "midi_program": 14,
+        "role": "ambient_texture",
+        "pan": 0.8,
+        "reverb": 0.6
+      }
+    },
+    "effects": {
+      "ocean_waves": {
+        "role": "ambient_background",
+        "volume": 0.15,
+        "duration": "full_track",
+        "character": "gentle, continuous"
+      }
+    }
+  },
+  
+  "earcons": {
+    "volatility_spike": {
+      "instrument": "wind_chimes",
+      "pattern": "descending_cascade", 
+      "description": "Price spike → wind chimes falling"
+    },
+    "destination_reveal": {
+      "instrument": "steel_drum",
+      "pattern": "celebration_roll",
+      "description": "Destination announced → steel drum flourish"
+    },
+    "price_drop": {
+      "instrument": "wind_chimes",
+      "pattern": "gentle_descending",
+      "description": "Deal discovered → soft chimes down"
+    },
+    "deal_jackpot": {
+      "instrument": "full_ensemble",
+      "pattern": "island_celebration",
+      "description": "Major deal → full Caribbean celebration"
+    },
+    "podium_win": {
+      "instrument": "steel_drum",
+      "pattern": "ascending_arpeggio",
+      "description": "Great ranking → steel drum victory"
+    },
+    "brand_spike": {
+      "instrument": "muted_trumpet",
+      "pattern": "brass_stab",
+      "description": "Brand mention → gentle brass accent"
+    }
+  },
+  
+  "chord_progressions": {
+    "main": ["C", "F", "G", "Am", "F", "C", "G", "C"],
+    "verse": ["C", "Am", "F", "G"],
+    "chorus": ["F", "C", "G", "Am", "F", "G", "C"],
+    "bridge": ["Am", "F", "C", "G", "Am", "F", "G"],
+    "outro": ["F", "G", "C", "Am", "F", "G", "C"]
+  },
+  
+  "rhythm_patterns": {
+    "reggae_feel": {
+      "emphasis": "beats_2_and_4",
+      "subdivision": "16th_note",
+      "groove": "laid_back",
+      "description": "Classic reggae upbeat emphasis"
+    },
+    "tropical_percussion": {
+      "shaker": [1, 0.5, 1, 0.5, 1, 0.5, 1, 0.5],
+      "bongos": [0, 0, 0.8, 0, 0, 0, 0.6, 0],
+      "description": "Continuous shaker with bongo accents"
+    }
+  },
+  
+  "effects_chain": {
+    "master": {
+      "eq": "tropical_smile",
+      "compression": "warm_vintage", 
+      "reverb": "beach_hall",
+      "limiter": "gentle_ceiling"
+    },
+    "individual": {
+      "steel_drum": ["bright_eq", "short_delay"],
+      "marimba": ["warm_eq", "hall_reverb"],
+      "bass": ["low_boost", "tight_compression"],
+      "percussion": ["sparkle_eq", "stereo_width"]
+    }
+  },
+  
+  "sample_tracks": [
+    {
+      "id": "kokomo_sju_001",
+      "title": "JFK → Puerto Rico (Kokomo Vibes)",
+      "destination": "SJU",
+      "search_volume": 5490,
+      "momentum_profile": "positive_dominant",
+      "duration_sec": 32.3,
+      "key": "C_major",
+      "tempo": 104,
+      "description": "Warm steel drums celebrate accessible Puerto Rico flights"
+    },
+    {
+      "id": "kokomo_aua_001", 
+      "title": "JFK → Aruba (Island Paradise)",
+      "destination": "AUA",
+      "search_volume": 3610,
+      "momentum_profile": "premium_steady",
+      "duration_sec": 34.6,
+      "key": "C_major", 
+      "tempo": 104,
+      "description": "Bright marimba harmonies for premium Aruba escape"
+    },
+    {
+      "id": "kokomo_multi_winter",
+      "title": "Caribbean Winter Escape (All Islands)",
+      "destination": "MULTI",
+      "search_volume": 18450,
+      "momentum_profile": "highly_positive",
+      "duration_sec": 36.2,
+      "key": "C_major",
+      "tempo": 104,
+      "description": "Full ensemble celebration of winter Caribbean deals"
+    }
+  ],
+  
+  "theme_variations": {
+    "budget_caribbean": {
+      "description": "Emphasize affordability and deals",
+      "tempo_adjustment": "+5_bpm",
+      "instrument_emphasis": "steel_drum",
+      "earcon_frequency": "high"
+    },
+    "premium_caribbean": {
+      "description": "Luxury resort and first-class vibes", 
+      "tempo_adjustment": "-5_bpm",
+      "instrument_emphasis": "marimba_strings",
+      "earcon_frequency": "moderate"
+    },
+    "winter_escape": {
+      "description": "Cold weather contrast and warmth",
+      "effect_additions": ["warmth_filter", "cozy_reverb"],
+      "mood": "escaping_winter_blues"
+    }
+  },
+  
+  "marketing_hooks": {
+    "taglines": [
+      "Hear your Caribbean escape before you book it",
+      "From Kokomo to real deals - every search has rhythm", 
+      "Steel drums meet search data",
+      "Where Beach Boys vibes meet flight prices"
+    ],
+    "target_demographics": [
+      "Winter vacation planners",
+      "Beach music nostalgia fans",
+      "Caribbean travel enthusiasts", 
+      "NYC-based travelers"
+    ]
+  },
+  
+  "technical_specs": {
+    "sample_rate": 44100,
+    "bit_depth": 16,
+    "channels": 2,
+    "format": "wav",
+    "master_loudness": "-14_LUFS",
+    "dynamic_range": "8_LU",
+    "file_size_target": "8_MB_max"
+  },
+  
+  "integration": {
+    "supabase_table": "flight_visibility",
+    "filter_criteria": {
+      "region": "Caribbean",
+      "theme": "flights_from_nyc",
+      "sub_theme": "caribbean_kokomo"
+    },
+    "api_endpoints": {
+      "play_track": "/api/play/caribbean_kokomo/{destination}",
+      "get_momentum": "/api/momentum/caribbean/{destination}",
+      "list_tracks": "/api/catalog/travel/flights_from_nyc/caribbean_kokomo"
+    }
+  },
+  
+  "metadata": {
+    "created_at": "2025-01-16T20:30:00Z",
+    "version": "1.0",
+    "theme_author": "SERP Radio Team",
+    "musical_inspiration": "Beach Boys - Kokomo (1988)",
+    "data_sources": ["Google Search Console", "Flight price APIs", "Caribbean tourism data"],
+    "last_updated": "2025-01-16T20:30:00Z"
+  }
+}

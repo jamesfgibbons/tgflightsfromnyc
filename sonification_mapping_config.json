@@ -1,0 +1,63 @@
+{
+  "mapping": {
+    "price_to_pitch_hz": {
+      "0-50": [
+        800,
+        1200
+      ],
+      "50-100": [
+        600,
+        800
+      ],
+      "100-200": [
+        400,
+        600
+      ],
+      "200+": [
+        200,
+        400
+      ]
+    },
+    "novelty_to_tempo_bpm": {
+      "low": 80,
+      "med": 105,
+      "high": 128
+    },
+    "route_to_timbre": {
+      "direct": "sine",
+      "connecting": "square",
+      "multi-city": "sawtooth",
+      "hidden-city": "noise"
+    }
+  },
+  "special_events": {
+    "vegas_bargain": {
+      "trigger": "price_midpoint < 75 and dest=='LAS'",
+      "earcon": "jackpot_arpeggio"
+    },
+    "kokomo_islands": {
+      "region": "Caribbean",
+      "earcon": "steel_drum_ping"
+    }
+  },
+  "packs": {
+    "Arena Rock": {
+      "use_for": [
+        "legacy_airlines",
+        "business_routes"
+      ]
+    },
+    "8-Bit": {
+      "use_for": [
+        "budget_carriers",
+        "ultra_budget"
+      ]
+    },
+    "Synthwave": {
+      "use_for": [
+        "red_eye_deals",
+        "caribbean_theme"
+      ]
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python:*)",
+      "Bash(pip3 install:*)",
+      "Bash(mkdir:*)",
+      "Bash(ls:*)",
+      "Bash(brew install:*)",
+      "Bash(mv:*)",
+      "Bash(true)",
+      "Bash(pip install:*)",
+      "Bash(chmod:*)",
+      "Bash(source:*)",
+      "Bash(touch:*)",
+      "Bash(cp:*)",
+      "Bash(make:*)",
+      "Bash(grep:*)",
+      "Bash(./scripts/smoke_test.sh:*)",
+      "Bash(./scripts/run_all.sh:*)",
+      "Bash(export SUPABASE_URL=\"https://bulcmonhcvqljorhiqgk.supabase.co\")",
+      "Bash(export:*)"
+    ],
+    "deny": []
+  }
+}

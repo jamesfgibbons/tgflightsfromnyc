@@ -1,0 +1,56 @@
+- slug: caribbean_kokomo
+  title: "Caribbean Breeze"
+  description: "Calypso/island-pop palette evoking sun, surf, and steel drums."
+  target_valence: 0.85
+  target_energy: 0.55
+  tempo_min: 96
+  tempo_max: 128
+  mode_preference: "ionian"
+  default_pack: "Tropical Pop"
+  instrumentation_json:
+    lead: ["marimba", "steel_drum", "clean_guitar"]
+    rhythm: ["claves", "congas", "shaker"]
+    pad: ["warm_sine_pad"]
+    bass: ["picked_bass"]
+  signature_rhythm_json:
+    clave_3_2: [1, 0, 0, 1, 0, 0, 1, 0]
+    offbeat_guitar: "island_upstroke"
+  chord_blocks_json:
+    pop_sunshine: ["I", "V", "vi", "IV"]
+    island_walk: ["I", "IV", "I", "V"]
+
+- slug: synthwave_midnight
+  title: "Synthwave Midnight"
+  description: "Nocturnal neon, dreamy arps, and gated snares."
+  target_valence: 0.45
+  target_energy: 0.65
+  tempo_min: 92
+  tempo_max: 118
+  mode_preference: "aeolian"
+  default_pack: "Synthwave"
+  instrumentation_json:
+    lead: ["saw_lead", "square_lead"]
+    pad: ["warm_pad", "string_pad"]
+    bass: ["synth_bass"]
+  signature_rhythm_json:
+    four_on_floor: [1,0,0,0, 1,0,0,0, 1,0,0,0, 1,0,0,0]
+  chord_blocks_json:
+    midnight_drive: ["i", "VI", "III", "VII"]
+
+- slug: arena_anthem
+  title: "Arena Anthem"
+  description: "Big guitars, bright brass stabs, and power toms."
+  target_valence: 0.7
+  target_energy: 0.8
+  tempo_min: 108
+  tempo_max: 132
+  mode_preference: "ionian"
+  default_pack: "Arena Rock"
+  instrumentation_json:
+    lead: ["overdriven_guitar"]
+    pad: ["string_pad"]
+    brass: ["brass_section", "trumpet"]
+  signature_rhythm_json:
+    stadium_toms: [0,0,1,0, 0,0,1,0, 0,0,1,0, 0,0,1,0]
+  chord_blocks_json:
+    classic_pop: ["I", "V", "vi", "IV"]

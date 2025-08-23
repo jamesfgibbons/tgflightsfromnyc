@@ -1,0 +1,45 @@
+{
+  "generated_at": "2025-08-16T16:23:50.262327",
+  "focus": "NYC \u2192 National + Caribbean (Kokomo theme)",
+  "nyc_airports": [
+    "JFK",
+    "LGA",
+    "EWR",
+    "HPN",
+    "ISP",
+    "SWF"
+  ],
+  "destinations": {
+    "West": [
+      "LAS",
+      "LAX",
+      "SFO",
+      "SEA",
+      "DEN"
+    ],
+    "Florida": [
+      "MIA",
+      "FLL",
+      "MCO",
+      "TPA"
+    ],
+    "Caribbean": [
+      "SJU",
+      "NAS",
+      "MBJ",
+      "CUR",
+      "PUJ",
+      "GCM",
+      "STT",
+      "ANU",
+      "AUA"
+    ]
+  },
+  "templates": [
+    "Find the absolute cheapest one-way flight from {origin} to {dest} next 60 days (include ULCC).",
+    "NYC deal hunt: {origin} \u2192 {dest} under $120 with flexible dates.",
+    "Hidden city options {origin} \u2192 {dest}.",
+    "Red-eye savings from {origin} to {dest} (depart 22:00\u201302:00).",
+    "Caribbean beach run {origin} \u2192 {dest} (Kokomo theme)."
+  ]
+}

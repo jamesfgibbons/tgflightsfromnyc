@@ -1,0 +1,11 @@
+[Unit]
+Description=SERP Radio Health Monitor Timer
+Requires=serpradio-health.service
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=5min
+Unit=serpradio-health.service
+
+[Install]
+WantedBy=timers.target 
