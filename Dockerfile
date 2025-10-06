@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y \
     fluid-soundfont-gm \
     gcc \
     g++ \
+    curl \
     && rm -rf /var/lib/apt/lists/*
 
 # Verify audio tools are available
