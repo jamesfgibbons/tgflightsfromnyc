@@ -23,10 +23,13 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy source code
 COPY src/ ./src/
 COPY scripts/ ./scripts/
+COPY sql/ ./sql/
+COPY start.sh ./start.sh
 
 # Create non-root user for security
 RUN useradd --create-home --shell /bin/bash appuser && \
-    chown -R appuser:appuser /app
+    chown -R appuser:appuser /app && \
+    chmod +x /app/start.sh
 USER appuser
 
 # Set environment variables
@@ -41,4 +44,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
 EXPOSE 8000
 
 # Run the application (honor Railway/Heroku style $PORT, default 8000)
-CMD ["/bin/sh", "-lc", "uvicorn src.main:app --host 0.0.0.0 --port ${PORT:-8000}"]
+CMD ["/app/start.sh"]
