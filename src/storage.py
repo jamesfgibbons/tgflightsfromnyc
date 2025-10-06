@@ -113,14 +113,14 @@ class UnifiedStorage:
             if not isinstance(data, bytes):
                 raise ValueError(f"Data must be bytes, got {type(data)}")
             
-            # Supabase storage upload
+            # Supabase storage upload (use camelCase keys)
             result = self.client.storage.from_(self.bucket).upload(
                 path=key,
                 file=data,
                 file_options={
-                    "content-type": content_type,
-                    "cache-control": "3600" if not public else "31536000",
-                    "upsert": True,
+                    "contentType": content_type,
+                    "cacheControl": "3600" if not public else "31536000",
+                    "upsert": "true",
                 }
             )
             
