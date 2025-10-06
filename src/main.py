@@ -78,6 +78,11 @@ else:
         "http://localhost:3000"
     ]
 
+# Add Lovable preview domains (pattern: https://{uuid}.lovableproject.com)
+# Since we can't use wildcards in CORS, we'll use allow_origin_regex
+import re
+CORS_ORIGIN_REGEX = r"https://[a-f0-9\-]+\.lovableproject\.com"
+
 # FastAPI app
 app = FastAPI(
     title="SERP Radio Production API",
@@ -91,6 +96,7 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=CORS_ORIGINS,
+    allow_origin_regex=CORS_ORIGIN_REGEX,  # Allow Lovable preview domains
     allow_credentials=True,
     allow_methods=["GET", "POST", "PUT", "OPTIONS"],
     allow_headers=["*"]
