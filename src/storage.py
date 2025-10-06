@@ -109,6 +109,10 @@ class UnifiedStorage:
     def _put_supabase(self, key: str, data: bytes, content_type: str, public: bool = False) -> None:
         """Upload to Supabase Storage."""
         try:
+            # Ensure data is bytes
+            if not isinstance(data, bytes):
+                raise ValueError(f"Data must be bytes, got {type(data)}")
+            
             # Supabase storage upload
             result = self.client.storage.from_(self.bucket).upload(
                 path=key,
@@ -120,10 +124,15 @@ class UnifiedStorage:
                 }
             )
             
-            if result.error:
+            # Check for errors - result might be a dict or object
+            if hasattr(result, 'error') and result.error:
                 raise StorageError(f"Supabase upload failed: {result.error}")
+            elif isinstance(result, dict) and result.get('error'):
+                raise StorageError(f"Supabase upload failed: {result['error']}")
             
             logger.info(f"Uploaded {len(data)} bytes to supabase://{self.bucket}/{key}")
+        except StorageError:
+            raise
         except Exception as e:
             raise StorageError(f"Failed to upload to Supabase: {e}")
     
