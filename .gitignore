@@ -13,6 +13,7 @@ venv/
 .env.*
 !.env.example
 !.env.supabase.example
+creds.env
 
 # OS/Editors
 .DS_Store
