@@ -1,0 +1,20 @@
+{
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "prompt": "Best time to book EWR→CLT within next 60 days.\nInclude: fare ranges (USD), typical booking window (days before departure),\npeak/holiday effects, basic bag policy differences, and 1–2 concrete examples.\nReturn STRICT JSON: {\n  \"origin\": string, \"destination\": string, \"window_days\": number,\n  \"best_window_days\": [min,max], \"fare_low_usd\": number, \"fare_high_usd\": number,\n  \"notes\": string\n}",
+  "response_raw": {
+    "id": "chatcmpl-C87tS3mypPHRCend8gMUUbUU9RjX2",
+    "created": 1756053002,
+    "model": "gpt-4o-mini-2024-07-18",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"origin\": \"EWR\",\n  \"destination\": \"CLT\",\n  \"window_days\": 21,\n  \"best_window_days\": [14, 30],\n  \"fare_low_usd\": 100,\n  \"fare_high_usd\": 300,\n  \"notes\": \"Booking 14 to 30 days in advance typically yields the best fares. Expect higher prices during peak travel periods, such as holidays and weekends. Basic economy fares usually include one personal item but charge for carry-on and checked bags. For example, a fare of $120 might be available if booked 21 days in advance, while a last-minute fare could exceed $250.\"\n}"
+        }
+      }
+    ]
+  },
+  "latency_ms": 5188,
+  "status": "ok"
+}

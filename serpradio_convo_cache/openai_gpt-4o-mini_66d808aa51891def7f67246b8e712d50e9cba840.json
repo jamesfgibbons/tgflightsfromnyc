@@ -1,0 +1,25 @@
+{
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "prompt": "What is the typical price of a flight from JFK to Tel Aviv within the next 45 days?\nReturn STRICT JSON: { \n  \"origin\": \"JFK\", \"destination\": \"TLV\", \"window_days\": 45,\n  \"price_low_usd\": number, \"price_high_usd\": number,\n  \"typical_airlines\": [string], \"cited_websites\": [string], \"notes\": string\n}",
+  "response_raw": {
+    "id": "chatcmpl-C89L3xInw2fXp4gr8NUFywptAQpAw",
+    "created": 1756058557,
+    "model": "gpt-4o-mini-2024-07-18",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"origin\": \"JFK\",\n  \"destination\": \"TLV\",\n  \"window_days\": 45,\n  \"price_low_usd\": 600,\n  \"price_high_usd\": 1200,\n  \"typical_airlines\": [\"El Al\", \"Delta\", \"United\", \"American Airlines\", \"Turkish Airlines\"],\n  \"cited_websites\": [],\n  \"notes\": \"Prices can vary based on demand, time of booking, and specific travel dates.\"\n}"
+        }
+      }
+    ]
+  },
+  "latency_ms": 1782,
+  "status": "ok",
+  "metadata": {
+    "kind": "price_query",
+    "origin": "JFK",
+    "destination": "TLV"
+  }
+}

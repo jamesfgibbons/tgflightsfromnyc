@@ -6,3 +6,129 @@ keyword_map:
       - beachboys
       - calypso
       - caribbean
+  - palette_slug: circle_of_life_travel
+    keywords:
+      - circle of life
+      - elton john
+      - lion king
+  - palette_slug: hammer_to_fall_drop
+    keywords:
+      - hammer to fall
+      - queen
+      - epic drop
+      - drop deals
+  - palette_slug: new_wave_hunt
+    keywords:
+      # UK (non-London) major airports/cities
+      - manchester
+      - MAN
+      - birmingham
+      - BHX
+      - glasgow
+      - GLA
+      - edinburgh
+      - EDI
+      - bristol
+      - BRS
+      - newcastle
+      - NCL
+      - leeds
+      - LBA
+      - liverpool
+      - LPL
+      - belfast
+      - BFS
+      - BHD
+      - aberdeen
+      - ABZ
+      - inverness
+      - INV
+      - east midlands
+      - EMA
+      - cardiff
+      - CWL
+      - southampton
+      - SOU
+      - jersey
+      - JER
+      - guernsey
+      - GCI
+      - isle of man
+      - IOM
+      # Ireland (non-Dublin)
+      - cork
+      - ORK
+      - shannon
+      - SNN
+      - knock
+      - NOC
+      - kerry
+      - KIR
+  - palette_slug: hoosier_heartland
+    keywords:
+      # Indiana (destinations & cues)
+      - indiana
+      - indianapolis
+      - IND
+      - fort wayne
+      - FWA
+      - south bend
+      - SBN
+      - evansville
+      - EVV
+      - gary
+      - GYY
+      - terre haute
+      - HUF
+      - bloomington in
+      - BMG
+      - muncie
+      - MIE
+      - lafayette in
+      - LAF
+      - valparaiso in
+      - VPZ
+      - kokomo in
+      - OKK
+      # Artist cues
+      - mellencamp
+      - john mellencamp
+      - jack and diane
+  - palette_slug: king_of_pop_loop
+    keywords:
+      - atlanta
+      - ATL
+      - jacksonville
+      - JAX
+      - memphis
+      - MEM
+      - cincinnati
+      - CVG
+      - dallas
+      - DAL
+      - DFW
+      - houston
+      - HOU
+      - IAH
+      - new orleans
+      - MSY
+      - savannah
+      - SAV
+      - charleston
+      - CHS
+      - mobile
+      - MOB
+      - fort lauderdale
+      - FLL
+      - miami
+      - MIA
+      - west palm beach
+      - PBI
+      - orlando
+      - MCO
+      - las vegas
+      - LAS
+      - oakland
+      - OAK
+      - st louis
+      - STL

@@ -1,0 +1,25 @@
+{
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "prompt": "What is the typical price of a flight from LGA to West Palm Beach within the next 45 days?\nReturn STRICT JSON: { \n  \"origin\": \"LGA\", \"destination\": \"PBI\", \"window_days\": 45,\n  \"price_low_usd\": number, \"price_high_usd\": number,\n  \"typical_airlines\": [string], \"cited_websites\": [string], \"notes\": string\n}",
+  "response_raw": {
+    "id": "chatcmpl-C89QA2p641pbhDqaI2oj9C2wX2O8N",
+    "created": 1756058874,
+    "model": "gpt-4o-mini-2024-07-18",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"origin\": \"LGA\",\n  \"destination\": \"PBI\",\n  \"window_days\": 45,\n  \"price_low_usd\": 100,\n  \"price_high_usd\": 300,\n  \"typical_airlines\": [\"JetBlue\", \"American Airlines\", \"Delta\", \"Spirit\"],\n  \"cited_websites\": [],\n  \"notes\": \"Prices can vary based on demand, time of booking, and specific travel dates.\"\n}"
+        }
+      }
+    ]
+  },
+  "latency_ms": 2135,
+  "status": "ok",
+  "metadata": {
+    "kind": "price_query",
+    "origin": "LGA",
+    "destination": "PBI"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "prompt": "What is the typical price of a flight from EWR to Sydney within the next 45 days?\nReturn STRICT JSON: { \n  \"origin\": \"EWR\", \"destination\": \"SYD\", \"window_days\": 45,\n  \"price_low_usd\": number, \"price_high_usd\": number,\n  \"typical_airlines\": [string], \"cited_websites\": [string], \"notes\": string\n}",
+  "response_raw": {
+    "id": "chatcmpl-C89LpZhD4oGtzQ4oUR1LxZDMXBOEE",
+    "created": 1756058605,
+    "model": "gpt-4o-mini-2024-07-18",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"origin\": \"EWR\",\n  \"destination\": \"SYD\",\n  \"window_days\": 45,\n  \"price_low_usd\": 1200,\n  \"price_high_usd\": 1800,\n  \"typical_airlines\": [\"Qantas\", \"United Airlines\", \"American Airlines\", \"Delta Air Lines\"],\n  \"cited_websites\": [],\n  \"notes\": \"Prices can vary based on demand, time of booking, and specific travel dates.\"\n}"
+        }
+      }
+    ]
+  },
+  "latency_ms": 1743,
+  "status": "ok",
+  "metadata": {
+    "kind": "price_query",
+    "origin": "EWR",
+    "destination": "SYD"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "prompt": "Best time to book EWR→MEL within next 60 days.\nInclude: fare ranges (USD), typical booking window (days before departure),\npeak/holiday effects, basic bag policy differences, and 1–2 concrete examples.\nReturn STRICT JSON: {\n  \"origin\": string, \"destination\": string, \"window_days\": number,\n  \"best_window_days\": [min,max], \"fare_low_usd\": number, \"fare_high_usd\": number,\n  \"notes\": string\n}",
+  "response_raw": {
+    "id": "chatcmpl-C7xTO8KFPfN9PVeROF3cjvUXQnAZA",
+    "created": 1756012946,
+    "model": "gpt-4o-mini-2024-07-18",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"origin\": \"EWR\",\n  \"destination\": \"MEL\",\n  \"window_days\": 30,\n  \"best_window_days\": [21, 45],\n  \"fare_low_usd\": 900,\n  \"fare_high_usd\": 1800,\n  \"notes\": \"Booking 21 to 45 days in advance typically yields the best fares. Expect higher prices during peak travel seasons, such as summer and major holidays. Basic economy fares often include only a personal item, while standard fares may allow for a carry-on and checked bag. For example, fares in early December can range from $1,000 to $1,500, while late January may see prices drop to $900.\"\n}"
+        }
+      }
+    ]
+  },
+  "latency_ms": 1902,
+  "status": "ok"
+}

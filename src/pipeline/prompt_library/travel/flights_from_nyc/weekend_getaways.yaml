@@ -1,0 +1,25 @@
+channel: travel
+theme: flights_from_nyc
+sub_theme: weekend_getaways
+focus: "NYC weekend trip windows (Fri evening → Sun night)"
+sound_pack_default: "Tropical Pop"
+mood: "upbeat, relaxed, sun-seeking"
+
+origins: [JFK, LGA, EWR]
+destinations:
+  - { code: MIA, name: Miami }
+  - { code: MCO, name: Orlando }
+  - { code: CHS, name: Charleston }
+  - { code: BNA, name: Nashville }
+  - { code: SJU, name: San Juan }
+
+templates:
+  - "weekend {origin} to {dest}: Fri eve → Sun night cheapest combo"
+  - "2-night getaway NYC→{dest}: nonstop under $250"
+  - "Fri after 5 PM departures {origin}->{dest} best options"
+  - "Sunday late return {dest}->{origin} what’s cheapest?"
+
+novelty_special:
+  - "rain check: bad weather fallback destinations from NYC this weekend"
+  - "NYC → {dest} weekend bags-included vs bare fare true cost"
+

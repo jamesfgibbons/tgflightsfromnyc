@@ -14,6 +14,9 @@ help:
 	@echo "  validate  - Run all validation tools on existing catalog"
 	@echo "  clean     - Clean up generated files"
 	@echo "  status    - Show pipeline status and metrics"
+	@echo "  backend-run    - Run FastAPI locally with creds.env"
+	@echo "  supabase-seed  - Seed routes and price quotes to Supabase"
+	@echo "  verify-backend - Verify a deployed backend base URL"
 	@echo ""
 	@echo "Quick start:"
 	@echo "  make setup    # First time setup"
@@ -106,3 +109,20 @@ clean:
 # Development shortcuts
 dev-smoke: smoke status
 dev-ship: ship status
+
+# --- New: Local run and verification ---
+backend-run:
+	@echo "🚀 Running backend with creds.env"
+	@uvicorn src.main:app --host 0.0.0.0 --port 8080 --env-file creds.env
+
+supabase-seed:
+	@echo "🌱 Seeding Supabase travel data..."
+	@. .venv/bin/activate 2>/dev/null || true; \
+	python scripts/upsert_travel_routes_from_json.py --input data/routes_nyc_canonical.json --truncate; \
+	python scripts/upsert_price_quotes_from_json.py --input data/price_quotes.json --truncate
+
+verify-backend:
+	@if [ -z "$(BASE_URL)" ]; then \
+		echo "Usage: make verify-backend BASE_URL=https://your-backend"; exit 1; \
+	fi; \
+	bash scripts/verify_backend.sh $(BASE_URL)

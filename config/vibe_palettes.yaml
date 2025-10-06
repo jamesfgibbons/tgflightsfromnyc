@@ -54,3 +54,101 @@
     stadium_toms: [0,0,1,0, 0,0,1,0, 0,0,1,0, 0,0,1,0]
   chord_blocks_json:
     classic_pop: ["I", "V", "vi", "IV"]
+
+- slug: circle_of_life_travel
+  title: "Circle of Life – Travel"
+  description: "Anthemic, uplifting pop‑orchestral vibe inspired by iconic progressions; ideal for flights‑from‑NYC hero moments."
+  target_valence: 0.75
+  target_energy: 0.65
+  tempo_min: 96
+  tempo_max: 120
+  mode_preference: "ionian"
+  default_pack: "Arena Rock"
+  instrumentation_json:
+    lead: ["string_pad", "horn_lead", "piano"]
+    pad: ["warm_pad", "choir_ah"]
+    bass: ["picked_bass"]
+  signature_rhythm_json:
+    anthem_pulse: [1,0,0,0, 0,0,1,0, 1,0,0,0, 0,0,1,0]
+  chord_blocks_json:
+    anthemic_lift: ["I", "V", "vi", "IV", "I", "V", "V", "I"]
+
+- slug: hammer_to_fall_drop
+  title: "Hammer to Fall – Drop"
+  description: "High‑energy arena rock riff palette; epic drop loop for deal reveals."
+  target_valence: 0.6
+  target_energy: 0.9
+  tempo_min: 120
+  tempo_max: 152
+  mode_preference: "mixolydian"
+  default_pack: "Arena Rock"
+  instrumentation_json:
+    lead: ["overdriven_guitar", "dist_lead"]
+    pad: ["string_pad"]
+    drums: ["stadium_toms", "gated_snare"]
+    bass: ["picked_bass"]
+  signature_rhythm_json:
+    power_riff: [1,0,1,0, 1,0,1,0, 1,0,1,0, 1,0,1,0]
+  chord_blocks_json:
+    power_riff_mix: ["I", "bVII", "IV", "bVII"]
+    drop_loop: ["V", "IV", "I", "V"]
+
+- slug: new_wave_hunt
+  title: "New Wave Hunt"
+  description: "Up‑tempo new‑wave palette with driving 16th‑bass, bright squares, and gated snares. Inspired by early‑80s synth‑rock energy (no melodies used)."
+  target_valence: 0.55
+  target_energy: 0.85
+  tempo_min: 120
+  tempo_max: 132
+  mode_preference: "aeolian"
+  default_pack: "Synthwave"
+  instrumentation_json:
+    lead: ["square_lead", "saw_lead"]
+    pad: ["string_pad"]
+    bass: ["synth_bass"]
+    drums: ["gated_snare"]
+  signature_rhythm_json:
+    sixteenth_drive: [1,1,1,1, 1,1,1,1, 1,1,1,1, 1,1,1,1]
+  chord_blocks_json:
+    chase_loop: ["i", "VI", "III", "VII"]
+
+- slug: hoosier_heartland
+  title: "Hoosier Heartland"
+  description: "Heartland rock vibe with strummed guitars, piano/organ beds, and steady backbeat. Inspired by classic Midwest rock energy (no melodies used)."
+  target_valence: 0.6
+  target_energy: 0.75
+  tempo_min: 108
+  tempo_max: 124
+  mode_preference: "ionian"
+  default_pack: "Arena Rock"
+  instrumentation_json:
+    lead: ["overdriven_guitar", "clean_guitar"]
+    pad: ["string_pad"]
+    keys: ["piano"]
+    bass: ["picked_bass"]
+  signature_rhythm_json:
+    backbeat: [0,0,1,0, 0,0,1,0, 0,0,1,0, 0,0,1,0]
+    shuffle_eighths: [1,0,1,0, 1,0,1,0, 1,0,1,0, 1,0,1,0]
+  chord_blocks_json:
+    heartland_drive: ["I", "IV", "I", "V"]
+    story_loop: ["I", "V", "vi", "IV"]
+
+- slug: king_of_pop_loop
+  title: "King of Pop Loop"
+  description: "Bright pop groove with punchy drums, synth brass hits, and a tight bass+square ostinato. Inspired by late‑80s pop production (no melodies used)."
+  target_valence: 0.7
+  target_energy: 0.8
+  tempo_min: 108
+  tempo_max: 120
+  mode_preference: "ionian"
+  default_pack: "Synthwave"
+  instrumentation_json:
+    lead: ["square_lead", "synth_brass"]
+    pad: ["warm_pad"]
+    bass: ["synth_bass", "slap_bass"]
+    drums: ["gated_snare"]
+  signature_rhythm_json:
+    pop_ostinato: [1,0,1,0, 1,0,1,0, 1,0,1,0, 1,0,1,0]
+  chord_blocks_json:
+    pop_drive: ["I", "vi", "IV", "V"]
+    chorus_lift: ["I", "V", "vi", "IV"]

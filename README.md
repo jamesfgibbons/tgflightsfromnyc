@@ -8,6 +8,31 @@
 
 ## 🚀 Quick Start
 
+This repo ships a full, production-ready stack:
+
+- Backend: FastAPI (Railway), Supabase DB/Storage, xAI Grok integration
+- Frontends: Vite React (Vercel) split‑flap board + optional Next.js dashboard
+- Pipelines: Daily LLM + price parsing + VibeNet sonification (batch/preset and on‑the‑fly)
+
+For an end‑to‑end MVP (board + data) using what’s already in this repo:
+
+1) Supabase
+- Apply schema: `supabase db remote commit --file sql/000_init_schema.sql`
+  (or run each referenced SQL file manually in the Dashboard)
+- Seed: `scripts/upsert_travel_routes_from_json.py`, `scripts/upsert_price_quotes_from_json.py`
+
+2) Backend on Railway
+- Deploy this repo (Dockerfile or Procfile)
+- Env: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE`, `CORS_ORIGINS`, optional `XAI_API_KEY`
+- Verify: `/api/healthz`, `/api/travel/routes_nyc`, `/api/travel/price_quotes_latest`, `/api/board/feed`, `/api/vibenet/runs`
+
+3) Vite app on Vercel (`vite-react-user`)
+- Set rewrites `vercel.json` to your backend host (Railway)
+- Optional env: `XAI_API_KEY` (for `/api/chat`), `VITE_API_BASE`
+- Deploy and open preview → split‑flap board live
+
+See docs/AGENTIC_B2C_APP.md for the aligned “agentic B2C demand generation + sonification” architecture (Lovable.dev shell + Vercel/Vite UI + Railway + Supabase) and programmatic SEO plan.
+
 ### Environment Setup
 
 **Option 1: Supabase Storage (Recommended)**
@@ -17,7 +42,9 @@ export SUPABASE_URL=https://your-project.supabase.co
 export SUPABASE_ANON_KEY=your-anon-key-here
 export STORAGE_BUCKET=serpradio-artifacts
 export PUBLIC_STORAGE_BUCKET=serpradio-public
-export OPENAI_API_KEY=your_openai_key_here
+export OPENAI_API_KEY=your_openai_key
+OPENAI_TEXT_MODEL=gpt-4o-mini
+OPENAI_VISION_MODEL=gpt-4o-mini_here
 export ADMIN_SECRET=sr_admin_2025_secure_secret
 ```
 
@@ -27,7 +54,9 @@ export AWS_REGION=us-east-1
 export S3_BUCKET=serpradio-artifacts-2025
 export S3_PUBLIC_BUCKET=serpradio-public-2025
 export KMS_KEY_ID=alias/serpradio-kms-2025
-export OPENAI_API_KEY=your_openai_key_here
+export OPENAI_API_KEY=your_openai_key
+OPENAI_TEXT_MODEL=gpt-4o-mini
+OPENAI_VISION_MODEL=gpt-4o-mini_here
 export ADMIN_SECRET=sr_admin_2025_9hAqV3XbL2
 ```
 
@@ -131,6 +160,9 @@ curl -s http://localhost:8000/api/jobs/{job_id}
 ### Pipeline Management
 - `POST /api/pipeline/run` - Trigger travel pipeline (admin only)
 - `GET /api/cache/catalog` - Get latest travel catalog
+- `POST /api/adhoc/run` - Single prompt → LLM → sonification (admin optional)
+- `GET /api/vibenet/runs` - List recent batch/ad-hoc runs (Supabase-backed)
+- `GET /api/vibenet/items` - Inspect catalog entries for a run
 
 ### Data Management
 - `POST /api/upload-csv` - Upload and analyze CSV datasets
@@ -253,6 +285,15 @@ STORAGE_BUCKET=serpradio-artifacts
 PUBLIC_STORAGE_BUCKET=serpradio-public
 ADMIN_SECRET=sr_admin_2025_secure_secret
 OPENAI_API_KEY=your_openai_key
+OPENAI_TEXT_MODEL=gpt-4o-mini
+OPENAI_VISION_MODEL=gpt-4o-mini
+
+# xAI Grok (preferred provider)
+XAI_API_KEY=your_xai_key
+XAI_MODEL=grok-beta
+
+# Intake authentication (optional shared secret for /api/intake/*)
+INTAKE_TOKEN=your_intake_token
 
 # Runtime Knobs
 APP_VERSION=1.0.0
@@ -263,6 +304,8 @@ PRESIGNED_URL_TTL=600
 TTL_DAYS=7
 RL_IP_PER_MIN=60
 RL_TENANT_PER_MIN=120
+# Board feed dataset (optional override)
+BOARD_DATASET_PATH=data/grok_tips_inspiration_dataset.json
 ```
 
 **AWS S3 (Alternative):**
@@ -274,21 +317,39 @@ S3_PUBLIC_BUCKET=serpradio-public-2025
 KMS_KEY_ID=alias/serpradio-kms-2025
 ADMIN_SECRET=sr_admin_2025_9hAqV3XbL2
 OPENAI_API_KEY=your_openai_key
+OPENAI_TEXT_MODEL=gpt-4o-mini
+OPENAI_VISION_MODEL=gpt-4o-mini
 
 # Optional CDN
 PUBLIC_CDN_DOMAIN=your-cloudfront-domain.net
 ```
 
-### Vibe Engine (OpenAI + Spotify)
+### Vibe Engine LLM Providers (xAI vs Groq vs OpenAI)
 ```bash
-# Required for screenshot OCR
-OPENAI_API_KEY=your_openai_key
+# Preferred for daily pipelines: xAI Grok
+GROK_API_KEY=your_xai_key         # or XAI_API_KEY
+GROK_MODEL=grok-beta
+
+# OCR + Vision helpers: Groq or OpenAI SDKs (used in screenshot ingestion)
+GROQ_API_KEY=your_groq_key        # Groq SDK
+GROQ_TEXT_MODEL=llama-3.1-8b-instant
+GROQ_VISION_MODEL=llama-3.2-11b-vision-preview
+OPENAI_API_KEY=your_openai_key    # OpenAI SDK
+OPENAI_TEXT_MODEL=gpt-4o-mini
+OPENAI_VISION_MODEL=gpt-4o-mini
 
 # Optional: Spotify audio features (set only if using Spotify)
 VIBE_USE_SPOTIFY=0
 SPOTIFY_CLIENT_ID=
 SPOTIFY_CLIENT_SECRET=
 
+
+# Optional: direct Postgres connection (CLI/psql)
+# Replace [YOUR-PASSWORD] with your DB password in Supabase
+SUPABASE_DB_URL=postgresql://postgres:[YOUR-PASSWORD]@db.zkqgcksxvmhbryplppxy.supabase.co:5432/postgres
+
+# Or pooled (PgBouncer): username includes project ref
+SUPABASE_DB_URL_POOLED=postgresql://postgres.zkqgcksxvmhbryplppxy:[YOUR-PASSWORD]@aws-1-us-east-2.pooler.supabase.com:6543/postgres
 # Palettes and rules (paths are configurable)
 VIBE_PALETTES_PATH=config/vibe_palettes.yaml
 VIBE_RULES_PATH=config/vibe_rules.yaml
@@ -385,6 +446,95 @@ jobs:
         run: |
           curl -X POST "https://your-api.com/api/pipeline/run" \
             -H "X-Admin-Secret: sr_admin_2025_9hAqV3XbL2"
+
+## 🧠 xAI (Grok) Daily LLM Pipeline
+
+### Configure
+```bash
+export GROK_API_KEY=your_xai_key             # or XAI_API_KEY
+export GROK_MODEL=grok-beta
+export LLM_CACHE_DIR=serpradio_convo_cache   # default
+export LLM_CACHE_TTL_HOURS=24                # optional (0 = no TTL)
+```
+
+### Run via CLI
+```bash
+python scripts/run_xai_daily.py --limit 50 --model grok-beta
+```
+
+### Run via API (Admin)
+```bash
+curl -s -X POST "$BASE/api/llm/run?limit=50&model=grok-beta" -H "X-Admin-Secret: $ADMIN_SECRET"
+```
+
+### Prompts Source
+- Supabase `api_results` with `status=accepted` (from `/api/intake/prompt(s)`)
+- Fallback: `config/daily_prompts.json` (array of strings)
+
+### Persistence & Cache
+- Results persisted to Supabase `llm_results` (best‑effort) with `{provider, model, prompt, response_raw, latency_ms, status}`
+- File cache at `LLM_CACHE_DIR` to avoid refiring the same prompt; optional TTL via `LLM_CACHE_TTL_HOURS`
+
+## ✈️ Top Routes (NYC Origins → Popular Destinations)
+
+Generate and cache the top routes by volume/popularity for JFK/LGA/EWR, then query them via API or Supabase.
+
+### Prepare Destinations CSV
+Create `destinations_by_popularity.csv` with headers:
+```
+dest,name,score
+LAX,Los Angeles,100000
+MIA,Miami,95000
+LAS,Las Vegas,92000
+... up to ~1700 rows ...
+```
+The `score` can be pax volume, search volume, or a composite popularity signal.
+
+### Publish to Supabase
+```bash
+python scripts/publish_top_routes.py --input destinations_by_popularity.csv --limit 5000 --source pax_volume
+```
+This writes `origin ∈ {JFK,LGA,EWR}` × `destination` rows to table `travel_routes_nyc`.
+
+### Consume in Front‑End
+```bash
+curl -s "$BASE/api/travel/routes_nyc?origin=JFK&limit=5000" | jq '.total'
+```
+
+### Optional xAI Summaries
+For each top route, queue prompts via `/api/intake/prompt` (e.g., “Best time to book JFK→LAX next 60 days; include fees/holidays”), then run the daily xAI pipeline to persist raw responses in `llm_results`.
+
+## 🧳 OpenAI Pipeline – Best Time to Book (NYC Canonical Routes)
+
+Use OpenAI for a massive, low‑cost pass over canonical NYC routes (JFK/LGA/EWR → many destinations).
+
+### Prepare Routes
+- From Supabase: ensure `travel_routes_nyc` is populated (see earlier section).
+- Or from a local cache: build with `scripts/build_routes_cache.py`.
+
+### Run Batch (OpenAI)
+```bash
+# From Supabase (requires OPENAI_API_KEY, SUPABASE_*):
+python scripts/run_openai_routes_booking.py --limit 300 --origin JFK --window 60
+
+# From local cache:
+python scripts/run_openai_routes_booking.py --input data/routes_nyc_cache.json --limit 300 --window 60
+```
+- Caching: results saved in `LLM_CACHE_DIR` and stored to Supabase `llm_results` (best‑effort).
+- Model: defaults to `OPENAI_TEXT_MODEL` (e.g., gpt‑4o‑mini). Override via `--model`.
+
+### Env
+```bash
+OPENAI_API_KEY=sk-...
+OPENAI_TEXT_MODEL=gpt-4o-mini
+LLM_CACHE_DIR=serpradio_convo_cache
+LLM_CACHE_TTL_HOURS=24
+OPENAI_BATCH_SLEEP_SEC=0.1
+```
+
+### Downstream
+- Read `llm_results` to annotate split‑flap slices or feed VibeNet enrichment later.
+- Mix with xAI daily runs (with web search) for periodic ground‑truth + citations.
 ```
 
 ## 🎵 Frontend Integration
@@ -422,6 +572,187 @@ const job = await fetch('/api/sonify', {
 // Poll for completion
 const result = await fetch(`/api/jobs/${job.job_id}`).then(r => r.json());
 ```
+
+## 💛 Lovable.dev Build & Sub-Agent Guide (Split‑Flap + VibeNet)
+
+This section documents how the Lovable.dev front‑end integrates the split‑flap visualization and VibeNet endpoints, including handshakes, payloads, optional scoring context, and pipeline triggers.
+
+### Build Setup (Lovable)
+- API base: set `VITE_API_BASE` to your backend (e.g., `http://localhost:8000`).
+- Audio stack: Tone.js or WaveSurfer for playback; resume AudioContext on first user gesture.
+- Polling: board feed refresh every 30–60s; debounce visibility changes.
+
+### Handshake & Health
+```ts
+// On app boot
+await fetch(`${VITE_API_BASE}/api/healthz`).then(r => r.json());
+// Fetch initial board feed (keywords target)
+const feed = await fetch(`${VITE_API_BASE}/api/board/feed?target=keywords&limit=12&lookback_days=30`).then(r => r.json());
+```
+
+### Split‑Flap Board (Engine Inputs vs Design Inputs)
+- Engine inputs (fetched): `id, title, data_window, vibe{valence,arousal,tension}, tempo_bpm, momentum{positive,neutral,negative}, palette, last_updated, spark[]` from `GET /api/board/feed`.
+- Design inputs (UI): columns, flap timing (55–75ms), row stagger (20–40ms), reduced‑motion fallback, a11y labels.
+
+### Play a Slice (Sonification + Vibe)
+Use the combined endpoint to get both audio artifacts and vibe sliders in one call.
+```ts
+const body = {
+  data: sparkRawValues,           // e.g., last 30 days numeric series for the row
+  palette_slug: 'synthwave_midnight',
+  total_bars: 16,
+  // Optional context: curated scores for analytics & future mapping
+  context: {
+    deal_score: 0.82,
+    novelty_score: 0.35,
+    brand_pref_score: 0.6,
+    region_pref_score: 0.7
+  }
+};
+const res = await fetch(`${VITE_API_BASE}/api/vibe/generate_data`, {
+  method: 'POST', headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(body)
+}).then(r => r.json());
+
+// res.job.mp3_url → play; res.vibe → render sliders (valence/arousal/tension/...)
+```
+
+Notes:
+- The backend logs an analytics row (`vibe_board_events`) with `job_id`, `palette_slug`, `context`, `momentum` counts, and `tempo_bpm` (Supabase optional).
+- Keep only one active player; add a small crossfade between slices for continuity.
+
+### Intake & LLM (Optional)
+To queue Grok/Groq/OpenAI analysis or summaries from the client, use intake endpoints (guarded by `INTAKE_TOKEN`).
+```bash
+curl -s -X POST "$BASE/api/intake/prompt" \
+  -H 'Content-Type: application/json' \
+  -H "X-Client-Token: $INTAKE_TOKEN" \
+  -d '{
+        "source":"lovable.board",
+        "prompt":"Analyze latest travel slice trends and propose board annotations.",
+        "metadata": {"vertical":"travel","lookback_days":30},
+        "config": {"provider":"grok","model":"grok-beta"}
+      }'
+```
+
+### Pipeline Initiation (Core vs Ad‑Hoc)
+- Core runs (Lovable admin) → launch with `X-Admin-Secret`:
+```bash
+curl -s -X POST "$BASE/api/pipeline/run" -H "X-Admin-Secret: $ADMIN_SECRET"
+curl -s -X POST "$BASE/api/vibenet/run?vertical=travel&theme=flights_from_nyc&limit=24" -H "X-Admin-Secret: $ADMIN_SECRET"
+```
+- Ad‑hoc runs (scripts/ops) → `scripts/run_ski_pipeline.py` or `src/pipeline/run_pipeline` may be invoked from CI or local.
+
+### Supabase Data Logging
+- Board events: automatically inserted by `/api/vibe/generate_data` (if Supabase configured) into `vibe_board_events`.
+- Intake prompts: `api_results` table via `/api/intake/prompt(s)`.
+- Catalogs/runs: `vibenet_runs` / `vibenet_items` via batch pipelines.
+
+### Security & Auth (Frontend)
+- Intake: set and send `X-Client-Token` only to `/api/intake/*` routes.
+- Admin: never embed `ADMIN_SECRET` in public clients; use Lovable admin panel/server to proxy admin calls.
+- Storage: MP3/MIDI URLs are short‑lived; don’t persist beyond session without re‑signing.
+
+### Event Flow (Sub‑Agent Checklist)
+- Handshake: GET `/api/healthz` (retry with backoff on fail).
+- Fetch feed: GET `/api/board/feed` (30–60s cadence; pause when tab hidden).
+- Play slice: POST `/api/vibe/generate_data` with optional `context` scores; play `job.mp3_url` and render `vibe`.
+- Share: read share token or generate via existing share endpoints (if enabled).
+- Telemetry: emit client analytics to your own endpoint or `/api/intake/prompt` (summaries only, with `INTAKE_TOKEN`).
+
+### React Types (SplitFlapBoard)
+```ts
+export type VibeChip = { valence: number; arousal: number; tension: number };
+export type MomentumCounts = { positive: number; neutral: number; negative: number };
+
+export type BoardFeedRow = {
+  id: string;
+  title: string;
+  data_window?: string;
+  vibe: VibeChip;
+  tempo_bpm: number;
+  momentum: MomentumCounts;
+  palette: string;
+  last_updated?: string;
+  spark: number[];         // normalized 0..1 values for flap + sparkline
+};
+
+export type SplitFlapBoardProps = {
+  items: BoardFeedRow[];
+  onPlay?: (row: BoardFeedRow) => void;
+  onAddToStream?: (row: BoardFeedRow) => void;
+  flapDurationMs?: number;    // per-flap frame duration (55–75ms)
+  rowStaggerMs?: number;      // stagger between row flips (20–40ms)
+  reducedMotion?: boolean;    // prefers-fReducedMotion fallback
+  className?: string;
+};
+
+// Example usage
+function SplitFlapBoard({ items, onPlay, onAddToStream, flapDurationMs = 65, rowStaggerMs = 30 }: SplitFlapBoardProps) {
+  // render rows, map vibe→color, animate flaps via CSS transforms
+  return null;
+}
+```
+
+## 🔌 Webz.io Integration (Firehose → Board + VibeNet)
+
+Integrate live Webz.io Firehose streams as a data source for the split‑flap board and VibeNet.
+
+### Repo & Consumer
+- Reference repo: GitHub Webhose/webzio-firehose-api-consumer (use as implementation reference).
+- This project ships a minimal consumer: `scripts/run_webzio_consumer.py` using `src/webzio_integration.py`.
+
+### Environment
+```bash
+WEBZIO_API_TOKEN=your_webzio_token
+WEBZIO_FIREHOSE_URL=https://webz.io/fhose            # default
+WEBZIO_FILTER="site_type:news language:english"     # optional query
+WEBZIO_OUTPUT_DATASET_PATH=data/webzio_board_dataset.json
+BOARD_DATASET_PATH=data/grok_tips_inspiration_dataset.json  # default board dataset
+BOARD_FEED_TTL_SEC=45
+VIBE_CONTEXT_NUDGE=1  # enable context→vibe adjustments in generate_data
+```
+
+### Run Consumer
+```bash
+python scripts/run_webzio_consumer.py
+```
+- Streams events, writes `webzio_events` (Supabase if configured), and updates `WEBZIO_OUTPUT_DATASET_PATH` every ~10 events.
+- The board can point at this dataset: `GET /api/board/feed?dataset=data/webzio_board_dataset.json`.
+
+### Mapping to Scores & Vibes
+- The consumer computes placeholder `novelty_score`, `brand_pref_score`, `region_pref_score`, `deal_score`; extend with domain logic.
+- When playing a slice from the board, pass `context` to `/api/vibe/generate_data` for analytics:
+```json
+{
+  "data": [ ... ],
+  "palette_slug": "synthwave_midnight",
+  "context": {
+    "novelty_score": 0.6,
+    "brand_pref_score": 0.7,
+    "region_pref_score": 0.5,
+    "deal_score": 0.8
+  }
+}
+```
+
+### Operational Model
+- Core pipelines: launched via `/api/pipeline/run` or `/api/vibenet/run` (Lovable admin/server only).
+- Ad‑hoc runs: invoke consumer scripts anywhere; push to Supabase; board reads from dataset path.
+- Supabase tables suggested: `webzio_events`, `vibe_board_events`, `api_results`, `vibenet_runs`, `vibenet_items`.
+
+### Notes
+- Do not embed tokens in public clients. Run consumers server-side or via CI/cron.
+- The board feed caches responses; change `BOARD_FEED_TTL_SEC` for poll cadence.
+
+## 🚀 Vercel Concepts (AI SDK) — Split‑Flap + Radio + Composer
+
+- A ready-to-deploy Next.js app lives under `vercel-app/` and uses the Vercel AI SDK and Edge runtime to host:
+  - Split‑Flap board (`/embed`) with KV caching proxying `/api/board/feed`
+  - Radio Tuner (`/radio`) browsing canonical NYC routes and price quotes
+  - Deal Composer chat (`/composer`) with tool-calling for routes, quotes, and board feed
+- See `vercel-app/README_VERCEL.md` for env setup and deploy. Ensure your FastAPI `CORS_ORIGINS` includes your Vercel domain.
+
 
 ## 🏗️ Project Structure
 
@@ -483,3 +814,9 @@ const result = await fetch(`/api/jobs/${job.job_id}`).then(r => r.json());
 **🎉 SERP Radio: Where search data becomes music, and market movement gets a soundtrack.**
 
 *Built with FastAPI, OpenAI GPT-4o-mini, AWS S3, and a passion for turning data into audio experiences.*
+### Provider Differences
+- xAI (Grok): endpoint `https://api.x.ai/v1/chat/completions` with `GROK_API_KEY` or `XAI_API_KEY`. Used by our cached daily LLM pipeline (`src/llm_xai.py`, `/api/llm/run`).
+- Groq: high‑performance LLM via Groq SDK (`groq` package), configured with `GROQ_API_KEY`. Used by screenshot OCR/vision helpers.
+- OpenAI: fallback provider for OCR/vision (`OPENAI_API_KEY`).
+
+Tip: Don’t confuse `GROK_API_KEY` (xAI) with `GROQ_API_KEY` (Groq). Both can be set; they serve different roles in this codebase.

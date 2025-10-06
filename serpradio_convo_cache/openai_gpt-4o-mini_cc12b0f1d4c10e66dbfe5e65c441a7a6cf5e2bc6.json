@@ -1,0 +1,25 @@
+{
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "prompt": "What is the typical price of a flight from EWR to Riyadh within the next 45 days?\nReturn STRICT JSON: { \n  \"origin\": \"EWR\", \"destination\": \"RUH\", \"window_days\": 45,\n  \"price_low_usd\": number, \"price_high_usd\": number,\n  \"typical_airlines\": [string], \"cited_websites\": [string], \"notes\": string\n}",
+  "response_raw": {
+    "id": "chatcmpl-C89Ql4mXTLe7C27FIabj9lwgsFhdj",
+    "created": 1756058911,
+    "model": "gpt-4o-mini-2024-07-18",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"origin\": \"EWR\",\n  \"destination\": \"RUH\",\n  \"window_days\": 45,\n  \"price_low_usd\": 800,\n  \"price_high_usd\": 1500,\n  \"typical_airlines\": [\"Saudi Arabian Airlines\", \"United Airlines\", \"American Airlines\", \"Lufthansa\"],\n  \"cited_websites\": [],\n  \"notes\": \"Prices can vary based on demand, time of booking, and flight connections.\"\n}"
+        }
+      }
+    ]
+  },
+  "latency_ms": 2107,
+  "status": "ok",
+  "metadata": {
+    "kind": "price_query",
+    "origin": "EWR",
+    "destination": "RUH"
+  }
+}

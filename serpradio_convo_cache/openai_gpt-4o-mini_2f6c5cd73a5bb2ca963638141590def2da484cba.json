@@ -1,0 +1,25 @@
+{
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "prompt": "What is the typical price of a flight from EWR to Prague within the next 45 days?\nReturn STRICT JSON: { \n  \"origin\": \"EWR\", \"destination\": \"PRG\", \"window_days\": 45,\n  \"price_low_usd\": number, \"price_high_usd\": number,\n  \"typical_airlines\": [string], \"cited_websites\": [string], \"notes\": string\n}",
+  "response_raw": {
+    "id": "chatcmpl-C89OU40wXWet38p6ItLq8uVdz7Wk7",
+    "created": 1756058770,
+    "model": "gpt-4o-mini-2024-07-18",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"origin\": \"EWR\",\n  \"destination\": \"PRG\",\n  \"window_days\": 45,\n  \"price_low_usd\": 600,\n  \"price_high_usd\": 1200,\n  \"typical_airlines\": [\"United Airlines\", \"Lufthansa\", \"British Airways\", \"Delta Air Lines\", \"Air France\"],\n  \"cited_websites\": [],\n  \"notes\": \"Prices can vary based on demand, time of booking, and specific travel dates.\"\n}"
+        }
+      }
+    ]
+  },
+  "latency_ms": 1947,
+  "status": "ok",
+  "metadata": {
+    "kind": "price_query",
+    "origin": "EWR",
+    "destination": "PRG"
+  }
+}

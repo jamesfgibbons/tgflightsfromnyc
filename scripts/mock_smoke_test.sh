@@ -6,14 +6,18 @@ echo "🏝️ Running Caribbean Kokomo Pipeline Mock Smoke Test..."
 echo "📋 This test uses cached/OpenAI-generated data instead of live flight APIs"
 
 # Load environment variables from main directory
+# Load environment variables from creds.env.txt or creds.env.example
+set -a
 if [ -f creds.env.txt ]; then
-    set -a
-    source <(cat creds.env.txt | grep -v '^#' | grep -v '^$')
-    set +a
+  source <(grep -v '^#' creds.env.txt | grep -v '^$')
+elif [ -f creds.env.example ]; then
+  echo "ℹ️ creds.env.txt not found; falling back to creds.env.example"
+  source <(grep -v '^#' creds.env.example | grep -v '^$')
 else
-    echo "❌ Error: creds.env.txt not found. Please create it from creds.env.example"
-    exit 1
+  echo "❌ Error: no creds.env.txt or creds.env.example found"
+  exit 1
 fi
+set +a
 
 # Mock test parameters
 echo "📊 Mock smoke test parameters:"

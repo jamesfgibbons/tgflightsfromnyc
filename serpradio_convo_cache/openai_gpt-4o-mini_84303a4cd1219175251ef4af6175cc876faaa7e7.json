@@ -1,0 +1,25 @@
+{
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "prompt": "What is the typical price of a flight from JFK to Birmingham UK within the next 45 days?\nReturn STRICT JSON: { \n  \"origin\": \"JFK\", \"destination\": \"BHX\", \"window_days\": 45,\n  \"price_low_usd\": number, \"price_high_usd\": number,\n  \"typical_airlines\": [string], \"cited_websites\": [string], \"notes\": string\n}",
+  "response_raw": {
+    "id": "chatcmpl-C89RfN1dmuPin7colimVCIYmkNvWH",
+    "created": 1756058967,
+    "model": "gpt-4o-mini-2024-07-18",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"origin\": \"JFK\",\n  \"destination\": \"BHX\",\n  \"window_days\": 45,\n  \"price_low_usd\": 600,\n  \"price_high_usd\": 1200,\n  \"typical_airlines\": [\"British Airways\", \"American Airlines\", \"Delta\", \"United Airlines\"],\n  \"cited_websites\": [\"expedia.com\", \"kayak.com\", \"skyscanner.com\"],\n  \"notes\": \"Prices can vary based on demand, time of booking, and specific travel dates.\"\n}"
+        }
+      }
+    ]
+  },
+  "latency_ms": 1981,
+  "status": "ok",
+  "metadata": {
+    "kind": "price_query",
+    "origin": "JFK",
+    "destination": "BHX"
+  }
+}

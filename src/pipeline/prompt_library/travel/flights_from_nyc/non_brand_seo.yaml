@@ -1,0 +1,27 @@
+channel: travel
+theme: flights_from_nyc
+sub_theme: non_brand_seo
+focus: "Non-brand discovery queries for NYC-origin domestic routes"
+sound_pack_default: "8-Bit"
+mood: "practical, playful, deal-finding"
+
+origins: [JFK, LGA, EWR]
+destinations:
+  - { code: LAS, name: Las Vegas }
+  - { code: MIA, name: Miami }
+  - { code: LAX, name: Los Angeles }
+  - { code: MCO, name: Orlando }
+  - { code: SJU, name: San Juan }
+
+templates:
+  - "cheap flights from {origin} to {dest}"
+  - "{origin} to {dest} flights under $200"
+  - "best day of week to fly {origin} to {dest}"
+  - "when to buy tickets {origin} to {dest} next 60 days"
+  - "nonstop vs 1-stop price {origin} -> {dest}"
+  - "one way vs round trip cost {origin} to {dest}"
+
+novelty_special:
+  - "NYC to {dest} for under $99: realistic or myth?"
+  - "{origin} to {dest}: cheapest weekend combo (Fri evening → Sun night)"
+

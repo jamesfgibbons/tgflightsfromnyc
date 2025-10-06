@@ -1,8 +1,8 @@
 import os, json, datetime as dt
 from typing import List, Dict
-from openai import OpenAI
 from supabase import create_client
 from src.config import settings
+from .openai_client import FlightLLM
 
 SYSTEM = (
   "You enrich flight visibility summaries. Return strict JSON for fields: "
@@ -25,10 +25,8 @@ def _mk_prompt(v: dict) -> Dict:
 
 def run(days: int=7):
     settings.assert_minimum()
-    if not settings.openai_api_key:
-        raise RuntimeError("OPENAI_API_KEY missing")
     sb = create_client(settings.supabase_url, settings.supabase_key)
-    client = OpenAI(api_key=settings.openai_api_key)
+    llm = FlightLLM()
 
     start = dt.date.today()
     end = start + dt.timedelta(days=days-1)
@@ -40,14 +38,18 @@ def run(days: int=7):
 
     enriched_rows = []
     for v in items:
-        msgs = [{"role":"system","content": SYSTEM}, _mk_prompt(v)]
-        resp = client.responses.create(
-            model="gpt-4o-mini",
-            input=msgs,
-            temperature=0.2,
-            response_format={"type":"json_object"}
-        )
-        out = json.loads(resp.output_text)
+        # Use wrapper to get strict JSON
+        out = llm.analyze_prompt(json.dumps({
+            "task": "enrich_flight_visibility",
+            "system": SYSTEM,
+            "payload": {
+                "region": v["region"], "origin": v["origin"], "destination": v["destination"],
+                "date_bucket": v["date_bucket"],
+                "price_min": v.get("price_min"), "price_median": v.get("price_median"),
+                "volatility": v.get("volatility"),
+                "sov_brand": v.get("sov_brand",{}),
+            }
+        }))
         enriched_rows.append({
             "region": v["region"],
             "origin": v["origin"],

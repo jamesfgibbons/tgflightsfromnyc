@@ -1,0 +1,25 @@
+{
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "prompt": "What is the typical price of a flight from LGA to San Jose CR within the next 45 days?\nReturn STRICT JSON: { \n  \"origin\": \"LGA\", \"destination\": \"SJO\", \"window_days\": 45,\n  \"price_low_usd\": number, \"price_high_usd\": number,\n  \"typical_airlines\": [string], \"cited_websites\": [string], \"notes\": string\n}",
+  "response_raw": {
+    "id": "chatcmpl-C89O38OyGU9huy8Nyq70LCoNAyaI1",
+    "created": 1756058743,
+    "model": "gpt-4o-mini-2024-07-18",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"origin\": \"LGA\",\n  \"destination\": \"SJO\",\n  \"window_days\": 45,\n  \"price_low_usd\": 300,\n  \"price_high_usd\": 600,\n  \"typical_airlines\": [\"JetBlue\", \"American Airlines\", \"United Airlines\", \"Delta\"],\n  \"cited_websites\": [\"expedia.com\", \"kayak.com\", \"google.com/flights\"],\n  \"notes\": \"Prices can vary based on demand, time of booking, and specific travel dates.\"\n}"
+        }
+      }
+    ]
+  },
+  "latency_ms": 1981,
+  "status": "ok",
+  "metadata": {
+    "kind": "price_query",
+    "origin": "LGA",
+    "destination": "SJO"
+  }
+}

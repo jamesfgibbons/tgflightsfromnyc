@@ -10,6 +10,11 @@ from typing import Dict, List, Any, Optional
 from map_to_controls import Controls
 from extract_motifs import load_motif_catalog
 
+try:  # Optional FastAI predictor
+    from src.training.fastai_runtime import predict_motif_label  # type: ignore
+except Exception:  # pragma: no cover - runtime optionality
+    predict_motif_label = None  # type: ignore
+
 logger = logging.getLogger(__name__)
 
 # Module-level caches
@@ -475,11 +480,44 @@ def select_motifs_by_label(
     
     logger.info(f"Found {len(labeled_motifs)} motifs with label '{target_label}' for tenant {tenant_id}")
     
-    # Step 4: If not enough labeled motifs, add unlabeled ones
+    # Step 4: If not enough labeled motifs, consult FastAI predictor and/or add unlabeled ones
     if len(labeled_motifs) < num_motifs:
         unlabeled_motifs = [m for m in all_motifs if m.get("label", "UNLABELED") == "UNLABELED"]
-        logger.info(f"Adding {len(unlabeled_motifs)} unlabeled motifs to pool")
-        labeled_motifs.extend(unlabeled_motifs)
+        remaining_unlabeled = list(unlabeled_motifs)
+
+        if predict_motif_label:
+            predicted_matches: List[Dict[str, Any]] = []
+            for motif in unlabeled_motifs:
+                try:
+                    predicted = predict_motif_label(motif)
+                except Exception as exc:  # pragma: no cover - prediction guard
+                    logger.debug(f"FastAI predictor failed for motif {motif.get('id')}: {exc}")
+                    continue
+                if predicted == target_label:
+                    predicted_matches.append(motif)
+
+            if predicted_matches:
+                logger.info(
+                    f"FastAI predictor supplied {len(predicted_matches)} unlabeled motifs for label '{target_label}'"
+                )
+                labeled_ids = {m["id"] for m in labeled_motifs}
+                for motif in predicted_matches:
+                    if motif["id"] not in labeled_ids:
+                        labeled_motifs.append(motif)
+                        labeled_ids.add(motif["id"])
+                remaining_unlabeled = [m for m in unlabeled_motifs if m["id"] not in labeled_ids]
+            else:
+                remaining_unlabeled = unlabeled_motifs
+
+        if len(labeled_motifs) < num_motifs and remaining_unlabeled:
+            logger.info(
+                f"Adding {len(remaining_unlabeled)} unlabeled motifs to pool after predictor filter"
+            )
+            labeled_ids = {m["id"] for m in labeled_motifs}
+            for motif in remaining_unlabeled:
+                if motif["id"] not in labeled_ids:
+                    labeled_motifs.append(motif)
+                    labeled_ids.add(motif["id"])
     
     # Step 5: If still not enough, fall back to all motifs
     if len(labeled_motifs) < num_motifs:

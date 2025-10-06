@@ -1,0 +1,41 @@
+channel: travel
+theme: flights_from_nyc
+sub_theme: ski_season
+focus: "NYC → Ski destinations (Dec–Mar) with weekend windows, direct vs 1-stop, booking timing"
+sound_pack_default: "Arena Rock"
+mood: "energetic, crisp, outdoors"
+
+origins: [JFK, LGA, EWR]
+destinations:
+  - { code: DEN, name: Denver (CO) }
+  - { code: SLC, name: Salt Lake City (UT) }
+  - { code: RNO, name: Reno/Tahoe (NV) }
+  - { code: JAC, name: Jackson Hole (WY) }
+  - { code: ASE, name: Aspen (CO) }
+  - { code: EGE, name: Eagle/Vail (CO) }
+  - { code: HDN, name: Steamboat (CO) }
+  - { code: MTJ, name: Telluride (CO) }
+  - { code: BZN, name: Bozeman/Big Sky (MT) }
+  - { code: GEG, name: Spokane (Schweitzer/WA-ID) }
+  - { code: RDM, name: Bend/Redmond (Mt. Bachelor, OR) }
+  - { code: BOI, name: Boise (Bogus Basin/ID) }
+  - { code: YVR, name: Vancouver (Whistler/BC) }
+  - { code: YYC, name: Calgary (Banff/AB) }
+  - { code: BTV, name: Burlington (Stowe/VT) }
+  - { code: PWM, name: Portland (ME) }
+  - { code: ALB, name: Albany (NY) }
+  - { code: MHT, name: Manchester (NH) }
+
+templates:
+  - "NYC {origin} → {dest} ski season (Dec–Mar) cheapest nonstop vs 1-stop"
+  - "Weekend ski trip {origin}->{dest} Fri after 5 PM → Sun night return"
+  - "Best time to book {origin}->{dest} for January powder weeks"
+  - "Holiday surcharge {origin}->{dest} MLK/Presidents week strategies"
+  - "Ski gear fees included vs bare fare: {origin} to {dest} true total"
+  - "Red-eye to first chair {origin}->{dest}: realistic and cheapest?"
+  - "NYC to {dest} under $300: where and when (Dec–Mar)?"
+  - "Non-brand search trend: 'cheap flights to {dest}' day-of-week patterns"
+
+novelty_special:
+  - "Powder alert planning: {origin}→{dest} options when snow dumps 48 hours ahead"
+  - "Airport-to-resort transfers: {dest} ski shuttle vs rental tradeoffs"

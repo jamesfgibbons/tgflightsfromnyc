@@ -1,0 +1,20 @@
+{
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "prompt": "Best time to book EWR→LAS within next 60 days.\nInclude: fare ranges (USD), typical booking window (days before departure),\npeak/holiday effects, basic bag policy differences, and 1–2 concrete examples.\nReturn STRICT JSON: {\n  \"origin\": string, \"destination\": string, \"window_days\": number,\n  \"best_window_days\": [min,max], \"fare_low_usd\": number, \"fare_high_usd\": number,\n  \"notes\": string\n}",
+  "response_raw": {
+    "id": "chatcmpl-C7x0ACJ8urAM1yxZQhsdQodldanp9",
+    "created": 1756011134,
+    "model": "gpt-4o-mini-2024-07-18",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"origin\": \"EWR\",\n  \"destination\": \"LAS\",\n  \"window_days\": 30,\n  \"best_window_days\": [21, 45],\n  \"fare_low_usd\": 150,\n  \"fare_high_usd\": 350,\n  \"notes\": \"Booking 3-6 weeks in advance typically yields the best fares. Peak travel times include weekends and holidays, which can increase fares by 20-30%. Basic economy fares often include one personal item but charge for carry-on and checked bags. For example, a round trip booked 30 days out may cost around $200, while booking last minute could exceed $300.\"\n}"
+        }
+      }
+    ]
+  },
+  "latency_ms": 1764,
+  "status": "ok"
+}

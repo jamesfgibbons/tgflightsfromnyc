@@ -1,0 +1,25 @@
+{
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "prompt": "What is the typical price of a flight from JFK to Kahului within the next 45 days?\nReturn STRICT JSON: { \n  \"origin\": \"JFK\", \"destination\": \"OGG\", \"window_days\": 45,\n  \"price_low_usd\": number, \"price_high_usd\": number,\n  \"typical_airlines\": [string], \"cited_websites\": [string], \"notes\": string\n}",
+  "response_raw": {
+    "id": "chatcmpl-C89RwB5N9bqLAwQfgjDUkse629UFa",
+    "created": 1756058984,
+    "model": "gpt-4o-mini-2024-07-18",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"origin\": \"JFK\",\n  \"destination\": \"OGG\",\n  \"window_days\": 45,\n  \"price_low_usd\": 600,\n  \"price_high_usd\": 900,\n  \"typical_airlines\": [\"American Airlines\", \"Delta Air Lines\", \"United Airlines\", \"Hawaiian Airlines\"],\n  \"cited_websites\": [],\n  \"notes\": \"Prices can fluctuate based on demand and booking time. It's advisable to book early for better rates.\"\n}"
+        }
+      }
+    ]
+  },
+  "latency_ms": 1882,
+  "status": "ok",
+  "metadata": {
+    "kind": "price_query",
+    "origin": "JFK",
+    "destination": "OGG"
+  }
+}

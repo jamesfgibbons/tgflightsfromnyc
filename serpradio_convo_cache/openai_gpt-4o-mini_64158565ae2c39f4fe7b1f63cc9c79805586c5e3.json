@@ -1,0 +1,25 @@
+{
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "prompt": "What is the typical price of a flight from JFK to San Juan within the next 45 days?\nReturn STRICT JSON: { \n  \"origin\": \"JFK\", \"destination\": \"SJU\", \"window_days\": 45,\n  \"price_low_usd\": number, \"price_high_usd\": number,\n  \"typical_airlines\": [string], \"cited_websites\": [string], \"notes\": string\n}",
+  "response_raw": {
+    "id": "chatcmpl-C89KsUAqzQm2FT7EHtrceL55YL2PN",
+    "created": 1756058546,
+    "model": "gpt-4o-mini-2024-07-18",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"origin\": \"JFK\",\n  \"destination\": \"SJU\",\n  \"window_days\": 45,\n  \"price_low_usd\": 150,\n  \"price_high_usd\": 400,\n  \"typical_airlines\": [\"JetBlue\", \"American Airlines\", \"Delta\", \"Southwest\"],\n  \"cited_websites\": [],\n  \"notes\": \"Prices can fluctuate based on demand and booking time.\"\n}"
+        }
+      }
+    ]
+  },
+  "latency_ms": 1826,
+  "status": "ok",
+  "metadata": {
+    "kind": "price_query",
+    "origin": "JFK",
+    "destination": "SJU"
+  }
+}

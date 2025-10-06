@@ -1,0 +1,21 @@
+:root { --bg:#0b0e12; --fg:#e6edf3; --muted:#8b949e; --card:#11161d; }
+body { margin:0; background:var(--bg); color:var(--fg); font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 20px; }
+.tabs { display:flex; gap:8px; margin:12px 0; }
+.tab { background:#131a24; color:#e6edf3; border:1px solid #1f2630; padding:6px 10px; border-radius:8px; cursor:pointer; }
+.tab.active { background:#1f2937; border-color:#334155; }
+.board { display:grid; grid-template-columns: 1.25fr .8fr .6fr .6fr 1.6fr .4fr .4fr .4fr; gap: 8px; }
+.grid-headers .cell.head { background:#0f141c; color: var(--muted); text-transform: uppercase; letter-spacing: .3px; font-size: 12px; }
+.cell { background: var(--card); border: 1px solid #1f2630; border-radius: 6px; padding: 10px; display:flex; align-items:center; min-height: 48px; }
+.cell.small { color: var(--muted); font-size: 12px; }
+.cell.tiny { color: var(--muted); font-size: 12px; justify-content:center; }
+.cell.chip { font-weight: 700; text-transform: uppercase; font-size: 12px; justify-content:center; }
+.cell.chip.positive { background: #112417; border-color:#1f4d2a; color: #8ce99a; }
+.cell.chip.negative { background: #2a1212; border-color:#4d1f1f; color: #ff8787; }
+.cell.chip.neutral { background: #1a2029; border-color:#2a3340; color: #c1c9d6; }
+.cell.tempo { color: #c9b7ff; font-weight:600; }
+.flip { position: relative; perspective: 600px; overflow: hidden; }
+.flip .front, .flip .back { position:absolute; inset:0; padding:10px; display:flex; align-items:center; animation: flip 650ms ease-in-out forwards; transform-origin: center; backface-visibility:hidden; }
+@keyframes flip { 0% { transform: rotateX(0deg); } 49% { transform: rotateX(90deg); } 50% { transform: rotateX(-90deg); } 100% { transform: rotateX(0deg); } }
+.spark { display:flex; gap:2px; align-items:flex-end; justify-content:flex-start; padding: 6px 8px; }
+.spark .bar { width: 6px; background: linear-gradient(180deg, #79c0ff, #4ea4ff); border-radius: 2px 2px 0 0; }

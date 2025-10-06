@@ -132,6 +132,20 @@ class ThemeManager:
         # Time-based overrides for red-eye themes
         elif config.get("sub_theme") == "red_eye_deals":
             sound_pack = "Synthwave"  # Always synthwave for red-eyes
+        elif config.get("sub_theme") == "ski_season":
+            sound_pack = "Arena Rock"
+
+        # Non-brand SEO and hacks → playful 8-Bit
+        elif config.get("sub_theme") in ("non_brand_seo", "hidden_city_hacks"):
+            sound_pack = "8-Bit"
+
+        # Best time to book → calmer Synthwave
+        elif config.get("sub_theme") == "best_time_to_book":
+            sound_pack = "Synthwave"
+
+        # Weekend getaways → Tropical Pop
+        elif config.get("sub_theme") == "weekend_getaways":
+            sound_pack = "Tropical Pop"
         
         # Mood-based adjustments
         mood = config.get("mood", "")
@@ -192,6 +206,8 @@ class ThemeManager:
                 "channel": vertical,
                 "theme": theme,
                 "sub_theme": sub_theme,
+                "origin": p["origin"],
+                "destination": p["destination"],
                 "brand": r.carrier_likelihood[0] if r.carrier_likelihood else p.get("sound_pack_hint", ""),
                 "title": p["title"],
                 "prompt": p["prompt"],
@@ -258,6 +274,19 @@ class ThemeManager:
         elif sub_theme == "red_eye_deals":
             base_tempo = max(90, base_tempo - 20)  # Slower, more ambient
             base_bars = min(24, base_bars - 4)     # Shorter tracks
+        elif sub_theme == "ski_season":
+            base_tempo = max(110, base_tempo)
+            base_bars = max(32, base_bars)
+        elif sub_theme == "non_brand_seo":
+            base_tempo = min(136, max(100, base_tempo))
+        elif sub_theme == "best_time_to_book":
+            base_tempo = max(96, base_tempo - 8)
+            base_bars = max(24, base_bars)
+        elif sub_theme == "hidden_city_hacks":
+            base_tempo = min(140, base_tempo + 6)
+        elif sub_theme == "weekend_getaways":
+            base_tempo = 110
+            base_bars = max(28, base_bars)
         elif sub_theme == "budget_carriers":
             base_tempo = min(140, base_tempo + 10) # Slightly faster, more energetic
         elif sub_theme == "legacy_airlines":

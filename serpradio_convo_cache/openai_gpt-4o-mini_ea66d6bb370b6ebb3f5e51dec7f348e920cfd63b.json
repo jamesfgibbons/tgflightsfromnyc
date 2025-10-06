@@ -1,0 +1,25 @@
+{
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "prompt": "What is the typical price of a flight from JFK to Venice within the next 45 days?\nReturn STRICT JSON: { \n  \"origin\": \"JFK\", \"destination\": \"VCE\", \"window_days\": 45,\n  \"price_low_usd\": number, \"price_high_usd\": number,\n  \"typical_airlines\": [string], \"cited_websites\": [string], \"notes\": string\n}",
+  "response_raw": {
+    "id": "chatcmpl-C89NaOkyZVAoUCw7FVQ1zPV06A6xG",
+    "created": 1756058714,
+    "model": "gpt-4o-mini-2024-07-18",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"origin\": \"JFK\",\n  \"destination\": \"VCE\",\n  \"window_days\": 45,\n  \"price_low_usd\": 500,\n  \"price_high_usd\": 1200,\n  \"typical_airlines\": [\"Delta\", \"American Airlines\", \"United\", \"Alitalia\", \"Lufthansa\"],\n  \"cited_websites\": [\"kayak.com\", \"expedia.com\", \"google.com/flights\"],\n  \"notes\": \"Prices can vary based on demand, time of booking, and specific travel dates.\"\n}"
+        }
+      }
+    ]
+  },
+  "latency_ms": 4060,
+  "status": "ok",
+  "metadata": {
+    "kind": "price_query",
+    "origin": "JFK",
+    "destination": "VCE"
+  }
+}

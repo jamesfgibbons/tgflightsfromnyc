@@ -1,41 +1,36 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
-- `src/` — FastAPI backend and core engine
-  - `main.py` (API entry), `vibe_api.py` (Vibe Engine), `sonify_service.py` (orchestration), `arranger.py`, `earcons.py`, `storage.py`, `pipeline/` (batch + travel), `renderer.py`.
-- `completed/` — domain algorithms (metrics, controls, MIDI transform, motif selection).
-- `tests/` — pytest suite (`test_*.py`).
-- `config/` — palettes and rules (`vibe_palettes.yaml`, `vibe_rules.yaml`).
-- `scripts/` — utilities and smoke tests (e.g., `scripts/vibe_smoke.py`).
-- `tools/` — helpers (e.g., `tools/seed_palettes.py`).
+- `src/` – FastAPI backend, VibeNet engine, providers, and pipelines (`src/main.py`, `src/vibe_api.py`, `src/pipeline/*`).
+- `vite-react-user/` – Vite/React split‑flap UI (Lovable/Vercel friendly).
+- `sql/` – Supabase migrations (`000_init_schema.sql` + modular SQL files).
+- `tests/` – pytest suites (storage, job store, audio, APIs).
+- `docs/` – runbooks and deployment notes; `data/`, `catalog/` – generated assets.
 
 ## Build, Test, and Development Commands
-- Setup: `python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt`
-- Run API: `uvicorn src.main:app --reload --host 0.0.0.0 --port 8000`
-- Run pipeline: `python -m src.pipeline.run_pipeline --limit 24`
-- Smoke tests: `make smoke` or `BASE=http://localhost:8000 python scripts/vibe_smoke.py`
-- Tests: `pytest -q` or coverage `pytest --cov=src -q`
-- Docker (optional): `docker build -t serpradio:latest . && docker run --rm --env-file .env -p 8000:8000 serpradio:latest`
+- Backend install: `pip install -r requirements.txt`
+- Run API: `uvicorn src.main:app --reload` (http://127.0.0.1:8000)
+- Tests: `pytest --maxfail=1 -q` (unit/integration)
+- Frontend: `cd vite-react-user && npm install && npm run dev`
+- Pipelines (demo): `bash scripts/run_travel_pipeline_local.sh`
+- Docker (optional): `docker build -t serpradio:dev . && docker run --rm -p 8000:8000 serpradio:dev`
 
 ## Coding Style & Naming Conventions
-- Python 3.11+, PEP8, 4‑space indentation (use Black defaults).
-- Use type hints; Pydantic v2 models for request/response.
-- Filenames/modules: `snake_case.py`; classes: `PascalCase`; vars/functions: `snake_case`.
-- Formatters/linters: `black`, `isort`, `mypy` (installed in `requirements.txt`).
-  - Examples: `black src tests`, `isort src tests`.
+- Python: PEP 8; type hints for new code. Use `ruff` (if configured) or `black` + `isort`. Files: `snake_case.py`; classes: `PascalCase`; funcs/vars: `snake_case`.
+- React: ESNext + Prettier (2‑space). Components in `PascalCase` (e.g., `SplitFlapBoard.tsx`).
+- SQL: zero‑padded migration filenames (e.g., `000_init_schema.sql`).
 
 ## Testing Guidelines
-- Framework: `pytest`; place tests under `tests/` as `test_*.py`.
-- Keep unit tests close to modules (e.g., `tests/test_arranger.py`).
-- Run locally with `pytest -q`; aim for meaningful coverage (`pytest --cov=src`).
-- Prefer deterministic inputs (seeded where applicable); avoid network in unit tests.
+- Framework: `pytest`; tests under `tests/` named `test_*.py`.
+- Mock external deps (Supabase, S3, LLMs). Avoid live network in unit tests.
+- Add tests for new routes/services; run `pytest --maxfail=1` before PRs.
 
 ## Commit & Pull Request Guidelines
-- Commits: concise, imperative mood (e.g., "Add Vibe Engine palettes endpoint"). Group related changes.
-- PRs: include purpose, scope, screenshots/logs of API responses, and links to issues. Note env/config changes (e.g., `VIBE_USE_SPOTIFY`, storage buckets).
-- CI friendliness: keep changes minimal; don’t commit secrets or `.env`.
+- Commits: conventional, imperative (e.g., `feat: add best-time summary endpoint`).
+- PRs: include purpose, key changes, run output (pytest, curl), and any env/config updates. Link issues when applicable.
+- Screenshots/console for UI/API changes (split‑flap preview, `/api/vibe/generate_data` result). Keep PRs scoped.
 
 ## Security & Configuration Tips
-- Configure storage via env (`S3_BUCKET`/`SUPABASE_*`). Keep `ADMIN_SECRET` and API keys out of git.
-- Spotify is optional; disable with `VIBE_USE_SPOTIFY=0`. MP3 rendering via `RENDER_MP3=1` requires Fluidsynth+FFmpeg.
-- Public assets: serve via the public bucket/CDN; keep artifacts private.
+- Secrets only in env (`.env`/platform vars). Never commit keys.
+- Key envs: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE`, `CORS_ORIGINS`, `ADMIN_SECRET`, storage (`STORAGE_BUCKET`/`S3_*`), frontend `VITE_API_BASE`.
+- Admin routes require `X-Admin-Secret`; set CORS to your frontend domains.

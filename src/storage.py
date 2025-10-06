@@ -34,26 +34,36 @@ class StorageError(Exception):
 
 
 def get_storage_backend() -> str:
-    """Determine which storage backend to use based on environment."""
-    if os.getenv("SUPABASE_URL") and os.getenv("SUPABASE_ANON_KEY"):
+    """Determine which storage backend to use based on environment.
+
+    Prefer Supabase when either ANON or SERVICE_ROLE is configured.
+    """
+    if os.getenv("SUPABASE_URL") and (os.getenv("SUPABASE_ANON_KEY") or os.getenv("SUPABASE_SERVICE_ROLE") or os.getenv("SUPABASE_SERVICE_ROLE_KEY")):
         return "supabase"
     elif os.getenv("AWS_ACCESS_KEY_ID") or os.getenv("S3_BUCKET"):
         return "s3"
     else:
-        # Default to supabase for simpler setup
-        return "supabase"
+        # Default to S3/local mocks when no env hints are provided
+        return "s3"
 
 
 def get_supabase_client() -> Client:
-    """Get configured Supabase client."""
+    """Get configured Supabase client.
+
+    Uses SERVICE_ROLE key if present (server-side), else falls back to ANON key.
+    """
     if not HAS_SUPABASE:
         raise StorageError("Supabase client not available. Install with: pip install supabase")
     
     url = os.getenv("SUPABASE_URL")
-    key = os.getenv("SUPABASE_ANON_KEY")
+    key = (
+        os.getenv("SUPABASE_SERVICE_ROLE")
+        or os.getenv("SUPABASE_SERVICE_ROLE_KEY")
+        or os.getenv("SUPABASE_ANON_KEY")
+    )
     
     if not url or not key:
-        raise StorageError("SUPABASE_URL and SUPABASE_ANON_KEY environment variables required")
+        raise StorageError("SUPABASE_URL and either SUPABASE_SERVICE_ROLE(_KEY) or SUPABASE_ANON_KEY required")
     
     try:
         return create_client(url, key)
@@ -105,7 +115,8 @@ class UnifiedStorage:
                 file=data,
                 file_options={
                     "content-type": content_type,
-                    "cache-control": "3600" if not public else "31536000"
+                    "cache-control": "3600" if not public else "31536000",
+                    "upsert": True,
                 }
             )
             
@@ -417,23 +428,35 @@ def write_json(bucket: str, key: str, obj: Any, public: bool = False, cache_cont
         raise StorageError(f"Failed to serialize JSON: {e}")
 
 
-def read_text_s3(bucket: str, key: str, public: bool = False) -> str:
+def read_text_s3(bucket: str, key: Optional[str] = None, public: bool = False) -> str:
     """
     Read text file from storage.
-    
+
     Args:
-        bucket: Storage bucket name
-        key: Object key
+        bucket: Storage bucket name or s3:// URI
+        key: Object key (optional when bucket is s3:// URI)
         public: Whether reading from public storage
-    
+
     Returns:
         File content as string
-    
+
     Raises:
         StorageError: If read fails
     """
+    original_bucket = bucket
+    if key is None:
+        if bucket.startswith("s3://"):
+            parsed = urlparse(bucket)
+            bucket = parsed.netloc
+            key = parsed.path.lstrip("/")
+        else:
+            raise ValueError("Invalid S3 URI: key missing")
+
+    if not key:
+        raise ValueError(f"Invalid S3 URI: bucket={original_bucket} key={key}")
+
     backend = get_storage_backend()
-    
+
     if backend == "supabase":
         return _read_supabase_text(bucket, key)
     else:

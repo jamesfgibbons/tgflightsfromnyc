@@ -1,0 +1,11 @@
+{
+  "report": {
+    "total": 20,
+    "ok": 20,
+    "parse_errors": 0,
+    "schema_errors": 0,
+    "route_mismatches": 0,
+    "cache_dir": "serpradio_convo_cache"
+  },
+  "failures": []
+}

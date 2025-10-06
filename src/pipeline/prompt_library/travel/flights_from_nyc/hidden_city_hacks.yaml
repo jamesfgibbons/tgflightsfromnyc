@@ -1,0 +1,25 @@
+channel: travel
+theme: flights_from_nyc
+sub_theme: hidden_city_hacks
+focus: "Hidden-city & positioning strategies (informational; disclaimers implied)"
+sound_pack_default: "8-Bit"
+mood: "clever, hacker, rule-bending"
+
+origins: [JFK, LGA, EWR]
+destinations:
+  - { code: LAS, name: Las Vegas }
+  - { code: PHX, name: Phoenix }
+  - { code: DEN, name: Denver }
+  - { code: CLT, name: Charlotte }
+  - { code: ORD, name: Chicago }
+
+templates:
+  - "hidden city {origin} to {dest} via cheaper hub?"
+  - "positioning flight from NYC to cheaper fare city for {dest}"
+  - "throwaway return trick {origin}->{dest} lower total?"
+  - "nested ticketing {origin} to {dest} is it cheaper in practice?"
+
+novelty_special:
+  - "{origin}->{dest}: hub undercut search (ATL/CLT/ORD/DEN)"
+  - "NYC hacker routes to {dest}: top 3 questionable but cheap patterns"
+

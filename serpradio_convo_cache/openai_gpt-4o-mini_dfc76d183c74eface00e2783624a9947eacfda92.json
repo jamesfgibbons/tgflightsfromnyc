@@ -1,0 +1,25 @@
+{
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "prompt": "What is the typical price of a flight from JFK to Washington Dulles within the next 45 days?\nReturn STRICT JSON: { \n  \"origin\": \"JFK\", \"destination\": \"IAD\", \"window_days\": 45,\n  \"price_low_usd\": number, \"price_high_usd\": number,\n  \"typical_airlines\": [string], \"cited_websites\": [string], \"notes\": string\n}",
+  "response_raw": {
+    "id": "chatcmpl-C89PmGw3k0zi2KmgfOhTtcVB8LMxi",
+    "created": 1756058850,
+    "model": "gpt-4o-mini-2024-07-18",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"origin\": \"JFK\",\n  \"destination\": \"IAD\",\n  \"window_days\": 45,\n  \"price_low_usd\": 100,\n  \"price_high_usd\": 250,\n  \"typical_airlines\": [\"American Airlines\", \"United Airlines\", \"JetBlue Airways\"],\n  \"cited_websites\": [],\n  \"notes\": \"Prices can vary based on demand and booking time; expect higher prices closer to departure.\"\n}"
+        }
+      }
+    ]
+  },
+  "latency_ms": 2784,
+  "status": "ok",
+  "metadata": {
+    "kind": "price_query",
+    "origin": "JFK",
+    "destination": "IAD"
+  }
+}

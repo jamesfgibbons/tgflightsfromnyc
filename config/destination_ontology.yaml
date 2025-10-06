@@ -1,0 +1,45 @@
+# Destination Ontology (city/airport → tags + default palette)
+
+destinations:
+  # Southeast / Florida / Gulf / South
+  ATL: { city: "Atlanta", tags: ["major_hub","upbeat","night_city"], default_palette: "king_of_pop_loop" }
+  JAX: { city: "Jacksonville", tags: ["east_coast","breeze"], default_palette: "king_of_pop_loop" }
+  MEM: { city: "Memphis", tags: ["river_city","groove"], default_palette: "king_of_pop_loop" }
+  CVG: { city: "Cincinnati", tags: ["midwest","upbeat"], default_palette: "king_of_pop_loop" }
+  DFW: { city: "Dallas/Fort Worth", tags: ["sunbelt","arena_energy"], default_palette: "king_of_pop_loop" }
+  DAL: { city: "Dallas (Love Field)", tags: ["sunbelt","arena_energy"], default_palette: "king_of_pop_loop" }
+  IAH: { city: "Houston (IAH)", tags: ["sunbelt","upbeat"], default_palette: "king_of_pop_loop" }
+  HOU: { city: "Houston (HOU)", tags: ["sunbelt","upbeat"], default_palette: "king_of_pop_loop" }
+  MSY: { city: "New Orleans", tags: ["festival","night_city"], default_palette: "king_of_pop_loop" }
+  SAV: { city: "Savannah", tags: ["coastal","balmy"], default_palette: "king_of_pop_loop" }
+  CHS: { city: "Charleston", tags: ["coastal","historic"], default_palette: "king_of_pop_loop" }
+  MOB: { city: "Mobile", tags: ["gulf","balmy"], default_palette: "king_of_pop_loop" }
+  FLL: { city: "Fort Lauderdale", tags: ["coastal","sun"], default_palette: "king_of_pop_loop" }
+  MIA: { city: "Miami", tags: ["coastal","night_city"], default_palette: "king_of_pop_loop" }
+  PBI: { city: "West Palm Beach", tags: ["coastal","sun"], default_palette: "king_of_pop_loop" }
+  MCO: { city: "Orlando", tags: ["theme_parks","bright"], default_palette: "king_of_pop_loop" }
+  LAS: { city: "Las Vegas", tags: ["neon","night_city"], default_palette: "king_of_pop_loop" }
+  OAK: { city: "Oakland", tags: ["bay_area","groove"], default_palette: "king_of_pop_loop" }
+  STL: { city: "St. Louis", tags: ["midwest","river_city"], default_palette: "king_of_pop_loop" }
+
+aliases:
+  Atlanta: ATL
+  Jacksonville: JAX
+  Memphis: MEM
+  Cincinnati: CVG
+  Dallas: DFW
+  Dallas Love Field: DAL
+  Houston: IAH
+  Houston Hobby: HOU
+  New Orleans: MSY
+  Savannah: SAV
+  Charleston: CHS
+  Mobile: MOB
+  Fort Lauderdale: FLL
+  Miami: MIA
+  West Palm Beach: PBI
+  Orlando: MCO
+  Las Vegas: LAS
+  Oakland: OAK
+  St Louis: STL
+

@@ -2,6 +2,8 @@
 Unit tests for storage operations.
 """
 
+import os
+
 import pytest
 from moto import mock_aws
 import boto3
@@ -20,6 +22,26 @@ def mock_s3_setup():
         bucket_name = "test-bucket"
         s3_client.create_bucket(Bucket=bucket_name)
         yield s3_client, bucket_name
+
+
+@pytest.fixture(autouse=True)
+def _force_s3_backend(monkeypatch):
+    """Ensure storage helpers default to S3 during tests."""
+    for key in [
+        "SUPABASE_URL",
+        "SUPABASE_ANON_KEY",
+        "SUPABASE_SERVICE_ROLE",
+        "SUPABASE_SERVICE_ROLE_KEY",
+    ]:
+        monkeypatch.delenv(key, raising=False)
+    # Ensure S3 path is preferred
+    monkeypatch.setenv("AWS_ACCESS_KEY_ID", "test-key")
+    monkeypatch.setenv("AWS_SECRET_ACCESS_KEY", "test-secret")
+    # Force storage module to consider S3 available
+    from src import storage as storage_module
+
+    monkeypatch.setattr(storage_module, "HAS_S3", True)
+    monkeypatch.setattr(storage_module, "boto3", boto3)
 
 
 class TestS3Operations:

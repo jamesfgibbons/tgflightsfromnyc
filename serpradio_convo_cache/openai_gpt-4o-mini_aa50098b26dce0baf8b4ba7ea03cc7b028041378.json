@@ -1,0 +1,25 @@
+{
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "prompt": "What is the typical price of a flight from LGA to Lisbon within the next 45 days?\nReturn STRICT JSON: { \n  \"origin\": \"LGA\", \"destination\": \"LIS\", \"window_days\": 45,\n  \"price_low_usd\": number, \"price_high_usd\": number,\n  \"typical_airlines\": [string], \"cited_websites\": [string], \"notes\": string\n}",
+  "response_raw": {
+    "id": "chatcmpl-C89L0A7UK26F7qqd0JUklgxUqtJfP",
+    "created": 1756058554,
+    "model": "gpt-4o-mini-2024-07-18",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"origin\": \"LGA\",\n  \"destination\": \"LIS\",\n  \"window_days\": 45,\n  \"price_low_usd\": 500,\n  \"price_high_usd\": 900,\n  \"typical_airlines\": [\"Delta\", \"American Airlines\", \"United\", \"Iberia\", \"TAP Air Portugal\"],\n  \"cited_websites\": [],\n  \"notes\": \"Prices can vary based on demand, time of booking, and specific travel dates.\"\n}"
+        }
+      }
+    ]
+  },
+  "latency_ms": 2105,
+  "status": "ok",
+  "metadata": {
+    "kind": "price_query",
+    "origin": "LGA",
+    "destination": "LIS"
+  }
+}

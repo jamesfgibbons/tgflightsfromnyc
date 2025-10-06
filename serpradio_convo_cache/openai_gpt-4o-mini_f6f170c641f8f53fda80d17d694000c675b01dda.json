@@ -1,0 +1,25 @@
+{
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "prompt": "What is the typical price of a flight from EWR to Dublin within the next 45 days?\nReturn STRICT JSON: { \n  \"origin\": \"EWR\", \"destination\": \"DUB\", \"window_days\": 45,\n  \"price_low_usd\": number, \"price_high_usd\": number,\n  \"typical_airlines\": [string], \"cited_websites\": [string], \"notes\": string\n}",
+  "response_raw": {
+    "id": "chatcmpl-C89LLUIeIoYgNotn2bxNn9GlK2fQh",
+    "created": 1756058575,
+    "model": "gpt-4o-mini-2024-07-18",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"origin\": \"EWR\",\n  \"destination\": \"DUB\",\n  \"window_days\": 45,\n  \"price_low_usd\": 400,\n  \"price_high_usd\": 800,\n  \"typical_airlines\": [\"United Airlines\", \"Aer Lingus\", \"Delta Air Lines\", \"American Airlines\"],\n  \"cited_websites\": [\"expedia.com\", \"kayak.com\", \"google.com/flights\"],\n  \"notes\": \"Prices can vary based on demand and booking time. It's advisable to book early for better rates.\"\n}"
+        }
+      }
+    ]
+  },
+  "latency_ms": 1995,
+  "status": "ok",
+  "metadata": {
+    "kind": "price_query",
+    "origin": "EWR",
+    "destination": "DUB"
+  }
+}

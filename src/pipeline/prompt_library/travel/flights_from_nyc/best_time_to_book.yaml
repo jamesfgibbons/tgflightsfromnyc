@@ -1,0 +1,26 @@
+channel: travel
+theme: flights_from_nyc
+sub_theme: best_time_to_book
+focus: "Best time to book & seasonal timing insights for NYC routes"
+sound_pack_default: "Synthwave"
+mood: "analytical, anticipatory, calm"
+
+origins: [JFK, LGA, EWR]
+destinations:
+  - { code: LAS, name: Las Vegas }
+  - { code: MIA, name: Miami }
+  - { code: LAX, name: Los Angeles }
+  - { code: SFO, name: San Francisco }
+  - { code: SEA, name: Seattle }
+
+templates:
+  - "best time to book {origin} to {dest} next 3 months"
+  - "cheapest month to fly {origin} to {dest}"
+  - "day-of-week price pattern {origin} → {dest}"
+  - "fare predictor: when will {origin}->{dest} drop?"
+  - "holiday price spikes {origin} to {dest}: avoid or beat"
+
+novelty_special:
+  - "booking 21 vs 45 days out for {origin}->{dest}: which wins this season?"
+  - "NYC → {dest} midweek vs weekend purchase timing: actual historical winner"
+

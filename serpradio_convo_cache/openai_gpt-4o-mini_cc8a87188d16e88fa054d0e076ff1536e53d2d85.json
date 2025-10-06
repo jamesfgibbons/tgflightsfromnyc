@@ -1,0 +1,20 @@
+{
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "prompt": "Best time to book JFK→BKK within next 60 days.\nInclude: fare ranges (USD), typical booking window (days before departure),\npeak/holiday effects, basic bag policy differences, and 1–2 concrete examples.\nReturn STRICT JSON: {\n  \"origin\": string, \"destination\": string, \"window_days\": number,\n  \"best_window_days\": [min,max], \"fare_low_usd\": number, \"fare_high_usd\": number,\n  \"notes\": string\n}",
+  "response_raw": {
+    "id": "chatcmpl-C7xTDmGMht6fdpAn1F9sas15XCYFo",
+    "created": 1756012935,
+    "model": "gpt-4o-mini-2024-07-18",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"origin\": \"JFK\",\n  \"destination\": \"BKK\",\n  \"window_days\": 30,\n  \"best_window_days\": [21, 45],\n  \"fare_low_usd\": 700,\n  \"fare_high_usd\": 1300,\n  \"notes\": \"Booking 21 to 45 days in advance typically yields the best fares. Peak travel seasons, such as December holidays and summer months, can drive prices higher. Basic economy fares often include only a personal item, while standard fares may include a carry-on and checked bag. For example, a fare of $750 can be found if booked 30 days in advance, while last-minute fares can exceed $1200.\"\n}"
+        }
+      }
+    ]
+  },
+  "latency_ms": 2070,
+  "status": "ok"
+}

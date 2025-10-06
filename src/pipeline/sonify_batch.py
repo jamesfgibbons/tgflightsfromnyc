@@ -5,6 +5,7 @@ import os, json, time
 from typing import List, Dict, Any
 from datetime import datetime
 from ..sonify_service import create_sonification_service
+from .exporters.supabase_export import export_catalog
 from ..models import SonifyRequest
 from ..storage import get_presigned_url, write_json, put_bytes
 from .schemas import CacheEntry
@@ -47,9 +48,13 @@ def render_batch(plans: List[Dict[str,Any]]) -> List[CacheEntry]:
             id=item["id"],
             timestamp=item["timestamp"],
             channel=item["channel"],
+            theme=item.get("theme"),
+            sub_theme=item.get("sub_theme"),
             brand=item.get("brand"),
             title=item["title"],
             prompt=item["prompt"],
+            origin=item.get("origin"),
+            destination=item.get("destination"),
             sound_pack=plan["sound_pack"],
             duration_sec=duration,
             mp3_url=mp3_url,
@@ -74,3 +79,13 @@ def publish_catalog(entries: List[CacheEntry], catalog_prefix: str = "catalog/tr
     # store to PUBLIC bucket for easy frontend consumption
     write_json(PUBLIC_BUCKET, latest_key, payload, public=True, cache_control="public, max-age=1800")
     write_json(PUBLIC_BUCKET, dated_key,  payload, public=True, cache_control="public, max-age=31536000")
+
+    # optional: export to Supabase tables if configured
+    try:
+        channel = entries[0].channel if entries else "travel"
+        theme = getattr(entries[0], "theme", None) or catalog_prefix.split("/")[-1]
+        sub_theme = getattr(entries[0], "sub_theme", None)
+        export_catalog(entries, channel=channel, theme=theme, sub_theme=sub_theme, catalog_key=latest_key,
+                       notes=f"published {len(entries)} entries to {latest_key}")
+    except Exception:
+        pass

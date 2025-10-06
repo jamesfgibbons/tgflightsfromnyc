@@ -1,0 +1,20 @@
+{
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "prompt": "What is the typical price of a flight from LGA to Paris CDG within the next 45 days?\nReturn STRICT JSON: { \n  \"origin\": \"LGA\", \"destination\": \"CDG\", \"window_days\": 45,\n  \"price_low_usd\": number, \"price_high_usd\": number,\n  \"typical_airlines\": [string], \"cited_websites\": [string], \"notes\": string\n}",
+  "response_raw": {
+    "id": "chatcmpl-C883p5WIlJ8n6B2hvQGpiyPplLWtz",
+    "created": 1756053645,
+    "model": "gpt-4o-mini-2024-07-18",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"origin\": \"LGA\",\n  \"destination\": \"CDG\",\n  \"window_days\": 45,\n  \"price_low_usd\": 500,\n  \"price_high_usd\": 1200,\n  \"typical_airlines\": [\"Delta\", \"Air France\", \"American Airlines\", \"United Airlines\"],\n  \"cited_websites\": [\"expedia.com\", \"kayak.com\", \"google.com/flights\"],\n  \"notes\": \"Prices can vary based on demand, day of the week, and how far in advance the ticket is purchased.\"\n}"
+        }
+      }
+    ]
+  },
+  "latency_ms": 2685,
+  "status": "ok"
+}

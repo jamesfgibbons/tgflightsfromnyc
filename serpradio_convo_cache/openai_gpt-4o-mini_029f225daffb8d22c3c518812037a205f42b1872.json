@@ -1,0 +1,20 @@
+{
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "prompt": "Best time to book JFK→HKG within next 60 days.\nInclude: fare ranges (USD), typical booking window (days before departure),\npeak/holiday effects, basic bag policy differences, and 1–2 concrete examples.\nReturn STRICT JSON: {\n  \"origin\": string, \"destination\": string, \"window_days\": number,\n  \"best_window_days\": [min,max], \"fare_low_usd\": number, \"fare_high_usd\": number,\n  \"notes\": string\n}",
+  "response_raw": {
+    "id": "chatcmpl-C7xSChUS4TfmN1LxkeVMKWwtIgVFV",
+    "created": 1756012872,
+    "model": "gpt-4o-mini-2024-07-18",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"origin\": \"JFK\",\n  \"destination\": \"HKG\",\n  \"window_days\": 30,\n  \"best_window_days\": [21, 45],\n  \"fare_low_usd\": 600,\n  \"fare_high_usd\": 1200,\n  \"notes\": \"Booking 3-6 weeks in advance typically yields the best fares. Expect higher prices during peak travel seasons such as Chinese New Year and summer months. Basic economy fares often include limited or no checked baggage, while standard fares may include one free checked bag. For example, a fare of around $700 can be found if booked 30 days in advance, while last-minute bookings may exceed $1200.\"\n}"
+        }
+      }
+    ]
+  },
+  "latency_ms": 2404,
+  "status": "ok"
+}

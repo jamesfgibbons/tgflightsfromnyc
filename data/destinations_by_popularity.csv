@@ -1,0 +1,113 @@
+dest,name,score
+LAX,Los Angeles,100000
+SFO,San Francisco,98000
+SEA,Seattle,92000
+ORD,Chicago O'Hare,110000
+DFW,Dallas/Fort Worth,90000
+MIA,Miami,95000
+LAS,Las Vegas,97000
+BOS,Boston,88000
+ATL,Atlanta,105000
+DEN,Denver,93000
+PHX,Phoenix,82000
+SAN,San Diego,81000
+PDX,Portland,77000
+AUS,Austin,76000
+IAH,Houston Intercontinental,74000
+IAD,Washington Dulles,73000
+DCA,Washington National,72000
+CLT,Charlotte,70000
+RDU,Raleigh–Durham,68000
+MSP,Minneapolis,67000
+DTW,Detroit,66000
+BNA,Nashville,65000
+STL,St. Louis,64000
+SLC,Salt Lake City,63000
+MCO,Orlando,96000
+TPA,Tampa,75000
+FLL,Fort Lauderdale,74000
+PBI,West Palm Beach,72000
+HNL,Honolulu,70000
+OGG,Kahului,69000
+KOA,Kona,68000
+LIH,Lihue,67000
+LHR,London Heathrow,120000
+LGW,London Gatwick,95000
+CDG,Paris CDG,99000
+AMS,Amsterdam,97000
+FRA,Frankfurt,93000
+MAD,Madrid,90000
+BCN,Barcelona,89000
+DUB,Dublin,86000
+ZRH,Zurich,82000
+MXP,Milan Malpensa,80000
+VCE,Venice,78000
+FCO,Rome FCO,98000
+CPH,Copenhagen,76000
+ARN,Stockholm Arlanda,74000
+OSL,Oslo,73000
+ATH,Athens,79000
+IST,Istanbul,85000
+TLV,Tel Aviv,87000
+CAI,Cairo,72000
+DXB,Dubai,92000
+DOH,Doha,88000
+HKG,Hong Kong,86000
+NRT,Tokyo Narita,95000
+HND,Tokyo Haneda,98000
+ICN,Seoul Incheon,90000
+SIN,Singapore,92000
+BKK,Bangkok,82000
+KUL,Kuala Lumpur,78000
+SYD,Sydney,84000
+MEL,Melbourne,82000
+AKL,Auckland,80000
+YVR,Vancouver,83000
+YYZ,Toronto,86000
+YUL,Montreal,82000
+YWG,Winnipeg,70000
+YEG,Edmonton,69000
+CUN,Cancun,94000
+SJU,San Juan,88000
+GDL,Guadalajara,76000
+MEX,Mexico City,90000
+PUJ,Punta Cana,87000
+SDQ,Santo Domingo,82000
+GCM,Grand Cayman,70000
+NAS,Nassau,76000
+MBJ,Montego Bay,78000
+AUA,Aruba,80000
+CUR,Curacao,70000
+BON,Bonaire,68000
+LIM,Lima,82000
+BOG,Bogota,80000
+UIO,Quito,72000
+GIG,Rio de Janeiro,76000
+GRU,Sao Paulo,84000
+EZE,Buenos Aires,86000
+SCL,Santiago,80000
+PTY,Panama City,78000
+SAL,San Salvador,74000
+SJO,San Jose CR,78000
+GUA,Guatemala City,72000
+SAP,San Pedro Sula,70000
+LIS,Lisbon,88000
+BRU,Brussels,78000
+PRG,Prague,77000
+WAW,Warsaw,76000
+BUD,Budapest,75000
+VIE,Vienna,79000
+KEF,Reykjavik,74000
+EDI,Edinburgh,72000
+MAN,Manchester,73000
+BHX,Birmingham UK,70000
+GLA,Glasgow,69000
+NCE,Nice,78000
+LYS,Lyon,70000
+HAM,Hamburg,71000
+BER,Berlin,82000
+HEL,Helsinki,72000
+RUH,Riyadh,72000
+JED,Jeddah,71000
+AMM,Amman,70000
+CMN,Casablanca,69000

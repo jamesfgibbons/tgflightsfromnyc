@@ -1,0 +1,47 @@
+{
+  "source": "sample_dataset",
+  "time_series": [
+    {
+      "date": "2025-07-27",
+      "organic_traffic": 120
+    },
+    {
+      "date": "2025-07-28",
+      "organic_traffic": 140
+    },
+    {
+      "date": "2025-07-29",
+      "organic_traffic": 135
+    },
+    {
+      "date": "2025-07-30",
+      "organic_traffic": 150
+    },
+    {
+      "date": "2025-07-31",
+      "organic_traffic": 160
+    },
+    {
+      "date": "2025-08-01",
+      "organic_traffic": 170
+    },
+    {
+      "date": "2025-08-02",
+      "organic_traffic": 155
+    }
+  ],
+  "keywords_top": [
+    {
+      "keyword": "JFK to LAX flights",
+      "organic_traffic": 80
+    },
+    {
+      "keyword": "EWR to MIA flights",
+      "organic_traffic": 75
+    },
+    {
+      "keyword": "LGA to ORD flights",
+      "organic_traffic": 70
+    }
+  ]
+}

@@ -1,0 +1,2021 @@
+{
+  "total": 336,
+  "items": [
+    {
+      "origin": "JFK",
+      "destination": "LHR",
+      "destination_name": "London Heathrow",
+      "score": 120000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "LHR",
+      "destination_name": "London Heathrow",
+      "score": 120000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "LHR",
+      "destination_name": "London Heathrow",
+      "score": 120000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "ORD",
+      "destination_name": "Chicago O'Hare",
+      "score": 110000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "ORD",
+      "destination_name": "Chicago O'Hare",
+      "score": 110000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "ORD",
+      "destination_name": "Chicago O'Hare",
+      "score": 110000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "ATL",
+      "destination_name": "Atlanta",
+      "score": 105000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "ATL",
+      "destination_name": "Atlanta",
+      "score": 105000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "ATL",
+      "destination_name": "Atlanta",
+      "score": 105000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "LAX",
+      "destination_name": "Los Angeles",
+      "score": 100000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "LAX",
+      "destination_name": "Los Angeles",
+      "score": 100000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "LAX",
+      "destination_name": "Los Angeles",
+      "score": 100000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "CDG",
+      "destination_name": "Paris CDG",
+      "score": 99000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "CDG",
+      "destination_name": "Paris CDG",
+      "score": 99000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "CDG",
+      "destination_name": "Paris CDG",
+      "score": 99000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "SFO",
+      "destination_name": "San Francisco",
+      "score": 98000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "SFO",
+      "destination_name": "San Francisco",
+      "score": 98000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "SFO",
+      "destination_name": "San Francisco",
+      "score": 98000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "FCO",
+      "destination_name": "Rome FCO",
+      "score": 98000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "FCO",
+      "destination_name": "Rome FCO",
+      "score": 98000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "FCO",
+      "destination_name": "Rome FCO",
+      "score": 98000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "HND",
+      "destination_name": "Tokyo Haneda",
+      "score": 98000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "HND",
+      "destination_name": "Tokyo Haneda",
+      "score": 98000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "HND",
+      "destination_name": "Tokyo Haneda",
+      "score": 98000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "LAS",
+      "destination_name": "Las Vegas",
+      "score": 97000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "LAS",
+      "destination_name": "Las Vegas",
+      "score": 97000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "LAS",
+      "destination_name": "Las Vegas",
+      "score": 97000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "AMS",
+      "destination_name": "Amsterdam",
+      "score": 97000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "AMS",
+      "destination_name": "Amsterdam",
+      "score": 97000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "AMS",
+      "destination_name": "Amsterdam",
+      "score": 97000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "MCO",
+      "destination_name": "Orlando",
+      "score": 96000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "MCO",
+      "destination_name": "Orlando",
+      "score": 96000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "MCO",
+      "destination_name": "Orlando",
+      "score": 96000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "MIA",
+      "destination_name": "Miami",
+      "score": 95000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "MIA",
+      "destination_name": "Miami",
+      "score": 95000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "MIA",
+      "destination_name": "Miami",
+      "score": 95000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "LGW",
+      "destination_name": "London Gatwick",
+      "score": 95000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "LGW",
+      "destination_name": "London Gatwick",
+      "score": 95000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "LGW",
+      "destination_name": "London Gatwick",
+      "score": 95000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "NRT",
+      "destination_name": "Tokyo Narita",
+      "score": 95000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "NRT",
+      "destination_name": "Tokyo Narita",
+      "score": 95000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "NRT",
+      "destination_name": "Tokyo Narita",
+      "score": 95000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "CUN",
+      "destination_name": "Cancun",
+      "score": 94000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "CUN",
+      "destination_name": "Cancun",
+      "score": 94000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "CUN",
+      "destination_name": "Cancun",
+      "score": 94000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "DEN",
+      "destination_name": "Denver",
+      "score": 93000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "DEN",
+      "destination_name": "Denver",
+      "score": 93000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "DEN",
+      "destination_name": "Denver",
+      "score": 93000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "FRA",
+      "destination_name": "Frankfurt",
+      "score": 93000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "FRA",
+      "destination_name": "Frankfurt",
+      "score": 93000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "FRA",
+      "destination_name": "Frankfurt",
+      "score": 93000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "SEA",
+      "destination_name": "Seattle",
+      "score": 92000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "SEA",
+      "destination_name": "Seattle",
+      "score": 92000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "SEA",
+      "destination_name": "Seattle",
+      "score": 92000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "DXB",
+      "destination_name": "Dubai",
+      "score": 92000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "DXB",
+      "destination_name": "Dubai",
+      "score": 92000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "DXB",
+      "destination_name": "Dubai",
+      "score": 92000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "SIN",
+      "destination_name": "Singapore",
+      "score": 92000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "SIN",
+      "destination_name": "Singapore",
+      "score": 92000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "SIN",
+      "destination_name": "Singapore",
+      "score": 92000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "DFW",
+      "destination_name": "Dallas/Fort Worth",
+      "score": 90000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "DFW",
+      "destination_name": "Dallas/Fort Worth",
+      "score": 90000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "DFW",
+      "destination_name": "Dallas/Fort Worth",
+      "score": 90000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "MAD",
+      "destination_name": "Madrid",
+      "score": 90000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "MAD",
+      "destination_name": "Madrid",
+      "score": 90000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "MAD",
+      "destination_name": "Madrid",
+      "score": 90000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "ICN",
+      "destination_name": "Seoul Incheon",
+      "score": 90000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "ICN",
+      "destination_name": "Seoul Incheon",
+      "score": 90000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "ICN",
+      "destination_name": "Seoul Incheon",
+      "score": 90000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "MEX",
+      "destination_name": "Mexico City",
+      "score": 90000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "MEX",
+      "destination_name": "Mexico City",
+      "score": 90000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "MEX",
+      "destination_name": "Mexico City",
+      "score": 90000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "BCN",
+      "destination_name": "Barcelona",
+      "score": 89000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "BCN",
+      "destination_name": "Barcelona",
+      "score": 89000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "BCN",
+      "destination_name": "Barcelona",
+      "score": 89000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "BOS",
+      "destination_name": "Boston",
+      "score": 88000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "BOS",
+      "destination_name": "Boston",
+      "score": 88000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "BOS",
+      "destination_name": "Boston",
+      "score": 88000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "DOH",
+      "destination_name": "Doha",
+      "score": 88000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "DOH",
+      "destination_name": "Doha",
+      "score": 88000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "DOH",
+      "destination_name": "Doha",
+      "score": 88000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "SJU",
+      "destination_name": "San Juan",
+      "score": 88000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "SJU",
+      "destination_name": "San Juan",
+      "score": 88000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "SJU",
+      "destination_name": "San Juan",
+      "score": 88000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "LIS",
+      "destination_name": "Lisbon",
+      "score": 88000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "LIS",
+      "destination_name": "Lisbon",
+      "score": 88000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "LIS",
+      "destination_name": "Lisbon",
+      "score": 88000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "TLV",
+      "destination_name": "Tel Aviv",
+      "score": 87000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "TLV",
+      "destination_name": "Tel Aviv",
+      "score": 87000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "TLV",
+      "destination_name": "Tel Aviv",
+      "score": 87000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "PUJ",
+      "destination_name": "Punta Cana",
+      "score": 87000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "PUJ",
+      "destination_name": "Punta Cana",
+      "score": 87000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "PUJ",
+      "destination_name": "Punta Cana",
+      "score": 87000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "DUB",
+      "destination_name": "Dublin",
+      "score": 86000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "DUB",
+      "destination_name": "Dublin",
+      "score": 86000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "DUB",
+      "destination_name": "Dublin",
+      "score": 86000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "HKG",
+      "destination_name": "Hong Kong",
+      "score": 86000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "HKG",
+      "destination_name": "Hong Kong",
+      "score": 86000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "HKG",
+      "destination_name": "Hong Kong",
+      "score": 86000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "YYZ",
+      "destination_name": "Toronto",
+      "score": 86000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "YYZ",
+      "destination_name": "Toronto",
+      "score": 86000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "YYZ",
+      "destination_name": "Toronto",
+      "score": 86000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "EZE",
+      "destination_name": "Buenos Aires",
+      "score": 86000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "EZE",
+      "destination_name": "Buenos Aires",
+      "score": 86000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "EZE",
+      "destination_name": "Buenos Aires",
+      "score": 86000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "IST",
+      "destination_name": "Istanbul",
+      "score": 85000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "IST",
+      "destination_name": "Istanbul",
+      "score": 85000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "IST",
+      "destination_name": "Istanbul",
+      "score": 85000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "SYD",
+      "destination_name": "Sydney",
+      "score": 84000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "SYD",
+      "destination_name": "Sydney",
+      "score": 84000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "SYD",
+      "destination_name": "Sydney",
+      "score": 84000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "GRU",
+      "destination_name": "Sao Paulo",
+      "score": 84000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "GRU",
+      "destination_name": "Sao Paulo",
+      "score": 84000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "GRU",
+      "destination_name": "Sao Paulo",
+      "score": 84000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "YVR",
+      "destination_name": "Vancouver",
+      "score": 83000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "YVR",
+      "destination_name": "Vancouver",
+      "score": 83000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "YVR",
+      "destination_name": "Vancouver",
+      "score": 83000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "PHX",
+      "destination_name": "Phoenix",
+      "score": 82000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "PHX",
+      "destination_name": "Phoenix",
+      "score": 82000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "PHX",
+      "destination_name": "Phoenix",
+      "score": 82000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "ZRH",
+      "destination_name": "Zurich",
+      "score": 82000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "ZRH",
+      "destination_name": "Zurich",
+      "score": 82000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "ZRH",
+      "destination_name": "Zurich",
+      "score": 82000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "BKK",
+      "destination_name": "Bangkok",
+      "score": 82000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "BKK",
+      "destination_name": "Bangkok",
+      "score": 82000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "BKK",
+      "destination_name": "Bangkok",
+      "score": 82000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "MEL",
+      "destination_name": "Melbourne",
+      "score": 82000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "MEL",
+      "destination_name": "Melbourne",
+      "score": 82000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "MEL",
+      "destination_name": "Melbourne",
+      "score": 82000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "YUL",
+      "destination_name": "Montreal",
+      "score": 82000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "YUL",
+      "destination_name": "Montreal",
+      "score": 82000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "YUL",
+      "destination_name": "Montreal",
+      "score": 82000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "SDQ",
+      "destination_name": "Santo Domingo",
+      "score": 82000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "SDQ",
+      "destination_name": "Santo Domingo",
+      "score": 82000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "SDQ",
+      "destination_name": "Santo Domingo",
+      "score": 82000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "LIM",
+      "destination_name": "Lima",
+      "score": 82000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "LIM",
+      "destination_name": "Lima",
+      "score": 82000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "LIM",
+      "destination_name": "Lima",
+      "score": 82000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "BER",
+      "destination_name": "Berlin",
+      "score": 82000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "BER",
+      "destination_name": "Berlin",
+      "score": 82000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "BER",
+      "destination_name": "Berlin",
+      "score": 82000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "SAN",
+      "destination_name": "San Diego",
+      "score": 81000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "SAN",
+      "destination_name": "San Diego",
+      "score": 81000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "SAN",
+      "destination_name": "San Diego",
+      "score": 81000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "MXP",
+      "destination_name": "Milan Malpensa",
+      "score": 80000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "MXP",
+      "destination_name": "Milan Malpensa",
+      "score": 80000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "MXP",
+      "destination_name": "Milan Malpensa",
+      "score": 80000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "AKL",
+      "destination_name": "Auckland",
+      "score": 80000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "AKL",
+      "destination_name": "Auckland",
+      "score": 80000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "AKL",
+      "destination_name": "Auckland",
+      "score": 80000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "AUA",
+      "destination_name": "Aruba",
+      "score": 80000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "AUA",
+      "destination_name": "Aruba",
+      "score": 80000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "AUA",
+      "destination_name": "Aruba",
+      "score": 80000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "BOG",
+      "destination_name": "Bogota",
+      "score": 80000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "BOG",
+      "destination_name": "Bogota",
+      "score": 80000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "BOG",
+      "destination_name": "Bogota",
+      "score": 80000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "SCL",
+      "destination_name": "Santiago",
+      "score": 80000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "SCL",
+      "destination_name": "Santiago",
+      "score": 80000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "SCL",
+      "destination_name": "Santiago",
+      "score": 80000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "ATH",
+      "destination_name": "Athens",
+      "score": 79000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "ATH",
+      "destination_name": "Athens",
+      "score": 79000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "ATH",
+      "destination_name": "Athens",
+      "score": 79000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "VIE",
+      "destination_name": "Vienna",
+      "score": 79000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "VIE",
+      "destination_name": "Vienna",
+      "score": 79000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "VIE",
+      "destination_name": "Vienna",
+      "score": 79000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "VCE",
+      "destination_name": "Venice",
+      "score": 78000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "VCE",
+      "destination_name": "Venice",
+      "score": 78000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "VCE",
+      "destination_name": "Venice",
+      "score": 78000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "KUL",
+      "destination_name": "Kuala Lumpur",
+      "score": 78000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "KUL",
+      "destination_name": "Kuala Lumpur",
+      "score": 78000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "KUL",
+      "destination_name": "Kuala Lumpur",
+      "score": 78000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "MBJ",
+      "destination_name": "Montego Bay",
+      "score": 78000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "MBJ",
+      "destination_name": "Montego Bay",
+      "score": 78000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "MBJ",
+      "destination_name": "Montego Bay",
+      "score": 78000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "PTY",
+      "destination_name": "Panama City",
+      "score": 78000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "PTY",
+      "destination_name": "Panama City",
+      "score": 78000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "PTY",
+      "destination_name": "Panama City",
+      "score": 78000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "SJO",
+      "destination_name": "San Jose CR",
+      "score": 78000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "SJO",
+      "destination_name": "San Jose CR",
+      "score": 78000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "SJO",
+      "destination_name": "San Jose CR",
+      "score": 78000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "BRU",
+      "destination_name": "Brussels",
+      "score": 78000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "BRU",
+      "destination_name": "Brussels",
+      "score": 78000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "BRU",
+      "destination_name": "Brussels",
+      "score": 78000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "NCE",
+      "destination_name": "Nice",
+      "score": 78000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "NCE",
+      "destination_name": "Nice",
+      "score": 78000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "NCE",
+      "destination_name": "Nice",
+      "score": 78000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "PDX",
+      "destination_name": "Portland",
+      "score": 77000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "PDX",
+      "destination_name": "Portland",
+      "score": 77000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "PDX",
+      "destination_name": "Portland",
+      "score": 77000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "PRG",
+      "destination_name": "Prague",
+      "score": 77000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "PRG",
+      "destination_name": "Prague",
+      "score": 77000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "PRG",
+      "destination_name": "Prague",
+      "score": 77000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "AUS",
+      "destination_name": "Austin",
+      "score": 76000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "AUS",
+      "destination_name": "Austin",
+      "score": 76000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "AUS",
+      "destination_name": "Austin",
+      "score": 76000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "CPH",
+      "destination_name": "Copenhagen",
+      "score": 76000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "CPH",
+      "destination_name": "Copenhagen",
+      "score": 76000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "CPH",
+      "destination_name": "Copenhagen",
+      "score": 76000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "GDL",
+      "destination_name": "Guadalajara",
+      "score": 76000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "GDL",
+      "destination_name": "Guadalajara",
+      "score": 76000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "GDL",
+      "destination_name": "Guadalajara",
+      "score": 76000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "NAS",
+      "destination_name": "Nassau",
+      "score": 76000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "NAS",
+      "destination_name": "Nassau",
+      "score": 76000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "NAS",
+      "destination_name": "Nassau",
+      "score": 76000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "GIG",
+      "destination_name": "Rio de Janeiro",
+      "score": 76000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "GIG",
+      "destination_name": "Rio de Janeiro",
+      "score": 76000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "GIG",
+      "destination_name": "Rio de Janeiro",
+      "score": 76000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "WAW",
+      "destination_name": "Warsaw",
+      "score": 76000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "WAW",
+      "destination_name": "Warsaw",
+      "score": 76000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "WAW",
+      "destination_name": "Warsaw",
+      "score": 76000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "TPA",
+      "destination_name": "Tampa",
+      "score": 75000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "TPA",
+      "destination_name": "Tampa",
+      "score": 75000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "TPA",
+      "destination_name": "Tampa",
+      "score": 75000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "BUD",
+      "destination_name": "Budapest",
+      "score": 75000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "BUD",
+      "destination_name": "Budapest",
+      "score": 75000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "BUD",
+      "destination_name": "Budapest",
+      "score": 75000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "IAH",
+      "destination_name": "Houston Intercontinental",
+      "score": 74000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "IAH",
+      "destination_name": "Houston Intercontinental",
+      "score": 74000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "IAH",
+      "destination_name": "Houston Intercontinental",
+      "score": 74000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "FLL",
+      "destination_name": "Fort Lauderdale",
+      "score": 74000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "FLL",
+      "destination_name": "Fort Lauderdale",
+      "score": 74000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "FLL",
+      "destination_name": "Fort Lauderdale",
+      "score": 74000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "ARN",
+      "destination_name": "Stockholm Arlanda",
+      "score": 74000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "ARN",
+      "destination_name": "Stockholm Arlanda",
+      "score": 74000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "ARN",
+      "destination_name": "Stockholm Arlanda",
+      "score": 74000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "SAL",
+      "destination_name": "San Salvador",
+      "score": 74000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "SAL",
+      "destination_name": "San Salvador",
+      "score": 74000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "SAL",
+      "destination_name": "San Salvador",
+      "score": 74000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "KEF",
+      "destination_name": "Reykjavik",
+      "score": 74000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "KEF",
+      "destination_name": "Reykjavik",
+      "score": 74000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "KEF",
+      "destination_name": "Reykjavik",
+      "score": 74000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "IAD",
+      "destination_name": "Washington Dulles",
+      "score": 73000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "IAD",
+      "destination_name": "Washington Dulles",
+      "score": 73000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "IAD",
+      "destination_name": "Washington Dulles",
+      "score": 73000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "OSL",
+      "destination_name": "Oslo",
+      "score": 73000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "OSL",
+      "destination_name": "Oslo",
+      "score": 73000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "OSL",
+      "destination_name": "Oslo",
+      "score": 73000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "MAN",
+      "destination_name": "Manchester",
+      "score": 73000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "MAN",
+      "destination_name": "Manchester",
+      "score": 73000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "MAN",
+      "destination_name": "Manchester",
+      "score": 73000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "DCA",
+      "destination_name": "Washington National",
+      "score": 72000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "DCA",
+      "destination_name": "Washington National",
+      "score": 72000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "DCA",
+      "destination_name": "Washington National",
+      "score": 72000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "PBI",
+      "destination_name": "West Palm Beach",
+      "score": 72000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "PBI",
+      "destination_name": "West Palm Beach",
+      "score": 72000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "PBI",
+      "destination_name": "West Palm Beach",
+      "score": 72000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "CAI",
+      "destination_name": "Cairo",
+      "score": 72000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "CAI",
+      "destination_name": "Cairo",
+      "score": 72000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "CAI",
+      "destination_name": "Cairo",
+      "score": 72000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "UIO",
+      "destination_name": "Quito",
+      "score": 72000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "UIO",
+      "destination_name": "Quito",
+      "score": 72000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "UIO",
+      "destination_name": "Quito",
+      "score": 72000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "GUA",
+      "destination_name": "Guatemala City",
+      "score": 72000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "GUA",
+      "destination_name": "Guatemala City",
+      "score": 72000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "GUA",
+      "destination_name": "Guatemala City",
+      "score": 72000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "EDI",
+      "destination_name": "Edinburgh",
+      "score": 72000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "EDI",
+      "destination_name": "Edinburgh",
+      "score": 72000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "EDI",
+      "destination_name": "Edinburgh",
+      "score": 72000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "HEL",
+      "destination_name": "Helsinki",
+      "score": 72000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "HEL",
+      "destination_name": "Helsinki",
+      "score": 72000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "HEL",
+      "destination_name": "Helsinki",
+      "score": 72000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "RUH",
+      "destination_name": "Riyadh",
+      "score": 72000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "RUH",
+      "destination_name": "Riyadh",
+      "score": 72000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "RUH",
+      "destination_name": "Riyadh",
+      "score": 72000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "HAM",
+      "destination_name": "Hamburg",
+      "score": 71000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "HAM",
+      "destination_name": "Hamburg",
+      "score": 71000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "HAM",
+      "destination_name": "Hamburg",
+      "score": 71000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "JED",
+      "destination_name": "Jeddah",
+      "score": 71000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "JED",
+      "destination_name": "Jeddah",
+      "score": 71000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "JED",
+      "destination_name": "Jeddah",
+      "score": 71000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "CLT",
+      "destination_name": "Charlotte",
+      "score": 70000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "CLT",
+      "destination_name": "Charlotte",
+      "score": 70000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "CLT",
+      "destination_name": "Charlotte",
+      "score": 70000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "HNL",
+      "destination_name": "Honolulu",
+      "score": 70000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "HNL",
+      "destination_name": "Honolulu",
+      "score": 70000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "HNL",
+      "destination_name": "Honolulu",
+      "score": 70000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "YWG",
+      "destination_name": "Winnipeg",
+      "score": 70000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "YWG",
+      "destination_name": "Winnipeg",
+      "score": 70000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "YWG",
+      "destination_name": "Winnipeg",
+      "score": 70000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "GCM",
+      "destination_name": "Grand Cayman",
+      "score": 70000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "GCM",
+      "destination_name": "Grand Cayman",
+      "score": 70000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "GCM",
+      "destination_name": "Grand Cayman",
+      "score": 70000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "CUR",
+      "destination_name": "Curacao",
+      "score": 70000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "CUR",
+      "destination_name": "Curacao",
+      "score": 70000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "CUR",
+      "destination_name": "Curacao",
+      "score": 70000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "SAP",
+      "destination_name": "San Pedro Sula",
+      "score": 70000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "SAP",
+      "destination_name": "San Pedro Sula",
+      "score": 70000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "SAP",
+      "destination_name": "San Pedro Sula",
+      "score": 70000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "BHX",
+      "destination_name": "Birmingham UK",
+      "score": 70000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "BHX",
+      "destination_name": "Birmingham UK",
+      "score": 70000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "BHX",
+      "destination_name": "Birmingham UK",
+      "score": 70000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "LYS",
+      "destination_name": "Lyon",
+      "score": 70000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "LYS",
+      "destination_name": "Lyon",
+      "score": 70000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "LYS",
+      "destination_name": "Lyon",
+      "score": 70000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "AMM",
+      "destination_name": "Amman",
+      "score": 70000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "AMM",
+      "destination_name": "Amman",
+      "score": 70000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "AMM",
+      "destination_name": "Amman",
+      "score": 70000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "OGG",
+      "destination_name": "Kahului",
+      "score": 69000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "OGG",
+      "destination_name": "Kahului",
+      "score": 69000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "OGG",
+      "destination_name": "Kahului",
+      "score": 69000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "YEG",
+      "destination_name": "Edmonton",
+      "score": 69000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "YEG",
+      "destination_name": "Edmonton",
+      "score": 69000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "YEG",
+      "destination_name": "Edmonton",
+      "score": 69000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "GLA",
+      "destination_name": "Glasgow",
+      "score": 69000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "GLA",
+      "destination_name": "Glasgow",
+      "score": 69000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "GLA",
+      "destination_name": "Glasgow",
+      "score": 69000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "CMN",
+      "destination_name": "Casablanca",
+      "score": 69000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "CMN",
+      "destination_name": "Casablanca",
+      "score": 69000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "CMN",
+      "destination_name": "Casablanca",
+      "score": 69000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "RDU",
+      "destination_name": "Raleigh–Durham",
+      "score": 68000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "RDU",
+      "destination_name": "Raleigh–Durham",
+      "score": 68000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "RDU",
+      "destination_name": "Raleigh–Durham",
+      "score": 68000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "KOA",
+      "destination_name": "Kona",
+      "score": 68000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "KOA",
+      "destination_name": "Kona",
+      "score": 68000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "KOA",
+      "destination_name": "Kona",
+      "score": 68000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "BON",
+      "destination_name": "Bonaire",
+      "score": 68000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "BON",
+      "destination_name": "Bonaire",
+      "score": 68000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "BON",
+      "destination_name": "Bonaire",
+      "score": 68000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "MSP",
+      "destination_name": "Minneapolis",
+      "score": 67000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "MSP",
+      "destination_name": "Minneapolis",
+      "score": 67000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "MSP",
+      "destination_name": "Minneapolis",
+      "score": 67000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "LIH",
+      "destination_name": "Lihue",
+      "score": 67000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "LIH",
+      "destination_name": "Lihue",
+      "score": 67000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "LIH",
+      "destination_name": "Lihue",
+      "score": 67000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "DTW",
+      "destination_name": "Detroit",
+      "score": 66000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "DTW",
+      "destination_name": "Detroit",
+      "score": 66000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "DTW",
+      "destination_name": "Detroit",
+      "score": 66000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "BNA",
+      "destination_name": "Nashville",
+      "score": 65000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "BNA",
+      "destination_name": "Nashville",
+      "score": 65000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "BNA",
+      "destination_name": "Nashville",
+      "score": 65000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "STL",
+      "destination_name": "St. Louis",
+      "score": 64000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "STL",
+      "destination_name": "St. Louis",
+      "score": 64000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "STL",
+      "destination_name": "St. Louis",
+      "score": 64000.0
+    },
+    {
+      "origin": "JFK",
+      "destination": "SLC",
+      "destination_name": "Salt Lake City",
+      "score": 63000.0
+    },
+    {
+      "origin": "LGA",
+      "destination": "SLC",
+      "destination_name": "Salt Lake City",
+      "score": 63000.0
+    },
+    {
+      "origin": "EWR",
+      "destination": "SLC",
+      "destination_name": "Salt Lake City",
+      "score": 63000.0
+    }
+  ]
+}

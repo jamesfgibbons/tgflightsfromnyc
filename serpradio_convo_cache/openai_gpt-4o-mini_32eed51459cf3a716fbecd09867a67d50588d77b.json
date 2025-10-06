@@ -1,0 +1,25 @@
+{
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "prompt": "What is the typical price of a flight from JFK to Madrid within the next 45 days?\nReturn STRICT JSON: { \n  \"origin\": \"JFK\", \"destination\": \"MAD\", \"window_days\": 45,\n  \"price_low_usd\": number, \"price_high_usd\": number,\n  \"typical_airlines\": [string], \"cited_websites\": [string], \"notes\": string\n}",
+  "response_raw": {
+    "id": "chatcmpl-C89KF2t9LdSqGfHGDaxm6wYQEyyhr",
+    "created": 1756058507,
+    "model": "gpt-4o-mini-2024-07-18",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"origin\": \"JFK\",\n  \"destination\": \"MAD\",\n  \"window_days\": 45,\n  \"price_low_usd\": 400,\n  \"price_high_usd\": 800,\n  \"typical_airlines\": [\"Iberia\", \"American Airlines\", \"Delta\", \"Air Europa\", \"British Airways\"],\n  \"cited_websites\": [\"expedia.com\", \"kayak.com\", \"skyscanner.com\"],\n  \"notes\": \"Prices can vary based on demand, time of booking, and specific travel dates.\"\n}"
+        }
+      }
+    ]
+  },
+  "latency_ms": 2414,
+  "status": "ok",
+  "metadata": {
+    "kind": "price_query",
+    "origin": "JFK",
+    "destination": "MAD"
+  }
+}

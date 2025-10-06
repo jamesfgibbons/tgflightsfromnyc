@@ -8,13 +8,12 @@ import uuid
 from datetime import datetime
 from typing import Any, Dict, List, Optional
 
-from fastapi import APIRouter, UploadFile, File, HTTPException, Form
+from fastapi import APIRouter, UploadFile, File, HTTPException, Form, Header
 from pydantic import BaseModel, Field
 
 from .storage import put_bytes, get_presigned_url
 from .jobstore import job_store
 from .api_models import JobResult, MomentumBand, LabelSummary
-from .sonify_service import create_sonification_service
 from .models import SonifyRequest
 from .db import supabase_insert, supabase_select_one, supabase_select
 import yaml
@@ -25,6 +24,14 @@ from .vibe_helpers import (
     infer_music_features_llm,
     choose_palette_from_rules,
     normalize_features,
+)
+from .vibe_encoder import embed_vibe, apply_context_nudge
+from .vibe_ir import EmbedRequest, EmbedResponse, TrainRequest, TrainResponse
+from .vibenet_api import (
+    _load_palettes as _vn_load_palettes,
+    _palette_to_sound_pack as _vn_palette_to_sound_pack,
+    _normalize as _vn_normalize,
+    _segments_to_bands as _vn_segments_to_bands,
 )
 
 router = APIRouter(prefix="/api/vibe", tags=["vibe"])
@@ -163,6 +170,152 @@ async def upload_motif(motif: MotifUpload):
     return {"ok": True, "midi_key": key, "features": features}
 
 
+@router.post("/embed", response_model=EmbedResponse)
+async def embed(req: EmbedRequest):
+    """Embed numeric data into a VibeVector (rule-based V1)."""
+    if not isinstance(req.data, list) or len(req.data) < 4:
+        raise HTTPException(400, "data must be a numeric array with at least 4 points")
+    vibe = embed_vibe([float(x) for x in req.data], req.palette)
+    return EmbedResponse(vibe=vibe)
+
+
+@router.post("/train", response_model=TrainResponse)
+async def train(req: TrainRequest, x_admin_secret: str | None = Header(default=None)):
+    """Accept labeled takes metadata for future finetuning (admin only, best-effort persist)."""
+    expected = os.getenv("ADMIN_SECRET")
+    if not expected or x_admin_secret != expected:
+        raise HTTPException(401, "Admin auth required")
+
+    accepted = 0
+    for take in req.takes:
+        rec = {
+            "take_id": take.take_id,
+            "palette": take.palette,
+            "bpm": take.bpm,
+            "vibe": take.vibe.model_dump(),
+            "progression": take.progression or [],
+            "midi_key": take.midi_key,
+            "created_at": datetime.utcnow().isoformat(),
+        }
+        supabase_insert("vibe_training_takes", rec)
+        accepted += 1
+    return TrainResponse(ok=True, accepted=accepted)
+
+
+class DataGenerateRequest(BaseModel):
+    data: List[float]
+    palette_slug: str = Field(default="synthwave_midnight")
+    total_bars: int = Field(default=16, ge=4, le=128)
+    tempo_hint: Optional[int] = Field(default=None, ge=60, le=180)
+    context: Optional[Dict[str, Any]] = Field(
+        default=None,
+        description="Optional context such as deal_score, novelty_score, brand_pref_score, region_pref_score, etc.",
+    )
+    nudge_context: Optional[bool] = Field(default=None, description="If true, apply context-based nudge to vibe mapping.")
+
+
+class DataGenerateResponse(BaseModel):
+    job: JobResult
+    vibe: Dict[str, Any]
+
+
+@router.post("/generate_data", response_model=DataGenerateResponse)
+async def generate_from_data(req: DataGenerateRequest):
+    """Generate audio from numeric data, returning both JobResult and the computed vibe vector."""
+    if not isinstance(req.data, list) or len(req.data) < 4:
+        raise HTTPException(400, "data must be a numeric array with at least 4 points")
+
+    # 1) Compute vibe vector
+    vibe_vec = embed_vibe([float(x) for x in req.data], req.palette_slug)
+    # Optional context nudging
+    use_nudge = req.nudge_context
+    if use_nudge is None:
+        use_nudge = os.getenv("VIBE_CONTEXT_NUDGE", "0") not in ("0", "false", "False")
+    if use_nudge:
+        vibe_vec = apply_context_nudge(vibe_vec, req.context or {})
+
+    # 2) Map data → momentum bands and tempo
+    palettes = _vn_load_palettes()
+    sound_pack = _vn_palette_to_sound_pack(req.palette_slug, palettes)
+    norm = _vn_normalize([float(x) for x in req.data])
+    segment_count = min(10, max(3, len(norm) // 8))
+    bands = _vn_segments_to_bands(norm, segment_count)
+
+    tempo = req.tempo_hint
+    if tempo is None:
+        tempo_min, tempo_max = 104, 120
+        for p in palettes or []:
+            if str(p.get("slug")) == req.palette_slug:
+                tempo_min = int(p.get("tempo_min", tempo_min))
+                tempo_max = int(p.get("tempo_max", tempo_max))
+                break
+        diffs = [abs(a - b) for a, b in zip(norm[1:], norm[:-1])]
+        energy = sum(diffs) / max(1, len(diffs)) if diffs else 0.2
+        tempo = int(tempo_min + min(1.0, energy * 2.0) * (tempo_max - tempo_min))
+
+    # 3) Render via existing service
+    try:
+        from .sonify_service import create_sonification_service  # type: ignore
+        service = create_sonification_service(_artifact_bucket())
+    except Exception as e:
+        raise HTTPException(503, f"Sonify service unavailable: {e}")
+    tenant = "vibe_engine"
+    job_id = job_store.create()
+    job_store.start(job_id)
+    output_base = f"{tenant}/vibe/{job_id}"
+    sreq = SonifyRequest(
+        tenant=tenant,
+        source="demo",
+        total_bars=req.total_bars,
+        tempo_base=tempo,
+        sound_pack=sound_pack,
+        override_metrics={"momentum_data": [b.model_dump() for b in bands]},
+    )
+    base = service.run_sonification(sreq, None, output_base)
+
+    midi_key = base.get("midi_key")
+    mp3_key = base.get("mp3_key")
+    midi_url = get_presigned_url(_artifact_bucket(), midi_key) if midi_key else None
+    mp3_url = get_presigned_url(_artifact_bucket(), mp3_key) if mp3_key else None
+
+    counts = {"positive": 0, "neutral": 0, "negative": 0}
+    for b in bands:
+        if b.label in counts:
+            counts[b.label] += 1
+
+    job = JobResult(
+        job_id=job_id,
+        status="done",
+        midi_url=midi_url,
+        mp3_url=mp3_url,
+        duration_sec=base.get("duration_sec", float(req.total_bars) * 60.0 / tempo),
+        sound_pack=sound_pack,
+        label_summary=LabelSummary(**counts),
+        momentum_json=bands,
+        logs=[f"vibe={req.palette_slug}", f"sound_pack={sound_pack}", f"tempo={tempo}"],
+    )
+    job_store.finish(job_id, {"midi_url": midi_key, "mp3_url": mp3_key})
+
+    # Best-effort analytics log (Supabase optional)
+    try:
+        supabase_insert(
+            "vibe_board_events",
+            {
+                "job_id": job_id,
+                "event": "generate_data",
+                "palette_slug": req.palette_slug,
+                "context": req.context or {},
+                "momentum": counts,
+                "tempo_bpm": tempo,
+                "created_at": datetime.utcnow().isoformat(),
+            },
+        )
+    except Exception:
+        pass
+
+    return DataGenerateResponse(job=job, vibe=vibe_vec.model_dump())
+
+
 @router.post("/generate", response_model=JobResult)
 async def generate_with_palette(req: GenerateRequest):
     """Generate a track using a palette + optional momentum bands via existing service."""
@@ -189,7 +342,11 @@ async def generate_with_palette(req: GenerateRequest):
         ]
 
     # Use existing service with override_metrics.momentum_data
-    service = create_sonification_service(_artifact_bucket())
+    try:
+        from .sonify_service import create_sonification_service  # type: ignore
+        service = create_sonification_service(_artifact_bucket())
+    except Exception as e:
+        raise HTTPException(503, f"Sonify service unavailable: {e}")
     spack = req.sound_pack or "Synthwave"
     tenant = "vibe_engine"
     output_base = f"{tenant}/vibe/{job_id}"

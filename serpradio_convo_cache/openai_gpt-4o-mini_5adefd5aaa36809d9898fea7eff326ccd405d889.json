@@ -1,0 +1,25 @@
+{
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "prompt": "What is the typical price of a flight from LGA to Dubai within the next 45 days?\nReturn STRICT JSON: { \n  \"origin\": \"LGA\", \"destination\": \"DXB\", \"window_days\": 45,\n  \"price_low_usd\": number, \"price_high_usd\": number,\n  \"typical_airlines\": [string], \"cited_websites\": [string], \"notes\": string\n}",
+  "response_raw": {
+    "id": "chatcmpl-C89JzwpYWIQPTPo605zmkv3P25hFu",
+    "created": 1756058491,
+    "model": "gpt-4o-mini-2024-07-18",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"origin\": \"LGA\",\n  \"destination\": \"DXB\",\n  \"window_days\": 45,\n  \"price_low_usd\": 800,\n  \"price_high_usd\": 1500,\n  \"typical_airlines\": [\"Emirates\", \"Delta\", \"United\", \"American Airlines\", \"Qatar Airways\"],\n  \"cited_websites\": [],\n  \"notes\": \"Prices can vary significantly based on demand, layovers, and booking time.\"\n}"
+        }
+      }
+    ]
+  },
+  "latency_ms": 1670,
+  "status": "ok",
+  "metadata": {
+    "kind": "price_query",
+    "origin": "LGA",
+    "destination": "DXB"
+  }
+}

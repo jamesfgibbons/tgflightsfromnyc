@@ -24,8 +24,17 @@ from completed.motif_selector import select_motifs_by_label, select_motifs_for_c
 from completed.transform_midi import create_sonified_midi
 
 from .models import SonifyRequest
-from .storage import put_bytes, write_json, read_text_s3, ensure_tenant_prefix
+from .storage import (
+    put_bytes,
+    write_json,
+    read_text_s3,
+    ensure_tenant_prefix,
+    get_storage_backend,
+    get_supabase_client,
+    get_s3_client,
+)
 from .renderer import render_midi_to_mp3
+from .scene_planner import build_scene_schedule
 
 logger = logging.getLogger(__name__)
 
@@ -157,10 +166,19 @@ class SonificationService:
     
     def _resolve_metrics(self, request: SonifyRequest) -> Dict[str, float]:
         """Resolve metrics from request parameters."""
-        if request.source == "demo" and request.override_metrics:
-            logger.info(f"Using override metrics for {request.tenant}")
-            return request.override_metrics
-        
+        if request.source == "demo":
+            if request.override_metrics:
+                logger.info(f"Using override metrics for {request.tenant}")
+                numeric = {
+                    k: float(v)
+                    for k, v in request.override_metrics.items()
+                    if isinstance(v, (int, float))
+                }
+                if numeric:
+                    return numeric
+            # Demo mode fallback
+            return {"ctr": 0.5, "impressions": 0.5, "position": 0.5, "clicks": 0.5}
+
         # Use existing fetch_metrics module
         metrics_result = collect_metrics(
             tenant_id=request.tenant,
@@ -172,16 +190,19 @@ class SonificationService:
             logger.warning(f"Failed to collect metrics for {request.tenant}, using fallback")
             # Fallback metrics
             return {"ctr": 0.5, "impressions": 0.5, "position": 0.5, "clicks": 0.5}
-        
+
         return metrics_result["normalized_metrics"]
     
     def _run_momentum_analysis(self, input_midi_key: str, tenant: str) -> Dict[str, Any]:
         """Run the momentum analysis pipeline."""
-        # Download input MIDI to temp file for processing
-        with tempfile.NamedTemporaryFile(suffix=".mid", delete=False) as temp_file:
-            # Note: In production, implement S3 download here
-            # For now, assuming local access or implement download logic
-            temp_midi_path = temp_file.name
+        # If the provided key is a local file path, use it directly
+        if input_midi_key and Path(input_midi_key).exists():
+            temp_midi_path = input_midi_key
+        else:
+            # Download input MIDI to temp file for processing (TODO: implement remote fetch)
+            with tempfile.NamedTemporaryFile(suffix=".mid", delete=False) as temp_file:
+                # Note: In production, implement S3/Supabase download here
+                temp_midi_path = temp_file.name
         
         try:
             # Step 1: Extract bars
@@ -207,8 +228,9 @@ class SonificationService:
             return momentum_data
             
         finally:
-            # Cleanup temp file
-            Path(temp_midi_path).unlink(missing_ok=True)
+            # Cleanup temp file if it was a temporary download
+            if temp_midi_path and Path(temp_midi_path).exists() and Path(temp_midi_path) != Path(input_midi_key):
+                Path(temp_midi_path).unlink(missing_ok=True)
     
     def _select_motifs_by_training(
         self, metrics: Dict[str, float], source: str, tenant: str, seed: Optional[int] = None
@@ -302,12 +324,25 @@ class SonificationService:
                 temp_output_path = temp_output.name
             
             # Use existing transform_midi module
+            # If a local base template is provided, use it
+            base_template = input_key if input_key and Path(input_key).exists() else None
+
+            # Build a simple scene schedule from momentum (chorus lift on positive)
+            scene_schedule = None
+            try:
+                if momentum_data:
+                    bars = int(getattr(request, 'total_bars', 16) or 16)
+                    scene_schedule = build_scene_schedule(momentum_data, total_bars=bars)
+            except Exception:
+                scene_schedule = None
+
             success = create_sonified_midi(
                 controls=controls,
                 motifs=motifs,
                 output_path=temp_output_path,
                 tenant_id=tenant,
-                base_template=None  # TODO: Download input MIDI if needed
+                base_template=base_template,
+                scene_schedule=scene_schedule,
             )
             
             if success and earcons:
@@ -402,10 +437,10 @@ class SonificationService:
             return None
         
         try:
-            # Download MIDI from S3 (simplified - implement actual download)
-            # For now, assume we have the MIDI data
-            midi_data = b""  # TODO: Download from S3
-            
+            midi_data = self._load_midi_bytes(midi_key)
+            if not midi_data:
+                raise RuntimeError("No MIDI data available for rendering")
+
             # Use renderer module
             mp3_data = render_midi_to_mp3(midi_data)
             
@@ -418,6 +453,24 @@ class SonificationService:
             logger.error(f"MP3 rendering failed: {e}")
         
         return None
+
+    def _load_midi_bytes(self, midi_key: str) -> Optional[bytes]:
+        """Load MIDI bytes from configured storage backend."""
+        backend = get_storage_backend()
+        try:
+            if backend == "supabase":
+                client = get_supabase_client()
+                result = client.storage.from_(self.s3_bucket).download(midi_key)
+                if hasattr(result, "read"):
+                    return result.read()
+                return bytes(result)
+            else:
+                s3_client = get_s3_client()
+                obj = s3_client.get_object(Bucket=self.s3_bucket, Key=midi_key)
+                return obj["Body"].read()
+        except Exception as e:
+            logger.error(f"Failed to load MIDI bytes for {midi_key}: {e}")
+            return None
     
     def _generate_label_summary(self, motifs: list) -> Dict[str, int]:
         """Generate summary of labels used in motif selection."""

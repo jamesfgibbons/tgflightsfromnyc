@@ -1,0 +1,25 @@
+{
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "prompt": "What is the typical price of a flight from JFK to Montreal within the next 45 days?\nReturn STRICT JSON: { \n  \"origin\": \"JFK\", \"destination\": \"YUL\", \"window_days\": 45,\n  \"price_low_usd\": number, \"price_high_usd\": number,\n  \"typical_airlines\": [string], \"cited_websites\": [string], \"notes\": string\n}",
+  "response_raw": {
+    "id": "chatcmpl-C89MSdJLphfEKU5BJOwxnYhzLDNGz",
+    "created": 1756058644,
+    "model": "gpt-4o-mini-2024-07-18",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"origin\": \"JFK\",\n  \"destination\": \"YUL\",\n  \"window_days\": 45,\n  \"price_low_usd\": 150,\n  \"price_high_usd\": 300,\n  \"typical_airlines\": [\"Air Canada\", \"Delta\", \"American Airlines\", \"JetBlue\"],\n  \"cited_websites\": [],\n  \"notes\": \"Prices can vary based on demand and booking time; early booking generally yields better rates.\"\n}"
+        }
+      }
+    ]
+  },
+  "latency_ms": 1676,
+  "status": "ok",
+  "metadata": {
+    "kind": "price_query",
+    "origin": "JFK",
+    "destination": "YUL"
+  }
+}

@@ -14,7 +14,16 @@ def main():
     ap.add_argument("--vertical", default="travel", help="Vertical to run (travel, finance, etc.)")
     ap.add_argument("--theme", default="flights_from_nyc", help="Theme within vertical")
     ap.add_argument("--sub-themes", nargs="+", 
-                   default=["budget_carriers", "legacy_airlines", "red_eye_deals", "caribbean_kokomo"],
+                   default=[
+                       "budget_carriers",
+                       "legacy_airlines",
+                       "red_eye_deals",
+                       "caribbean_kokomo",
+                       "non_brand_seo",
+                       "best_time_to_book",
+                       "hidden_city_hacks",
+                       "weekend_getaways"
+                   ],
                    help="Sub-themes to include")
     ap.add_argument("--tracks-per-theme", type=int, default=10, help="Tracks per sub-theme")
     args = ap.parse_args()

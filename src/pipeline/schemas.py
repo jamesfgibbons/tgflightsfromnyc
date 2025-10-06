@@ -36,9 +36,13 @@ class CacheEntry(BaseModel):
     id: str
     timestamp: str
     channel: str
+    theme: Optional[str] = None
+    sub_theme: Optional[str] = None
     brand: Optional[str] = None
     title: str
     prompt: str
+    origin: Optional[str] = None
+    destination: Optional[str] = None
     sound_pack: str
     duration_sec: float
     mp3_url: Optional[str] = None

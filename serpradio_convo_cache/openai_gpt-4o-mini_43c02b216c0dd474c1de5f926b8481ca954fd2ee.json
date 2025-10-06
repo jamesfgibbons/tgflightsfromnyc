@@ -1,0 +1,25 @@
+{
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "prompt": "What is the typical price of a flight from JFK to Aruba within the next 45 days?\nReturn STRICT JSON: { \n  \"origin\": \"JFK\", \"destination\": \"AUA\", \"window_days\": 45,\n  \"price_low_usd\": number, \"price_high_usd\": number,\n  \"typical_airlines\": [string], \"cited_websites\": [string], \"notes\": string\n}",
+  "response_raw": {
+    "id": "chatcmpl-C89N55J4D2rChyZi9M3KfSNxkek6q",
+    "created": 1756058683,
+    "model": "gpt-4o-mini-2024-07-18",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"origin\": \"JFK\",\n  \"destination\": \"AUA\",\n  \"window_days\": 45,\n  \"price_low_usd\": 300,\n  \"price_high_usd\": 600,\n  \"typical_airlines\": [\"JetBlue\", \"American Airlines\", \"Delta\", \"United\"],\n  \"cited_websites\": [],\n  \"notes\": \"Prices can vary based on demand, time of booking, and seasonal trends.\"\n}"
+        }
+      }
+    ]
+  },
+  "latency_ms": 1604,
+  "status": "ok",
+  "metadata": {
+    "kind": "price_query",
+    "origin": "JFK",
+    "destination": "AUA"
+  }
+}

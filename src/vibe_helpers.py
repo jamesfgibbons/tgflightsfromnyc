@@ -14,18 +14,28 @@ import requests
 from midiutil import MIDIFile
 
 try:
-    from openai import OpenAI
+    from groq import Groq as _Groq
 except Exception:  # pragma: no cover
-    OpenAI = None  # type: ignore
+    _Groq = None  # type: ignore
+try:
+    from openai import OpenAI as _OpenAI
+except Exception:  # pragma: no cover
+    _OpenAI = None  # type: ignore
 
 
-def _openai_client():
-    if OpenAI is None:
-        raise RuntimeError("openai package not installed")
-    key = os.getenv("OPENAI_API_KEY")
-    if not key:
-        raise RuntimeError("OPENAI_API_KEY not set")
-    return OpenAI(api_key=key)
+def _llm_client():
+    """Provider selection for OCR/feature inference utils.
+
+    Note: These helpers support Groq and OpenAI client SDKs. xAI (Grok) is
+    integrated via src/llm_xai.py for daily pipelines and summaries.
+    """
+    groq_key = os.getenv("GROQ_API_KEY")
+    if groq_key and _Groq is not None:
+        return ("groq", _Groq(api_key=groq_key))
+    oa_key = os.getenv("OPENAI_API_KEY")
+    if oa_key and _OpenAI is not None:
+        return ("openai", _OpenAI(api_key=oa_key))
+    raise RuntimeError("Set GROQ_API_KEY or OPENAI_API_KEY and install respective client")
 
 
 def extract_track_from_screenshot(img_bytes: bytes) -> Dict[str, Any]:
@@ -33,28 +43,47 @@ def extract_track_from_screenshot(img_bytes: bytes) -> Dict[str, Any]:
 
     This is best-effort; caller decides how to handle low confidence.
     """
-    client = _openai_client()
+    provider, client = _llm_client()
     b64 = base64.b64encode(img_bytes).decode()
     system = (
         "You are an OCR+music assistant. Extract {artist, track} from a music-player "
         "screenshot (e.g., Spotify). Return strict JSON with fields: artist, track, "
         "confidence (0..1), ocr_text."
     )
-    resp = client.chat.completions.create(
-        model="gpt-4o-mini",
-        response_format={"type": "json_object"},
-        temperature=0.1,
-        messages=[
-            {"role": "system", "content": system},
-            {
-                "role": "user",
-                "content": [
-                    {"type": "text", "text": "Extract track & artist"},
-                    {"type": "image_url", "image_url": {"url": f"data:image/png;base64,{b64}"}},
-                ],
-            },
-        ],
-    )
+    if provider == "groq":
+        model = os.getenv("GROQ_VISION_MODEL", "llama-3.2-11b-vision-preview")
+        resp = client.chat.completions.create(
+            model=model,
+            response_format={"type": "json_object"},
+            temperature=0.1,
+            messages=[
+                {"role": "system", "content": system},
+                {
+                    "role": "user",
+                    "content": [
+                        {"type": "text", "text": "Extract track & artist"},
+                        {"type": "image_url", "image_url": {"url": f"data:image/png;base64,{b64}"}},
+                    ],
+                },
+            ],
+        )
+    else:
+        model = os.getenv("OPENAI_VISION_MODEL", "gpt-4o-mini")
+        resp = client.chat.completions.create(
+            model=model,
+            response_format={"type": "json_object"},
+            temperature=0.1,
+            messages=[
+                {"role": "system", "content": system},
+                {
+                    "role": "user",
+                    "content": [
+                        {"type": "text", "text": "Extract track & artist"},
+                        {"type": "image_url", "image_url": {"url": f"data:image/png;base64,{b64}"}},
+                    ],
+                },
+            ],
+        )
     try:
         return json.loads(resp.choices[0].message.content)
     except Exception:
@@ -158,7 +187,7 @@ def infer_music_features_llm(artist: str, title: str) -> Dict[str, Any]:
     Infer tempo/valence/energy/key/mode + tags from just artist/title via OpenAI.
     Returns a compact feature dict the vibe engine can consume.
     """
-    client = _openai_client()
+    provider, client = _llm_client()
 
     system = (
         "You are a musicologist. Given artist/title, estimate rough musical "
@@ -168,15 +197,28 @@ def infer_music_features_llm(artist: str, title: str) -> Dict[str, Any]:
     )
     user = f"artist: {artist}\ntitle: {title}"
 
-    resp = client.chat.completions.create(
-        model="gpt-4o-mini",
-        temperature=0.2,
-        response_format={"type": "json_object"},
-        messages=[
-            {"role": "system", "content": system},
-            {"role": "user", "content": user},
-        ],
-    )
+    if provider == "groq":
+        model = os.getenv("GROQ_TEXT_MODEL", "llama-3.1-8b-instant")
+        resp = client.chat.completions.create(
+            model=model,
+            temperature=0.2,
+            response_format={"type": "json_object"},
+            messages=[
+                {"role": "system", "content": system},
+                {"role": "user", "content": user},
+            ],
+        )
+    else:
+        model = os.getenv("OPENAI_TEXT_MODEL", "gpt-4o-mini")
+        resp = client.chat.completions.create(
+            model=model,
+            temperature=0.2,
+            response_format={"type": "json_object"},
+            messages=[
+                {"role": "system", "content": system},
+                {"role": "user", "content": user},
+            ],
+        )
     try:
         data = _json.loads(resp.choices[0].message.content)
         out = {

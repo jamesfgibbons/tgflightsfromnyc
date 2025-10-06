@@ -1,0 +1,25 @@
+{
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "prompt": "What is the typical price of a flight from EWR to Lyon within the next 45 days?\nReturn STRICT JSON: { \n  \"origin\": \"EWR\", \"destination\": \"LYS\", \"window_days\": 45,\n  \"price_low_usd\": number, \"price_high_usd\": number,\n  \"typical_airlines\": [string], \"cited_websites\": [string], \"notes\": string\n}",
+  "response_raw": {
+    "id": "chatcmpl-C89RpPxRoSK1FarhTmck4JY9Pnmdl",
+    "created": 1756058977,
+    "model": "gpt-4o-mini-2024-07-18",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"origin\": \"EWR\",\n  \"destination\": \"LYS\",\n  \"window_days\": 45,\n  \"price_low_usd\": 600,\n  \"price_high_usd\": 1200,\n  \"typical_airlines\": [\"United Airlines\", \"Air France\", \"Delta Air Lines\", \"Lufthansa\"],\n  \"cited_websites\": [],\n  \"notes\": \"Prices can vary based on demand, time of booking, and flight connections.\"\n}"
+        }
+      }
+    ]
+  },
+  "latency_ms": 1835,
+  "status": "ok",
+  "metadata": {
+    "kind": "price_query",
+    "origin": "EWR",
+    "destination": "LYS"
+  }
+}

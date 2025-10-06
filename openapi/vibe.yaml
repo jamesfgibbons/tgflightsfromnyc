@@ -1,0 +1,311 @@
+openapi: 3.0.3
+info:
+  title: VibeNet Extensions
+  version: 0.1.0
+paths:
+  /api/vibe/embed:
+    post:
+      summary: Embed numeric data into a VibeVector
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: array
+                  items: { type: number }
+                palette:
+                  type: string
+              required: [data]
+      responses:
+        '200':
+          description: Vibe vector response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  vibe:
+                    $ref: '#/components/schemas/Vibe'
+  /api/vibe/train:
+    post:
+      summary: Submit labeled MIDI takes for finetuning (admin)
+      parameters:
+        - in: header
+          name: X-Admin-Secret
+          required: true
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                takes:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/TrainTake'
+              required: [takes]
+      responses:
+        '200':
+          description: Train acceptance response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok: { type: boolean }
+                  accepted: { type: integer }
+  /api/board/feed:
+    get:
+      summary: Split-flap board feed with precomputed rows
+      parameters:
+        - in: query
+          name: target
+          schema:
+            type: string
+            enum: [keywords, entities, overall]
+          required: false
+          description: Select row source
+        - in: query
+          name: limit
+          schema: { type: integer, minimum: 1, maximum: 50, default: 12 }
+        - in: query
+          name: lookback_days
+          schema: { type: integer, minimum: 7, maximum: 365, default: 30 }
+        - in: query
+          name: dataset
+          schema: { type: string }
+          required: false
+      responses:
+        '200':
+          description: Board feed rows
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id: { type: string }
+                        title: { type: string }
+                        data_window: { type: string, nullable: true }
+                        vibe:
+                          type: object
+                          properties:
+                            valence: { type: number }
+                            arousal: { type: number }
+                            tension: { type: number }
+                        tempo_bpm: { type: integer }
+                        momentum:
+                          type: object
+                          properties:
+                            positive: { type: integer }
+                            neutral: { type: integer }
+                            negative: { type: integer }
+                        palette: { type: string }
+                        last_updated: { type: string, nullable: true }
+                        spark:
+                          type: array
+                          items: { type: number }
+                  source: { type: string }
+  /api/llm/run:
+    post:
+      summary: Queue the daily xAI (Grok) pipeline
+      parameters:
+        - in: header
+          name: X-Admin-Secret
+          required: true
+          schema: { type: string }
+        - in: query
+          name: limit
+          schema: { type: integer, default: 50, minimum: 1, maximum: 500 }
+        - in: query
+          name: model
+          schema: { type: string, default: grok-beta }
+      responses:
+        '200':
+          description: Pipeline enqueued
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status: { type: string }
+                  limit: { type: integer }
+                  model: { type: string }
+  /api/travel/cheapest_route:
+    get:
+      summary: Canonical cheapest route query (xAI Grok, cached)
+      parameters:
+        - in: query
+          name: origin
+          schema: { type: string, default: JFK }
+        - in: query
+          name: destination_group
+          schema: { type: string, default: LON }
+          description: Airport group label or comma-separated list (e.g., LHR,LGW,LCY,STN,LTN)
+        - in: query
+          name: window_days
+          schema: { type: integer, default: 45, minimum: 1, maximum: 180 }
+        - in: query
+          name: one_way
+          schema: { type: boolean, default: true }
+        - in: query
+          name: n_results
+          schema: { type: integer, default: 3, minimum: 1, maximum: 5 }
+      responses:
+        '200':
+          description: Raw LLM payload including response_raw and metadata
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  provider: { type: string }
+                  model: { type: string }
+                  prompt: { type: string }
+                  response_raw: { type: object }
+                  latency_ms: { type: integer }
+                  status: { type: string }
+  /api/travel/price_quotes:
+    get:
+      summary: Fetch parsed price quotes (origin/destination filters)
+      parameters:
+        - in: query
+          name: origin
+          schema: { type: string }
+        - in: query
+          name: destination
+          schema: { type: string }
+        - in: query
+          name: limit
+          schema: { type: integer, default: 100 }
+      responses:
+        '200':
+          description: Price quote items
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total: { type: integer }
+                  items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        origin: { type: string }
+                        destination: { type: string }
+                        window_days: { type: integer }
+                        price_low_usd: { type: number }
+                        price_high_usd: { type: number }
+                        typical_airlines: { type: array, items: { type: string } }
+                        cited_websites: { type: array, items: { type: string } }
+                        brands: { type: array, items: { type: string } }
+                        notes: { type: string }
+  /api/vibe/generate_data:
+    post:
+      summary: Generate audio from numeric data and return both job result and vibe
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: array
+                  items: { type: number }
+                palette_slug:
+                  type: string
+                  default: synthwave_midnight
+                total_bars:
+                  type: integer
+                  minimum: 4
+                  maximum: 128
+                  default: 16
+                tempo_hint:
+                  type: integer
+                  minimum: 60
+                  maximum: 180
+                context:
+                  type: object
+                  description: Optional scoring/context (deal_score, novelty_score, brand_pref_score, region_pref_score, etc.)
+                nudge_context:
+                  type: boolean
+                  description: Apply context-based nudge to vibe mapping (defaults to env VIBE_CONTEXT_NUDGE)
+      responses:
+        '200':
+          description: Combined job result and vibe
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  job:
+                    $ref: '#/components/schemas/JobResult'
+                  vibe:
+                    $ref: '#/components/schemas/Vibe'
+components:
+  schemas:
+    JobResult:
+      type: object
+      properties:
+        job_id: { type: string }
+        status: { type: string, enum: [queued, running, done, error] }
+        midi_url: { type: string, nullable: true }
+        mp3_url: { type: string, nullable: true }
+        duration_sec: { type: number, nullable: true }
+        sound_pack: { type: string }
+        label_summary:
+          type: object
+          properties:
+            positive: { type: integer }
+            neutral: { type: integer }
+            negative: { type: integer }
+        momentum_json:
+          type: array
+          items:
+            type: object
+            properties:
+              t0: { type: number }
+              t1: { type: number }
+              label: { type: string, enum: [positive, neutral, negative] }
+              score: { type: number }
+        logs:
+          type: array
+          items: { type: string }
+        error_id: { type: string, nullable: true }
+    Vibe:
+      type: object
+      properties:
+        valence: { type: number, minimum: 0, maximum: 1 }
+        arousal: { type: number, minimum: 0, maximum: 1 }
+        tension: { type: number, minimum: 0, maximum: 1 }
+        brightness: { type: number, minimum: 0, maximum: 1 }
+        warmth: { type: number, minimum: 0, maximum: 1 }
+        density: { type: number, minimum: 0, maximum: 1 }
+        syncopation: { type: number, minimum: 0, maximum: 1 }
+        harm_complexity: { type: number, minimum: 0, maximum: 1 }
+        palette: { type: string }
+        meter: { type: string, enum: [straight_4, half_time, 12_8] }
+      required: [valence, arousal, tension, brightness, warmth, density, syncopation, harm_complexity]
+    TrainTake:
+      type: object
+      properties:
+        take_id: { type: string }
+        palette: { type: string }
+        vibe: { $ref: '#/components/schemas/Vibe' }
+        bpm: { type: integer }
+        progression:
+          type: array
+          items: { type: string }
+        midi_key: { type: string }
+      required: [take_id, palette, vibe, bpm]

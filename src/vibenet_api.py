@@ -16,6 +16,7 @@ from .jobstore import job_store
 from .sonify_service import create_sonification_service
 from .models import SonifyRequest
 from .api_models import JobResult, MomentumBand, LabelSummary
+from .ontology import get_palette_for_destination
 
 import yaml
 
@@ -77,8 +78,12 @@ class GenerateControls(BaseModel):
 
 class VibeNetGenerateRequest(BaseModel):
     data: List[float] = Field(default_factory=list, description="Primary numeric series")
-    vibe_slug: str = Field(default="synthwave_midnight")
+    vibe_slug: Optional[str] = Field(default=None, description="Explicit palette slug override")
     controls: GenerateControls = Field(default_factory=GenerateControls)
+    meta: Optional[Dict[str, Optional[str]]] = Field(
+        default=None,
+        description="Optional metadata e.g. {origin, destination} for palette routing",
+    )
 
 
 def _normalize(vals: List[float]) -> List[float]:
@@ -124,7 +129,27 @@ async def generate(req: VibeNetGenerateRequest):
         raise HTTPException(400, "data must be a numeric array with at least 4 points")
 
     palettes = _load_palettes()
-    sound_pack = _palette_to_sound_pack(req.vibe_slug, palettes)
+
+    requested_slug = (req.vibe_slug or "").strip()
+    vibe_slug = requested_slug or None
+
+    if not vibe_slug and req.meta:
+        dest = (req.meta.get("destination") if isinstance(req.meta, dict) else None) or None
+        if dest:
+            palette = get_palette_for_destination(dest)
+            if palette:
+                vibe_slug = palette
+        if not vibe_slug:
+            origin = (req.meta.get("origin") if isinstance(req.meta, dict) else None) or None
+            if origin:
+                palette = get_palette_for_destination(origin)
+                if palette:
+                    vibe_slug = palette
+
+    if not vibe_slug:
+        vibe_slug = "synthwave_midnight"
+
+    sound_pack = _palette_to_sound_pack(vibe_slug, palettes)
 
     # Map data → momentum bands as a simple, musical proxy
     norm = _normalize([float(x) for x in req.data])
@@ -183,9 +208,8 @@ async def generate(req: VibeNetGenerateRequest):
         sound_pack=sound_pack,
         label_summary=LabelSummary(**counts),
         momentum_json=bands,
-        logs=[f"vibe={req.vibe_slug}", f"sound_pack={sound_pack}", f"tempo={tempo}"],
+        logs=[f"vibe={vibe_slug}", f"sound_pack={sound_pack}", f"tempo={tempo}"],
     )
 
     job_store.finish(job_id, {"midi_url": midi_key, "mp3_url": mp3_key})
     return res
-

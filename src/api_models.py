@@ -3,7 +3,7 @@ Uniform API models for SERP Radio backend responses.
 All endpoints (jobs, share, preview, hero) use these consistent schemas.
 """
 
-from typing import List, Optional, Literal
+from typing import Any, List, Optional, Literal
 from pydantic import BaseModel, Field
 
 
@@ -71,7 +71,7 @@ class SonifyRequest(BaseModel):
     sound_pack: str = Field(default="Arena Rock", description="Sound pack to use")
     
     # For demo mode - override metrics
-    override_metrics: Optional[dict] = Field(default=None, description="Override metrics for demo")
+    override_metrics: Optional[dict[str, Any]] = Field(default=None, description="Override metrics for demo")
     demo_type: Optional[str] = Field(default=None, description="Legacy demo type parameter")
     
     # Advanced options
@@ -86,3 +86,83 @@ class HealthResponse(BaseModel):
     version: str = Field(description="Application version")
     region: str = Field(description="AWS region or 'local'")
     timestamp: str = Field(description="Current timestamp")
+
+
+# ---- Prompt Intake (Feeder) ----
+
+class PromptIntakeRequest(BaseModel):
+    """Feeder intake payload for a single prompt.
+
+    The prompt is a serialized string (e.g., template result) or free text.
+    Additional metadata/config may be provided for auditing.
+    """
+    source: str = Field(default="lovable", description="Origin of the prompt (e.g., lovable, admin, script)")
+    prompt: str = Field(description="Serialized prompt text for LLM")
+    metadata: Optional[dict] = Field(default=None, description="Arbitrary metadata (tags, user, theme)")
+    config: Optional[dict] = Field(default=None, description="Generation config used by the prompt engine")
+
+
+class PromptBatchIntakeRequest(BaseModel):
+    items: List[PromptIntakeRequest] = Field(description="Batch of prompts to enqueue")
+
+
+class PromptIntakeResponse(BaseModel):
+    request_id: str = Field(description="UUID for tracking this prompt request")
+    status: Literal["accepted"] = Field(default="accepted")
+
+
+class VibeNetRun(BaseModel):
+    id: str
+    theme: Optional[str] = None
+    sub_theme: Optional[str] = None
+    channel: Optional[str] = None
+    generated: Optional[str] = None
+    total: Optional[int] = None
+    catalog_key: Optional[str] = None
+    notes: Optional[str] = None
+
+
+class VibeNetRunList(BaseModel):
+    items: List[VibeNetRun]
+    source: str
+
+
+class VibeNetItem(BaseModel):
+    run_id: str
+    entry_id: Optional[str] = None
+    timestamp: Optional[str] = None
+    channel: Optional[str] = None
+    theme: Optional[str] = None
+    sub_theme: Optional[str] = None
+    origin: Optional[str] = None
+    destination: Optional[str] = None
+    brand: Optional[str] = None
+    title: Optional[str] = None
+    prompt: Optional[str] = None
+    sound_pack: Optional[str] = None
+    duration_sec: Optional[float] = None
+    mp3_url: Optional[str] = None
+    midi_url: Optional[str] = None
+    momentum_json: Optional[List[MomentumBand]] = None
+    label_summary: Optional[LabelSummary] = None
+
+
+class VibeNetItemList(BaseModel):
+    items: List[VibeNetItem]
+    source: str
+
+
+class AdhocRunRequest(BaseModel):
+    prompt: str
+    origin: Optional[str] = None
+    destination: Optional[str] = None
+    channel: str = Field(default="travel")
+    theme: str = Field(default="flights_from_nyc")
+    sub_theme: Optional[str] = None
+    sound_pack: Optional[str] = None
+
+
+class AdhocRunResponse(BaseModel):
+    run_id: Optional[str]
+    job: JobResult
+    analysis: dict[str, Any]

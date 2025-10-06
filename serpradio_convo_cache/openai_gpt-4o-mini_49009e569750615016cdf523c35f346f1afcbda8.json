@@ -1,0 +1,20 @@
+{
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "prompt": "Best time to book EWR→SEA within next 60 days.\nInclude: fare ranges (USD), typical booking window (days before departure),\npeak/holiday effects, basic bag policy differences, and 1–2 concrete examples.\nReturn STRICT JSON: {\n  \"origin\": string, \"destination\": string, \"window_days\": number,\n  \"best_window_days\": [min,max], \"fare_low_usd\": number, \"fare_high_usd\": number,\n  \"notes\": string\n}",
+  "response_raw": {
+    "id": "chatcmpl-C7wzmrTR9e8k8yc0AGfHiWtMTAlSk",
+    "created": 1756011110,
+    "model": "gpt-4o-mini-2024-07-18",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"origin\": \"EWR\",\n  \"destination\": \"SEA\",\n  \"window_days\": 30,\n  \"best_window_days\": [21, 45],\n  \"fare_low_usd\": 150,\n  \"fare_high_usd\": 400,\n  \"notes\": \"Booking 21 to 45 days in advance typically yields the best fares. Expect higher prices during peak travel times, such as holidays and summer months. Basic economy fares often include only a personal item, with fees for carry-ons and checked bags. For example, a fare of $180 can be found for a mid-week flight in early November, while a holiday flight in December may exceed $350.\"\n}"
+        }
+      }
+    ]
+  },
+  "latency_ms": 2438,
+  "status": "ok"
+}

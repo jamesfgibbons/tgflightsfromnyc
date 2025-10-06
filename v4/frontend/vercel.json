@@ -1,0 +1,7 @@
+{
+  "rewrites": [
+    { "source": "/api/board/(.*)", "destination": "https://YOUR_BACKEND_HOST/api/board/$1" },
+    { "source": "/api/llm/(.*)",   "destination": "https://YOUR_BACKEND_HOST/api/llm/$1" },
+    { "source": "/api/travel/(.*)", "destination": "https://YOUR_BACKEND_HOST/api/travel/$1" }
+  ]
+}

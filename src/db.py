@@ -39,14 +39,6 @@ def supabase_insert(table: str, record: Dict[str, Any]) -> Optional[Dict[str, An
         return None
 
 
-def supabase_select_one(table: str, *, eq: Dict[str, Any]) -> Optional[Dict[str, Any]]:
-    """Select first row matching equals filters. Returns dict or None."""
-    sb = _client()
-    if not sb:
-        logger.info(f"supabase_select_one skipped (no supabase): table={table}")
-        return None
-
-
 def supabase_select(table: str, *, limit: int = 100) -> Optional[List[Dict[str, Any]]]:
     """Select rows from a table (best-effort). Returns list or None if unavailable."""
     sb = _client()
@@ -59,13 +51,59 @@ def supabase_select(table: str, *, limit: int = 100) -> Optional[List[Dict[str, 
     except Exception as e:
         logger.warning(f"Supabase select failed for {table}: {e}")
         return None
+
+
+def supabase_select_one(table: str, *, eq: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+    """Select first row matching equals filters. Returns dict or None."""
+    sb = _client()
+    if not sb:
+        logger.info(f"supabase_select_one skipped (no supabase): table={table}")
+        return None
     try:
         q = sb.table(table).select("*")
-        for k, v in eq.items():
-            q = q.eq(k, v)
+        for key, value in eq.items():
+            q = q.eq(key, value)
         res = q.limit(1).execute()
-        data = getattr(res, "data", [])
+        data = getattr(res, "data", []) or []
         return data[0] if data else None
     except Exception as e:
-        logger.warning(f"Supabase select failed for {table}: {e}")
+        logger.warning(f"Supabase select_one failed for {table}: {e}")
+        return None
+
+
+def list_vibenet_runs(*, limit: int = 50, theme: Optional[str] = None, channel: Optional[str] = None) -> Optional[List[Dict[str, Any]]]:
+    sb = _client()
+    if not sb:
+        logger.info("list_vibenet_runs skipped (no supabase)")
+        return None
+    try:
+        query = sb.table("vibenet_runs").select("*")
+        if theme:
+            query = query.eq("theme", theme)
+        if channel:
+            query = query.eq("channel", channel)
+        res = query.order("generated", desc=True).limit(limit).execute()
+        return getattr(res, "data", []) or []
+    except Exception as e:
+        logger.warning(f"Supabase list runs failed: {e}")
+        return None
+
+
+def list_vibenet_items(run_id: str, *, limit: int = 200) -> Optional[List[Dict[str, Any]]]:
+    sb = _client()
+    if not sb:
+        logger.info("list_vibenet_items skipped (no supabase)")
+        return None
+    try:
+        query = (
+            sb.table("vibenet_items")
+            .select("*")
+            .eq("run_id", run_id)
+            .order("timestamp", desc=True)
+            .limit(limit)
+        )
+        res = query.execute()
+        return getattr(res, "data", []) or []
+    except Exception as e:
+        logger.warning(f"Supabase list run items failed: {e}")
         return None

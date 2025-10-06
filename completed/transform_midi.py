@@ -256,7 +256,8 @@ def create_sonified_midi(
     motifs: List[Dict[str, Any]],
     output_path: str,
     tenant_id: str,
-    base_template: Optional[str] = None
+    base_template: Optional[str] = None,
+    scene_schedule: Optional[List[str]] = None,
 ) -> bool:
     """
     Create a new sonified MIDI file from controls and motifs.
@@ -288,7 +289,14 @@ def create_sonified_midi(
         
         # Add control changes
         _add_control_changes(midi_data, controls)
-        
+
+        # Optional scene-aware chorus ostinato layer
+        if scene_schedule:
+            try:
+                _add_chorus_ostinato(midi_data, controls, scene_schedule)
+            except Exception as e:
+                logger.warning(f"Scene ostinato skipped: {e}")
+
         # Apply global transformations
         for instrument in midi_data.instruments:
             if not instrument.is_drum:
@@ -353,3 +361,39 @@ def batch_transform_midis(
                f"{sum(results.values())}/{len(results)} succeeded")
     
     return results
+
+
+def _add_chorus_ostinato(
+    midi_data: pretty_midi.PrettyMIDI,
+    controls: Controls,
+    scene_schedule: List[str]
+) -> None:
+    """Add a 16th-note square lead ostinato for chorus bars only.
+
+    Keeps it generic (no melodies), just rhythmic energy.
+    """
+    # Program 81 ~ Lead Square
+    instrument = pretty_midi.Instrument(program=81, name="ChorusLead")
+    bpm = max(60, min(200, int(controls.bpm)))
+    sec_per_beat = 60.0 / float(bpm)
+    bar_sec = sec_per_beat * 4.0
+
+    # 16th grid within each bar
+    step = sec_per_beat / 4.0
+    # Base pitch around middle C (C4=60). Keep within safe range.
+    base_pitch = max(48, min(84, 64 + int(controls.transpose)))
+    vel = max(1, min(127, int(controls.velocity + 10)))
+
+    for idx, scene in enumerate(scene_schedule):
+        if scene != "chorus":
+            continue
+        bar_start = idx * bar_sec
+        # Simple 1-1-1-1 ostinato per 16th step across the bar
+        t = bar_start
+        while t < bar_start + bar_sec - 1e-6:
+            n = pretty_midi.Note(velocity=vel, pitch=base_pitch, start=t, end=min(t + step * 0.9, bar_start + bar_sec))
+            instrument.notes.append(n)
+            t += step
+
+    if instrument.notes:
+        midi_data.instruments.append(instrument)

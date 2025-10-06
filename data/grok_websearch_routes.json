@@ -1,0 +1,755 @@
+{
+  "total": 50,
+  "items": [
+    {
+      "origin": "JFK",
+      "destination": "LHR",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from JFK to London Heathrow in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 156,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "LGA",
+      "destination": "LHR",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from LGA to London Heathrow in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 95,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "EWR",
+      "destination": "LHR",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from EWR to London Heathrow in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 103,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "JFK",
+      "destination": "ORD",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from JFK to Chicago O'Hare in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 89,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "LGA",
+      "destination": "ORD",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from LGA to Chicago O'Hare in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 94,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "EWR",
+      "destination": "ORD",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from EWR to Chicago O'Hare in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 195,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "JFK",
+      "destination": "ATL",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from JFK to Atlanta in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 176,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "LGA",
+      "destination": "ATL",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from LGA to Atlanta in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 218,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "EWR",
+      "destination": "ATL",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from EWR to Atlanta in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 111,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "JFK",
+      "destination": "LAX",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from JFK to Los Angeles in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 89,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "LGA",
+      "destination": "LAX",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from LGA to Los Angeles in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 188,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "EWR",
+      "destination": "LAX",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from EWR to Los Angeles in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 103,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "JFK",
+      "destination": "CDG",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from JFK to Paris CDG in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 95,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "LGA",
+      "destination": "CDG",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from LGA to Paris CDG in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 157,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "EWR",
+      "destination": "CDG",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from EWR to Paris CDG in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 124,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "JFK",
+      "destination": "SFO",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from JFK to San Francisco in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 146,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "LGA",
+      "destination": "SFO",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from LGA to San Francisco in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 94,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "EWR",
+      "destination": "SFO",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from EWR to San Francisco in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 101,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "JFK",
+      "destination": "FCO",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from JFK to Rome FCO in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 105,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "LGA",
+      "destination": "FCO",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from LGA to Rome FCO in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 93,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "EWR",
+      "destination": "FCO",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from EWR to Rome FCO in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 154,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "JFK",
+      "destination": "HND",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from JFK to Tokyo Haneda in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 86,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "LGA",
+      "destination": "HND",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from LGA to Tokyo Haneda in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 102,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "EWR",
+      "destination": "HND",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from EWR to Tokyo Haneda in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 103,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "JFK",
+      "destination": "LAS",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from JFK to Las Vegas in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 86,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "LGA",
+      "destination": "LAS",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from LGA to Las Vegas in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 101,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "EWR",
+      "destination": "LAS",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from EWR to Las Vegas in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 144,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "JFK",
+      "destination": "AMS",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from JFK to Amsterdam in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 192,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "LGA",
+      "destination": "AMS",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from LGA to Amsterdam in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 252,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "EWR",
+      "destination": "AMS",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from EWR to Amsterdam in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 134,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "JFK",
+      "destination": "MCO",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from JFK to Orlando in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 160,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "LGA",
+      "destination": "MCO",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from LGA to Orlando in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 114,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "EWR",
+      "destination": "MCO",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from EWR to Orlando in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 95,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "JFK",
+      "destination": "MIA",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from JFK to Miami in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 144,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "LGA",
+      "destination": "MIA",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from LGA to Miami in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 167,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "EWR",
+      "destination": "MIA",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from EWR to Miami in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 123,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "JFK",
+      "destination": "LGW",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from JFK to London Gatwick in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 171,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "LGA",
+      "destination": "LGW",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from LGA to London Gatwick in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 103,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "EWR",
+      "destination": "LGW",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from EWR to London Gatwick in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 116,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "JFK",
+      "destination": "NRT",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from JFK to Tokyo Narita in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 145,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "LGA",
+      "destination": "NRT",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from LGA to Tokyo Narita in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 201,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "EWR",
+      "destination": "NRT",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from EWR to Tokyo Narita in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 93,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "JFK",
+      "destination": "CUN",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from JFK to Cancun in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 147,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "LGA",
+      "destination": "CUN",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from LGA to Cancun in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 100,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "EWR",
+      "destination": "CUN",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from EWR to Cancun in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 113,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "JFK",
+      "destination": "DEN",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from JFK to Denver in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 176,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "LGA",
+      "destination": "DEN",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from LGA to Denver in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 96,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "EWR",
+      "destination": "DEN",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from EWR to Denver in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 147,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "JFK",
+      "destination": "FRA",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from JFK to Frankfurt in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 112,
+        "status": "error"
+      }
+    },
+    {
+      "origin": "LGA",
+      "destination": "FRA",
+      "result": {
+        "provider": "xai",
+        "model": "grok-beta",
+        "prompt": "Recent news and factors impacting flights from LGA to Frankfurt in the next 45 days.\nInclude: price/availability trends, strikes/airline ops, weather or seasonal effects, big events, and travel advisories.",
+        "response_raw": {
+          "code": "Client specified an invalid argument",
+          "error": "Incorrect API key provided: 16***Ht. You can obtain an API key from https://console.x.ai."
+        },
+        "latency_ms": 139,
+        "status": "error"
+      }
+    }
+  ]
+}

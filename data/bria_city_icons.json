@@ -1,0 +1,182 @@
+[
+  {
+    "code": "LAX",
+    "name": "Los Angeles",
+    "status": "COMPLETED",
+    "image_url": null,
+    "ip_warning": null,
+    "raw": {
+      "result": [
+        {
+          "urls": [
+            "https://d1ei2xrl63k822.cloudfront.net/api/generate_image/stylized_neon_skyline_of_Los_Angeles_with_palm_tre_09354f42-9d91-11f0-b9cc-12a15d6dad00/seed_180939439.png?Expires=1759795470&Signature=JRnjEd4U7x~vmHJ4PLJOXcR7qGLzjbT01Fl62eMsiDpnEGgHvm69AIbm5Ati53UZSSjXNLD5NwdAjQ38Fm~gCJsrCyHGHTntm1qFEe~cT5ZJfNEHGOMfVKv5xJBlyx3BMv0evXA~X-Up5GJUghAEE2aEp2u1ZUXY-Zkmb1QX~3iUmtdm2KyLI4vXVv~UmNN5qPUeoWbvD6mYT-GKKbaZFSs-oJlz~EzuUyFViZ3vHP6Axcx871aECDgzycOIMPdWUoOlBWaDrusozEWL2PTKFAcVY8zDA-g4o1DI1FUpz-cNLZ5ioxZgs~NUaI6WN0b1Hazc3toD-W9-s3YUdZ26PQ__&Key-Pair-Id=K2UXO1NPZVKO7N"
+          ],
+          "seed": 180939439,
+          "uuid": "09354f42-9d91-11f0-b9cc-12a15d6dad00_180939439"
+        }
+      ]
+    }
+  },
+  {
+    "code": "SFO",
+    "name": "San Francisco",
+    "status": "COMPLETED",
+    "image_url": null,
+    "ip_warning": null,
+    "raw": {
+      "result": [
+        {
+          "urls": [
+            "https://d1ei2xrl63k822.cloudfront.net/api/generate_image/flat_icon_of_Golden_Gate_Bridge_at_sunrise_minimal_0fc7dc62-9d91-11f0-bf1c-96afc8632986/seed_1177410842.png?Expires=1759795481&Signature=eGxA74ww-nm1fWR-4P0hhwhFx1yDetKFyxzOHETvyFi-qQ4S52CFDwGdOf4~kDY4gCWWPpYR9LLIz1Gbu4VIq8MjnTMnLXUHomGcrIi6k7QY04Xfot4mv1sD~cc0ICLRx2~zNG6ogN55g~niCsaRuxo51ZZpokSZdlqESiFfVh2hgwpuxOMDfcD-64L9IxBPlOLZ3b8NPv9fqo7NxPcqiinYDaVUlQyqhGx70eAXe54y42zfq~hOkiT3Pkj3VhKp8suYcmFA3e9JTQS6OkR98JYeu8pZvtw2FE4EU3t1cH040E0bo7lj9CW2BSQsdazj40lYPjYMeha6k8pkRh-Vrg__&Key-Pair-Id=K2UXO1NPZVKO7N"
+          ],
+          "seed": 1177410842,
+          "uuid": "0fc7dc62-9d91-11f0-bf1c-96afc8632986_1177410842"
+        }
+      ]
+    }
+  },
+  {
+    "code": "MIA",
+    "name": "Miami",
+    "status": "COMPLETED",
+    "image_url": null,
+    "ip_warning": null,
+    "raw": {
+      "result": [
+        {
+          "urls": [
+            "https://d1ei2xrl63k822.cloudfront.net/api/generate_image/retro_art_deco_Miami_beach_badge_pastel_colors_pal_161ba1b6-9d91-11f0-9598-46747402e144/seed_999432371.png?Expires=1759795491&Signature=fU2p7iRghfxlChVJRVSCX-andDvMWvjMYKH5d5RCVB566AxyTai6MplF1ckhM2N~a86Djw1NQ0oZvjeMk~K5PJudEWegbTvWzTSdPAYEDdBx35Y1IcLA~zxGebcmBlOeEAJZaTWMX~RBbh~GlkFdtyw4e4UgxSZnnvrGfVYgwLqg3vXED-7aa6O-DmFPiQwXKOmqWLf-wh58BdEzHD6RMGXnG79vkYCCLYOcvnei1ROhxbTFLm84q72fXCdWy28TpJ4Qbcz~IdEVjKol0CwpYRWPOhO~orQIh5PaCIeXrzUajcZxq0SuOjSTBsZ5MPwA2FkQhGNAH8A6~iggxoI9FA__&Key-Pair-Id=K2UXO1NPZVKO7N"
+          ],
+          "seed": 999432371,
+          "uuid": "161ba1b6-9d91-11f0-9598-46747402e144_999432371"
+        }
+      ]
+    }
+  },
+  {
+    "code": "ORD",
+    "name": "Chicago",
+    "status": "COMPLETED",
+    "image_url": null,
+    "ip_warning": null,
+    "raw": {
+      "result": [
+        {
+          "urls": [
+            "https://d1ei2xrl63k822.cloudfront.net/api/generate_image/minimalist_Chicago_skyline_with_Willis_Tower_linea_1c83dea6-9d91-11f0-91c4-1a885604c50f/seed_2040108329.png?Expires=1759795502&Signature=Ae~CEdJLvR9wAj8Xi4Ju2-SiWg~ytOPwERAJINxTHYKbUzwtO1582wdlsnp4sxCGbLwRZ9f50ORnNyZh7WvfyjnM6VAZJz4v7S--0B7vVVmQotXTnoOwV4wVAIk3cOzICu27Zvbig1U4y~UrhJCZHPKiOvlRbtl8thYdq2MEMqA~b6MbMgKHxmQXyLF6HqrC6uvheqAOiNpRWf~vUNB4--jwQQ2xrDSuxPbH1n~GtbOC82Tj513Gbl7Vxc5hRixqJ6AwPYLPdI6Jofs2BdnUvgacyvCzMZuZ3qVaHugvuhKpoO-NWm-jBr8UXmjbvM4N~S8vmvzrPFbE7Mo6R9QWIQ__&Key-Pair-Id=K2UXO1NPZVKO7N"
+          ],
+          "seed": 2040108329,
+          "uuid": "1c83dea6-9d91-11f0-91c4-1a885604c50f_2040108329"
+        }
+      ]
+    }
+  },
+  {
+    "code": "ATL",
+    "name": "Atlanta",
+    "status": "COMPLETED",
+    "image_url": null,
+    "ip_warning": null,
+    "raw": {
+      "result": [
+        {
+          "urls": [
+            "https://d1ei2xrl63k822.cloudfront.net/api/generate_image/vector_icon_of_Atlanta_skyline_with_peach_motif_cl_22d1e64a-9d91-11f0-91c4-1a885604c50f/seed_641465136.png?Expires=1759795512&Signature=X4RVmXzU0DCqRn34L1s8F~tKiEyNRVNg93o37T09ySOJkwJQPtLl63vEEk3nqg0h1FpHIILe8zfl-t3-PEALjfDiUpnT1C3tEZRE4fxSeY1ykFXQsfWFps6mjVSb~12D~eQvxscIlODcZCkM8GcgPLiEqmzUNGiIwRZzWumZ9zLMCd6j2yJi5MgYl-bEoVeq-JAenzu~txAD1Ceo5ebVb0vSqfec8-BXuEaEtzLXESVAa2D-8Ja83mFuAyqpr8KqAzDlAfI0DlHgWa6C5KsZZWX0vkpa9mO7Tw23Z9qKDFwsJTzZQ8ZuM5QsKjRoIndY28vMP9ubyHGT95PHumVQOg__&Key-Pair-Id=K2UXO1NPZVKO7N"
+          ],
+          "seed": 641465136,
+          "uuid": "22d1e64a-9d91-11f0-91c4-1a885604c50f_641465136"
+        }
+      ]
+    }
+  },
+  {
+    "code": "LAS",
+    "name": "Las Vegas",
+    "status": "COMPLETED",
+    "image_url": null,
+    "ip_warning": null,
+    "raw": {
+      "result": [
+        {
+          "urls": [
+            "https://d1ei2xrl63k822.cloudfront.net/api/generate_image/glowing_Las_Vegas_strip_icon_with_neon_signage_cas_2be93cc4-9d91-11f0-8c84-62643cbc9184/seed_1833595354.png?Expires=1759795528&Signature=eBKaPmrHnrORPAqwBeJdFwSEaGG2vhSe880KSpAYk85ZU0Ee5k03VImgQFmMj7wCdQ4ZCJyBALocDgGtah02wZEj7lsImdYOfeKNL8FXVpw77hIDKpha1dxV8fPjgSOb5fjBITsCQRvB690GpKRePXkVWSvJcPOKBoAXjanEkkoUERmgxJk4Q7N7DlwF5Mxr1vYY48W--JZO7MZJMbA4Rm4Sx2-d~-Y1W4apZnhbmtd85qt573CCroj3XS-W5XwiKV65M07Y4GnRvSHs4KE2A7c1~8ZBUdyZHxjOFR~AlFjBpk~VJhN5QnNO2iFtjE~8jGe7l9oAwNgsVCJ4FcJlfQ__&Key-Pair-Id=K2UXO1NPZVKO7N"
+          ],
+          "seed": 1833595354,
+          "uuid": "2be93cc4-9d91-11f0-8c84-62643cbc9184_1833595354"
+        }
+      ]
+    }
+  },
+  {
+    "code": "DEN",
+    "name": "Denver",
+    "status": "COMPLETED",
+    "image_url": null,
+    "ip_warning": null,
+    "raw": {
+      "result": [
+        {
+          "urls": [
+            "https://d1ei2xrl63k822.cloudfront.net/api/generate_image/mountain_silhouette_Denver_skyline_at_dusk_flat_ic_33468bb6-9d91-11f0-9e17-ced204a99651/seed_586001918.png?Expires=1759795540&Signature=gBGXIoylaMF1pVXqQghOSRUi8AO-THDLlYevcg5yQyR9X8ZYCfgFLoICbRXcxkPPdquDCtuxb~yNByeHy6UtKMHZiDh5skHocd-H3NiF5yavoIJUTuVMHSfEfVlL87pEgFVcclixyefrDwqTPw8HV2U8HCzzC~2bnYcYiv4lqrpqAiCZn1iMoN-5iA40n-Or6-weEN3Xu88HnbdgABDuT9frF0lnkCTscBs6ep3s~ntVNeAD2y~ajXGqO4ssZdsay8td2epxzFLfRah1Jb8WrHpUpNchaUMwahBMeq3gKrl69nmTfS-M2SLv9mKfvFZ45J5cP7nXhoUDpPJcN0E0lA__&Key-Pair-Id=K2UXO1NPZVKO7N"
+          ],
+          "seed": 586001918,
+          "uuid": "33468bb6-9d91-11f0-9e17-ced204a99651_586001918"
+        }
+      ]
+    }
+  },
+  {
+    "code": "LHR",
+    "name": "London",
+    "status": "COMPLETED",
+    "image_url": null,
+    "ip_warning": null,
+    "raw": {
+      "result": [
+        {
+          "urls": [
+            "https://d1ei2xrl63k822.cloudfront.net/api/generate_image/flat_icon_of_London_skyline_with_Big_Ben_and_Thame_3969bae0-9d91-11f0-bf1c-96afc8632986/seed_1328072472.png?Expires=1759795550&Signature=YFaITxtU8GBXmebY7H2BiMPTace8e~WMEukeazQvWvjo5phhQx3YxlFKPOHMq1SoqVrvbVin0HtwyS7MmIBKGDAgoYEHLHkSITTcBDIxHw9Z~SrxZ0b0YLITEOKSda1nVp-u6SE5WPoCU2qkTY7EWys8KPu5TjvUUW-9-Aw~a5aM5DojoiJiso8eoeNaiKNf9~oz65aT89ocU5x3bZfi-I1h4juPBvj~wcV-x2OlIUKKE3b4KzQ8BTxAUOr0TG7XLkCs8xxA3sVOGediSW09Y4fSDwBCJgC-uDtN6ThbtzooI9Z07BEhlW7SmCoKDZ9i1BO9vXYj3spqzT8J3IX8fw__&Key-Pair-Id=K2UXO1NPZVKO7N"
+          ],
+          "seed": 1328072472,
+          "uuid": "3969bae0-9d91-11f0-bf1c-96afc8632986_1328072472"
+        }
+      ]
+    }
+  },
+  {
+    "code": "CDG",
+    "name": "Paris",
+    "status": "COMPLETED",
+    "image_url": null,
+    "ip_warning": null,
+    "raw": {
+      "result": [
+        {
+          "urls": [
+            "https://d1ei2xrl63k822.cloudfront.net/api/generate_image/Paris_skyline_icon_with_Eiffel_Tower_watercolor_wa_3fdfd33c-9d91-11f0-9598-46747402e144/seed_1608456523.png?Expires=1759795561&Signature=TzfjeURN1U5cpWEWFMoBrCiAbpMTVxL2En-mGXCSruFjdAekdNnMfQFG97QNAagdUNc5Pf5ANQAEowvy66m0WgcA5r42I2vwwCRlpOPo6gJ9inxb0L41Z2iItOZdqu8OypWjHw8jbY4tcNJeaydm7S0Lk6QOH9ZEBJ11DrCHYlNtqbjxLZjPh4mQUqOyFpeR0Ae5bvLtV~T5p-lPmz2YgH6hkjJC0kl9DawQB9ZAus0Dth6e1De9vQH85dxs4-1cjxwVvKUU~OC681VH7Km7I-8TaBjNLvnXpCqs-LtAgntfghJ1pFQLv1BkWl-2-agDiK2y1AbscYnbIexRpj4dIw__&Key-Pair-Id=K2UXO1NPZVKO7N"
+          ],
+          "seed": 1608456523,
+          "uuid": "3fdfd33c-9d91-11f0-9598-46747402e144_1608456523"
+        }
+      ]
+    }
+  },
+  {
+    "code": "SEA",
+    "name": "Seattle",
+    "status": "COMPLETED",
+    "image_url": null,
+    "ip_warning": null,
+    "raw": {
+      "result": [
+        {
+          "urls": [
+            "https://d1ei2xrl63k822.cloudfront.net/api/generate_image/Seattle_skyline_icon_with_Space_Needle_evergreen_f_462c6f20-9d91-11f0-9e17-ced204a99651/seed_1383665679.png?Expires=1759795572&Signature=lwsHUuMoKR-92iZwik0IIHmdvSFvvN2TP7AvrGW2PU11hbtQYbMi-fvtXQ4Xhbs0ADNRl0Mx7rcJoxDg6oF-eFO7irV5G9DO4s8sbkf3O42lofFoS7PU5xjVsQtlatNP~4FzrNrRWfAuD4qhZ7531NYwhSKXfHLswyvVrZInLjo4uBbau23igQyQaU-PsiEwzgcxxf~Y4TMInQpFSxVwWQzu2Yibw0BhrBRCH4xsMfaA5x~kyN7501QHu1UyeF6DnSqscvXBMReGZSHrwWO9qE09qhi3uZMQ49Au0cTjlmLZX2adzjF5Eragw5OVEOZLwTM1yGeGC3Ksr37aPkDhjQ__&Key-Pair-Id=K2UXO1NPZVKO7N"
+          ],
+          "seed": 1383665679,
+          "uuid": "462c6f20-9d91-11f0-9e17-ced204a99651_1383665679"
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,6302 @@
+{
+  "total": 300,
+  "items": [
+    {
+      "origin": "LGA",
+      "destination": "WAW",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "LOT Polish Airlines",
+        "American Airlines",
+        "Delta Air Lines",
+        "Lufthansa",
+        "United Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "HND",
+      "window_days": 45,
+      "price_low_usd": 800,
+      "price_high_usd": 1500,
+      "typical_airlines": [
+        "American Airlines",
+        "Japan Airlines",
+        "All Nippon Airways",
+        "Delta Air Lines"
+      ],
+      "cited_websites": [
+        "expedia.com",
+        "kayak.com",
+        "google.com/flights"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "HND",
+      "window_days": 45,
+      "price_low_usd": 800,
+      "price_high_usd": 1500,
+      "typical_airlines": [
+        "American Airlines",
+        "Delta Air Lines",
+        "United Airlines",
+        "ANA",
+        "Japan Airlines"
+      ],
+      "cited_websites": [
+        "kayak.com",
+        "google.com/flights",
+        "expedia.com"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "CLT",
+      "window_days": 45,
+      "price_low_usd": 100,
+      "price_high_usd": 300,
+      "typical_airlines": [
+        "American Airlines",
+        "Delta",
+        "JetBlue"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "CUN",
+      "window_days": 45,
+      "price_low_usd": 250,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "United Airlines",
+        "JetBlue",
+        "American Airlines",
+        "Spirit Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "JetBlue",
+        "Spirit",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "HAM",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Lufthansa",
+        "United Airlines",
+        "British Airways",
+        "Delta Air Lines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and seasonality.",
+      "brands": [
+        "British Airways",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "FRA",
+      "window_days": 45,
+      "price_low_usd": 500,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Lufthansa",
+        "United Airlines",
+        "Delta Air Lines",
+        "British Airways",
+        "Air France"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "British Airways",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "LAS",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 400,
+      "typical_airlines": [
+        "Delta",
+        "American Airlines",
+        "JetBlue",
+        "Southwest"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "Southwest"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "ORD",
+      "window_days": 45,
+      "price_low_usd": 80,
+      "price_high_usd": 250,
+      "typical_airlines": [
+        "United Airlines",
+        "American Airlines",
+        "Southwest Airlines",
+        "JetBlue Airways"
+      ],
+      "cited_websites": [
+        "expedia.com",
+        "kayak.com",
+        "google.com/flights"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "JetBlue",
+        "Southwest",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "SEA",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 400,
+      "typical_airlines": [
+        "Delta",
+        "Alaska Airlines",
+        "American Airlines",
+        "JetBlue"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "Alaska",
+        "American",
+        "Delta",
+        "JetBlue"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "BHX",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "British Airways",
+        "American Airlines",
+        "United Airlines",
+        "Delta Air Lines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and seasonal trends.",
+      "brands": [
+        "American",
+        "British Airways",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "CLT",
+      "window_days": 45,
+      "price_low_usd": 100,
+      "price_high_usd": 250,
+      "typical_airlines": [
+        "American Airlines",
+        "United Airlines",
+        "Southwest Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Southwest",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "CDG",
+      "window_days": 45,
+      "price_low_usd": 450,
+      "price_high_usd": 900,
+      "typical_airlines": [
+        "United Airlines",
+        "Air France",
+        "Delta Air Lines",
+        "American Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "PDX",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 400,
+      "typical_airlines": [
+        "United Airlines",
+        "Alaska Airlines",
+        "Delta Air Lines",
+        "American Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "Alaska",
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "SJO",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "JetBlue",
+        "American Airlines",
+        "United Airlines",
+        "Delta"
+      ],
+      "cited_websites": [
+        "google.com/flights",
+        "kayak.com",
+        "skyscanner.com"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "SYD",
+      "window_days": 45,
+      "price_low_usd": 1200,
+      "price_high_usd": 2000,
+      "typical_airlines": [
+        "Qantas",
+        "American Airlines",
+        "United Airlines",
+        "Delta Air Lines",
+        "Air New Zealand"
+      ],
+      "cited_websites": [
+        "expedia.com",
+        "kayak.com",
+        "google.com/flights"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and flight availability.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "MAN",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "British Airways",
+        "American Airlines",
+        "Delta",
+        "United"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and seasonality.",
+      "brands": [
+        "American",
+        "British Airways",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "CUR",
+      "window_days": 45,
+      "price_low_usd": 350,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "JetBlue",
+        "American Airlines",
+        "Delta",
+        "United"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and seasonal factors.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "DCA",
+      "window_days": 45,
+      "price_low_usd": 100,
+      "price_high_usd": 250,
+      "typical_airlines": [
+        "American Airlines",
+        "Delta Air Lines",
+        "JetBlue Airways"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "LIM",
+      "window_days": 45,
+      "price_low_usd": 400,
+      "price_high_usd": 800,
+      "typical_airlines": [
+        "American Airlines",
+        "Delta Air Lines",
+        "United Airlines",
+        "LATAM Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and flight availability.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "IAH",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 350,
+      "typical_airlines": [
+        "United Airlines",
+        "American Airlines",
+        "Delta Air Lines"
+      ],
+      "cited_websites": [
+        "google.com/flights",
+        "kayak.com",
+        "expedia.com"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "SYD",
+      "window_days": 45,
+      "price_low_usd": 1200,
+      "price_high_usd": 2000,
+      "typical_airlines": [
+        "Qantas",
+        "American Airlines",
+        "United Airlines",
+        "Delta Air Lines"
+      ],
+      "cited_websites": [
+        "expedia.com",
+        "kayak.com",
+        "google.com/flights"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and seasonal factors.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "ATH",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Delta",
+        "American Airlines",
+        "United",
+        "Lufthansa",
+        "Aegean Airlines"
+      ],
+      "cited_websites": [
+        "google.com/flights",
+        "kayak.com",
+        "skyscanner.com"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "CAI",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "EgyptAir",
+        "Delta",
+        "American Airlines",
+        "United Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "FRA",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Lufthansa",
+        "United Airlines",
+        "Delta Air Lines",
+        "British Airways"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "British Airways",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "GRU",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "United Airlines",
+        "LATAM Airlines",
+        "American Airlines",
+        "Delta Air Lines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "CAI",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "EgyptAir",
+        "Delta",
+        "American Airlines",
+        "United Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and flight availability.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "WAW",
+      "window_days": 45,
+      "price_low_usd": 500,
+      "price_high_usd": 900,
+      "typical_airlines": [
+        "LOT Polish Airlines",
+        "American Airlines",
+        "Delta Air Lines",
+        "Lufthansa"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "NRT",
+      "window_days": 45,
+      "price_low_usd": 800,
+      "price_high_usd": 1500,
+      "typical_airlines": [
+        "American Airlines",
+        "Delta Air Lines",
+        "United Airlines",
+        "Japan Airlines",
+        "All Nippon Airways"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "IAD",
+      "window_days": 45,
+      "price_low_usd": 100,
+      "price_high_usd": 250,
+      "typical_airlines": [
+        "United Airlines",
+        "American Airlines",
+        "JetBlue"
+      ],
+      "cited_websites": [],
+      "notes": "Prices may vary based on demand and booking time.",
+      "brands": [
+        "American",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "SIN",
+      "window_days": 45,
+      "price_low_usd": 800,
+      "price_high_usd": 1500,
+      "typical_airlines": [
+        "Singapore Airlines",
+        "United Airlines",
+        "Delta Air Lines",
+        "Cathay Pacific"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "LAX",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 400,
+      "typical_airlines": [
+        "United Airlines",
+        "American Airlines",
+        "Delta Air Lines",
+        "JetBlue Airways"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "OSL",
+      "window_days": 45,
+      "price_low_usd": 450,
+      "price_high_usd": 800,
+      "typical_airlines": [
+        "SAS",
+        "United Airlines",
+        "Norwegian Air",
+        "Lufthansa"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "LYS",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Delta",
+        "Air France",
+        "American Airlines",
+        "British Airways"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and seasonal factors.",
+      "brands": [
+        "American",
+        "British Airways",
+        "Delta"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "ZRH",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Swiss International Air Lines",
+        "United Airlines",
+        "Lufthansa",
+        "Delta Air Lines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "CPH",
+      "window_days": 45,
+      "price_low_usd": 500,
+      "price_high_usd": 900,
+      "typical_airlines": [
+        "SAS",
+        "United Airlines",
+        "Delta Air Lines",
+        "Lufthansa"
+      ],
+      "cited_websites": [
+        "expedia.com",
+        "kayak.com"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "MEX",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "United Airlines",
+        "AeroMexico",
+        "American Airlines",
+        "Delta Air Lines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "DCA",
+      "window_days": 45,
+      "price_low_usd": 100,
+      "price_high_usd": 250,
+      "typical_airlines": [
+        "United Airlines",
+        "American Airlines",
+        "JetBlue"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "YYZ",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 350,
+      "typical_airlines": [
+        "Air Canada",
+        "United Airlines",
+        "American Airlines",
+        "Delta Air Lines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "GDL",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "United Airlines",
+        "American Airlines",
+        "Aeromexico"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "KEF",
+      "window_days": 45,
+      "price_low_usd": 350,
+      "price_high_usd": 700,
+      "typical_airlines": [
+        "Icelandair",
+        "United Airlines",
+        "Delta Air Lines",
+        "American Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "SDQ",
+      "window_days": 45,
+      "price_low_usd": 250,
+      "price_high_usd": 500,
+      "typical_airlines": [
+        "JetBlue",
+        "American Airlines",
+        "Delta",
+        "United"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "NAS",
+      "window_days": 45,
+      "price_low_usd": 250,
+      "price_high_usd": 500,
+      "typical_airlines": [
+        "JetBlue",
+        "American Airlines",
+        "Delta"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and seasonal factors.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "MCO",
+      "window_days": 45,
+      "price_low_usd": 80,
+      "price_high_usd": 250,
+      "typical_airlines": [
+        "United Airlines",
+        "JetBlue Airways",
+        "Spirit Airlines",
+        "American Airlines"
+      ],
+      "cited_websites": [
+        "google.com/flights",
+        "kayak.com",
+        "expedia.com"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "JetBlue",
+        "Spirit",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "BER",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Lufthansa",
+        "United Airlines",
+        "British Airways",
+        "Delta Air Lines",
+        "Air France"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "British Airways",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "MEL",
+      "window_days": 45,
+      "price_low_usd": 900,
+      "price_high_usd": 1500,
+      "typical_airlines": [
+        "Qantas",
+        "United Airlines",
+        "American Airlines",
+        "Delta Air Lines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "YWG",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "Delta",
+        "United",
+        "American Airlines",
+        "WestJet"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "SAP",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "United Airlines",
+        "American Airlines",
+        "Spirit Airlines",
+        "Delta Air Lines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "Spirit",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "AUS",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 350,
+      "typical_airlines": [
+        "United Airlines",
+        "American Airlines",
+        "Southwest Airlines",
+        "JetBlue"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "JetBlue",
+        "Southwest",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "SAN",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 400,
+      "typical_airlines": [
+        "JetBlue",
+        "American Airlines",
+        "Delta",
+        "Southwest"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "Southwest"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "ZRH",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Swiss International Air Lines",
+        "United Airlines",
+        "Lufthansa",
+        "British Airways"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "British Airways",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "IST",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Turkish Airlines",
+        "Delta",
+        "United",
+        "American Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "MIA",
+      "window_days": 45,
+      "price_low_usd": 100,
+      "price_high_usd": 300,
+      "typical_airlines": [
+        "American Airlines",
+        "JetBlue",
+        "Delta",
+        "Spirit Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "Spirit"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "VIE",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "United Airlines",
+        "Lufthansa",
+        "Austrian Airlines",
+        "British Airways"
+      ],
+      "cited_websites": [
+        "expedia.com",
+        "kayak.com"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and flight connections.",
+      "brands": [
+        "British Airways",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "ZRH",
+      "window_days": 45,
+      "price_low_usd": 500,
+      "price_high_usd": 900,
+      "typical_airlines": [
+        "Swiss International Air Lines",
+        "United Airlines",
+        "Lufthansa",
+        "Delta Air Lines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "ATL",
+      "window_days": 45,
+      "price_low_usd": 100,
+      "price_high_usd": 250,
+      "typical_airlines": [
+        "Delta",
+        "American Airlines",
+        "JetBlue",
+        "Southwest"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "Southwest"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "BKK",
+      "window_days": 45,
+      "price_low_usd": 800,
+      "price_high_usd": 1500,
+      "typical_airlines": [
+        "Thai Airways",
+        "Delta Airlines",
+        "United Airlines",
+        "Cathay Pacific",
+        "Singapore Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "GCM",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "JetBlue",
+        "American Airlines",
+        "Delta",
+        "United"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "AMM",
+      "window_days": 45,
+      "price_low_usd": 700,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Royal Jordanian",
+        "Delta Air Lines",
+        "United Airlines",
+        "American Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "MIA",
+      "window_days": 45,
+      "price_low_usd": 100,
+      "price_high_usd": 300,
+      "typical_airlines": [
+        "American Airlines",
+        "JetBlue",
+        "United Airlines",
+        "Delta Air Lines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can fluctuate based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "ICN",
+      "window_days": 45,
+      "price_low_usd": 800,
+      "price_high_usd": 1500,
+      "typical_airlines": [
+        "Korean Air",
+        "Asiana Airlines",
+        "Delta Air Lines",
+        "United Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and flight availability.",
+      "brands": [
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "JED",
+      "window_days": 45,
+      "price_low_usd": 800,
+      "price_high_usd": 1500,
+      "typical_airlines": [
+        "Saudi Arabian Airlines",
+        "American Airlines",
+        "Delta Air Lines",
+        "United Airlines"
+      ],
+      "cited_websites": [
+        "expedia.com",
+        "kayak.com",
+        "skyscanner.com"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and layover options.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "HND",
+      "window_days": 45,
+      "price_low_usd": 800,
+      "price_high_usd": 1500,
+      "typical_airlines": [
+        "United Airlines",
+        "All Nippon Airways",
+        "Japan Airlines",
+        "Delta Air Lines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "PHX",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 400,
+      "typical_airlines": [
+        "American Airlines",
+        "Delta Air Lines",
+        "Southwest Airlines",
+        "JetBlue Airways"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "Southwest"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "GRU",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "American Airlines",
+        "Delta Air Lines",
+        "LATAM Airlines",
+        "United Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "SCL",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "American Airlines",
+        "Delta Air Lines",
+        "LATAM Airlines",
+        "JetBlue Airways"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and seasonal factors.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "PBI",
+      "window_days": 45,
+      "price_low_usd": 100,
+      "price_high_usd": 300,
+      "typical_airlines": [
+        "JetBlue",
+        "American Airlines",
+        "Delta",
+        "Spirit"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "Spirit"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "RUH",
+      "window_days": 45,
+      "price_low_usd": 800,
+      "price_high_usd": 1500,
+      "typical_airlines": [
+        "Saudi Arabian Airlines",
+        "American Airlines",
+        "Delta Air Lines",
+        "United Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and layovers.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "GCM",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "American Airlines",
+        "JetBlue",
+        "Delta",
+        "United"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and seasonal trends.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "CUR",
+      "window_days": 45,
+      "price_low_usd": 350,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "JetBlue",
+        "American Airlines",
+        "United Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "DOH",
+      "window_days": 45,
+      "price_low_usd": 800,
+      "price_high_usd": 1500,
+      "typical_airlines": [
+        "Qatar Airways",
+        "American Airlines",
+        "United Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "SAL",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "American Airlines",
+        "United Airlines",
+        "Delta Air Lines",
+        "Avianca"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "UIO",
+      "window_days": 45,
+      "price_low_usd": 400,
+      "price_high_usd": 800,
+      "typical_airlines": [
+        "American Airlines",
+        "Delta Air Lines",
+        "JetBlue Airways",
+        "Avianca"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "CDG",
+      "window_days": 45,
+      "price_low_usd": 500,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Delta",
+        "Air France",
+        "American Airlines",
+        "United Airlines"
+      ],
+      "cited_websites": [
+        "expedia.com",
+        "kayak.com",
+        "google.com/flights"
+      ],
+      "notes": "Prices can vary based on demand, day of the week, and how far in advance the ticket is purchased.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "CUN",
+      "window_days": 45,
+      "price_low_usd": 250,
+      "price_high_usd": 500,
+      "typical_airlines": [
+        "American Airlines",
+        "JetBlue",
+        "Delta",
+        "United Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "DUB",
+      "window_days": 45,
+      "price_low_usd": 350,
+      "price_high_usd": 700,
+      "typical_airlines": [
+        "American Airlines",
+        "Delta Air Lines",
+        "Aer Lingus",
+        "United Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "OGG",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "United Airlines",
+        "Hawaiian Airlines",
+        "American Airlines",
+        "Delta Air Lines"
+      ],
+      "cited_websites": [
+        "kayak.com",
+        "expedia.com",
+        "google.com/flights"
+      ],
+      "notes": "Prices can fluctuate based on demand, time of booking, and seasonal factors.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "SFO",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 400,
+      "typical_airlines": [
+        "Delta",
+        "United",
+        "American Airlines",
+        "JetBlue"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "YWG",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "United Airlines",
+        "Air Canada",
+        "Delta Air Lines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand and booking time; consider booking in advance for better rates.",
+      "brands": [
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "PDX",
+      "window_days": 45,
+      "price_low_usd": 200,
+      "price_high_usd": 450,
+      "typical_airlines": [
+        "Delta",
+        "Alaska Airlines",
+        "American Airlines",
+        "JetBlue"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand and specific travel dates.",
+      "brands": [
+        "Alaska",
+        "American",
+        "Delta",
+        "JetBlue"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "SIN",
+      "window_days": 45,
+      "price_low_usd": 800,
+      "price_high_usd": 1500,
+      "typical_airlines": [
+        "Singapore Airlines",
+        "United Airlines",
+        "Delta Air Lines",
+        "Cathay Pacific"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "DUB",
+      "window_days": 45,
+      "price_low_usd": 400,
+      "price_high_usd": 800,
+      "typical_airlines": [
+        "American Airlines",
+        "Delta Air Lines",
+        "United Airlines",
+        "Aer Lingus"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "FLL",
+      "window_days": 45,
+      "price_low_usd": 100,
+      "price_high_usd": 300,
+      "typical_airlines": [
+        "JetBlue",
+        "American Airlines",
+        "Delta",
+        "Spirit Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "Spirit"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "DEN",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 350,
+      "typical_airlines": [
+        "United Airlines",
+        "Delta Air Lines",
+        "Southwest Airlines",
+        "JetBlue Airways"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "Delta",
+        "JetBlue",
+        "Southwest",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "MAD",
+      "window_days": 45,
+      "price_low_usd": 400,
+      "price_high_usd": 800,
+      "typical_airlines": [
+        "Iberia",
+        "American Airlines",
+        "United Airlines",
+        "Delta Air Lines",
+        "Air Europa"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "NRT",
+      "window_days": 45,
+      "price_low_usd": 800,
+      "price_high_usd": 1500,
+      "typical_airlines": [
+        "American Airlines",
+        "Japan Airlines",
+        "All Nippon Airways",
+        "Delta Air Lines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "GDL",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "American Airlines",
+        "United Airlines",
+        "Delta Air Lines",
+        "Aeroméxico"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "PRG",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "United Airlines",
+        "Lufthansa",
+        "British Airways",
+        "Delta Air Lines",
+        "Air France"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "British Airways",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "ATH",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "United Airlines",
+        "Delta Air Lines",
+        "American Airlines",
+        "Lufthansa",
+        "British Airways"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "British Airways",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "LAX",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 400,
+      "typical_airlines": [
+        "Delta",
+        "American Airlines",
+        "JetBlue",
+        "United"
+      ],
+      "cited_websites": [
+        "google.com/flights",
+        "kayak.com",
+        "skyscanner.com"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "KEF",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "Icelandair",
+        "Delta",
+        "American Airlines",
+        "JetBlue"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "AKL",
+      "window_days": 45,
+      "price_low_usd": 900,
+      "price_high_usd": 1500,
+      "typical_airlines": [
+        "Air New Zealand",
+        "United Airlines",
+        "Qantas",
+        "American Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and seasonal factors.",
+      "brands": [
+        "American",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "SFO",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 400,
+      "typical_airlines": [
+        "Delta",
+        "United",
+        "American Airlines",
+        "JetBlue"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "AUS",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 350,
+      "typical_airlines": [
+        "American Airlines",
+        "JetBlue",
+        "Southwest Airlines",
+        "Delta Air Lines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "Southwest"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "ICN",
+      "window_days": 45,
+      "price_low_usd": 800,
+      "price_high_usd": 1500,
+      "typical_airlines": [
+        "Korean Air",
+        "Asiana Airlines",
+        "United Airlines",
+        "Delta Air Lines",
+        "American Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "NCE",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Delta",
+        "Air France",
+        "American Airlines",
+        "United Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and seasonal trends.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "MCO",
+      "window_days": 45,
+      "price_low_usd": 80,
+      "price_high_usd": 250,
+      "typical_airlines": [
+        "JetBlue",
+        "Delta",
+        "American Airlines",
+        "Southwest"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "Southwest"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "ICN",
+      "window_days": 45,
+      "price_low_usd": 700,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Korean Air",
+        "Asiana Airlines",
+        "Delta Air Lines",
+        "United Airlines"
+      ],
+      "cited_websites": [
+        "expedia.com",
+        "kayak.com",
+        "google.com/flights"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "LIM",
+      "window_days": 45,
+      "price_low_usd": 400,
+      "price_high_usd": 800,
+      "typical_airlines": [
+        "American Airlines",
+        "Delta Air Lines",
+        "LATAM Airlines",
+        "JetBlue Airways"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "HNL",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "United Airlines",
+        "American Airlines",
+        "Delta Air Lines",
+        "Hawaiian Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "JED",
+      "window_days": 45,
+      "price_low_usd": 700,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Saudi Arabian Airlines",
+        "United Airlines",
+        "American Airlines",
+        "Lufthansa"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "DXB",
+      "window_days": 45,
+      "price_low_usd": 700,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Emirates",
+        "Etihad Airways",
+        "Qatar Airways",
+        "American Airlines",
+        "Delta Air Lines"
+      ],
+      "cited_websites": [
+        "google.com/flights",
+        "kayak.com",
+        "skyscanner.com"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "MXP",
+      "window_days": 45,
+      "price_low_usd": 500,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Delta",
+        "American Airlines",
+        "Alitalia",
+        "Lufthansa",
+        "United"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "KUL",
+      "window_days": 45,
+      "price_low_usd": 700,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Malaysia Airlines",
+        "Cathay Pacific",
+        "Singapore Airlines",
+        "Qatar Airways",
+        "Emirates"
+      ],
+      "cited_websites": [
+        "expedia.com",
+        "kayak.com",
+        "skyscanner.com"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and layover options.",
+      "brands": []
+    },
+    {
+      "origin": "LGA",
+      "destination": "ATH",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Delta",
+        "American Airlines",
+        "United",
+        "Lufthansa",
+        "British Airways"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and seasonality.",
+      "brands": [
+        "American",
+        "British Airways",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "BER",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Lufthansa",
+        "United Airlines",
+        "Delta Air Lines",
+        "British Airways",
+        "Air France"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "British Airways",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "SJO",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "JetBlue",
+        "American Airlines",
+        "United Airlines",
+        "Delta"
+      ],
+      "cited_websites": [
+        "expedia.com",
+        "kayak.com",
+        "google.com/flights"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "CUR",
+      "window_days": 45,
+      "price_low_usd": 350,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "American Airlines",
+        "JetBlue",
+        "Delta",
+        "United"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and seasonal factors.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "BER",
+      "window_days": 45,
+      "price_low_usd": 500,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Lufthansa",
+        "United Airlines",
+        "Delta Air Lines",
+        "British Airways",
+        "Air France"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "British Airways",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "GIG",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "United Airlines",
+        "American Airlines",
+        "LATAM Airlines",
+        "Delta Air Lines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "TPA",
+      "window_days": 45,
+      "price_low_usd": 80,
+      "price_high_usd": 250,
+      "typical_airlines": [
+        "Delta",
+        "American Airlines",
+        "JetBlue",
+        "Southwest"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "Southwest"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "PUJ",
+      "window_days": 45,
+      "price_low_usd": 350,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "JetBlue",
+        "American Airlines",
+        "United Airlines",
+        "Delta"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "PUJ",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "JetBlue",
+        "American Airlines",
+        "Delta",
+        "United"
+      ],
+      "cited_websites": [
+        "expedia.com",
+        "kayak.com",
+        "google.com/flights"
+      ],
+      "notes": "Prices can vary based on demand, booking time, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "AKL",
+      "window_days": 45,
+      "price_low_usd": 900,
+      "price_high_usd": 1500,
+      "typical_airlines": [
+        "Air New Zealand",
+        "American Airlines",
+        "United Airlines",
+        "Qantas",
+        "Delta"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can fluctuate based on demand, time of booking, and seasonal trends.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "AKL",
+      "window_days": 45,
+      "price_low_usd": 900,
+      "price_high_usd": 1500,
+      "typical_airlines": [
+        "Air New Zealand",
+        "American Airlines",
+        "United Airlines",
+        "Qantas",
+        "Delta Air Lines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "HNL",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Hawaiian Airlines",
+        "American Airlines",
+        "Delta Air Lines",
+        "United Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "CAI",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "EgyptAir",
+        "United Airlines",
+        "Delta Air Lines",
+        "Lufthansa"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and flight connections.",
+      "brands": [
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "RUH",
+      "window_days": 45,
+      "price_low_usd": 800,
+      "price_high_usd": 1500,
+      "typical_airlines": [
+        "Saudi Arabian Airlines",
+        "American Airlines",
+        "Delta Air Lines",
+        "British Airways"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "British Airways",
+        "Delta"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "VIE",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Austrian Airlines",
+        "United Airlines",
+        "Lufthansa",
+        "Delta Air Lines",
+        "British Airways"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and seasonality.",
+      "brands": [
+        "British Airways",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "SJU",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 400,
+      "typical_airlines": [
+        "JetBlue",
+        "United Airlines",
+        "American Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "LIM",
+      "window_days": 45,
+      "price_low_usd": 400,
+      "price_high_usd": 800,
+      "typical_airlines": [
+        "American Airlines",
+        "Delta Air Lines",
+        "LATAM Airlines",
+        "JetBlue Airways"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "LYS",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "United Airlines",
+        "Air France",
+        "Delta Air Lines",
+        "Lufthansa"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and flight connections.",
+      "brands": [
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "AUS",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 350,
+      "typical_airlines": [
+        "American Airlines",
+        "Delta Air Lines",
+        "Southwest Airlines",
+        "JetBlue Airways"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "Southwest"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "IAD",
+      "window_days": 45,
+      "price_low_usd": 100,
+      "price_high_usd": 250,
+      "typical_airlines": [
+        "United Airlines",
+        "American Airlines",
+        "JetBlue Airways"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "SCL",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "American Airlines",
+        "Delta Air Lines",
+        "LATAM Airlines",
+        "JetBlue Airways"
+      ],
+      "cited_websites": [
+        "google.com/flights",
+        "kayak.com"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "EDI",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Delta",
+        "American Airlines",
+        "British Airways",
+        "United"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and seasonal factors.",
+      "brands": [
+        "American",
+        "British Airways",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "GIG",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "American Airlines",
+        "Delta Air Lines",
+        "United Airlines",
+        "LATAM Airlines"
+      ],
+      "cited_websites": [
+        "expedia.com",
+        "kayak.com",
+        "google.com/flights"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "ATL",
+      "window_days": 45,
+      "price_low_usd": 100,
+      "price_high_usd": 300,
+      "typical_airlines": [
+        "Delta",
+        "American Airlines",
+        "JetBlue",
+        "Southwest"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "Southwest"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "JED",
+      "window_days": 45,
+      "price_low_usd": 700,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Saudi Arabian Airlines",
+        "American Airlines",
+        "Delta Air Lines",
+        "United Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "MEX",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "American Airlines",
+        "Delta Air Lines",
+        "United Airlines",
+        "Aeroméxico"
+      ],
+      "cited_websites": [
+        "google.com/flights",
+        "kayak.com",
+        "skyscanner.com"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "YVR",
+      "window_days": 45,
+      "price_low_usd": 350,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "Delta",
+        "American Airlines",
+        "Alaska Airlines",
+        "Air Canada"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "Alaska",
+        "American",
+        "Delta"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "MBJ",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "JetBlue",
+        "American Airlines",
+        "Delta",
+        "Southwest"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "Southwest"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "KEF",
+      "window_days": 45,
+      "price_low_usd": 350,
+      "price_high_usd": 700,
+      "typical_airlines": [
+        "Icelandair",
+        "Delta",
+        "American Airlines",
+        "JetBlue"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and seasonal factors.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "FCO",
+      "window_days": 45,
+      "price_low_usd": 500,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Delta",
+        "American Airlines",
+        "Alitalia",
+        "United",
+        "British Airways"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "British Airways",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "BOG",
+      "window_days": 45,
+      "price_low_usd": 350,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "Avianca",
+        "American Airlines",
+        "JetBlue",
+        "Delta"
+      ],
+      "cited_websites": [
+        "kayak.com",
+        "expedia.com",
+        "google.com/flights"
+      ],
+      "notes": "Prices can fluctuate based on demand and booking time. It's advisable to book early for better rates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "GDL",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "American Airlines",
+        "Delta",
+        "United",
+        "Aeroméxico"
+      ],
+      "cited_websites": [
+        "expedia.com",
+        "kayak.com",
+        "google.com/flights"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "MAD",
+      "window_days": 45,
+      "price_low_usd": 450,
+      "price_high_usd": 900,
+      "typical_airlines": [
+        "Iberia",
+        "American Airlines",
+        "Delta",
+        "Air Europa"
+      ],
+      "cited_websites": [
+        "kayak.com",
+        "expedia.com",
+        "google.com/flights"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and seasonal factors.",
+      "brands": [
+        "American",
+        "Delta"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "ARN",
+      "window_days": 45,
+      "price_low_usd": 500,
+      "price_high_usd": 900,
+      "typical_airlines": [
+        "Delta Air Lines",
+        "SAS",
+        "American Airlines",
+        "United Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "CUN",
+      "window_days": 45,
+      "price_low_usd": 250,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "JetBlue",
+        "American Airlines",
+        "Delta",
+        "United"
+      ],
+      "cited_websites": [
+        "kayak.com",
+        "google.com/flights",
+        "expedia.com"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "BCN",
+      "window_days": 45,
+      "price_low_usd": 450,
+      "price_high_usd": 900,
+      "typical_airlines": [
+        "United Airlines",
+        "Iberia",
+        "American Airlines",
+        "Delta Air Lines",
+        "Norwegian Air"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "LYS",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Delta",
+        "Air France",
+        "American Airlines",
+        "United"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "BOG",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "Avianca",
+        "American Airlines",
+        "JetBlue",
+        "Delta"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "NCE",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Delta",
+        "American Airlines",
+        "United",
+        "Air France"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and flight connections.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "BOS",
+      "window_days": 45,
+      "price_low_usd": 100,
+      "price_high_usd": 250,
+      "typical_airlines": [
+        "United Airlines",
+        "JetBlue Airways",
+        "American Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "AUA",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "JetBlue",
+        "American Airlines",
+        "Delta",
+        "United"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and seasonal trends.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "DFW",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 350,
+      "typical_airlines": [
+        "American Airlines",
+        "United Airlines",
+        "Southwest Airlines"
+      ],
+      "cited_websites": [
+        "expedia.com",
+        "kayak.com",
+        "google.com/flights"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Southwest",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "CPH",
+      "window_days": 45,
+      "price_low_usd": 450,
+      "price_high_usd": 800,
+      "typical_airlines": [
+        "SAS",
+        "Norwegian Air",
+        "Delta",
+        "United Airlines",
+        "Lufthansa"
+      ],
+      "cited_websites": [
+        "kayak.com",
+        "expedia.com"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "SJU",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 400,
+      "typical_airlines": [
+        "JetBlue",
+        "American Airlines",
+        "Delta",
+        "Southwest"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can fluctuate based on demand and booking time.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "Southwest"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "UIO",
+      "window_days": 45,
+      "price_low_usd": 500,
+      "price_high_usd": 800,
+      "typical_airlines": [
+        "American Airlines",
+        "Delta Air Lines",
+        "United Airlines",
+        "JetBlue Airways"
+      ],
+      "cited_websites": [
+        "google.com/flights",
+        "kayak.com",
+        "skyscanner.com"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "TPA",
+      "window_days": 45,
+      "price_low_usd": 100,
+      "price_high_usd": 250,
+      "typical_airlines": [
+        "United Airlines",
+        "Spirit Airlines",
+        "JetBlue Airways",
+        "American Airlines"
+      ],
+      "cited_websites": [
+        "expedia.com",
+        "kayak.com",
+        "google.com/flights"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "JetBlue",
+        "Spirit",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "DFW",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 350,
+      "typical_airlines": [
+        "American Airlines",
+        "Delta Air Lines",
+        "Southwest Airlines",
+        "JetBlue Airways"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "Southwest"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "SJO",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "United Airlines",
+        "JetBlue",
+        "American Airlines",
+        "Spirit Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "JetBlue",
+        "Spirit",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "LGW",
+      "window_days": 45,
+      "price_low_usd": 400,
+      "price_high_usd": 800,
+      "typical_airlines": [
+        "British Airways",
+        "Norwegian Air",
+        "American Airlines",
+        "JetBlue"
+      ],
+      "cited_websites": [
+        "kayak.com",
+        "expedia.com"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "British Airways",
+        "JetBlue"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "MXP",
+      "window_days": 45,
+      "price_low_usd": 500,
+      "price_high_usd": 900,
+      "typical_airlines": [
+        "United Airlines",
+        "Delta Air Lines",
+        "Lufthansa",
+        "British Airways"
+      ],
+      "cited_websites": [
+        "expedia.com",
+        "kayak.com",
+        "google.com/flights"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "British Airways",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "DXB",
+      "window_days": 45,
+      "price_low_usd": 700,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Emirates",
+        "United Airlines",
+        "Qatar Airways",
+        "Etihad Airways"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "TLV",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "El Al",
+        "Delta",
+        "United",
+        "American Airlines",
+        "Turkish Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "LHR",
+      "window_days": 45,
+      "price_low_usd": 500,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "British Airways",
+        "American Airlines",
+        "United Airlines",
+        "Virgin Atlantic"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "British Airways",
+        "United",
+        "Virgin Atlantic"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "YYZ",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 300,
+      "typical_airlines": [
+        "Air Canada",
+        "American Airlines",
+        "Delta",
+        "JetBlue"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "DOH",
+      "window_days": 45,
+      "price_low_usd": 800,
+      "price_high_usd": 1500,
+      "typical_airlines": [
+        "Qatar Airways",
+        "United Airlines",
+        "American Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "GUA",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "American Airlines",
+        "United Airlines",
+        "Delta Air Lines",
+        "Spirit Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "Spirit",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "VIE",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Austrian Airlines",
+        "United Airlines",
+        "Lufthansa",
+        "Delta Air Lines",
+        "British Airways"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "British Airways",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "HKG",
+      "window_days": 45,
+      "price_low_usd": 800,
+      "price_high_usd": 1500,
+      "typical_airlines": [
+        "United Airlines",
+        "Cathay Pacific",
+        "American Airlines",
+        "Delta Air Lines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "LHR",
+      "window_days": 45,
+      "price_low_usd": 500,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "British Airways",
+        "American Airlines",
+        "Virgin Atlantic",
+        "Delta Air Lines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "British Airways",
+        "Delta",
+        "Virgin Atlantic"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "HAM",
+      "window_days": 45,
+      "price_low_usd": 500,
+      "price_high_usd": 900,
+      "typical_airlines": [
+        "Lufthansa",
+        "United Airlines",
+        "British Airways",
+        "Delta Air Lines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "British Airways",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "EZE",
+      "window_days": 45,
+      "price_low_usd": 800,
+      "price_high_usd": 1500,
+      "typical_airlines": [
+        "American Airlines",
+        "Delta Air Lines",
+        "United Airlines",
+        "LATAM Airlines"
+      ],
+      "cited_websites": [
+        "kayak.com",
+        "expedia.com",
+        "google.com/flights"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "BUD",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Lufthansa",
+        "British Airways",
+        "Air France",
+        "United Airlines",
+        "Delta Air Lines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "British Airways",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "BRU",
+      "window_days": 45,
+      "price_low_usd": 500,
+      "price_high_usd": 900,
+      "typical_airlines": [
+        "United Airlines",
+        "Brussels Airlines",
+        "Lufthansa",
+        "American Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "PTY",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "American Airlines",
+        "Delta Air Lines",
+        "Copa Airlines",
+        "JetBlue Airways"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "MEL",
+      "window_days": 45,
+      "price_low_usd": 1200,
+      "price_high_usd": 2000,
+      "typical_airlines": [
+        "Qantas",
+        "American Airlines",
+        "United Airlines",
+        "Delta Air Lines",
+        "Virgin Australia"
+      ],
+      "cited_websites": [
+        "expedia.com",
+        "kayak.com",
+        "skyscanner.com"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "WAW",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1000,
+      "typical_airlines": [
+        "LOT Polish Airlines",
+        "United Airlines",
+        "Lufthansa",
+        "British Airways"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "British Airways",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "TLV",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "El Al",
+        "United Airlines",
+        "Delta",
+        "American Airlines",
+        "Lufthansa"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "LGW",
+      "window_days": 45,
+      "price_low_usd": 500,
+      "price_high_usd": 900,
+      "typical_airlines": [
+        "British Airways",
+        "Norwegian Air",
+        "American Airlines",
+        "Delta Air Lines"
+      ],
+      "cited_websites": [
+        "expedia.com",
+        "kayak.com",
+        "skyscanner.com"
+      ],
+      "notes": "Prices can fluctuate based on demand, time of booking, and seasonal factors.",
+      "brands": [
+        "American",
+        "British Airways",
+        "Delta"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "AMS",
+      "window_days": 45,
+      "price_low_usd": 450,
+      "price_high_usd": 900,
+      "typical_airlines": [
+        "Delta",
+        "KLM",
+        "United",
+        "American Airlines",
+        "Icelandair"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "HKG",
+      "window_days": 45,
+      "price_low_usd": 800,
+      "price_high_usd": 1500,
+      "typical_airlines": [
+        "Cathay Pacific",
+        "United Airlines",
+        "Delta Air Lines",
+        "American Airlines"
+      ],
+      "cited_websites": [
+        "expedia.com",
+        "kayak.com",
+        "google.com/flights"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "AMS",
+      "window_days": 45,
+      "price_low_usd": 500,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Delta",
+        "KLM",
+        "United",
+        "American Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and seasonality.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "PHX",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 400,
+      "typical_airlines": [
+        "American Airlines",
+        "Delta Air Lines",
+        "JetBlue Airways",
+        "Southwest Airlines"
+      ],
+      "cited_websites": [
+        "expedia.com",
+        "kayak.com",
+        "google.com/flights"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "Southwest"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "TPA",
+      "window_days": 45,
+      "price_low_usd": 80,
+      "price_high_usd": 250,
+      "typical_airlines": [
+        "JetBlue",
+        "American Airlines",
+        "Delta",
+        "Southwest"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "Southwest"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "YYZ",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 350,
+      "typical_airlines": [
+        "United Airlines",
+        "Air Canada",
+        "JetBlue",
+        "American Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "YVR",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "United Airlines",
+        "Air Canada",
+        "Alaska Airlines"
+      ],
+      "cited_websites": [
+        "expedia.com",
+        "kayak.com"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "Alaska",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "DUB",
+      "window_days": 45,
+      "price_low_usd": 400,
+      "price_high_usd": 800,
+      "typical_airlines": [
+        "United Airlines",
+        "Aer Lingus",
+        "Delta Air Lines",
+        "American Airlines"
+      ],
+      "cited_websites": [
+        "expedia.com",
+        "kayak.com",
+        "google.com/flights"
+      ],
+      "notes": "Prices can vary based on demand and booking time. It's advisable to book early for better rates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "FRA",
+      "window_days": 45,
+      "price_low_usd": 500,
+      "price_high_usd": 900,
+      "typical_airlines": [
+        "Lufthansa",
+        "United Airlines",
+        "British Airways",
+        "Delta Air Lines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "British Airways",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "FCO",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Delta",
+        "American Airlines",
+        "United",
+        "Alitalia",
+        "JetBlue"
+      ],
+      "cited_websites": [
+        "google.com",
+        "kayak.com",
+        "expedia.com"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "KUL",
+      "window_days": 45,
+      "price_low_usd": 800,
+      "price_high_usd": 1500,
+      "typical_airlines": [
+        "United Airlines",
+        "Delta Air Lines",
+        "Singapore Airlines",
+        "Cathay Pacific"
+      ],
+      "cited_websites": [
+        "google.com/flights",
+        "kayak.com",
+        "skyscanner.com"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and layover options.",
+      "brands": [
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "VCE",
+      "window_days": 45,
+      "price_low_usd": 500,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Delta",
+        "American Airlines",
+        "United",
+        "Alitalia",
+        "Lufthansa"
+      ],
+      "cited_websites": [
+        "kayak.com",
+        "expedia.com",
+        "google.com/flights"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "SFO",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 400,
+      "typical_airlines": [
+        "United Airlines",
+        "JetBlue",
+        "Delta Air Lines",
+        "American Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "ORD",
+      "window_days": 45,
+      "price_low_usd": 100,
+      "price_high_usd": 300,
+      "typical_airlines": [
+        "American Airlines",
+        "United Airlines",
+        "Delta Air Lines",
+        "Southwest Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "Southwest",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "NCE",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "United Airlines",
+        "Delta Air Lines",
+        "Air France",
+        "British Airways"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "British Airways",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "LAS",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 400,
+      "typical_airlines": [
+        "United Airlines",
+        "Spirit Airlines",
+        "JetBlue",
+        "American Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "JetBlue",
+        "Spirit",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "HEL",
+      "window_days": 45,
+      "price_low_usd": 500,
+      "price_high_usd": 900,
+      "typical_airlines": [
+        "Finnair",
+        "American Airlines",
+        "Delta",
+        "Lufthansa"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "SAL",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "American Airlines",
+        "United Airlines",
+        "Delta Air Lines",
+        "Avianca"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "BOS",
+      "window_days": 45,
+      "price_low_usd": 80,
+      "price_high_usd": 250,
+      "typical_airlines": [
+        "JetBlue",
+        "American Airlines",
+        "Delta"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "PRG",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Delta",
+        "American Airlines",
+        "Lufthansa",
+        "British Airways",
+        "United Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "British Airways",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "CLT",
+      "window_days": 45,
+      "price_low_usd": 100,
+      "price_high_usd": 250,
+      "typical_airlines": [
+        "American Airlines",
+        "Delta Air Lines",
+        "Southwest Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "Southwest"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "DXB",
+      "window_days": 45,
+      "price_low_usd": 800,
+      "price_high_usd": 1500,
+      "typical_airlines": [
+        "Emirates",
+        "Delta",
+        "United",
+        "American Airlines",
+        "Qatar Airways"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary significantly based on demand, layovers, and booking time.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "IST",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Turkish Airlines",
+        "United Airlines",
+        "Delta Air Lines",
+        "Lufthansa"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and flight availability.",
+      "brands": [
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "HNL",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "United Airlines",
+        "Hawaiian Airlines",
+        "American Airlines",
+        "Delta Air Lines"
+      ],
+      "cited_websites": [
+        "expedia.com",
+        "kayak.com",
+        "google.com/flights"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "IST",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Turkish Airlines",
+        "Delta",
+        "United",
+        "American Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "MBJ",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "JetBlue",
+        "American Airlines",
+        "Delta",
+        "United"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand and booking time; consider booking in advance for better rates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "DOH",
+      "window_days": 45,
+      "price_low_usd": 800,
+      "price_high_usd": 1500,
+      "typical_airlines": [
+        "Qatar Airways",
+        "American Airlines",
+        "British Airways"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "British Airways"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "PTY",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "American Airlines",
+        "Delta Air Lines",
+        "United Airlines",
+        "Copa Airlines"
+      ],
+      "cited_websites": [
+        "expedia.com",
+        "kayak.com",
+        "google.com/flights"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "OSL",
+      "window_days": 45,
+      "price_low_usd": 500,
+      "price_high_usd": 900,
+      "typical_airlines": [
+        "Norwegian Air",
+        "SAS",
+        "Delta",
+        "Lufthansa"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand and specific travel dates.",
+      "brands": [
+        "Delta"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "BOS",
+      "window_days": 45,
+      "price_low_usd": 100,
+      "price_high_usd": 250,
+      "typical_airlines": [
+        "JetBlue",
+        "American Airlines",
+        "Delta"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "BUD",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Lufthansa",
+        "British Airways",
+        "Delta",
+        "Air France",
+        "United Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "British Airways",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "PDX",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 400,
+      "typical_airlines": [
+        "Delta",
+        "American Airlines",
+        "JetBlue",
+        "Alaska Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "Alaska",
+        "American",
+        "Delta",
+        "JetBlue"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "CPH",
+      "window_days": 45,
+      "price_low_usd": 500,
+      "price_high_usd": 900,
+      "typical_airlines": [
+        "SAS",
+        "United Airlines",
+        "Lufthansa",
+        "British Airways"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "British Airways",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "ORD",
+      "window_days": 45,
+      "price_low_usd": 100,
+      "price_high_usd": 300,
+      "typical_airlines": [
+        "American Airlines",
+        "United Airlines",
+        "Delta Air Lines",
+        "JetBlue Airways"
+      ],
+      "cited_websites": [
+        "expedia.com",
+        "kayak.com",
+        "google.com/flights"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "AMS",
+      "window_days": 45,
+      "price_low_usd": 450,
+      "price_high_usd": 900,
+      "typical_airlines": [
+        "United Airlines",
+        "KLM",
+        "Delta Air Lines",
+        "British Airways"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "British Airways",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "LIS",
+      "window_days": 45,
+      "price_low_usd": 400,
+      "price_high_usd": 800,
+      "typical_airlines": [
+        "TAP Air Portugal",
+        "American Airlines",
+        "Delta Air Lines",
+        "United Airlines",
+        "Iberia"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "MEL",
+      "window_days": 45,
+      "price_low_usd": 950,
+      "price_high_usd": 1500,
+      "typical_airlines": [
+        "Qantas",
+        "American Airlines",
+        "United Airlines",
+        "Delta Air Lines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "ARN",
+      "window_days": 45,
+      "price_low_usd": 400,
+      "price_high_usd": 800,
+      "typical_airlines": [
+        "SAS",
+        "Norwegian Air",
+        "Delta",
+        "American Airlines"
+      ],
+      "cited_websites": [
+        "expedia.com",
+        "kayak.com"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "RUH",
+      "window_days": 45,
+      "price_low_usd": 800,
+      "price_high_usd": 1500,
+      "typical_airlines": [
+        "Saudi Arabian Airlines",
+        "United Airlines",
+        "American Airlines",
+        "Lufthansa"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and flight connections.",
+      "brands": [
+        "American",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "CDG",
+      "window_days": 45,
+      "price_low_usd": 400,
+      "price_high_usd": 900,
+      "typical_airlines": [
+        "Air France",
+        "Delta",
+        "American Airlines",
+        "British Airways"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "British Airways",
+        "Delta"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "PTY",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "United Airlines",
+        "Copa Airlines",
+        "American Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "VCE",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Delta",
+        "American Airlines",
+        "United",
+        "Alitalia",
+        "Lufthansa"
+      ],
+      "cited_websites": [
+        "kayak.com",
+        "expedia.com"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "SAP",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "American Airlines",
+        "United Airlines",
+        "Delta Air Lines",
+        "Spirit Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and flight availability.",
+      "brands": [
+        "American",
+        "Delta",
+        "Spirit",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "FLL",
+      "window_days": 45,
+      "price_low_usd": 80,
+      "price_high_usd": 250,
+      "typical_airlines": [
+        "JetBlue",
+        "Spirit Airlines",
+        "United Airlines",
+        "American Airlines"
+      ],
+      "cited_websites": [
+        "expedia.com",
+        "kayak.com",
+        "google.com/flights"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "JetBlue",
+        "Spirit",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "OSL",
+      "window_days": 45,
+      "price_low_usd": 400,
+      "price_high_usd": 800,
+      "typical_airlines": [
+        "Norwegian Air",
+        "SAS",
+        "Delta",
+        "Lufthansa"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and seasonality.",
+      "brands": [
+        "Delta"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "SAL",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "United Airlines",
+        "Avianca",
+        "American Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "YVR",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "Delta",
+        "American Airlines",
+        "Air Canada",
+        "Alaska Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand and specific travel dates.",
+      "brands": [
+        "Alaska",
+        "American",
+        "Delta"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "AUA",
+      "window_days": 45,
+      "price_low_usd": 350,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "United Airlines",
+        "JetBlue Airways",
+        "American Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can fluctuate based on demand and booking time; consider booking in advance for better rates.",
+      "brands": [
+        "American",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "UIO",
+      "window_days": 45,
+      "price_low_usd": 400,
+      "price_high_usd": 800,
+      "typical_airlines": [
+        "American Airlines",
+        "Delta Air Lines",
+        "JetBlue Airways",
+        "United Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and seasonal factors.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "NAS",
+      "window_days": 45,
+      "price_low_usd": 250,
+      "price_high_usd": 500,
+      "typical_airlines": [
+        "JetBlue",
+        "American Airlines",
+        "Delta",
+        "United"
+      ],
+      "cited_websites": [
+        "expedia.com",
+        "kayak.com"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and seasonal trends.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "GUA",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "American Airlines",
+        "United Airlines",
+        "Delta Air Lines",
+        "Avianca"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "OGG",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 900,
+      "typical_airlines": [
+        "American Airlines",
+        "Delta Air Lines",
+        "United Airlines",
+        "Hawaiian Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can fluctuate based on demand and booking time. It's advisable to book early for better rates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "MAD",
+      "window_days": 45,
+      "price_low_usd": 400,
+      "price_high_usd": 800,
+      "typical_airlines": [
+        "Iberia",
+        "American Airlines",
+        "Delta",
+        "Air Europa",
+        "British Airways"
+      ],
+      "cited_websites": [
+        "expedia.com",
+        "kayak.com",
+        "skyscanner.com"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "British Airways",
+        "Delta"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "BKK",
+      "window_days": 45,
+      "price_low_usd": 800,
+      "price_high_usd": 1500,
+      "typical_airlines": [
+        "United Airlines",
+        "Thai Airways",
+        "Delta Air Lines",
+        "Cathay Pacific",
+        "Singapore Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "SIN",
+      "window_days": 45,
+      "price_low_usd": 800,
+      "price_high_usd": 1500,
+      "typical_airlines": [
+        "Singapore Airlines",
+        "United Airlines",
+        "Delta Air Lines",
+        "American Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and flight connections.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "LHR",
+      "window_days": 45,
+      "price_low_usd": 500,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "British Airways",
+        "American Airlines",
+        "Delta Air Lines",
+        "Virgin Atlantic"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "British Airways",
+        "Delta",
+        "Virgin Atlantic"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "MAN",
+      "window_days": 45,
+      "price_low_usd": 500,
+      "price_high_usd": 900,
+      "typical_airlines": [
+        "United Airlines",
+        "British Airways",
+        "American Airlines",
+        "Delta Air Lines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand and booking time; consider booking in advance for better rates.",
+      "brands": [
+        "American",
+        "British Airways",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "SYD",
+      "window_days": 45,
+      "price_low_usd": 1200,
+      "price_high_usd": 1800,
+      "typical_airlines": [
+        "Qantas",
+        "United Airlines",
+        "American Airlines",
+        "Delta Air Lines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "TLV",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "El Al",
+        "Delta",
+        "United",
+        "American Airlines",
+        "Lufthansa"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "FCO",
+      "window_days": 45,
+      "price_low_usd": 500,
+      "price_high_usd": 900,
+      "typical_airlines": [
+        "United Airlines",
+        "Delta Air Lines",
+        "American Airlines",
+        "Alitalia"
+      ],
+      "cited_websites": [
+        "kayak.com",
+        "expedia.com",
+        "google.com/flights"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "HEL",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Finnair",
+        "United Airlines",
+        "Lufthansa",
+        "British Airways"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and seasonal trends.",
+      "brands": [
+        "British Airways",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "DCA",
+      "window_days": 45,
+      "price_low_usd": 100,
+      "price_high_usd": 250,
+      "typical_airlines": [
+        "American Airlines",
+        "Delta Air Lines",
+        "JetBlue Airways"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand and booking time; expect higher prices closer to departure.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "MEX",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "American Airlines",
+        "Delta Air Lines",
+        "United Airlines",
+        "Aeroméxico"
+      ],
+      "cited_websites": [
+        "google.com/flights",
+        "kayak.com",
+        "skyscanner.com"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "PHX",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 400,
+      "typical_airlines": [
+        "United Airlines",
+        "American Airlines",
+        "Southwest Airlines",
+        "JetBlue"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "JetBlue",
+        "Southwest",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "OGG",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "American Airlines",
+        "Delta Air Lines",
+        "United Airlines",
+        "Hawaiian Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "BUD",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "United Airlines",
+        "Lufthansa",
+        "British Airways",
+        "Delta Air Lines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "British Airways",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "BCN",
+      "window_days": 45,
+      "price_low_usd": 500,
+      "price_high_usd": 900,
+      "typical_airlines": [
+        "Delta",
+        "American Airlines",
+        "Iberia",
+        "United"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand and booking time; consider flexibility for better rates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "YWG",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "Delta",
+        "United",
+        "American Airlines",
+        "WestJet"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand and booking time; consider booking in advance for better rates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "HAM",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Lufthansa",
+        "United Airlines",
+        "British Airways",
+        "Delta Air Lines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "British Airways",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "SAP",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "American Airlines",
+        "United Airlines",
+        "Delta Air Lines",
+        "Spirit Airlines"
+      ],
+      "cited_websites": [
+        "expedia.com",
+        "kayak.com",
+        "google.com/flights"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and flight availability.",
+      "brands": [
+        "American",
+        "Delta",
+        "Spirit",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "SAN",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 400,
+      "typical_airlines": [
+        "JetBlue",
+        "American Airlines",
+        "Delta",
+        "Southwest"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "Southwest"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "KUL",
+      "window_days": 45,
+      "price_low_usd": 800,
+      "price_high_usd": 1300,
+      "typical_airlines": [
+        "United Airlines",
+        "Malaysia Airlines",
+        "Singapore Airlines",
+        "Qatar Airways"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and layover options.",
+      "brands": [
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "MXP",
+      "window_days": 45,
+      "price_low_usd": 500,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Delta",
+        "American Airlines",
+        "United",
+        "Alitalia"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "SDQ",
+      "window_days": 45,
+      "price_low_usd": 250,
+      "price_high_usd": 500,
+      "typical_airlines": [
+        "JetBlue",
+        "American Airlines",
+        "United Airlines",
+        "Delta"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "BCN",
+      "window_days": 45,
+      "price_low_usd": 400,
+      "price_high_usd": 800,
+      "typical_airlines": [
+        "American Airlines",
+        "Delta Air Lines",
+        "Iberia",
+        "JetBlue",
+        "United Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "LAX",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 400,
+      "typical_airlines": [
+        "American Airlines",
+        "Delta Air Lines",
+        "JetBlue Airways",
+        "United Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "EDI",
+      "window_days": 45,
+      "price_low_usd": 500,
+      "price_high_usd": 900,
+      "typical_airlines": [
+        "British Airways",
+        "American Airlines",
+        "Delta",
+        "United Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "British Airways",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "DFW",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 350,
+      "typical_airlines": [
+        "American Airlines",
+        "Delta Air Lines",
+        "Southwest Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "Southwest"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "NAS",
+      "window_days": 45,
+      "price_low_usd": 250,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "JetBlue",
+        "American Airlines",
+        "Delta",
+        "United"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and seasonal factors.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "ATL",
+      "window_days": 45,
+      "price_low_usd": 80,
+      "price_high_usd": 250,
+      "typical_airlines": [
+        "Delta",
+        "American Airlines",
+        "United",
+        "Southwest"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "Southwest",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "VCE",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "United Airlines",
+        "Delta Air Lines",
+        "Lufthansa",
+        "British Airways"
+      ],
+      "cited_websites": [
+        "expedia.com",
+        "kayak.com",
+        "google.com/flights"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "British Airways",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "BHX",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "British Airways",
+        "American Airlines",
+        "Delta Air Lines",
+        "United Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "British Airways",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "IAH",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 350,
+      "typical_airlines": [
+        "United Airlines",
+        "American Airlines",
+        "Delta Air Lines",
+        "JetBlue Airways"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "BRU",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Delta",
+        "United",
+        "American Airlines",
+        "Lufthansa",
+        "British Airways"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "British Airways",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "BKK",
+      "window_days": 45,
+      "price_low_usd": 800,
+      "price_high_usd": 1500,
+      "typical_airlines": [
+        "Delta",
+        "United",
+        "American Airlines",
+        "Cathay Pacific",
+        "Singapore Airlines"
+      ],
+      "cited_websites": [
+        "google.com",
+        "kayak.com",
+        "expedia.com"
+      ],
+      "notes": "Prices can vary significantly based on demand, time of booking, and layover options.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "MBJ",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "JetBlue",
+        "American Airlines",
+        "Delta",
+        "Southwest"
+      ],
+      "cited_websites": [
+        "expedia.com",
+        "kayak.com",
+        "google.com/flights"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and seasonal trends.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "Southwest"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "HEL",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Finnair",
+        "American Airlines",
+        "Delta",
+        "Lufthansa"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and seasonal trends.",
+      "brands": [
+        "American",
+        "Delta"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "EZE",
+      "window_days": 45,
+      "price_low_usd": 800,
+      "price_high_usd": 1300,
+      "typical_airlines": [
+        "American Airlines",
+        "Delta Air Lines",
+        "United Airlines",
+        "LATAM Airlines",
+        "Avianca"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "BRU",
+      "window_days": 45,
+      "price_low_usd": 400,
+      "price_high_usd": 800,
+      "typical_airlines": [
+        "Delta",
+        "United",
+        "American Airlines",
+        "Brussels Airlines",
+        "Icelandair"
+      ],
+      "cited_websites": [
+        "google.com",
+        "kayak.com",
+        "expedia.com"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "HKG",
+      "window_days": 45,
+      "price_low_usd": 800,
+      "price_high_usd": 1500,
+      "typical_airlines": [
+        "Cathay Pacific",
+        "American Airlines",
+        "United Airlines",
+        "Delta Air Lines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "LIS",
+      "window_days": 45,
+      "price_low_usd": 500,
+      "price_high_usd": 900,
+      "typical_airlines": [
+        "Delta",
+        "American Airlines",
+        "United",
+        "Iberia",
+        "TAP Air Portugal"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "LAS",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 400,
+      "typical_airlines": [
+        "JetBlue",
+        "American Airlines",
+        "Delta",
+        "Southwest"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "Southwest"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "AMM",
+      "window_days": 45,
+      "price_low_usd": 700,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "United Airlines",
+        "Royal Jordanian",
+        "Delta Air Lines",
+        "American Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and flight connections.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "YUL",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 300,
+      "typical_airlines": [
+        "Air Canada",
+        "Delta",
+        "American Airlines",
+        "JetBlue"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand and booking time; early booking generally yields better rates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "FLL",
+      "window_days": 45,
+      "price_low_usd": 80,
+      "price_high_usd": 250,
+      "typical_airlines": [
+        "JetBlue",
+        "American Airlines",
+        "Delta",
+        "Spirit Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "Spirit"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "AUA",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "JetBlue",
+        "American Airlines",
+        "Delta",
+        "United"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "PBI",
+      "window_days": 45,
+      "price_low_usd": 100,
+      "price_high_usd": 300,
+      "typical_airlines": [
+        "JetBlue",
+        "American Airlines",
+        "Delta"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "DEN",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 400,
+      "typical_airlines": [
+        "United Airlines",
+        "Delta Air Lines",
+        "JetBlue Airways",
+        "Southwest Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "Delta",
+        "JetBlue",
+        "Southwest",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "GCM",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "JetBlue",
+        "American Airlines",
+        "United Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and seasonal factors.",
+      "brands": [
+        "American",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "PUJ",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "JetBlue",
+        "American Airlines",
+        "Delta",
+        "Spirit Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "Spirit"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "MCO",
+      "window_days": 45,
+      "price_low_usd": 80,
+      "price_high_usd": 250,
+      "typical_airlines": [
+        "JetBlue",
+        "American Airlines",
+        "Delta",
+        "Southwest"
+      ],
+      "cited_websites": [
+        "google.com",
+        "kayak.com",
+        "expedia.com"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "Southwest"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "BOG",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "Avianca",
+        "United Airlines",
+        "American Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand and booking time; consider booking in advance for better rates.",
+      "brands": [
+        "American",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "SEA",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 400,
+      "typical_airlines": [
+        "Delta",
+        "Alaska Airlines",
+        "American Airlines",
+        "JetBlue"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "Alaska",
+        "American",
+        "Delta",
+        "JetBlue"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "SAN",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 400,
+      "typical_airlines": [
+        "United Airlines",
+        "American Airlines",
+        "Southwest Airlines",
+        "JetBlue Airways"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "JetBlue",
+        "Southwest",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "DEN",
+      "window_days": 45,
+      "price_low_usd": 100,
+      "price_high_usd": 300,
+      "typical_airlines": [
+        "United Airlines",
+        "JetBlue",
+        "Southwest Airlines",
+        "Spirit Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "JetBlue",
+        "Southwest",
+        "Spirit",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "PBI",
+      "window_days": 45,
+      "price_low_usd": 100,
+      "price_high_usd": 300,
+      "typical_airlines": [
+        "JetBlue",
+        "United Airlines",
+        "American Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand and booking time; consider booking in advance for better rates.",
+      "brands": [
+        "American",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "IAD",
+      "window_days": 45,
+      "price_low_usd": 100,
+      "price_high_usd": 250,
+      "typical_airlines": [
+        "American Airlines",
+        "United Airlines",
+        "JetBlue Airways"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand and booking time; expect higher prices closer to departure.",
+      "brands": [
+        "American",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "GIG",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "American Airlines",
+        "Delta Air Lines",
+        "LATAM Airlines",
+        "United Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and seasonal factors.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "BHX",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "British Airways",
+        "American Airlines",
+        "Delta",
+        "United Airlines"
+      ],
+      "cited_websites": [
+        "expedia.com",
+        "kayak.com",
+        "skyscanner.com"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "British Airways",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "NRT",
+      "window_days": 45,
+      "price_low_usd": 800,
+      "price_high_usd": 1500,
+      "typical_airlines": [
+        "United Airlines",
+        "All Nippon Airways",
+        "Japan Airlines",
+        "Delta Air Lines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "GUA",
+      "window_days": 45,
+      "price_low_usd": 300,
+      "price_high_usd": 600,
+      "typical_airlines": [
+        "United Airlines",
+        "American Airlines",
+        "Spirit Airlines"
+      ],
+      "cited_websites": [
+        "expedia.com",
+        "kayak.com",
+        "google.com/flights"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Spirit",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "YUL",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 300,
+      "typical_airlines": [
+        "United Airlines",
+        "Air Canada",
+        "JetBlue"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "SJU",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 400,
+      "typical_airlines": [
+        "JetBlue",
+        "American Airlines",
+        "Delta",
+        "Spirit Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "Spirit"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "EDI",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "United Airlines",
+        "British Airways",
+        "Delta Air Lines",
+        "American Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "British Airways",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "YUL",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 300,
+      "typical_airlines": [
+        "Air Canada",
+        "Delta",
+        "American Airlines",
+        "JetBlue"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "IAH",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 350,
+      "typical_airlines": [
+        "United Airlines",
+        "American Airlines",
+        "Spirit Airlines",
+        "JetBlue"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "JetBlue",
+        "Spirit",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "LIS",
+      "window_days": 45,
+      "price_low_usd": 450,
+      "price_high_usd": 800,
+      "typical_airlines": [
+        "United Airlines",
+        "TAP Air Portugal",
+        "Delta Air Lines",
+        "American Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "AMM",
+      "window_days": 45,
+      "price_low_usd": 800,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Delta",
+        "United",
+        "Royal Jordanian",
+        "American Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and flight connections.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "PRG",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "Lufthansa",
+        "United Airlines",
+        "British Airways",
+        "Delta Air Lines",
+        "Air France"
+      ],
+      "cited_websites": [
+        "expedia.com",
+        "kayak.com",
+        "google.com/flights"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "British Airways",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "EZE",
+      "window_days": 45,
+      "price_low_usd": 700,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "United Airlines",
+        "American Airlines",
+        "Delta Air Lines",
+        "LATAM Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "ARN",
+      "window_days": 45,
+      "price_low_usd": 400,
+      "price_high_usd": 800,
+      "typical_airlines": [
+        "SAS",
+        "United Airlines",
+        "Lufthansa",
+        "Delta Air Lines"
+      ],
+      "cited_websites": [
+        "expedia.com",
+        "kayak.com"
+      ],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "SDQ",
+      "window_days": 45,
+      "price_low_usd": 250,
+      "price_high_usd": 500,
+      "typical_airlines": [
+        "JetBlue",
+        "American Airlines",
+        "Delta",
+        "United"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "United"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "LGW",
+      "window_days": 45,
+      "price_low_usd": 400,
+      "price_high_usd": 800,
+      "typical_airlines": [
+        "British Airways",
+        "Norwegian Air",
+        "JetBlue",
+        "American Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "British Airways",
+        "JetBlue"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "SEA",
+      "window_days": 45,
+      "price_low_usd": 150,
+      "price_high_usd": 400,
+      "typical_airlines": [
+        "United Airlines",
+        "Delta Air Lines",
+        "Alaska Airlines",
+        "American Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "Alaska",
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "GRU",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "American Airlines",
+        "LATAM Airlines",
+        "Delta Air Lines",
+        "United Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and seasonality.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "LGA",
+      "destination": "MIA",
+      "window_days": 45,
+      "price_low_usd": 100,
+      "price_high_usd": 300,
+      "typical_airlines": [
+        "American Airlines",
+        "JetBlue",
+        "Delta",
+        "Spirit Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "JetBlue",
+        "Spirit"
+      ]
+    },
+    {
+      "origin": "EWR",
+      "destination": "SCL",
+      "window_days": 45,
+      "price_low_usd": 600,
+      "price_high_usd": 1200,
+      "typical_airlines": [
+        "American Airlines",
+        "Delta Air Lines",
+        "United Airlines",
+        "LATAM Airlines"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "Delta",
+        "United"
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "MAN",
+      "window_days": 45,
+      "price_low_usd": 500,
+      "price_high_usd": 900,
+      "typical_airlines": [
+        "British Airways",
+        "American Airlines",
+        "Delta",
+        "Virgin Atlantic"
+      ],
+      "cited_websites": [],
+      "notes": "Prices can vary based on demand, time of booking, and specific travel dates.",
+      "brands": [
+        "American",
+        "British Airways",
+        "Delta",
+        "Virgin Atlantic"
+      ]
+    }
+  ]
+}

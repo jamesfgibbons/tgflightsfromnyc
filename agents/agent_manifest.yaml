@@ -1,0 +1,18 @@
+agents:
+  - name: formatting_qa
+    description: "Runs formatting (black/isort), typing (mypy), and tests (pytest)."
+    entry: "python agents/formatting_qa_agent.py --mode check"
+    outputs: "JSON summary to stdout; nonzero exit on failures."
+
+  - name: smoke_runner
+    description: "Runs API smoke via curl against configured BASE URL."
+    entry: "bash scripts/vibenet_curl_smoke.sh"
+
+  - name: travel_batch_runner
+    description: "Runs small travel test batch across sub-themes and publishes catalog."
+    entry: "bash scripts/run_travel_test_batch.sh"
+
+  - name: ski_batch_runner
+    description: "Runs ad-hoc ski season pipeline and publishes catalog."
+    entry: "python scripts/run_ski_pipeline.py --limit 100"
+

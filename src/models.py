@@ -3,7 +3,7 @@ Pydantic v2 models for SERP Radio production FastAPI backend.
 """
 
 import re
-from typing import Dict, List, Literal, Optional
+from typing import Any, Dict, List, Literal, Optional
 from pydantic import BaseModel, Field, field_validator
 
 
@@ -16,7 +16,7 @@ class SonifyRequest(BaseModel):
     source: Literal["demo", "gsc", "serp"] = Field("demo", description="Data source")
     use_training: bool = Field(True, description="Use trained model/rules")
     momentum: bool = Field(True, description="Include momentum analysis")
-    override_metrics: Optional[Dict[str, float]] = Field(None, description="Override metrics for testing")
+    override_metrics: Optional[Dict[str, Any]] = Field(None, description="Override metrics for testing")
     seed: Optional[int] = Field(None, description="Deterministic seed for reproducible results")
     tempo_base: int = Field(120, description="Base tempo in BPM")
     total_bars: int = Field(32, description="Total number of bars")
@@ -43,16 +43,18 @@ class SonifyRequest(BaseModel):
     
     @field_validator("override_metrics")
     @classmethod
-    def validate_override_metrics(cls, v: Optional[Dict[str, float]]) -> Optional[Dict[str, float]]:
-        """Validate override metrics are in 0-1 range."""
+    def validate_override_metrics(cls, v: Optional[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
+        """Validate override metrics; numeric values must be within 0-1."""
         if v is None:
             return v
         
         for key, value in v.items():
-            if not isinstance(value, (int, float)):
-                raise ValueError(f"Metric {key} must be numeric")
-            if not 0.0 <= value <= 1.0:
-                raise ValueError(f"Metric {key} must be in range 0.0-1.0")
+            if isinstance(value, (int, float)):
+                if not 0.0 <= float(value) <= 1.0:
+                    raise ValueError(f"Metric {key} must be in range 0.0-1.0")
+            else:
+                # Allow structured payloads (e.g., momentum_data arrays)
+                continue
         
         return v
 

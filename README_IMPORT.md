@@ -2,12 +2,13 @@
 # SERP Radio Seeds – Import Guide
 
 ## What you have
-- `schema.sql` – run once in Supabase SQL editor
-- CSV seeds for `profiles`, `email_leads`, `sonification_projects`, `demo_datasets`, `flight_price_data`, `sonification_inventory`
+- `sql/000_init_schema.sql` – consolidated Supabase schema
+- CSV seeds for legacy onboarding tables (`profiles`, `email_leads`, etc.) if you need the original demo content
 - JSON libraries: prompt templates, sonification mapping, theme catalog
 
 ## How to import (Supabase)
-1) Open **Supabase Dashboard → SQL** and run **schema.sql** (copy-paste or upload).
+1) Preferred: run `supabase db remote commit --file sql/000_init_schema.sql` (requires Supabase CLI).  
+   Alt: copy/paste each SQL file referenced inside `000_init_schema.sql` into the **Supabase Dashboard → SQL** editor.
 2) Go to **Table editor** for each table → **Import data** → choose the matching CSV:
    - seed_profiles.csv → `profiles`
    - seed_email_leads.csv → `email_leads`
@@ -35,4 +36,4 @@
 - Run: `bash scripts/run_travel_pipeline_local.sh`
 - This will generate entries with NYC + Caribbean focus (Kokomo), suitable for playback.
 
-Generated: 2025-08-16T16:23:50.262327
+Generated: 2025-08-16T16:23:50.262327 (updated 2025-XX-XX)

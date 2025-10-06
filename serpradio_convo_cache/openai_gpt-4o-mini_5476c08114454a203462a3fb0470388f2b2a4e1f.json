@@ -1,0 +1,20 @@
+{
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "prompt": "Best time to book EWR→CAI within next 60 days.\nInclude: fare ranges (USD), typical booking window (days before departure),\npeak/holiday effects, basic bag policy differences, and 1–2 concrete examples.\nReturn STRICT JSON: {\n  \"origin\": string, \"destination\": string, \"window_days\": number,\n  \"best_window_days\": [min,max], \"fare_low_usd\": number, \"fare_high_usd\": number,\n  \"notes\": string\n}",
+  "response_raw": {
+    "id": "chatcmpl-C87sRjYss2Ol5Nyej5WOlHitg9LYR",
+    "created": 1756052939,
+    "model": "gpt-4o-mini-2024-07-18",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"origin\": \"EWR\",\n  \"destination\": \"CAI\",\n  \"window_days\": 30,\n  \"best_window_days\": [21, 45],\n  \"fare_low_usd\": 600,\n  \"fare_high_usd\": 1200,\n  \"notes\": \"Booking 21 to 45 days in advance typically yields the best fares. Peak travel times, such as holidays (e.g., Christmas, New Year), can inflate prices significantly. Basic bag policies vary by airline, with some offering only personal items for free, while others may include a carry-on. For example, a fare of $650 might be available for a mid-week flight in November, while a holiday flight in December could exceed $1200.\"\n}"
+        }
+      }
+    ]
+  },
+  "latency_ms": 2611,
+  "status": "ok"
+}

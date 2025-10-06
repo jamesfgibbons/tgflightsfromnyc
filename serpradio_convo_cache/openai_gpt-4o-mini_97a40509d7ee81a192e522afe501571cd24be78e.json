@@ -1,0 +1,20 @@
+{
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "prompt": "Best time to book LGA→LYS within next 60 days.\nInclude: fare ranges (USD), typical booking window (days before departure),\npeak/holiday effects, basic bag policy differences, and 1–2 concrete examples.\nReturn STRICT JSON: {\n  \"origin\": string, \"destination\": string, \"window_days\": number,\n  \"best_window_days\": [min,max], \"fare_low_usd\": number, \"fare_high_usd\": number,\n  \"notes\": string\n}",
+  "response_raw": {
+    "id": "chatcmpl-C87uUpyBgrwytTXojfXrE8RXTzR0i",
+    "created": 1756053066,
+    "model": "gpt-4o-mini-2024-07-18",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"origin\": \"LGA\",\n  \"destination\": \"LYS\",\n  \"window_days\": 30,\n  \"best_window_days\": [21, 45],\n  \"fare_low_usd\": 600,\n  \"fare_high_usd\": 1200,\n  \"notes\": \"Booking 21 to 45 days in advance typically yields the best fares. Expect higher prices during peak travel times, such as summer and major holidays. Basic bag policies may vary by airline, with some offering only a personal item for free, while others may include a carry-on. For example, a round-trip fare might be around $650 in early November, while prices could spike to $1100 during the Christmas holiday period.\"\n}"
+        }
+      }
+    ]
+  },
+  "latency_ms": 2971,
+  "status": "ok"
+}

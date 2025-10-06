@@ -7,6 +7,7 @@ import os
 import yaml
 from datetime import datetime
 from typing import Dict, Any, Optional
+from urllib.parse import urlparse
 
 from fastapi import APIRouter, HTTPException, Query
 from fastapi.responses import PlainTextResponse
@@ -19,8 +20,21 @@ logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api", tags=["rules"])
 
 # Environment configuration
-S3_BUCKET = os.getenv("S3_BUCKET", "serp-radio-artifacts")
-RULES_S3 = os.getenv("RULES_S3", "s3://serp-radio-config/metric_to_label.yaml")
+STORAGE_BUCKET = os.getenv("STORAGE_BUCKET", os.getenv("S3_BUCKET", "serpradio-artifacts"))
+# Allow either RULES_S3 (legacy) or RULES_PATH for supabase deployments
+RULES_LOCATION = os.getenv("RULES_S3") or os.getenv("RULES_PATH") or "s3://serp-radio-config/metric_to_label.yaml"
+
+
+def _read_rules_from_location(location: str) -> str:
+    """Read rules from either an s3:// URI or a bucket-relative path."""
+    if location.startswith("s3://"):
+        parsed = urlparse(location)
+        bucket = parsed.netloc
+        key = parsed.path.lstrip("/")
+        if not (bucket and key):
+            raise StorageError(f"Invalid rules URI: {location}")
+        return read_text_s3(bucket, key)
+    return read_text_s3(STORAGE_BUCKET, location)
 
 
 @router.get("/rules", response_class=PlainTextResponse)
@@ -41,17 +55,16 @@ async def get_rules(tenant: str = Query(..., description="Tenant identifier")):
         
         # Try tenant-specific rules first
         tenant_rules_key = ensure_tenant_prefix(tenant, "config", "metric_to_label.yaml")
-        tenant_rules_uri = f"s3://{S3_BUCKET}/{tenant_rules_key}"
         
         try:
-            rules_text = read_text_s3(tenant_rules_uri)
+            rules_text = read_text_s3(STORAGE_BUCKET, tenant_rules_key)
             logger.info(f"Retrieved tenant-specific rules for {tenant}")
             return rules_text
         except StorageError:
             # Fallback to global rules
-            if RULES_S3:
+            if RULES_LOCATION:
                 try:
-                    rules_text = read_text_s3(RULES_S3)
+                    rules_text = _read_rules_from_location(RULES_LOCATION)
                     logger.info(f"Retrieved global rules for {tenant}")
                     return rules_text
                 except StorageError:
@@ -109,7 +122,7 @@ async def save_rules(request: SaveRulesRequest):
         
         # Save versioned copy
         put_bytes(
-            S3_BUCKET,
+            STORAGE_BUCKET,
             version_key,
             request.yaml_text.encode("utf-8"),
             "application/x-yaml"
@@ -118,7 +131,7 @@ async def save_rules(request: SaveRulesRequest):
         # Save as current tenant rules
         current_key = ensure_tenant_prefix(request.tenant, "config", "metric_to_label.yaml")
         put_bytes(
-            S3_BUCKET,
+            STORAGE_BUCKET,
             current_key,
             request.yaml_text.encode("utf-8"),
             "application/x-yaml"

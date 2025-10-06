@@ -9,6 +9,7 @@
 - API: FastAPI (`src/main.py`), Vibe endpoints (`/api/vibe/*`), job store, storage presigners.
 - Rendering: MIDI assembly (completed/), FluidSynth+FFmpeg in `src/renderer.py` (opt‑in via `RENDER_MP3=1`).
 - Vibes: `config/vibe_palettes.yaml` (Synthwave, Arena Rock, Tropical Pop), `config/vibe_rules.yaml` (keyword mapping).
+- Vibes: `config/vibe_palettes.yaml` (Synthwave, Arena Rock, Tropical Pop, Circle of Life – Travel), `config/vibe_rules.yaml` (keyword mapping).
 - Screenshot→Palette: `src/vibe_api.py` (LLM‑only by default; Spotify optional).
 - Batch: `src/pipeline/*` (catalog + publishing) — reuse for scheduled VibeNet jobs.
 
@@ -20,11 +21,13 @@
 ### 4) API Surface (VibeNet)
 - `GET /vibenet/vibes` → list palettes (Supabase or config fallback).
 - `POST /vibenet/generate` → { data:[…] | csv_id, vibe_slug, controls } → { job_id, midi_url, mp3_url, momentum_json }.
+- New: `POST /api/vibe/embed` → { data:[…], palette? } → { vibe: V }.
+- New: `POST /api/vibe/train` (admin) → labeled takes for future finetune.
 - Reuse: `POST /api/vibe/screenshot` (image or artist/title → palette), `POST /api/vibe/motif` (motif library).
 
 Example body:
 ```json
-{ "vibe_slug": "caribbean_kokomo", "data": [0.12,0.3,0.5,0.72], "controls": {"bars": 16, "tempo_hint": 112} }
+{ "vibe_slug": "circle_of_life_travel", "data": [0.12,0.3,0.5,0.72], "controls": {"bars": 16, "tempo_hint": 112} }
 ```
 
 ### 5) Data → Music Pipeline (Rule‑Based Core)
@@ -74,4 +77,41 @@ Example body:
 - Performance: P50/P95 generation, job success rate.
 - Adoption: plays per track, repeat usage, palette popularity.
 
+### 12) FastAI Training Loop (New)
+- Repo: cloned locally under `fastai/` via `git clone --depth 1 https://github.com/fastai/fastai.git` (treated as a vendor dependency).
+- Script: `python -m src.training.vibenet_fastai --epochs 5 --bs 64` trains a tabular classifier on `completed/motifs_catalog.json` using FastAI and exports a learner into `models/vibenet_fastai_motif.pkl`.
+- Purpose: generates a supervised helper to predict motif labels from metadata, providing data-driven priors for the VibeNet motif selector. At runtime set `VIBENET_FASTAI_MODEL` (defaults to `models/vibenet_fastai_motif.pkl`) and the selector will auto-label unlabeled motifs using the exported learner.
+- Next steps: wire the exported learner into `SonificationService` as an optional backfill when rule-based selection is inconclusive.
+
 Implementation notes: endpoints extend existing FastAPI app; use `config/vibe_*` for palettes/rules; keep ML optional; maintain backward compatibility with current SERPRadio flows.
+
+---
+
+## Deep Spec (Vibe Space + Bindings)
+
+This repository adopts a formal Vibe Space and bindings as described in AGENTS.md.
+Key highlights implemented now:
+- V (VibeVector) axes: valence, arousal, tension, brightness, warmth, density, syncopation, harm_complexity (+ palette, meter).
+- Rule-first encoder `src/vibe_encoder.py` maps series → V.
+- Harmony designer `src/harmony.py` chooses key/mode and chord grid.
+- IRs in `src/vibe_ir.py` keep modules swappable and testable.
+- New endpoints `/api/vibe/embed` and `/api/vibe/train` wire IRs to the existing stack.
+
+Future extensions (planned): learned head for V, stylizer, motif graph orchestrator, DSL bindings per palette (mapping.yaml).
+
+---
+
+## Further Reading
+
+- Full architecture deep‑dive, module references, and design rationale: `docs/VIBENET_ARCHITECTURE.md`
+
+---
+
+## Local MIDI Remix (POC)
+
+- Purpose: remix a local MIDI (e.g., from an electric piano) using flight price metrics as the pattern driver, without requiring S3/Supabase.
+- Command:
+  - `python -m src.pipeline.remix_midi_from_csv --input-midi JMX-2025-Oct-05-1.11.6.pm.mid --csv seed_flight_price_data.csv --origin JFK --out-dir data/remixes --bars 16`
+- What it does:
+  - Reads `seed_flight_price_data.csv`, derives a series from median prices, maps volatility to tempo and bands, converts flight columns to SERP-like metrics, selects motifs, and writes a remixed MIDI using your input as a base template.
+- Output: a `.mid` file under `data/remixes` with a timestamped name.
