@@ -26,6 +26,8 @@ COPY src/ ./src/
 COPY scripts/ ./scripts/
 COPY sql/ ./sql/
 COPY completed/ ./completed/
+COPY data/ ./data/
+COPY config/ ./config/
 COPY start.sh ./start.sh
 
 # Create non-root user for security
