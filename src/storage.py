@@ -107,9 +107,9 @@ class UnifiedStorage:
             self._put_s3(key, data, content_type, metadata, cache_control)
     
     def _put_supabase(self, key: str, data: bytes, content_type: str, public: bool = False) -> None:
-        """Upload to Supabase Storage."""
+        """Upload to Supabase Storage with proper error handling."""
         try:
-            # Ensure data is bytes
+            # Ensure data is bytes (critical for Supabase upload)
             if not isinstance(data, bytes):
                 raise ValueError(f"Data must be bytes, got {type(data)}")
             
