@@ -29,6 +29,15 @@ site/
 # Logs
 *.log
 
+# Large data files
+*.csv
+!seed_*.csv
+*.mid
+*.wav
+*.mp3
+*.ogg
+serpradio_convo_cache/
+
 fastai/
 launchpad/
 vite-react-user/
