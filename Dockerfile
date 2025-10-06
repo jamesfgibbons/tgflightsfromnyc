@@ -44,4 +44,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
 EXPOSE 8000
 
 # Run the application (honor Railway/Heroku style $PORT, default 8000)
-CMD ["/app/start.sh"]
+CMD ["/bin/bash", "/app/start.sh"]
