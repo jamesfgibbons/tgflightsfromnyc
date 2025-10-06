@@ -29,3 +29,6 @@ site/
 # Logs
 *.log
 
+fastai/
+launchpad/
+vite-react-user/
