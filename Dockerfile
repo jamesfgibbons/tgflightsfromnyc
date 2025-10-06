@@ -25,6 +25,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY src/ ./src/
 COPY scripts/ ./scripts/
 COPY sql/ ./sql/
+COPY completed/ ./completed/
 COPY start.sh ./start.sh
 
 # Create non-root user for security
