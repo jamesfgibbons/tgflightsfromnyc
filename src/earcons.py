@@ -5,6 +5,7 @@ Adds musical cues for podium positions, AI overview, volatility spikes, etc.
 
 from enum import Enum
 from typing import List, Dict, Set, Optional
+from types import SimpleNamespace
 from dataclasses import dataclass
 from midiutil import MIDIFile
 from .soundpacks import get_sound_pack, SoundPack
@@ -14,9 +15,13 @@ class SerpFeature(Enum):
     """SERP features that trigger earcons."""
     PODIUM_WIN = "podium_win"          # Position 1-3
     TOP_POSITION = "top_position"      # Position 1
+    TOP_3 = "podium_win"
+    TOP_1 = "top_position"
     AI_OVERVIEW = "ai_overview"        # AI overview present
     VIDEO_RESULTS = "video_results"    # Video results present
+    VIDEO = "video_results"
     SHOPPING_RESULTS = "shopping"      # Shopping results present
+    SHOPPING = "shopping"
     VOLATILITY_SPIKE = "volatility"    # High volatility detected
     POSITION_DROP = "position_drop"    # Position dropped significantly
     TRAFFIC_SURGE = "traffic_surge"    # Click/impression surge
@@ -52,6 +57,20 @@ class EarconGenerator:
                 'velocity': 110,
                 'duration': 1.0
             },
+            SerpFeature.VIDEO: {
+                'instrument': 31,  # Distortion guitar stab
+                'notes': [79, 83, 86],
+                'rhythm': [0.0, 0.4, 0.8],
+                'velocity': 95,
+                'duration': 1.2
+            },
+            SerpFeature.SHOPPING: {
+                'instrument': 12,  # Vibraphone sparkle
+                'notes': [84, 88, 91],
+                'rhythm': [0.0, 0.5, 0.75],
+                'velocity': 75,
+                'duration': 1.5
+            },
             SerpFeature.AI_OVERVIEW: {
                 'instrument': 12,  # Vibraphone bell
                 'notes': [84, 88, 91],  # High bell gliss
@@ -83,6 +102,20 @@ class EarconGenerator:
                 'velocity': 100,
                 'duration': 0.5
             },
+            SerpFeature.VIDEO: {
+                'instrument': 81,
+                'notes': [76, 79, 83],
+                'rhythm': [0.0, 0.25, 0.5],
+                'velocity': 95,
+                'duration': 0.8
+            },
+            SerpFeature.SHOPPING: {
+                'instrument': 82,
+                'notes': [88, 92, 95],
+                'rhythm': [0.0, 0.2, 0.4],
+                'velocity': 85,
+                'duration': 0.8
+            },
             SerpFeature.AI_OVERVIEW: {
                 'instrument': 88,  # Crystal pad
                 'notes': [96, 100, 103],  # Very high bell
@@ -112,6 +145,20 @@ class EarconGenerator:
                 'rhythm': [0.0, 0.25, 0.5],
                 'velocity': 95,
                 'duration': 1.0
+            },
+            SerpFeature.VIDEO: {
+                'instrument': 98,
+                'notes': [82, 85, 89],
+                'rhythm': [0.0, 0.3, 0.6],
+                'velocity': 90,
+                'duration': 1.2
+            },
+            SerpFeature.SHOPPING: {
+                'instrument': 89,
+                'notes': [88, 91, 95],
+                'rhythm': [0.0, 0.25, 0.5],
+                'velocity': 80,
+                'duration': 1.2
             },
             SerpFeature.AI_OVERVIEW: {
                 'instrument': 88,  # Crystal
@@ -144,6 +191,20 @@ class EarconGenerator:
                 'rhythm': [0.0, 0.2, 0.4],
                 'velocity': 90,
                 'duration': 1.2
+            },
+            SerpFeature.VIDEO: {
+                'instrument': 11,
+                'notes': [79, 83, 86],
+                'rhythm': [0.0, 0.35, 0.7],
+                'velocity': 85,
+                'duration': 1.4
+            },
+            SerpFeature.SHOPPING: {
+                'instrument': 13,
+                'notes': [67, 71, 74],
+                'rhythm': [0.0, 0.25, 0.5],
+                'velocity': 75,
+                'duration': 1.4
             },
             SerpFeature.AI_OVERVIEW: {
                 'instrument': 11,   # Vibraphone (crystal ping)
@@ -285,13 +346,16 @@ class EarconGenerator:
             for note, rhythm_offset in zip(notes, rhythms):
                 note_time = event.beat_time + rhythm_offset
                 
-                midi.addNote(
-                    track=track,
-                    channel=channel,
-                    pitch=note,
-                    time=note_time,
-                    duration=note_duration,
-                    velocity=event.velocity
+                midi.addNote(track, channel, note, note_time, note_duration, event.velocity)
+                midi.tracks[track].eventList.append(
+                    SimpleNamespace(
+                        type="earcon",
+                        feature=event.feature.value,
+                        pitch=note,
+                        time=note_time,
+                        channel=channel,
+                        velocity=event.velocity,
+                    )
                 )
 
 
@@ -304,3 +368,39 @@ def detect_query_features(query_data: Dict) -> Set[SerpFeature]:
     """Convenience function to detect features from query data."""
     generator = EarconGenerator()
     return generator.detect_serp_features(query_data)
+
+for _patterns in EarconGenerator.EARCON_PATTERNS.values():
+    if SerpFeature.VIDEO_RESULTS in _patterns:
+        _patterns.setdefault(SerpFeature.VIDEO, _patterns[SerpFeature.VIDEO_RESULTS])
+    if SerpFeature.SHOPPING_RESULTS in _patterns:
+        _patterns.setdefault(SerpFeature.SHOPPING, _patterns[SerpFeature.SHOPPING_RESULTS])
+    if SerpFeature.TOP_POSITION in _patterns:
+        _patterns.setdefault(SerpFeature.TOP_1, _patterns[SerpFeature.TOP_POSITION])
+    if SerpFeature.PODIUM_WIN in _patterns:
+        _patterns.setdefault(SerpFeature.TOP_3, _patterns[SerpFeature.PODIUM_WIN])
+
+
+def add_serp_earcons(
+    midi: MIDIFile,
+    track: int,
+    features: List[SerpFeature] | Set[SerpFeature],
+    section_duration_beats: float,
+    sound_pack_name: str = "Arena Rock",
+    section_start_beat: float = 0.0,
+) -> List[EarconEvent]:
+    """Add SERP earcons directly to a MIDI track and return generated events."""
+    feature_set = set(features)
+    generator = EarconGenerator(sound_pack_name)
+    events = generator.generate_earcons_for_section(feature_set, section_start_beat, section_duration_beats)
+    generator.add_earcons_to_midi(midi, events, track)
+    return events
+
+
+EARCON_INSTRUMENTS = {
+    feature: (
+        pattern.get("instrument", 0),
+        pattern.get("notes", [0])[0] if pattern.get("notes") else 0,
+    )
+    for pack in EarconGenerator.EARCON_PATTERNS.values()
+    for feature, pattern in pack.items()
+}

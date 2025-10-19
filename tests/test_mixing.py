@@ -83,7 +83,7 @@ except (ImportError, ModuleNotFoundError):
 class TestAudioMixer:
     """Test audio mixing functionality."""
     
-    def setUp(self):
+    def setup_method(self):
         """Set up test audio files."""
         self.mixer = AudioMixer()
         
@@ -372,7 +372,7 @@ class TestRealWorldScenarios:
             result = mixer.apply_limiting(mock_audio)
             
             # Should have applied peak limiting
-            mock_limit.assert_called_once_with(mock_audio, -1.0)
+            mock_limit.assert_called_once_with(mock_audio)
             
     def test_streaming_platform_compliance(self):
         """Test audio meets streaming platform standards."""

@@ -143,11 +143,38 @@ TROPICAL_POP = SoundPack(
 )
 
 # Master registry of all available packs
-SOUND_PACKS: Dict[str, SoundPack] = {
+def _serialize_pack(pack: SoundPack) -> Dict[str, Any]:
+    return {
+        "name": pack.name,
+        "description": pack.description,
+        "tempo_range": list(pack.tempo_range),
+        "instruments": {
+            role: {
+                "program": cfg.program,
+                "volume": cfg.volume,
+                "pan": cfg.pan,
+                "reverb": cfg.reverb,
+            }
+            for role, cfg in pack.instruments.items()
+        },
+    }
+
+
+_PACK_OBJECTS: Dict[str, SoundPack] = {
     "Arena Rock": ARENA_ROCK,
-    "8-Bit": EIGHT_BIT, 
+    "arena_rock": ARENA_ROCK,
+    "8-Bit": EIGHT_BIT,
+    "8bit": EIGHT_BIT,
+    "8_bit": EIGHT_BIT,
     "Synthwave": SYNTHWAVE,
-    "Tropical Pop": TROPICAL_POP,  # 🆕 Caribbean Kokomo theme
+    "synthwave": SYNTHWAVE,
+    "Tropical Pop": TROPICAL_POP,
+    "tropical_pop": TROPICAL_POP,
+}
+
+
+SOUND_PACKS: Dict[str, Dict[str, Any]] = {
+    key: _serialize_pack(pack) for key, pack in _PACK_OBJECTS.items()
 }
 
 # Default pack
@@ -155,15 +182,16 @@ DEFAULT_PACK = "Arena Rock"
 
 
 def get_sound_pack(name: str) -> SoundPack:
-    """Get sound pack by name, with fallback to default."""
-    return SOUND_PACKS.get(name, SOUND_PACKS[DEFAULT_PACK])
+    """Get sound pack by name or slug, with fallback to default."""
+    key = name if name in _PACK_OBJECTS else name.lower().replace(" ", "_")
+    return _PACK_OBJECTS.get(key, _PACK_OBJECTS[DEFAULT_PACK])
 
 
 def list_sound_packs() -> Dict[str, str]:
     """List all available sound packs with descriptions."""
-    return {name: pack.description for name, pack in SOUND_PACKS.items()}
+    return {name: pack.description for name, pack in _PACK_OBJECTS.items() if name == name.lower()}
 
 
 def validate_sound_pack(name: str) -> bool:
-    """Check if sound pack name is valid."""
-    return name in SOUND_PACKS
+    """Check if sound pack name or slug is valid."""
+    return name in _PACK_OBJECTS or name.lower().replace(" ", "_") in _PACK_OBJECTS

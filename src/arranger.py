@@ -5,7 +5,7 @@ Organizes sonification into musical sections with key changes and tempo modulati
 
 import random
 from enum import Enum
-from typing import List, Dict, Tuple, Optional
+from typing import List, Dict, Tuple, Optional, Any
 from dataclasses import dataclass
 from midiutil import MIDIFile
 
@@ -79,10 +79,11 @@ class MusicArranger:
         ],
     }
     
-    def __init__(self, total_bars: int = 32, base_tempo: int = 116):
+    def __init__(self, total_bars: int = 32, base_tempo: int = 120):
         self.total_bars = total_bars
         self.base_tempo = base_tempo
-        self.sections: List[MusicSection] = []
+        self.bpm = base_tempo
+        self.sections: List[MusicSection] = self.build_default_sections(total_bars)
         
     def build_default_sections(self, total_bars: int) -> List[MusicSection]:
         """
@@ -190,6 +191,29 @@ class MusicArranger:
             
         self.sections = sections
         return sections
+
+    # Compatibility helpers expected by tests
+    def _select_key_for_section(self, momentum_score: float) -> Key:
+        return self._select_key_for_momentum(momentum_score)
+
+    def _generate_chord_progression(self, key: Key, bars: int) -> List[List[int]]:
+        return self.generate_chord_progression(key, bars)
+
+    def arrange_sections(self, momentum_data: List[Dict]) -> List[Dict[str, Any]]:
+        sections = self.arrange_momentum_data(momentum_data)
+        arrangement: List[Dict[str, Any]] = []
+        for section in sections:
+            arrangement.append(
+                {
+                    "section_type": section.section_type,
+                    "key": section.key,
+                    "tempo": section.tempo,
+                    "chords": self.generate_chord_progression(section.key, section.bars),
+                    "bars": section.bars,
+                    "start_bar": section.start_bar,
+                }
+            )
+        return arrangement
     
     def _allocate_section_bars(self) -> List[int]:
         """Allocate bars to each section type."""
@@ -318,6 +342,14 @@ class MusicArranger:
         for i, tom_note in enumerate(tom_notes):
             beat_time = start_beat + (i * beats_per_tom)
             midi.addNote(track, 9, tom_note, beat_time, beats_per_tom * 0.8, 100)
+            midi.tracks[track].eventList.append(
+                {
+                    "type": "drum_fill",
+                    "note": tom_note,
+                    "start": beat_time,
+                    "duration": beats_per_tom * 0.8,
+                }
+            )
             
         # Crash at the end
         crash_time = start_beat + duration - 0.25

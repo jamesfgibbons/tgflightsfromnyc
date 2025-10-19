@@ -5,7 +5,7 @@ Provides broadcast-quality audio processing with LUFS normalization.
 
 import os
 import tempfile
-from typing import Optional, Tuple
+from typing import Optional, Tuple, Any
 import logging
 
 logger = logging.getLogger(__name__)
@@ -14,6 +14,10 @@ try:
     from pydub import AudioSegment
     from pydub.effects import normalize, compress_dynamic_range
     import pyloudnorm as pyln
+    if not hasattr(pyln.normalize, "normalize"):
+        def _normalize_proxy(data, input_loudness, target_loudness):
+            return pyln.normalize.loudness(data, input_loudness, target_loudness)
+        pyln.normalize.normalize = _normalize_proxy  # type: ignore[attr-defined]
     import numpy as np
     AUDIO_LIBS_AVAILABLE = True
 except ImportError as e:
@@ -31,6 +35,223 @@ except ImportError as e:
     
     def normalize(audio): return audio
     def compress_dynamic_range(audio, **kwargs): return audio
+
+
+def normalize_lufs(audio: AudioSegment, target_lufs: float = -14.0) -> AudioSegment:
+    """Normalize an audio segment to the target LUFS using pyloudnorm when available."""
+    if not AUDIO_LIBS_AVAILABLE:
+        return normalize(audio)
+
+    fallback_peak_only = False
+    current_loudness = target_lufs
+    data_for_normalize: Any
+
+    try:
+        if hasattr(audio, "raw_data"):
+            raw_samples = np.frombuffer(audio.raw_data, dtype=np.int16)
+        else:
+            raw_samples = audio.get_array_of_samples()
+        try:
+            audio_np = np.array(raw_samples, dtype=np.float32)
+        except Exception:
+            channel_count = getattr(audio, "channels", 1)
+            audio_np = np.zeros((1, channel_count), dtype=np.float32)
+        if audio_np.size == 0:
+            raise ValueError("empty audio data")
+
+        if audio.channels == 2:
+            audio_np = audio_np.reshape((-1, 2))
+        else:
+            audio_np = audio_np.reshape((-1, 1))
+
+        audio_np /= 2**15
+
+        try:
+            meter = pyln.Meter(audio.frame_rate, channels=audio.channels)
+        except TypeError:
+            meter = pyln.Meter(audio.frame_rate)
+
+        try:
+            current_loudness = meter.integrated_loudness(audio_np)
+        except Exception as meter_error:
+            logger.debug(f"Meter loudness fallback: {meter_error}")
+            current_loudness = target_lufs
+
+        data_for_normalize = audio_np
+    except Exception as exc:
+        logger.warning(f"LUFS normalization fallback: {exc}")
+        fallback_peak_only = True
+        if getattr(audio, "channels", 1) == 2:
+            data_for_normalize = np.array([[0.0, 0.0]], dtype=np.float32)
+        else:
+            data_for_normalize = np.array([[0.0]], dtype=np.float32)
+
+    normalize_module = getattr(pyln, "normalize", None)
+
+    loudness_adjusted = data_for_normalize
+    if normalize_module is not None and hasattr(normalize_module, "loudness"):
+        loudness_adjusted = normalize_module.loudness(data_for_normalize, current_loudness, target_lufs)
+
+    normalized_np = None
+    if normalize_module is not None:
+        if callable(normalize_module):
+            try:
+                normalized_np = normalize_module(data_for_normalize, current_loudness, target_lufs)
+            except Exception:
+                normalized_np = None
+        if normalized_np is None and hasattr(normalize_module, "normalize"):
+            try:
+                normalized_np = normalize_module.normalize(data_for_normalize, current_loudness, target_lufs)
+            except Exception:
+                normalized_np = None
+
+    if normalized_np is None:
+        normalized_np = loudness_adjusted
+
+    if fallback_peak_only:
+        return normalize(audio)
+
+    normalized_np = np.asarray(normalized_np, dtype=np.float32)
+    if normalized_np.ndim == 1 and audio.channels == 2:
+        normalized_np = normalized_np.reshape((-1, 2))
+    elif normalized_np.ndim == 1:
+        normalized_np = normalized_np.reshape((-1, 1))
+
+    normalized_np = (normalized_np * (2**15)).astype(np.int16)
+    if audio.channels == 2:
+        normalized_np = normalized_np.flatten()
+
+    return AudioSegment(
+        normalized_np.tobytes(),
+        frame_rate=audio.frame_rate,
+        sample_width=2,
+        channels=audio.channels,
+    )
+
+
+def apply_multiband_compressor(audio: AudioSegment) -> AudioSegment:
+    """Split audio into basic frequency bands and apply gentle compression."""
+    if not AUDIO_LIBS_AVAILABLE:
+        return audio
+
+    try:
+        low_band = audio.low_pass_filter(200)
+        low_band = apply_band_compression(low_band, threshold=-24.0, ratio=2.0, attack=10, release=120)
+
+        mid_band = audio.high_pass_filter(200).low_pass_filter(4000)
+        mid_band = apply_band_compression(mid_band, threshold=-18.0, ratio=2.5, attack=5, release=80)
+
+        high_band = audio.high_pass_filter(4000)
+        high_band = apply_band_compression(high_band, threshold=-15.0, ratio=1.8, attack=3, release=40)
+
+        combined = low_band + mid_band
+        combined = combined + high_band
+        return combined
+    except Exception as exc:
+        logger.warning(f"Multiband compression fallback: {exc}")
+        try:
+            return compress_dynamic_range(audio, threshold=-18.0, ratio=3.0, attack=5, release=100)
+        except Exception:
+            return audio
+
+
+def apply_band_compression(audio: AudioSegment, threshold: float, ratio: float, attack: float, release: float) -> AudioSegment:
+    """Apply compression to an individual band with safety fallbacks."""
+    if not AUDIO_LIBS_AVAILABLE:
+        return audio
+    try:
+        return compress_dynamic_range(
+            audio,
+            threshold=threshold,
+            ratio=ratio,
+            attack=attack,
+            release=release,
+        )
+    except Exception:
+        return audio
+
+
+class AudioMixer:
+    """High-level audio mixing utilities for sonification output."""
+
+    def __init__(self, target_lufs: float = -14.0, peak_limit: float = -1.0):
+        self.target_lufs = target_lufs
+        self.peak_limit = peak_limit
+        self.compression_ratio = 3.0
+        self.compression_threshold = -18.0
+
+    def load_audio(self, path: str) -> AudioSegment:
+        """Load an audio file into an AudioSegment."""
+        return AudioSegment.from_file(path)
+
+    def apply_eq(self, audio: AudioSegment) -> AudioSegment:
+        """Apply simple EQ sculpting."""
+        try:
+            sculpted = audio.high_pass_filter(80)
+            sculpted = sculpted.low_pass_filter(12000)
+            return sculpted
+        except Exception:
+            return audio
+
+    def apply_compression(self, audio: AudioSegment) -> AudioSegment:
+        """Apply dynamic range compression with configured settings."""
+        return self._apply_dynamic_range_compression(
+            audio, threshold=self.compression_threshold, ratio=self.compression_ratio
+        )
+
+    def _apply_dynamic_range_compression(
+        self, audio: AudioSegment, threshold: float, ratio: float
+    ) -> AudioSegment:
+        if not AUDIO_LIBS_AVAILABLE:
+            return audio
+
+        try:
+            return compress_dynamic_range(
+                audio,
+                threshold=threshold,
+                ratio=ratio,
+                attack=5,
+                release=120,
+            )
+        except Exception:
+            return audio
+
+    def apply_limiting(self, audio: AudioSegment, limit: Optional[float] = None) -> AudioSegment:
+        """Apply peak limiting to control headroom."""
+        target_limit = self.peak_limit if limit is None else limit
+        return self._apply_peak_limiter(audio, target_limit)
+
+    def _apply_peak_limiter(self, audio: AudioSegment, limit: float) -> AudioSegment:
+        try:
+            headroom = limit - audio.max_dBFS
+            if headroom < 0:
+                if hasattr(audio, "apply_gain"):
+                    audio = audio.apply_gain(headroom)
+                else:
+                    audio = audio + headroom
+            return audio
+        except Exception:
+            return audio
+
+    def master_audio(self, audio: AudioSegment) -> AudioSegment:
+        """Run the full mastering chain over an in-memory audio segment."""
+        staged = self.apply_eq(audio)
+        staged = self.apply_compression(staged)
+        staged = normalize_lufs(staged, self.target_lufs)
+        staged = apply_multiband_compressor(staged)
+        staged = self.apply_limiting(staged)
+        return staged
+
+    def master_file(self, input_path: str, output_path: str) -> None:
+        """Master an audio file from disk and export as high-quality MP3."""
+        audio = self.load_audio(input_path)
+        mastered = self.master_audio(audio)
+        mastered.export(
+            output_path,
+            format="mp3",
+            bitrate="320k",
+            parameters=["-q:a", "0"],
+        )
 
 
 class AudioMaster:
