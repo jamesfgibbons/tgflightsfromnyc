@@ -216,6 +216,10 @@ app.include_router(book_router)
 app.include_router(alias_router)
 app.include_router(notify_router)
 
+# Deal awareness API (BUY/TRACK/WAIT recommendations)
+from src.deals_api import router as deals_router
+app.include_router(deals_router)
+
 # ---- Aggregations / summaries ----
 
 @app.get("/api/llm/run_summary")
