@@ -27,6 +27,12 @@ In Supabase Dashboard → SQL Editor, run these in order:
 
 -- 4. Notifications engine (badges + events)
 -- Paste contents of: sql/010_notification_engine.sql
+
+-- 5. Deal awareness (REQUIRED for pricing pipeline)
+-- Paste contents of: sql/020_deal_awareness.sql
+
+-- 6. Refresh helper functions (REQUIRED for worker)
+-- Paste contents of: sql/021_refresh_helpers.sql
 ```
 
 ### B) Create Storage Buckets
@@ -148,7 +154,101 @@ Look for:
 
 ---
 
-## Step 4: Connect Frontend (Lovable)
+## Step 4: Deploy Pricing Worker (10 minutes)
+
+**IMPORTANT:** This step enables automated price collection and deal awareness features.
+
+### Option A: Railway Worker Service (Recommended)
+
+1. **In Railway, create a new service in the same project:**
+   - Click **+ New** → **Empty Service**
+   - Name it: "SERPRadio Worker"
+
+2. **Connect GitHub repo:**
+   - Settings → Connect to this repo: `jamesfgibbons/tgflightsfromnyc`
+   - Source → Dockerfile path: `Dockerfile.worker`
+
+3. **Set environment variables:**
+
+```env
+# Pricing API
+PRICE_SOURCE=parallel
+PARALLEL_API_KEY=HKkalLeE4YIrDJYnZDInOM7tL6CXZKmRTbCHrQEe
+
+# Database (same as main service)
+SUPABASE_URL=https://bulcmonhcvqljorhiqgk.supabase.co
+SUPABASE_SERVICE_ROLE=your-service-role-key
+
+# Worker config
+REFRESH_INTERVAL_HOURS=6
+NYC_ORIGINS=JFK,EWR,LGA
+TOP_DESTINATIONS=MIA,LAX,SFO,ORD,ATL,DEN,LAS,SEA,PHX,MCO,FLL,SAN,DCA,DFW,IAH,BOS,CLT,DTW,MSP,PHL
+```
+
+4. **Deploy the worker:**
+   - Click **Deploy**
+   - Worker will start fetching prices every 6 hours
+   - Check logs for: "Starting price refresh cycle"
+
+### Option B: GitHub Actions (Alternative - No Cost)
+
+1. **Add GitHub repository secrets:**
+   - Go to GitHub → Settings → Secrets and variables → Actions
+   - Add these secrets:
+     - `PARALLEL_API_KEY` = `HKkalLeE4YIrDJYnZDInOM7tL6CXZKmRTbCHrQEe`
+     - `SUPABASE_URL` = `https://bulcmonhcvqljorhiqgk.supabase.co`
+     - `SUPABASE_SERVICE_ROLE` = your-service-role-key
+
+2. **Enable GitHub Actions:**
+   - Go to Actions tab
+   - Enable workflows if prompted
+   - Workflow `.github/workflows/price_refresh.yml` will run every 6 hours
+
+3. **Manual trigger (for testing):**
+   - Actions → Price Refresh Worker → Run workflow
+   - Select `parallel` as price source
+   - Click "Run workflow"
+
+### Verify Worker is Running
+
+**For Railway:**
+```bash
+# Check worker logs
+railway logs --service serpradio-worker
+
+# Look for:
+# "Starting price refresh cycle"
+# "Fetched X price observations"
+# "Upserted X rows to price_observation table"
+```
+
+**For GitHub Actions:**
+- Go to Actions → Price Refresh Worker
+- Check latest run status
+- Download artifacts for full logs
+
+### Seed Sample Data (Optional - Quick Start)
+
+If you want to test immediately without waiting for the first price refresh:
+
+```bash
+# Install dependencies
+pip install supabase
+
+# Set environment
+export SUPABASE_URL=https://bulcmonhcvqljorhiqgk.supabase.co
+export SUPABASE_SERVICE_ROLE=your-service-role-key
+
+# Seed sample data (10 routes, 30 days back, 90 days forward)
+python scripts/seed_sample_prices.py
+
+# Verify
+python scripts/verify_deployment.py
+```
+
+---
+
+## Step 5: Connect Frontend (Lovable)
 
 ### In Your Lovable Project:
 
