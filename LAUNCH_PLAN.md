@@ -1,9 +1,9 @@
 # 🚀 Complete Launch Status & Action Plan
 
-**Date:** October 21, 2025
+**Date:** October 24, 2025
 **Goal:** Launch to Lovable + Railway with continuous deployment and daily price refresh
-**Time to Launch:** 2-3 hours
-**Status:** 85% Ready - Need pricing pipeline
+**Time to Launch:** 1-2 hours (pricing pipeline now complete)
+**Status:** 95% Ready - Need API keys and deployment
 
 ---
 
@@ -14,28 +14,29 @@
 | Component | Status | Files | Ready? |
 |-----------|--------|-------|--------|
 | **Backend API** | ✅ 100% | 40+ endpoints, FastAPI, Railway-ready | YES |
-| **SQL Schema** | ✅ 100% | 8 migration files (000-020) | YES |
+| **SQL Schema** | ✅ 100% | 9 migration files (000-021) | YES |
 | **Deal Awareness** | ✅ 100% | SQL + API + Frontend + Tests | YES |
+| **Pricing Pipeline** | ✅ 100% | Adapters + Worker + GitHub Actions | YES |
 | **VibeNet Engine** | ✅ 100% | Scene planner, ontology, palettes | YES |
 | **Board Feed API** | ✅ 100% | `/api/board/feed` + badges | YES |
 | **Notifications** | ✅ 100% | Events + materialized views | YES |
-| **Docker Setup** | ✅ 100% | Dockerfile + railway.json | YES |
-| **Documentation** | ✅ 100% | 5 deployment guides | YES |
+| **Docker Setup** | ✅ 100% | Dockerfile + Dockerfile.worker + railway.json | YES |
+| **Documentation** | ✅ 100% | 5 deployment guides + updated LAUNCH_PLAN | YES |
 
 ### 🟡 PARTIAL / NEEDS WORK
 
 | Component | Status | What's Missing |
 |-----------|--------|----------------|
-| **Price Data** | 🔴 0% | NO data in `price_observation` table |
-| **Daily Pipeline** | 🔴 0% | NO automated price collection |
-| **Materialized View Refresh** | 🟡 50% | SQL ready, automation missing |
+| **Price API Credentials** | 🔴 0% | Need X API or Parallel API key |
+| **Price Data** | 🟡 0% | Pipeline ready, need API key to populate |
+| **Worker Deployment** | 🟡 50% | Code ready, need to deploy to Railway/Actions |
 | **Lovable Connection** | 🟡 50% | Components ready, not wired yet |
 | **Frontend Deployment** | 🟡 50% | Code ready, not deployed |
 
 ### 🔴 CRITICAL BLOCKERS (Must Fix Before Launch)
 
-1. **NO PRICING DATA** - `price_observation` table is empty
-2. **NO DAILY SCRAPER** - No automated price collection
+1. **NO API CREDENTIALS** - Need Parallel API or X API key for price fetching
+2. **WORKER NOT DEPLOYED** - Price refresh worker not running (Railway or GitHub Actions)
 3. **LOVABLE NOT DEPLOYED** - Frontend exists but not live
 4. **RAILWAY NOT DEPLOYED** - Backend not running in production
 
@@ -93,6 +94,186 @@ As users interact:
 4. Improve: Confidence levels per route
 5. Iterate: Better recommendations over time
 ```
+
+---
+
+## ✅ PRICING PIPELINE IMPLEMENTATION (COMPLETE)
+
+**Status:** Implementation complete as of this session
+**Files:** 7 new files created
+**Next Step:** Deploy and configure API keys
+
+### 📁 New Files
+
+1. **`src/adapters/prices_base.py`** (179 lines)
+   - Abstract base class for price fetchers
+   - Retry logic with exponential backoff
+   - Data validation and batch processing
+
+2. **`src/adapters/prices_xapi.py`** (213 lines)
+   - X API (Twitter/X) price fetcher implementation
+   - Async batch requests with rate limiting
+   - Environment: `XAPI_KEY`, `XAPI_ENDPOINT`
+
+3. **`src/adapters/prices_parallel.py`** (215 lines)
+   - Parallel API price fetcher implementation
+   - Bulk batch requests (100 routes per call)
+   - Environment: `PARALLEL_API_KEY`, `PARALLEL_API_ENDPOINT`
+
+4. **`src/adapters/__init__.py`** (30 lines)
+   - Package exports for clean imports
+
+5. **`src/worker_refresh.py`** (321 lines)
+   - Main worker that runs 6-hour refresh cycle
+   - Fetches prices → Upserts to DB → Refreshes views → Emits notifications
+   - Can run continuously or as one-shot (for GitHub Actions)
+   - Environment: `PRICE_SOURCE` (xapi/parallel), `REFRESH_INTERVAL_HOURS`
+
+6. **`Dockerfile.worker`** (48 lines)
+   - Docker image for worker deployment
+   - Separate from main API Dockerfile
+   - Health check on worker process
+
+7. **`.github/workflows/price_refresh.yml`** (52 lines)
+   - GitHub Actions scheduled job (every 6 hours)
+   - Manual trigger with price source selection
+   - Uploads logs as artifacts
+
+8. **`sql/021_refresh_helpers.sql`** (133 lines)
+   - `refresh_baselines()` - Concurrent materialized view refresh
+   - `refresh_baselines_nonconcurrent()` - Fallback non-concurrent refresh
+   - `detect_price_drops()` - Emit notification events for deals
+
+### 🔄 How It Works
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│              WORKER REFRESH CYCLE (Every 6 Hours)            │
+└─────────────────────────────────────────────────────────────┘
+
+1. Load Adapter
+   ├─ Check PRICE_SOURCE env var (xapi or parallel)
+   ├─ Initialize fetcher with API credentials
+   └─ Log configuration
+
+2. Generate Windows
+   ├─ Next 6 months
+   ├─ Monthly windows (start/end dates)
+   └─ 6 windows total
+
+3. Fetch Prices
+   ├─ Origins: JFK, EWR, LGA (NYC airports)
+   ├─ Destinations: Top 20 US routes (MIA, LAX, SFO, etc.)
+   ├─ Routes: 3 origins × 20 dests = 60 routes
+   ├─ Windows: 6 months
+   ├─ Total queries: 60 routes × 6 windows = 360 queries
+   ├─ Retry: 3 attempts with exponential backoff
+   └─ Result: ~5,000-10,000 price observations
+
+4. Upsert to Database
+   ├─ Table: price_observation
+   ├─ Upsert on conflict: (origin, dest, cabin, depart_date, source, observed_at)
+   ├─ Idempotent: Re-running won't create duplicates
+   └─ Log: Count of inserted/updated rows
+
+5. Refresh Materialized Views
+   ├─ Call: refresh_baselines() RPC function
+   ├─ Refreshes: route_baseline_30d (P25/P50/P75 percentiles)
+   ├─ Concurrent: Non-blocking refresh (requires unique index)
+   └─ Fallback: Non-concurrent if concurrent fails
+
+6. Emit Notifications
+   ├─ Call: detect_price_drops() RPC function
+   ├─ Finds: Prices below P25 baseline (excellent deals)
+   ├─ Inserts: notification_event records
+   ├─ Deduplication: Only emit once per route/month/day
+   └─ Board badges: Auto-update on next view refresh
+```
+
+### 🚢 Deployment Options
+
+**Option A: Railway Worker Service (Recommended)**
+```bash
+# Deploy as separate Railway service
+railway init
+railway up --dockerfile Dockerfile.worker
+
+# Configure environment variables:
+- PRICE_SOURCE=parallel
+- PARALLEL_API_KEY=<your_key>
+- SUPABASE_URL=<your_url>
+- SUPABASE_SERVICE_ROLE=<your_key>
+- REFRESH_INTERVAL_HOURS=6
+```
+
+**Option B: GitHub Actions Scheduled Job**
+```bash
+# Already configured in .github/workflows/price_refresh.yml
+# Runs every 6 hours: 00:00, 06:00, 12:00, 18:00 UTC
+# Requires GitHub secrets:
+- SUPABASE_URL
+- SUPABASE_SERVICE_ROLE
+- PARALLEL_API_KEY (or XAPI_KEY)
+```
+
+**Option C: Local Testing**
+```bash
+# Install dependencies
+pip install -r requirements.txt
+pip install supabase==2.3.0
+
+# Configure environment
+export PRICE_SOURCE=parallel
+export PARALLEL_API_KEY=<your_key>
+export SUPABASE_URL=<your_url>
+export SUPABASE_SERVICE_ROLE=<your_key>
+
+# Run one-shot refresh
+python -m src.worker_refresh --once
+
+# Or run continuously (6-hour cycle)
+python -m src.worker_refresh
+```
+
+### 📋 Next Steps to Enable Pricing Pipeline
+
+1. **Get API Credentials**
+   - [ ] Sign up for Parallel API or X API
+   - [ ] Get API key and endpoint URL
+   - [ ] Test credentials with sample request
+
+2. **Apply SQL Migrations**
+   ```bash
+   # Connect to Supabase and run:
+   psql $DATABASE_URL -f sql/020_deal_awareness.sql
+   psql $DATABASE_URL -f sql/021_refresh_helpers.sql
+   ```
+
+3. **Configure Secrets**
+   - Railway: Add `PARALLEL_API_KEY`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE`
+   - GitHub: Add repository secrets for Actions
+
+4. **Deploy Worker**
+   - Option A: Railway service with `Dockerfile.worker`
+   - Option B: Enable GitHub Actions workflow
+
+5. **Test End-to-End**
+   ```bash
+   # Trigger manual run
+   python -m src.worker_refresh --once
+
+   # Verify data
+   psql $DATABASE_URL -c "SELECT COUNT(*) FROM price_observation;"
+   psql $DATABASE_URL -c "SELECT * FROM route_baseline_30d LIMIT 5;"
+
+   # Test deal evaluation
+   curl "$API_BASE/api/deals/evaluate?origin=JFK&dest=MIA&month=3"
+   ```
+
+6. **Monitor**
+   - Check Railway logs for worker output
+   - Check GitHub Actions artifacts for refresh logs
+   - Verify materialized view updates every 6 hours
 
 ---
 
