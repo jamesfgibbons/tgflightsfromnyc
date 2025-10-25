@@ -1,318 +1,361 @@
 """
-Parallel API Price Fetcher Adapter
+Parallel API Price Fetcher Adapter (Flexible)
 
-Fetches flight prices from Parallel API (or similar aggregator service).
-Implements the PriceFetcher interface with Parallel API-specific logic.
+Fetches flight prices from Parallel API with support for both bulk and single request modes.
+Configuration is driven entirely by environment variables, making it easy to adapt to
+any API specification without code changes.
 
 Environment Variables:
-- PARALLEL_API_KEY: Parallel API authentication key
-- PARALLEL_API_ENDPOINT: Base URL for Parallel API
-- PARALLEL_BATCH_SIZE: Max routes per batch request (default: 100)
+- PARALLEL_API_KEY: API authentication key (required)
+- PARALLEL_ENDPOINT: API endpoint URL (required)
+- PARALLEL_MODE: Request mode - 'bulk' or 'single' (default: bulk)
+- PARALLEL_TIMEOUT_SECONDS: Request timeout (default: 60)
+- PARALLEL_BATCH_SIZE: Max routes per batch in bulk mode (default: 100)
+- MONTHS_AHEAD: Number of months to fetch (default: 6)
 """
 
 import os
+import datetime as dt
+from typing import List, Dict, Any
 import httpx
-from typing import List, Dict
-from datetime import date, datetime, timedelta
-import asyncio
 from .prices_base import PriceFetcher, PriceFetchError
+
+
+def _iso(d):
+    """Convert date to ISO string"""
+    return d if isinstance(d, str) else d.isoformat()
+
+
+def _windows_next_n_months(n=6) -> List[Dict[str, str]]:
+    """
+    Generate monthly date windows for the next N months.
+
+    Args:
+        n: Number of months ahead
+
+    Returns:
+        List of date windows with 'start' and 'end' keys
+    """
+    today = dt.date.today().replace(day=1)
+    windows = []
+    y, m = today.year, today.month
+
+    for i in range(n):
+        yy = y + (m - 1 + i) // 12
+        mm = ((m - 1 + i) % 12) + 1
+        start = dt.date(yy, mm, 1)
+        # Use 28th as end guard (works for all months)
+        end = dt.date(yy, mm, 28)
+        windows.append({"start": str(start), "end": str(end)})
+
+    return windows
 
 
 class ParallelFetcher(PriceFetcher):
     """
-    Parallel API price fetcher implementation.
+    Flexible Parallel API adapter supporting both 'bulk' and 'single' modes.
 
-    Uses Parallel API to fetch bulk flight price data efficiently.
-    Supports batch requests and handles API-specific response formats.
+    Bulk mode: Send all routes in a single request (efficient for APIs that support it)
+    Single mode: One request per route+window combination (more compatible)
+
+    The adapter normalizes responses to a standard format regardless of the API's
+    response structure, making it easy to adjust to different providers.
     """
 
     def __init__(self, **kwargs):
         """
-        Initialize Parallel API fetcher.
+        Initialize Parallel API fetcher with environment-driven configuration.
 
-        Environment variables:
-        - PARALLEL_API_KEY: Required API key
-        - PARALLEL_API_ENDPOINT: Optional custom endpoint
-        - PARALLEL_BATCH_SIZE: Optional batch size
+        Raises:
+            RuntimeError: If required environment variables are missing
         """
-        api_key = os.getenv("PARALLEL_API_KEY")
-        if not api_key:
-            raise ValueError("PARALLEL_API_KEY environment variable is required")
+        super().__init__(**kwargs)
 
-        super().__init__(api_key=api_key, **kwargs)
-
-        self.endpoint = os.getenv(
-            "PARALLEL_API_ENDPOINT",
-            "https://api.parallel.com/v1/flights/search"  # Placeholder URL
-        )
+        self.base_endpoint = os.getenv("PARALLEL_ENDPOINT", "").strip()
+        self.key = os.getenv("PARALLEL_API_KEY", "").strip()
+        self.mode = os.getenv("PARALLEL_MODE", "bulk").strip().lower()
+        self.timeout = int(os.getenv("PARALLEL_TIMEOUT_SECONDS", "60"))
         self.batch_size = int(os.getenv("PARALLEL_BATCH_SIZE", "100"))
-        self.timeout = float(os.getenv("PARALLEL_API_TIMEOUT", "60.0"))
+        self.months_ahead = int(os.getenv("MONTHS_AHEAD", "6"))
+
+        if not self.base_endpoint:
+            raise RuntimeError("PARALLEL_ENDPOINT environment variable is required")
+        if not self.key:
+            raise RuntimeError("PARALLEL_API_KEY environment variable is required")
 
         self.logger.info(
-            f"Initialized ParallelFetcher with endpoint: {self.endpoint}, "
-            f"batch_size: {self.batch_size}"
+            f"Initialized ParallelFetcher: endpoint={self.base_endpoint}, "
+            f"mode={self.mode}, batch_size={self.batch_size}, timeout={self.timeout}s"
         )
+
+    def _auth_headers(self) -> Dict[str, str]:
+        """Get authentication headers for API requests"""
+        return {
+            "Authorization": f"Bearer {self.key}",
+            "Content-Type": "application/json"
+        }
 
     def fetch(
         self,
         origins: List[str],
         destinations: List[str],
-        windows: List[Dict[str, date]],
+        windows: List[Dict] = None,
         cabin: str = "economy"
     ) -> List[Dict]:
         """
         Fetch prices from Parallel API.
 
-        Parallel API supports bulk batch requests, making it efficient
-        for fetching many routes at once.
-
         Args:
             origins: List of origin airport codes
             destinations: List of destination airport codes
-            windows: List of date windows with 'start' and 'end'
-            cabin: Cabin class
+            windows: Optional list of date windows (generated if not provided)
+            cabin: Cabin class (default: economy)
 
         Returns:
             List of standardized price dictionaries
+
+        Raises:
+            RuntimeError: If API requests fail
         """
+        if not windows:
+            windows = _windows_next_n_months(self.months_ahead)
+
+        # Generate all route combinations (excluding same origin/dest)
+        routes = [(o, d) for o in origins for d in destinations if o != d]
+
         self.logger.info(
-            f"Fetching prices via Parallel API: {len(origins)} origins, "
-            f"{len(destinations)} dests, {len(windows)} windows, cabin={cabin}"
+            f"Fetching prices: {len(routes)} routes × {len(windows)} windows = "
+            f"{len(routes) * len(windows)} queries (mode={self.mode})"
         )
 
-        # Build route combinations
-        routes = []
-        for origin in origins:
-            for dest in destinations:
-                if origin != dest:
-                    routes.append((origin, dest))
+        results: List[Dict[str, Any]] = []
 
-        self.logger.info(f"Generated {len(routes)} unique routes")
+        with httpx.Client(timeout=self.timeout) as client:
+            if self.mode == "bulk":
+                results = self._fetch_bulk(client, routes, windows, cabin)
+            else:
+                results = self._fetch_single(client, routes, windows, cabin)
 
-        # Batch routes for API limits
-        batches = self.batch_requests(routes, batch_size=self.batch_size)
+        self.logger.info(f"Fetched {len(results)} price observations")
+        return results
 
-        # Fetch prices asynchronously
-        all_prices = []
-        for i, batch in enumerate(batches):
-            self.logger.info(f"Processing batch {i+1}/{len(batches)} ({len(batch)} routes)")
-
-            try:
-                batch_prices = asyncio.run(
-                    self._fetch_batch_async(batch, windows, cabin)
-                )
-                all_prices.extend(batch_prices)
-
-                self.logger.info(f"Batch {i+1} returned {len(batch_prices)} prices")
-
-            except Exception as e:
-                self.logger.error(f"Failed to fetch batch {i+1}: {e}")
-                # Continue with other batches
-                continue
-
-        # Validate and return
-        validated = self.validate_price_data(all_prices)
-        self.logger.info(f"Successfully fetched {len(validated)} price records")
-
-        return validated
-
-    async def _fetch_batch_async(
+    def _fetch_bulk(
         self,
+        client: httpx.Client,
         routes: List[tuple],
-        windows: List[Dict[str, date]],
+        windows: List[Dict],
         cabin: str
     ) -> List[Dict]:
         """
-        Fetch a batch of routes asynchronously.
+        Fetch prices using bulk request mode.
 
-        Parallel API supports bulk requests, so we can send all routes
-        in a single API call.
-
-        Args:
-            routes: List of (origin, dest) tuples
-            windows: Date windows
-            cabin: Cabin class
-
-        Returns:
-            List of price dictionaries
+        Sends all routes in a single request (or batched if too many).
         """
-        headers = {
-            "Authorization": f"Bearer {self.api_key}",
-            "Content-Type": "application/json"
-        }
+        results = []
 
-        # Build bulk request payload
-        # Parallel API accepts array of route queries
+        # Build all queries
         queries = []
-        for origin, dest in routes:
+        for (origin, dest) in routes:
             for window in windows:
                 queries.append({
-                    "origin": origin.upper(),
-                    "destination": dest.upper(),
-                    "depart_date_start": window["start"].isoformat(),
-                    "depart_date_end": window["end"].isoformat(),
-                    "cabin": cabin.lower()
+                    "origin": origin,
+                    "destination": dest,
+                    "depart_date_start": window["start"],
+                    "depart_date_end": window["end"],
+                    "cabin": cabin,
+                    "currency": "USD",
                 })
 
-        payload = {
-            "queries": queries,
-            "currency": "USD",
-            "max_results_per_query": 30  # Limit results per route
-        }
+        self.logger.info(f"Built {len(queries)} queries for bulk request")
 
-        try:
-            async with httpx.AsyncClient(timeout=self.timeout) as client:
-                response = await client.post(
-                    self.endpoint,
-                    headers=headers,
-                    json=payload
+        # Send in chunks to respect payload limits
+        for i in range(0, len(queries), self.batch_size):
+            chunk = queries[i:i + self.batch_size]
+            payload = {"queries": chunk, "currency": "USD"}
+
+            self.logger.debug(f"Sending bulk request with {len(chunk)} queries")
+
+            try:
+                response = client.post(
+                    self.base_endpoint,
+                    json=payload,
+                    headers=self._auth_headers()
                 )
 
-                response.raise_for_status()
-                data = response.json()
+                if response.status_code >= 400:
+                    error_text = response.text[:500]
+                    raise RuntimeError(
+                        f"Parallel bulk request failed: {response.status_code} - {error_text}"
+                    )
 
-            # Transform response to standard format
-            return self._transform_response(data, cabin)
+                batch_results = self._normalize_bulk_response(response.json())
+                results.extend(batch_results)
 
-        except httpx.HTTPStatusError as e:
-            self.logger.error(
-                f"HTTP error: {e.response.status_code} - {e.response.text}"
-            )
-            raise PriceFetchError(f"HTTP {e.response.status_code}") from e
+                self.logger.info(
+                    f"Bulk batch {i // self.batch_size + 1}: "
+                    f"Got {len(batch_results)} prices"
+                )
 
-        except httpx.RequestError as e:
-            self.logger.error(f"Request error: {e}")
-            raise PriceFetchError(f"Request failed: {e}") from e
+            except httpx.HTTPError as e:
+                self.logger.error(f"HTTP error in bulk request: {e}")
+                raise RuntimeError(f"Bulk request failed: {e}") from e
 
-    def _transform_response(
+        return results
+
+    def _fetch_single(
         self,
-        api_response: Dict,
+        client: httpx.Client,
+        routes: List[tuple],
+        windows: List[Dict],
         cabin: str
     ) -> List[Dict]:
         """
-        Transform Parallel API response to standardized format.
+        Fetch prices using single request mode.
 
-        Args:
-            api_response: Raw response from Parallel API
-            cabin: Cabin class
-
-        Returns:
-            List of standardized price dictionaries
+        One request per route+window combination (more compatible but slower).
         """
-        prices = []
-        observed_at = datetime.now()
+        results = []
+        total_requests = len(routes) * len(windows)
+        request_count = 0
 
-        # Parallel API response format (example - adjust to actual API schema):
-        # {
-        #   "results": [
-        #     {
-        #       "query_id": 0,
-        #       "origin": "JFK",
-        #       "destination": "MIA",
-        #       "flights": [
-        #         {
-        #           "depart_date": "2025-03-15",
-        #           "price": {"amount": 234.50, "currency": "USD"},
-        #           "airline": "AA",
-        #           "flight_number": "1234"
-        #         },
-        #         ...
-        #       ]
-        #     },
-        #     ...
-        #   ]
-        # }
+        for (origin, dest) in routes:
+            for window in windows:
+                request_count += 1
 
-        results = api_response.get("results", [])
+                payload = {
+                    "origin": origin,
+                    "destination": dest,
+                    "depart_date_start": window["start"],
+                    "depart_date_end": window["end"],
+                    "cabin": cabin,
+                    "currency": "USD",
+                }
 
-        for result in results:
-            origin = result.get("origin", "").upper()
-            dest = result.get("destination", "").upper()
-            flights = result.get("flights", [])
-
-            for flight in flights:
                 try:
-                    # Parse date
-                    depart_date_str = flight.get("depart_date")
-                    if not depart_date_str:
+                    response = client.post(
+                        self.base_endpoint,
+                        json=payload,
+                        headers=self._auth_headers()
+                    )
+
+                    if response.status_code >= 400:
+                        error_text = response.text[:200]
+                        self.logger.warning(
+                            f"Single request failed for {origin}-{dest} {window}: "
+                            f"{response.status_code} - {error_text}"
+                        )
                         continue
 
-                    depart_date = datetime.strptime(
-                        depart_date_str,
-                        "%Y-%m-%d"
-                    ).date()
+                    route_results = self._normalize_single_response(
+                        response.json(), origin, dest, window
+                    )
+                    results.extend(route_results)
 
-                    # Extract price
-                    price_obj = flight.get("price", {})
-                    price_amount = price_obj.get("amount")
-                    currency = price_obj.get("currency", "USD")
+                    if request_count % 10 == 0:
+                        self.logger.info(
+                            f"Progress: {request_count}/{total_requests} requests, "
+                            f"{len(results)} prices so far"
+                        )
 
-                    if not price_amount or currency != "USD":
-                        continue
-
-                    price_usd = float(price_amount)
-
-                    prices.append({
-                        "origin": origin,
-                        "dest": dest,
-                        "cabin": cabin.lower(),
-                        "depart_date": depart_date,
-                        "price_usd": round(price_usd, 2),
-                        "source": "parallel",
-                        "observed_at": observed_at
-                    })
-
-                except (KeyError, ValueError, TypeError) as e:
-                    self.logger.warning(f"Failed to parse flight: {flight} - {e}")
+                except httpx.HTTPError as e:
+                    self.logger.warning(
+                        f"HTTP error for {origin}-{dest} {window}: {e}"
+                    )
                     continue
 
-        return prices
+        return results
+
+    # --- Response normalizers (adjust these if API format differs) ---
+
+    def _normalize_bulk_response(self, data: Dict[str, Any]) -> List[Dict]:
+        """
+        Normalize bulk API response to standard format.
+
+        Expected bulk response shape (example):
+        {
+          "results": [
+            {
+              "origin": "JFK",
+              "destination": "MIA",
+              "date": "2025-03-14",
+              "cabin": "economy",
+              "price": 189.0
+            },
+            ...
+          ]
+        }
+
+        Adjust the key names here if your API uses different field names.
+        """
+        results = data.get("results") or data.get("quotes") or data.get("data") or []
+        normalized = []
+        now = dt.datetime.utcnow().isoformat()
+
+        for row in results:
+            try:
+                normalized.append({
+                    "origin": (row.get("origin") or "").upper(),
+                    "dest": (row.get("destination") or row.get("dest") or "").upper(),
+                    "cabin": (row.get("cabin") or "economy").lower(),
+                    "depart_date": row.get("date") or row.get("depart_date"),
+                    "price_usd": float(
+                        row.get("price") or row.get("usd") or
+                        row.get("amount") or 0
+                    ),
+                    "source": "parallel",
+                    "observed_at": now,
+                })
+            except (ValueError, TypeError, KeyError) as e:
+                self.logger.warning(f"Failed to parse bulk result: {row} - {e}")
+                continue
+
+        return normalized
+
+    def _normalize_single_response(
+        self,
+        data: Dict[str, Any],
+        origin: str,
+        dest: str,
+        window: Dict[str, str]
+    ) -> List[Dict]:
+        """
+        Normalize single-route API response to standard format.
+
+        Expected single response shape (example):
+        {
+          "quotes": [
+            {"date": "2025-03-14", "price": 189.0, "cabin": "economy"},
+            {"date": "2025-03-15", "price": 195.0, "cabin": "economy"},
+            ...
+          ]
+        }
+
+        Adjust the key names here if your API uses different field names.
+        """
+        quotes = data.get("quotes") or data.get("results") or data.get("prices") or []
+        normalized = []
+        now = dt.datetime.utcnow().isoformat()
+
+        for quote in quotes:
+            try:
+                normalized.append({
+                    "origin": origin.upper(),
+                    "dest": dest.upper(),
+                    "cabin": (quote.get("cabin") or "economy").lower(),
+                    "depart_date": quote.get("date") or quote.get("depart_date"),
+                    "price_usd": float(
+                        quote.get("price") or quote.get("usd") or
+                        quote.get("amount") or 0
+                    ),
+                    "source": "parallel",
+                    "observed_at": now,
+                })
+            except (ValueError, TypeError, KeyError) as e:
+                self.logger.warning(f"Failed to parse single quote: {quote} - {e}")
+                continue
+
+        return normalized
 
     def get_source_identifier(self) -> str:
         """Return source identifier for Parallel API"""
         return "parallel"
-
-
-# Example usage
-if __name__ == "__main__":
-    import logging
-    logging.basicConfig(level=logging.INFO)
-
-    # Initialize fetcher
-    fetcher = ParallelFetcher()
-
-    # Define search parameters
-    origins = ["JFK", "EWR", "LGA"]
-    destinations = ["MIA", "LAX", "SFO", "ORD", "ATL"]
-
-    # Next 6 months in monthly windows
-    today = date.today()
-    windows = []
-    for month_offset in range(6):
-        start = today + timedelta(days=30 * month_offset)
-        end = start + timedelta(days=30)
-        windows.append({"start": start, "end": end})
-
-    # Fetch prices
-    try:
-        prices = fetcher.fetch_with_retry(
-            origins=origins,
-            destinations=destinations,
-            windows=windows,
-            cabin="economy"
-        )
-
-        print(f"Fetched {len(prices)} price records")
-
-        # Group by route
-        routes_count = {}
-        for price in prices:
-            route = f"{price['origin']}→{price['dest']}"
-            routes_count[route] = routes_count.get(route, 0) + 1
-
-        print("\nPrices per route:")
-        for route, count in sorted(routes_count.items()):
-            print(f"  {route}: {count} observations")
-
-    except PriceFetchError as e:
-        print(f"Failed to fetch prices: {e}")
