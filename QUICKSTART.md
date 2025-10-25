@@ -36,8 +36,12 @@ A flight deal platform that:
 
 ## 📖 Quick Navigation
 
+### For Launch
+- **🚀 [LAUNCH_READY.md](LAUNCH_READY.md)** ← **START HERE!** Complete summary
+- **🎨 [RAILWAY_LOVABLE_INTEGRATION.md](docs/RAILWAY_LOVABLE_INTEGRATION.md)** - Frontend integration guide
+
 ### For Deployment
-- **🚀 [DEPLOY_NOW.md](docs/DEPLOY_NOW.md)** ← Start here!
+- **📋 [DEPLOY_NOW.md](docs/DEPLOY_NOW.md)** - Step-by-step deployment
 - **🚂 [RAILWAY_QUICKSTART.md](RAILWAY_QUICKSTART.md)** - Detailed Railway guide
 - **✅ [DEPLOYMENT_CHECKLIST.md](DEPLOYMENT_CHECKLIST.md)** - Print and check off
 
